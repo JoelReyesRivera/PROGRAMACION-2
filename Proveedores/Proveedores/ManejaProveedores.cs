@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Proveedores
 {
-    class ManejaProvedores
+    class ManejaProveedores
     {
+        public Dictionary<int, Proveedor> proveedores;
+
+        public ManejaProveedores()
+        {
+            proveedores = new Dictionary<int, Proveedor>();
+        }
     }
 }

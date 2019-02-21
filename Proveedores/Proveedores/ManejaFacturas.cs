@@ -8,5 +8,11 @@ namespace Proveedores
 {
     class ManejaFacturas
     {
+        private Dictionary<int, Factura> facturas;
+
+        public ManejaFacturas()
+        {
+            facturas = new Dictionary<int, Factura>();
+        }
     }
 }
