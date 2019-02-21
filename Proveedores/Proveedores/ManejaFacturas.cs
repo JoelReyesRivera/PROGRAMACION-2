@@ -9,10 +9,12 @@ namespace Proveedores
     class ManejaFacturas
     {
         private Dictionary<int, Factura> facturas;
+        private List<DetalleFactura> DetalleFactura;
 
         public ManejaFacturas()
         {
             facturas = new Dictionary<int, Factura>();
+            DetalleFactura = new List<DetalleFactura>();
         }
     }
 }
