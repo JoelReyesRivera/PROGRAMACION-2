@@ -10,9 +10,9 @@ namespace Proveedores
     {
         private int ClaveProv;
         private float Importe;
-        private string Dia, Mes, Año;
+        private int Dia, Mes, Año;
 
-        public Factura(int ClaveProv, float Importe, string Dia, string Mes, string Año)
+        public Factura(int ClaveProv, float Importe, int Dia, int Mes, int Año)
         {
             this.ClaveProv = ClaveProv;
             this.Importe = Importe;
@@ -34,21 +34,21 @@ namespace Proveedores
                 return Importe;
             }
         }
-        public string pDia
+        public int pDia
         {
             get
             {
                 return Dia;
             }
         }
-        public string pMes
+        public int pMes
         {
             get
             {
                 return Mes;
             }
         }
-        public string pAño
+        public int pAño
         {
             get
             {

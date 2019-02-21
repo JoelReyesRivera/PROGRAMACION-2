@@ -11,10 +11,10 @@ namespace Proveedores
         private int Clave;
         private string RFC, Nombre, Domicilio;
         private float Saldo;
-
+            
         public Proveedor(string RFC,string Nombre,string Domicilio)
         {
-            //Asignar clave del Diccionario
+            //LA CLAVE SE ASIGNA EN EL DICCIONARIO
             this.RFC = RFC;
             this.Nombre = Nombre;
             this.Domicilio = Domicilio;
