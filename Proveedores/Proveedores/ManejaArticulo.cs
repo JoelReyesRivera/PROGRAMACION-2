@@ -45,7 +45,7 @@ namespace Proveedores
             bool Band=false;
             for (int i = 0; i < Cont; i++)
             {
-                if (articulos[i].pDescripcion.Equals(Desc) && (articulos[i].pMarca.Equals(Marca))
+                if (articulos[i].pDescripcion.Equals(Desc) && (articulos[i].pMarca.Equals(Marca)))
                 {
                     Band=true;
                     break;
