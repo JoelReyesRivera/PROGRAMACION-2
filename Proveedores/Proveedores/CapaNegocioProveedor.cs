@@ -8,11 +8,11 @@ namespace Proveedores
 {
     class CapaNegocioProveedor
     {
-        Dictionary<int, Proveedor> DicProvedor;
+        ManejaProveedores ManejadoraProveedores;
 
-        public CapaNegocioProveedor(Dictionary <int, Proveedor> DicProv)
+        public CapaNegocioProveedor(ManejaProveedores ManejProv)
         {
-            DicProvedor = DicProv;
+            ManejadoraProveedores = ManejProv;
         }
 
         public void AgregaProveedor()

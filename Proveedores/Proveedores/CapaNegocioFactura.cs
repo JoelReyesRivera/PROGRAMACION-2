@@ -8,13 +8,11 @@ namespace Proveedores
 {
     class CapaNegocioFactura
     {
-        Dictionary<int, Factura> DicFactura;
-        List<DetalleFactura> ListDetalleFactura;
+        ManejaFacturas ManejadoraFacturas;
 
-        public CapaNegocioFactura(Dictionary<int, Factura> DicFac, List<DetalleFactura> ListDetFact)
+        public CapaNegocioFactura(ManejaFacturas ManFac)
         {
-            DicFactura = DicFac;
-            ListDetalleFactura = ListDetFact;
+            ManejadoraFacturas = ManFac;
         }
 
         public void AgregaFactura()
