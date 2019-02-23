@@ -44,7 +44,7 @@ namespace Proveedores
                 {
                     try
                     {
-                        Precio = Convert.to(Console.ReadLine());
+                        Precio = Convert.ToSingle(Console.ReadLine());
                     }
                     catch (Exception e)
                     {
