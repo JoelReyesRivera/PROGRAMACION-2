@@ -68,7 +68,7 @@ namespace Proveedores
             }
         }
 
-        public Proveedor ObtieneProveedor(String Nombre)
+        public Proveedor ObtieneProveedorNombre(String Nombre)
         {
             for (int i = 0; i < proveedores.Count; i++)
             {
@@ -78,6 +78,30 @@ namespace Proveedores
                 }
             }
             return null;
+        }
+
+        public int getPosClave(int clave)
+        {
+            int count=0;
+            foreach (KeyValuePair<int, Proveedor> pair in proveedores)
+            {
+                if (pair.Key==clave)
+                {
+                    return count;
+                }
+                count++;
+            }
+            return -1;
+        }
+
+        public Proveedor ObtieneProveedorClave(int clave)
+        {
+            Proveedor proveedor=null;
+            if (proveedores.TryGetValue(clave, out proveedor))
+            {
+                return proveedor;
+            }
+            return proveedor;
         }
     }
 }
