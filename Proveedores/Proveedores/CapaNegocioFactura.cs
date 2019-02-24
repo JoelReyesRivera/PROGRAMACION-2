@@ -25,9 +25,5 @@ namespace Proveedores
 
         }
 
-        public void ConsultaSaldoProveedor() //NO SE DONDE VA
-        {
-
-        }
     }
 }

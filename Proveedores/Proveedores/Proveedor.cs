@@ -8,7 +8,6 @@ namespace Proveedores
 {
     class Proveedor
     {
-        private int Clave;
         private string RFC, Nombre, Domicilio;
         private float Saldo;
             
@@ -19,13 +18,6 @@ namespace Proveedores
             this.Nombre = Nombre;
             this.Domicilio = Domicilio;
             Saldo = 0;
-        }
-        public int pClave
-        {
-            get
-            {
-                return Clave;
-            }
         }
         public string pRFC
         {
@@ -58,6 +50,10 @@ namespace Proveedores
             {
                 value = Saldo;
             }
+        }
+        public String ToString()
+        {
+            return "\nRFC :" + RFC + "\nNOMBRE: " + Nombre + "\nDOMICILIO: " + Domicilio + "\nSALDO: " + Saldo;
         }
     }
 }
