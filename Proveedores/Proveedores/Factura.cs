@@ -8,17 +8,26 @@ namespace Proveedores
 {
     class Factura
     {
+        private int Clave;
         private int ClaveProv;
         private float Importe;
-        private int Dia, Mes, Año;
+        private string Dia, Mes, Año;
 
-        public Factura(int ClaveProv, float Importe, int Dia, int Mes, int Año)
+        public Factura(int Clave,int ClaveProv, float Importe, string Dia, string Mes, string Año)
         {
+            this.Clave = Clave;
             this.ClaveProv = ClaveProv;
             this.Importe = Importe;
             this.Dia = Dia;
             this.Mes = Mes;
             this.Año = Año;
+        }
+        public int pClave
+        {
+            get
+            {
+                return Clave;
+            }
         }
         public int pClaveProv
         {
@@ -34,26 +43,30 @@ namespace Proveedores
                 return Importe;
             }
         }
-        public int pDia
+        public string pDia
         {
             get
             {
                 return Dia;
             }
         }
-        public int pMes
+        public string pMes
         {
             get
             {
                 return Mes;
             }
         }
-        public int pAño
+        public string pAño
         {
             get
             {
                 return Año;
             }
+        }
+        public override string ToString()
+        {
+            return String.Format("\nClave: {0}\nClave Proveedor: {1}\nImporte: {2}\nDía: {3}\nMes: {3}\nAño: {4}\n",Clave,ClaveProv,Importe,Dia,Mes,Año);
         }
     }
 }
