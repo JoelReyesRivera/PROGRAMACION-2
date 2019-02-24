@@ -34,10 +34,10 @@ namespace Proveedores
             }
             Console.WriteLine("PROPORCIONE EL NÚMERO DEL PROVEEDOR: ");
             int ClaveProv = Leer.Int();
-            if (!ValidaValor(ClaveProv) ||mP.BuscarPosClave(ClaveFact) ==-1)//HACER MÉTODO QUE BUSQUE LA CLAVE EN EL DICCIONARIO
+            if (!ValidaValor(ClaveProv) ||mP.getPosClave(ClaveFact) ==-1)
             {
                 Console.WriteLine("NÚMERO DE PROVEEDOR NO ACEPTADO, PROPORCIONE OTRO");
-                return;
+                ClaveProv=Leer.Int();
             }
             Console.WriteLine("PROPORCIONE EL IMPORTE");//<---- SE PIDE IMPORTE
             float Importe = Leer.Float();
@@ -94,7 +94,7 @@ namespace Proveedores
                 TotalImp += Imp;
                 mD.AgregarDetalle(ClaveFactura, ClaveArt, CantArt, Imp);
             }
-            mP.ObtieneProveedor(ClaveProv).pSaldo += TotalImp;//HACER MÉTODO QUE RETORNE UN PROVEEDOR POR MEDIO DE LA CLAVE
+            mP.ObtieneProveedorClave(ClaveProv).pSaldo += TotalImp;
             //ACTUALIZAR IMPORTE A LA FACTURA¿?
 
         }
