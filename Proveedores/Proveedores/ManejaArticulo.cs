@@ -58,5 +58,14 @@ namespace Proveedores
             }
             return Band;
         }
+        public Articulo RetornaArticulo(int Clave)//RETORNA POR CLAVE
+        {
+            for (int i = 0; i < Cont; i++)
+            {
+                if (articulos[i].pClave == Clave)
+                    return articulos[i];
+            }
+            return null;
+        }
     }
 }
