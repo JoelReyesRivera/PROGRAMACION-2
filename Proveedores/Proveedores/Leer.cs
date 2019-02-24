@@ -48,13 +48,13 @@ namespace Proveedores
         {
             String value;
             value = Console.ReadLine();
-            if (string.IsNullOrEmpty(value.Trim()))
+            if (string.IsNullOrEmpty(value.Trim()) || string.IsNullOrWhiteSpace(value))
             {
                 do
                 {
                     Console.WriteLine("INGRESE UN TEXTO");
                     value = Console.ReadLine();
-                } while (string.IsNullOrEmpty(value.Trim()));
+                } while (string.IsNullOrEmpty(value.Trim()) || string.IsNullOrWhiteSpace(value));
             }
             return value.ToUpper();
         }

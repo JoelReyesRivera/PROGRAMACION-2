@@ -17,9 +17,14 @@ namespace Proveedores
             Cont = 0;
         }
 
-        public void AgregaArt(string Desc, string Marca, float Precio)
+        public bool AgregaArt(string Desc, string Marca, float Precio)
         {
-            articulos[Cont] = new Articulo(GeneraClave(), Desc, Marca, Precio);
+            bool Band = true;
+            if(Cont>articulos.Length)
+                Band = false;
+            else
+                articulos[Cont] = new Articulo(GeneraClave(), Desc, Marca, Precio);
+            return Band;
         }
 
         private int GeneraClave()
