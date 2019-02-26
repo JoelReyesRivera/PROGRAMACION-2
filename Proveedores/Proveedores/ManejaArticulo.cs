@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +8,7 @@ namespace Proveedores
 {
     class ManejaArticulo
     {
-        private Articulo [] articulos;
+        private Articulo[] articulos;
         private int Cont;
 
         public ManejaArticulo()
@@ -17,24 +17,19 @@ namespace Proveedores
             Cont = 0;
         }
 
-        public bool AgregaArt(string Desc, string Marca, float Precio)
+        public void AgregaArt(string Desc, string Marca, float Precio)
         {
-            bool Band = true;
-            if(Cont>articulos.Length)
-                Band = false;
-            else
-                articulos[Cont] = new Articulo(GeneraClave(), Desc, Marca, Precio);
-            return Band;
+            articulos[Cont] = new Articulo(GeneraClave(), Desc, Marca, Precio);
         }
 
         private int GeneraClave()
         {
-            return Cont = +1;
+            return Cont += 1;
         }
 
         public int BuscaArt(int Clave)
         {
-            int Pos=-1;
+            int Pos = -1;
             for (int i = 0; i < Cont; i++)
             {
                 if (articulos[i].pClave == Clave)
@@ -47,16 +42,26 @@ namespace Proveedores
         }
         public bool BuscaRep(string Desc, string Marca)
         {
-            bool Band=false;
+            bool Band = false;
             for (int i = 0; i < Cont; i++)
             {
                 if (articulos[i].pDescripcion.Equals(Desc) && (articulos[i].pMarca.Equals(Marca)))
                 {
-                    Band=true;
+                    Band = true;
                     break;
                 }
             }
             return Band;
+        }
+        public string ImprimeArticuloFactura(int ClaveArticulo)
+        {
+            string msj = "";
+            for (int i = 0; i < Cont; i++)
+            {
+                if (articulos[i].pClave == ClaveArticulo)
+                    msj += articulos[i].ToString();
+            }
+            return msj;
         }
         public Articulo RetornaArticulo(int Clave)//RETORNA POR CLAVE
         {
@@ -67,5 +72,6 @@ namespace Proveedores
             }
             return null;
         }
+
     }
 }
