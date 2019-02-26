@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,32 +33,43 @@ namespace Proveedores
             {
                 Console.WriteLine("NOMBRE EXISTENTE; INGRESE UN NOMBRE UNICO");
                 nombre = Leer.String();
-             } 
+            }
             Console.WriteLine("RFC");
             RFC = Leer.String();
             while (proveedores.RFCExistente(RFC))
             {
                 Console.WriteLine("RFC EXISTENTE; INGRESE UN RFC UNICO");
                 RFC = Leer.String();
-            } 
+            }
             Console.WriteLine("DOMICILIO");
             domicilio = Leer.String();
-            proveedores.AgregaProveedor(clave,RFC,nombre,domicilio);
-            Proveedor proveedor = new Proveedor(RFC, nombre, domicilio);
-            Console.WriteLine("PROVEEDOR AGREGADO CORRECTAMENTE\nCLAVE: {0}" +"\n"+ proveedor.ToString(),clave);
+            proveedores.AgregaProveedor(clave, RFC.ToUpper(), nombre.ToUpper(), domicilio.ToUpper());
+            Console.WriteLine("PROVEEDOR AGREGADO CORRECTAMENTE\n{0}",proveedores.RetornaProveedorClave(clave).ToString());
         }
-        
+
         public void Imprimir()
         {
             proveedores.Imprimir();
+        }
+        public void ConsultaSaldo()
+        {
+            Console.WriteLine("\n***CONSULTANDO SALDO POR NOMBRE DE PROV***");
+            Console.WriteLine("PROPORCIONE EL NOMBRE DEL PROVEEDOR: ");
+            string Nombre = Leer.String();
+            while (!proveedores.NombreExistente(Nombre))
+            {
+                Console.WriteLine("NO SE ENCUENTRA EL PROVEEDOR, ESCRIBA OTRO NOMBRE");
+                Nombre = Console.ReadLine();
+            }
+            Console.WriteLine(proveedores.ConsultaSaldos(Nombre.ToUpper()));
         }
 
         public void ConsultaProveedor()
         {
             String nombre;
             nombre = Leer.String();
-            Proveedor proveedor = proveedores.ObtieneProveedor(nombre);
-            if (proveedor==null)
+            Proveedor proveedor = proveedores.RetornaProveedorNom(nombre);
+            if (proveedor == null)
             {
                 Console.WriteLine("NOMBRE INEXISTENTE");
                 return;
