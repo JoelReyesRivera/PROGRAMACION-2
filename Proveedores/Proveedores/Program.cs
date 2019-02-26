@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,32 +8,37 @@ namespace Proveedores
 {
     class Program
     {
-        ManejaArticulo ManejaArt;
-        ManejaFacturas ManejaFact;
-        ManejaProveedores ManejaProv;
+        //Capas
+        CapaNegocioArticulo cArt;
+        CapaNegocioFactura cFact;
+        CapaNegocioProveedor cProv;
 
-        CapaNegocioArticulo CapaNegocioArt;
-        CapaNegocioFactura CapaNegocioFact;
-        CapaNegocioProveedor CapaNegocioProv;
+        //Manejadoras
+        ManejaArticulo mA;
+        ManejaFacturas mF;
+        ManejaDetalleFactura mD;
+        ManejaProveedores mP;
 
         public Program()
         {
-            ManejaArt = new ManejaArticulo();
-            ManejaFact = new ManejaFacturas();
-            ManejaProv = new ManejaProveedores();
-
-            CapaNegocioArt = new CapaNegocioArticulo(ManejaArt);
-            CapaNegocioFact = new CapaNegocioFactura(ManejaFact);
-            CapaNegocioProv = new CapaNegocioProveedor(ManejaProv);
+            mA = new ManejaArticulo();
+            cArt = new CapaNegocioArticulo(mA);
+            mP = new ManejaProveedores();
+            cProv = new CapaNegocioProveedor(mP);
+            mF = new ManejaFacturas();
+            mD = new ManejaDetalleFactura();
+            cFact = new CapaNegocioFactura(mF,mD,mP,mA);
             Menu();
         }
-        static void Main(string[] args)
-        {
-            new Program();
-        }
+
         public void Menu()
         {
 
+        } 
+
+        static void Main(string[] args)
+        {
+            new Program();
         }
     }
 }
