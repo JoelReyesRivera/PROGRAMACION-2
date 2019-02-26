@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,18 +12,18 @@ namespace Proveedores
         private int Cant;
         private float Precio;
 
-        public DetalleFactura(int ClaveFact, int ClaveArt, int Cant, float precio)
+        public DetalleFactura(int ClaveFact, int ClaveArt, int Cant, float Precio)
         {
             this.ClaveFact = ClaveFact;
             this.ClaveArt = ClaveArt;
             this.Cant = Cant;
-            this.Precio = precio;
+            this.Precio = Precio;
         }
         public int pClaveFact
         {
             get
             {
-                return pClaveFact;
+                return ClaveFact;
             }
         }
         public int pClaveArt
@@ -50,6 +50,10 @@ namespace Proveedores
             {
                 Precio = value;
             }
+        }
+        public override string ToString()
+        {
+            return string.Format("\nClave Factura: {0}\nClave Artículo: {1}\nCantidad: {2}\nPrecio unitario: {3}\n",ClaveFact,ClaveArt,Cant,Precio);
         }
     }
 }
