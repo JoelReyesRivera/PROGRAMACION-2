@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +12,7 @@ namespace Proveedores
         private string Descripcion, Marca;
         private float Precio;
 
-        public Articulo(int Clave, string Descripcion,string Marca, float Precio)
+        public Articulo(int Clave, string Descripcion, string Marca, float Precio)
         {
             this.Clave = Clave;
             this.Descripcion = Descripcion;
@@ -69,6 +69,10 @@ namespace Proveedores
             {
                 Precio = value;
             }
+        }
+        public override string ToString()
+        {
+            return string.Format("\nClAVE: {0}\nDESCRIPCION: {1}\nMARCA :{2}\nPRECIO: {3}",Clave,Descripcion,Marca,Precio);
         }
     }
 }
