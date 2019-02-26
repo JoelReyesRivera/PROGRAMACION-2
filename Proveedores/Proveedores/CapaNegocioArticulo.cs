@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,29 +14,46 @@ namespace Proveedores
         {
             ManejadoraArticulo = ManejArt;
         }
-
         public void AgregaArticulo()
         {
             string Desc, Marca;
             float Precio;
 
             Console.Write("INGRESE LA DESCRIPCION DEL ARTICULO: ");
-            Desc = Leer.String();
+            Desc = Console.ReadLine();
+            while (String.IsNullOrEmpty(Desc) || String.IsNullOrWhiteSpace(Desc))
+            {
+                Console.WriteLine("FAVOR DE INGRESRALA NUEVAMENTE LA DESCRIPCION: ");
+                Desc = Console.ReadLine();
+            }
             Console.Write("INGRESE EL MODELO DEL ARTICULO: ");
-            Marca = Leer.String();
-          
+            Marca = Console.ReadLine();
+            while (String.IsNullOrEmpty(Marca) || String.IsNullOrWhiteSpace(Marca))
+            {
+                Console.WriteLine("FAVOR DE INGRESRALA NUEVAMENTE EL MODELO: ");
+                Marca = Console.ReadLine();
+            }
+
             if (ManejadoraArticulo.BuscaRep(Desc.ToUpper(), Marca.ToUpper()))
-                Console.WriteLine("EL ARTICULO INGRESADO ANTERIROMENTE YA ESTA REGISTRADO");
+                Console.WriteLine("EL ARTICULO INGRESADO ANTERIROMENTE YA ESTABA REGISTRADO");
             else
             {
                 Console.Write("INGRESA EL PRECIO DEL ARTIULO: ");
-                Precio = Leer.Float();
-                if(ManejadoraArticulo.AgregaArt(Desc.ToUpper(), Marca.ToUpper(), Precio))
-                    Console.WriteLine(" EL ARTICULO FUE AGREGADO CON EXITO ");
-                else
-                    Console.WriteLine(" EL ARTICULO NO SE PUDO AGREGAR ");
-                
+                do
+                {
+                    try
+                    {
+                        Precio = Convert.ToSingle(Console.ReadLine());
+                    }
+                    catch (Exception e)
+                    {
+                        Console.Write("FAVOR DE ESCRIBIR UN VALOR NUMERICO EN EL RANGO ESTABLECIDO: ");
+                        Precio = 0;
+                    }
+                } while (Precio < 1);
+                ManejadoraArticulo.AgregaArt(Desc.ToUpper(), Marca.ToUpper(), Precio);
             }
+
         }
     }
 }
