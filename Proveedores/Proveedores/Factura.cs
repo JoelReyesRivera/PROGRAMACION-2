@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,26 +8,17 @@ namespace Proveedores
 {
     class Factura
     {
-        private int Clave;
         private int ClaveProv;
         private float Importe;
         private string Dia, Mes, Año;
 
-        public Factura(int Clave,int ClaveProv, float Importe, string Dia, string Mes, string Año)
+        public Factura(int ClaveProv, string Dia, string Mes, string Año)
         {
-            this.Clave = Clave;
             this.ClaveProv = ClaveProv;
-            this.Importe = Importe;
             this.Dia = Dia;
             this.Mes = Mes;
             this.Año = Año;
-        }
-        public int pClave
-        {
-            get
-            {
-                return Clave;
-            }
+            Importe = 0;
         }
         public int pClaveProv
         {
@@ -41,6 +32,10 @@ namespace Proveedores
             get
             {
                 return Importe;
+            }
+            set
+            {
+                Importe = value;
             }
         }
         public string pDia
@@ -66,7 +61,8 @@ namespace Proveedores
         }
         public override string ToString()
         {
-            return String.Format("\nClave: {0}\nClave Proveedor: {1}\nImporte: {2}\nDía: {3}\nMes: {3}\nAño: {4}\n",Clave,ClaveProv,Importe,Dia,Mes,Año);
+            return String.Format("\nClave Proveedor: {0}\nImporte: {1}\nDía: {2}\nMes: {3}\nAño: {4}\n",ClaveProv,Importe,Dia,Mes,Año);
         }
     }
 }
+
