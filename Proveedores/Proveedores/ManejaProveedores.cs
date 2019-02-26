@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,40 +17,33 @@ namespace Proveedores
 
         public void AgregaProveedor(int Clave, String RFC, String nombre, String domicilio)
         {
-            proveedores.Add(Clave,new Proveedor (RFC,nombre,domicilio));
+            proveedores.Add(Clave, new Proveedor(RFC, nombre, domicilio));
         }
 
         public int BuscarPosNombre(String nombre)
         {
-            for (int i = 0; i < proveedores.Count; i++)
+            foreach(KeyValuePair<int,Proveedor> pair in proveedores)
             {
-                if (proveedores[i].pNombre.Equals(nombre))
-                {
-                    return i;
-                }
+                if (pair.Value.pNombre.CompareTo(nombre) == 0)
+                    return pair.Key;
             }
             return -1;
         }
-
         public bool RFCExistente(String RFC)
         {
-            for (int i = 0; i < proveedores.Count; i++)
+            foreach (KeyValuePair<int, Proveedor> pair in proveedores)
             {
-                if (proveedores[i].pRFC.Equals(RFC))
-                {
-                    return true ;
-                }
+                if (pair.Value.pRFC.CompareTo(RFC) == 0)
+                    return true;
             }
             return false;
         }
         public bool NombreExistente(String nombre)
         {
-            for (int i = 0; i < proveedores.Count; i++)
+            foreach (KeyValuePair<int, Proveedor> pair in proveedores)
             {
-                if (proveedores[i].pNombre.Equals(nombre))
-                {
+                if (pair.Value.pNombre.CompareTo(nombre) == 0)
                     return true;
-                }
             }
             return false;
         }
@@ -62,46 +55,53 @@ namespace Proveedores
 
         public void Imprimir()
         {
-            for (int i = 0; i < proveedores.Count; i++)
+            foreach (KeyValuePair<int, Proveedor> pair in proveedores)
             {
-                Console.WriteLine(proveedores[i].ToString());
+                Console.WriteLine(pair.Value.ToString());
             }
         }
-
-        public Proveedor ObtieneProveedorNombre(String Nombre)
+        public Proveedor RetornaProveedorNom(string Nombre)
         {
-            for (int i = 0; i < proveedores.Count; i++)
+            foreach (KeyValuePair<int, Proveedor> pair in proveedores)
             {
-                if (proveedores[i].pNombre.Equals(Nombre))
-                {
-                    return proveedores[i];
-                }
+                if (pair.Value.pNombre.CompareTo(Nombre) == 0)
+                    return pair.Value;
             }
             return null;
         }
-
         public int getPosClave(int clave)
         {
-            int count=0;
             foreach (KeyValuePair<int, Proveedor> pair in proveedores)
             {
-                if (pair.Key==clave)
-                {
-                    return count;
-                }
-                count++;
+                if (pair.Key == clave)
+                    return pair.Key;
             }
             return -1;
         }
-
-        public Proveedor ObtieneProveedorClave(int clave)
+        public Proveedor RetornaProveedorClave(int clave)
         {
-            Proveedor proveedor=null;
-            if (proveedores.TryGetValue(clave, out proveedor))
+            if (proveedores.TryGetValue(clave, out Proveedor P))
+                return P;
+            return null;
+        }
+        public string ConsultaSaldos(string Nombre)
+        {
+            int Proveedor=-1;
+            float Saldo = 0;
+            string msj = "";
+            foreach (KeyValuePair<int, Proveedor> pair in proveedores)
             {
-                return proveedor;
+                if (pair.Value.pNombre.CompareTo(Nombre) == 0)
+                {
+                    Proveedor = pair.Key;
+                    Saldo = pair.Value.pSaldo;
+                    break;
+                }
             }
-            return proveedor;
+            if (Proveedor == -1)
+                return "NO SE ENCONTRÓ DICHO PROVEEDOR EN EL SISTEMA";
+
+            return msj + "\nPROVEEDOR: "+Nombre+ "\nCLAVE: " + Proveedor+ "\nSALDO: $" + Saldo;
         }
     }
 }
