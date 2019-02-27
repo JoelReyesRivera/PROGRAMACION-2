@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -56,46 +56,118 @@ namespace Proveedores
         }
         public void CapturaArticulos(int ClaveFactura,int ClaveProv)
         {
-            Console.WriteLine("***AGREGANDO ARTÍCULOS A LA FACTURA***");
-            int CantArt;
-            float TotalArt,Precio, TotalImp = 0;
-            Console.Write("¿CUÁNTOS ARTÍCULOS DESEA AGREGAR EN TOTAL?: ");
-            TotalArt = Leer.Int();
-            while (TotalArt<1 || TotalArt > 3)
+            int CantArt, opcion;
+            float Precio, TotalImp = 0;
+            do
             {
-                Console.WriteLine("NO SE PUEDEN CAPTURAR MÁS DE 3 ARTÍCULOS EN TOTAL NI MENOS DE 1");
-                Console.WriteLine("PROPORCIONE LA CANTIDAD DE ARTÍCULOS A CAPTURAR: ");
-                TotalArt = Leer.Int();
-            }
-            while (TotalArt != 0)
+                Console.WriteLine("AGREGRA ARTICULO\n1.- SI\n2.- NO");
+                opcion = Leer.Int();
+                switch (opcion)
+                {
+                    case 1:
+                        Console.WriteLine("PROPORCIONE LA CLAVE DEL ARTÍCULO");
+                        int ClaveArt = Leer.Int();
+                        while (mA.BuscaArt(ClaveArt) == -1)
+                        {
+                            Console.WriteLine("EL ARTÍCULO NO EXISTE, PROPORCIONE OTRA CLAVE");
+                            ClaveArt = Leer.Int();
+                        }
+                        Console.WriteLine("ARTICULO SELECCIONADO: {0}\n", mA.RetornaArticulo(ClaveArt).ToString());
+                        Console.WriteLine("INTRODUZCA LA CANTIDAD DE DICHO ARTÍCULO");
+                        CantArt = Leer.Int();
+                        while (!ValidaValor(CantArt))
+                        {
+                            Console.WriteLine("CANTIDAD NO ACEPTADA, PROPORCIONE OTRA CANTIDAD");
+                            CantArt = Leer.Int();
+                        }
+                        Precio = mA.RetornaArticulo(ClaveArt).pPrecio;
+                        TotalImp = Precio * CantArt;
+                        mD.AgregarDetalle(ClaveFactura, ClaveArt, CantArt, Precio);
+                        Console.WriteLine("\n***MOSTRANDO DETALLES AGREGADOS***\n{0}", mD.ImprimeDetallesClave(ClaveFactura));
+                        Factura F = mF.RetornaFactura(ClaveFactura);
+                        F.pImporte += TotalImp + F.pImporte;
+                        Proveedor P = mP.RetornaProveedorClave(ClaveProv);
+                        P.pSaldo += TotalImp;
+                        Console.WriteLine("Importe para la factura {0}", F.pImporte);
+                        Console.WriteLine("Saldo del proveedor: {0}", P.pSaldo);
+                        break;
+                    case 2:
+                        return;
+                }
+            } while (opcion != 2);
+        }
+        public void CapturaArticulos()
+        {
+            if (mF.pCount == 0)
             {
-                Console.WriteLine("PROPORCIONE LA CLAVE DEL ARTÍCULO");
-                int ClaveArt = Leer.Int();
-                while (mA.BuscaArt(ClaveArt)==-1)
-                {
-                    Console.WriteLine("EL ARTÍCULO NO EXISTE, PROPORCIONE OTRA CLAVE");
-                    ClaveArt = Leer.Int();
-                }
-                Console.WriteLine("ARTICULO SELECCIONADO: {0}\n", mA.RetornaArticulo(ClaveArt).ToString());
-                Console.WriteLine("INTRODUZCA LA CANTIDAD DE DICHO ARTÍCULO");
-                CantArt = Leer.Int();
-                while (!ValidaValor(CantArt) || CantArt>3 || TotalArt-CantArt<0)
-                {
-                    Console.WriteLine("CANTIDAD NO ACEPTADA, PROPORCIONE OTRA CANTIDAD");
-                    CantArt = Leer.Int();
-                }
-                TotalArt -= CantArt;
-                Precio = mA.RetornaArticulo(ClaveArt).pPrecio;
-                TotalImp += Precio*CantArt;
-                mD.AgregarDetalle(ClaveFactura, ClaveArt,CantArt, Precio);
+                Console.WriteLine("NO HAY FACTURAS REGISTRADAS");
+                return;
             }
-            Console.WriteLine("\n***MOSTRANDO DETALLES AGREGADOS***\n{0}", mD.ImprimePorClave(ClaveFactura));
+            if (mP.pCount == 0)
+            {
+                Console.WriteLine("NO HAY PROVEEDORES REGISTRADOS");
+                return;
+            }
+            Console.WriteLine("\n***CAPTURANDO ARTICULOS A UNA FACTURA***");
+            int ClaveProveedor, ClaveFactura;
+            Console.WriteLine("PROPORCIONE EL NUMERO DEL PROVEEDOR: ");
+            ClaveProveedor = Leer.Int();
+            while (mP.getPosClave(ClaveProveedor) == -1)
+            {
+                Console.WriteLine("PROVEEDOR NO ENCONTRADO, PROPORCIONE OTRO");
+                ClaveProveedor = Leer.Int();
+            }
+            Console.WriteLine("PROPORCIONE EL NUMERO DE LA FACTURA: ");
+            ClaveFactura = Leer.Int();
+            while (mF.BuscaFacturaClaveProv(ClaveFactura,ClaveProveedor) == -1)
+            {
+                Console.WriteLine("EL PROVEEDOR NO CUENTA CON LA FACTURA PROPORCIONADA, INGRESE OTRA");
+                ClaveFactura = Leer.Int();
+            }
+            if (mD.DetallesPorFactura(ClaveFactura) >= 3)
+            {
+                Console.WriteLine("CAPTURAS MAXIMAS SUPERADAS PARA ESTA FACTURA");
+                return;
+            }
+            if (mA.pCount - mD.DetallesPorFactura(ClaveFactura) ==0 )
+            {
+                Console.WriteLine("NO SE PUEDEN CAPTURAR MAS ARTICULOS A ESTA FACTURA, AGREGUE MAS ARTICULOS AL CATALAGO");
+                return;
+            }
             Factura F = mF.RetornaFactura(ClaveFactura);
+            Proveedor P = mP.RetornaProveedorClave(ClaveProveedor);
+            int CantArt,ClaveArt;
+            float Precio, TotalImp = 0;
+            Console.WriteLine("PROPORCIONE LA CLAVE DEL ARTÍCULO");
+            ClaveArt = Leer.Int();
+            while (mA.BuscaArt(ClaveArt) == -1)
+            {
+                Console.WriteLine("EL ARTÍCULO NO EXISTE, PROPORCIONE OTRA CLAVE");
+                ClaveArt = Leer.Int();
+            }
+            while (mD.DetalleRepetido(ClaveArt)!=-1)
+            {
+                Console.WriteLine("EL ARTICULO YA ESTA CAPTURADO PARA ESA FACTURA");
+                Console.WriteLine("PROPORCIONE OTRO ARTICULO: ");
+                ClaveArt = Leer.Int();
+            }
+            Console.WriteLine("ARTICULO SELECCIONADO: {0}\n", mA.RetornaArticulo(ClaveArt).ToString());
+            Console.WriteLine("INTRODUZCA LA CANTIDAD DE DICHO ARTÍCULO");
+            CantArt = Leer.Int();
+            while (!ValidaValor(CantArt))
+            {
+                Console.WriteLine("CANTIDAD NO VALIDA, PROPORCIONE OTRA CANTIDAD");
+                CantArt = Leer.Int();
+            }
+            Precio = mA.RetornaArticulo(ClaveArt).pPrecio;
+            TotalImp = Precio * CantArt;
+            mD.AgregarDetalle(ClaveFactura, ClaveArt, CantArt, Precio);
+            Console.WriteLine("\n***MOSTRANDO DETALLE AGREGADO***\n{0}", mD.ImprimeDetalleClaveArticulo(ClaveArt));
             F.pImporte = TotalImp;
-            Proveedor P = mP.RetornaProveedorClave(ClaveProv);
             P.pSaldo += TotalImp;
-            Console.WriteLine("Importe para la factura {0}",F.pImporte);
-            Console.WriteLine("Saldo del proveedor: {0}",P.pSaldo);
+            Console.WriteLine("Importe para la factura {0}", F.pImporte);
+            Console.WriteLine("Saldo del proveedor: {0}", P.pSaldo);
+
         }
         public void ConsultaFacturas()
         {

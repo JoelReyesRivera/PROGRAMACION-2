@@ -1,0 +1,7 @@
+C:\Users\Fernando\gitkraken\PROGRAMACION-2\Proveedores\Proveedores\bin\Debug\Proveedores.exe.config
+C:\Users\Fernando\gitkraken\PROGRAMACION-2\Proveedores\Proveedores\bin\Debug\Proveedores.exe
+C:\Users\Fernando\gitkraken\PROGRAMACION-2\Proveedores\Proveedores\bin\Debug\Proveedores.pdb
+C:\Users\Fernando\gitkraken\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.csprojAssemblyReference.cache
+C:\Users\Fernando\gitkraken\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.csproj.CoreCompileInputs.cache
+C:\Users\Fernando\gitkraken\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.exe
+C:\Users\Fernando\gitkraken\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.pdb

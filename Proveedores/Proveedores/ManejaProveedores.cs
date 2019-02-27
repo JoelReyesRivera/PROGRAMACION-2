@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -102,6 +102,13 @@ namespace Proveedores
                 return "NO SE ENCONTRÓ DICHO PROVEEDOR EN EL SISTEMA";
 
             return msj + "\nPROVEEDOR: "+Nombre+ "\nCLAVE: " + Proveedor+ "\nSALDO: $" + Saldo;
+        }
+        public int pCount
+        {
+            get
+            {
+                return proveedores.Count;
+            }
         }
     }
 }

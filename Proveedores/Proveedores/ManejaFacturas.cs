@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +23,15 @@ namespace Proveedores
             foreach (KeyValuePair<int, Factura> pair in Facturas)
             {
                 if (pair.Key == Clave)
+                    return pair.Key;
+            }
+            return -1;
+        }
+        public int BuscaFacturaClaveProv(int ClaveFactura,int ClaveProveedor)
+        {
+            foreach (KeyValuePair<int, Factura> pair in Facturas)
+            {
+                if (pair.Key == ClaveFactura && pair.Value.pClaveProv==ClaveProveedor)
                     return pair.Key;
             }
             return -1;

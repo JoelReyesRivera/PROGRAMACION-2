@@ -51,6 +51,7 @@
     <Compile Include="Factura.cs" />
     <Compile Include="Leer.cs" />
     <Compile Include="ManejaArticulo.cs" />
+    <Compile Include="ManejaDetalleFactura.cs" />
     <Compile Include="ManejaFacturas.cs" />
     <Compile Include="ManejaProveedores.cs" />
     <Compile Include="Program.cs" />
