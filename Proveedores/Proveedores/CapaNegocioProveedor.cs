@@ -49,7 +49,10 @@ namespace Proveedores
 
         public void Imprimir()
         {
-            Console.WriteLine(proveedores.Imprimir());
+            if (proveedores.pCount==0)
+                Console.WriteLine("NO HAY PROVEEDORES INGRESADOS");
+            else
+                Console.WriteLine(proveedores.Imprimir());
         }
         public void ConsultaSaldo()
         {
@@ -66,17 +69,22 @@ namespace Proveedores
 
         public void ConsultaProveedor()
         {
-            String nombre;
-            Console.WriteLine("NOMBRE");
-            nombre = Leer.String();
-            Proveedor proveedor = proveedores.RetornaProveedorNom(nombre);
-            if (proveedor == null)
+            if (proveedores.pCount == 0)
+                Console.WriteLine("NO HAY PROVEEDORES INGRESADOS");
+            else
             {
-                Console.WriteLine("NOMBRE INEXISTENTE");
-                return;
+                string nombre;
+                Console.WriteLine("NOMBRE");
+                nombre = Leer.String();
+                Proveedor proveedor = proveedores.RetornaProveedorNom(nombre);
+                if (proveedor == null)
+                {
+                    Console.WriteLine("NOMBRE INEXISTENTE");
+                    return;
+                }
+                Console.WriteLine("PROVEEDOR");
+                Console.WriteLine(proveedor.ToString());
             }
-            Console.WriteLine("PROVEEDOR");
-            Console.WriteLine(proveedor.ToString());
         }
     }
 }
