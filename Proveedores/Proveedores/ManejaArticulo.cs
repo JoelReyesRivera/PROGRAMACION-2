@@ -80,11 +80,9 @@ namespace Proveedores
             }
         }
 
-        public void ImprimeCatalogoArticulo()
+        public string ImprimeCatalogoArticulo(int pos)
         {
-            for (int i = 0; i < Cont; i++)
-                Console.WriteLine(articulos[i].ToString());
+            return articulos[pos].ToString();
         }
-
     }
 }
