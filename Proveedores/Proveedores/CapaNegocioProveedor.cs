@@ -49,7 +49,7 @@ namespace Proveedores
 
         public void Imprimir()
         {
-            proveedores.Imprimir();
+            Console.WriteLine(proveedores.Imprimir());
         }
         public void ConsultaSaldo()
         {
@@ -67,6 +67,7 @@ namespace Proveedores
         public void ConsultaProveedor()
         {
             String nombre;
+            Console.WriteLine("NOMBRE");
             nombre = Leer.String();
             Proveedor proveedor = proveedores.RetornaProveedorNom(nombre);
             if (proveedor == null)

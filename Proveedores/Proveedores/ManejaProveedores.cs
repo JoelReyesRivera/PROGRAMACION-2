@@ -53,12 +53,15 @@ namespace Proveedores
             return proveedores.ContainsKey(clave);
         }
 
-        public void Imprimir()
+        public String Imprimir()
         {
+            String salida = "\nPROVEEDORES\n";
             foreach (KeyValuePair<int, Proveedor> pair in proveedores)
             {
-                Console.WriteLine(pair.Value.ToString());
+                salida += String.Format("CLAVE : {0}{1}", pair.Key, pair.Value.ToString());
+                salida += "\n---------------------------\n";
             }
+            return salida;
         }
         public Proveedor RetornaProveedorNom(string Nombre)
         {
