@@ -12,3 +12,10 @@ C:\Users\ADM\Documents\Trabajos\INSTITUTO TECNOLOGICO DE CULIACÁN\4to Semestre\
 C:\Users\ADM\Documents\Trabajos\INSTITUTO TECNOLOGICO DE CULIACÁN\4to Semestre\Programacion 2\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.csproj.CoreCompileInputs.cache
 C:\Users\ADM\Documents\Trabajos\INSTITUTO TECNOLOGICO DE CULIACÁN\4to Semestre\Programacion 2\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.exe
 C:\Users\ADM\Documents\Trabajos\INSTITUTO TECNOLOGICO DE CULIACÁN\4to Semestre\Programacion 2\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.pdb
+F:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\bin\Debug\Proveedores.exe.config
+F:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\bin\Debug\Proveedores.exe
+F:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\bin\Debug\Proveedores.pdb
+F:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.csprojAssemblyReference.cache
+F:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.csproj.CoreCompileInputs.cache
+F:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.exe
+F:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.pdb

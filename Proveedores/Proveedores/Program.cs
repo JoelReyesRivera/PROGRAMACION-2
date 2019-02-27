@@ -74,8 +74,10 @@ namespace Proveedores
                         capaArticulo.AgregaArticulo();
                         break;
                     case 2:
+                        capaArticulo.ConsultaArticulo();
                         break;
                     case 3:
+                        capaArticulo.ImprimeArticulos();
                         break;
                     case 0:
                         break;

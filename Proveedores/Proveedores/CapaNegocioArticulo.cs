@@ -55,5 +55,32 @@ namespace Proveedores
             }
 
         }
+        public void ConsultaArticulo()
+        {
+            int Clave;
+            if(ManejadoraArticulo.pCount==0)
+                Console.WriteLine("NO HAY ARTICULOS REGISTRADOS");
+            else
+            {
+                Console.Write("INGRESAR LA CLAVE DEL ARTICULO: ");
+                Clave = Leer.Int();
+                while(ManejadoraArticulo.RetornaArticulo(Clave)==null)
+                {
+                    Console.Write("FAVOR DE INGRESAR UNA CLAVE EXISTENTE: ");
+                    Clave = Leer.Int();
+                }
+                Console.WriteLine(ManejadoraArticulo.RetornaArticulo(Clave).ToString());
+            }
+        }
+        public void ImprimeArticulos()
+        {
+            if (ManejadoraArticulo.pCount == 0)
+                Console.WriteLine("NO HAY ARTICULOS REGISTRADOS");
+            else
+            {
+                Console.WriteLine("  LOS ARTICULOS SON LOS SIGUIENTES ");
+                ManejadoraArticulo.ImprimeCatalogoArticulo();
+            }
+        }
     }
 }
