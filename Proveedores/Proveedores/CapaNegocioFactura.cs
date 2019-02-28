@@ -213,6 +213,10 @@ namespace Proveedores
         {
             Console.WriteLine(mF.ImprimeTodo());
         }
+        public void ImprimirDetalleFacturas()
+        {
+            Console.WriteLine(mD.ImprimeTodo());
+        }
         public bool ValidaValor(float Valor)
         {
             if (Valor <= 0)

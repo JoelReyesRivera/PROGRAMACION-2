@@ -50,6 +50,14 @@ namespace Proveedores
             }
             return msj;
         }
+        public string ImprimeTodo()
+        {
+            string Cadena = "";
+            for (int i = 0; i < DetalleFactura.Count; i++)
+                Cadena += DetalleFactura[i].ToString();
+
+            return Cadena;
+        }
         public int DetallesPorFactura(int ClaveFactura)
         {
             int NumeroDetalles=0;

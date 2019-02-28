@@ -56,10 +56,15 @@ namespace Proveedores
         }
         public void ConsultaSaldo()
         {
-            Console.WriteLine("\n***CONSULTANDO SALDO POR NOMBRE DE PROV***");
+            if (proveedores.pCount == 0)
+            {
+                Console.WriteLine("NO HAY PROVEEDORES REGISTRADOS");
+                return;
+            }
+            Console.WriteLine("\n***CONSULTANDO SALDO POR NOMBRE DE PROVEEDOR***");
             Console.WriteLine("PROPORCIONE EL NOMBRE DEL PROVEEDOR: ");
             string Nombre = Leer.String();
-            while (!proveedores.NombreExistente(Nombre))
+            while (!proveedores.NombreExistente(Nombre.ToUpper()))
             {
                 Console.WriteLine("NO SE ENCUENTRA EL PROVEEDOR, ESCRIBA OTRO NOMBRE");
                 Nombre = Console.ReadLine();
