@@ -19,3 +19,10 @@ F:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.cspro
 F:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.csproj.CoreCompileInputs.cache
 F:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.exe
 F:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.pdb
+E:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\bin\Debug\Proveedores.exe.config
+E:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\bin\Debug\Proveedores.exe
+E:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\bin\Debug\Proveedores.pdb
+E:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.csprojAssemblyReference.cache
+E:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.csproj.CoreCompileInputs.cache
+E:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.exe
+E:\Proyecto 1\PROGRAMACION-2\Proveedores\Proveedores\obj\Debug\Proveedores.pdb

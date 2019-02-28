@@ -60,11 +60,11 @@ namespace Proveedores
             }
             return NumeroDetalles;
         }
-        public int DetalleRepetido(int ClaveArt)
+        public int DetalleRepetido(int ClaveFactura,int ClaveArt)
         {
             for (int i = 0; i < DetalleFactura.Count; i++)
             {
-                if (DetalleFactura[i].pClaveArt == ClaveArt)
+                if (DetalleFactura[i].pClaveArt == ClaveArt && DetalleFactura[i].pClaveFact==ClaveFactura)
                     return i;
             }
             return -1;

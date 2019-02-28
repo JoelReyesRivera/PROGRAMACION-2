@@ -72,7 +72,7 @@ namespace Proveedores
         }
         public override string ToString()
         {
-            return string.Format("\nClAVE: {0}\nDESCRIPCION: {1}\nMARCA :{2}\nPRECIO: {3}",Clave,Descripcion,Marca,Precio);
+            return string.Format("\nClAVE: {0}\nDESCRIPCION: {1}\nMARCA :{2}\nPRECIO: {3} \n", Clave,Descripcion,Marca,Precio);
         }
     }
 }

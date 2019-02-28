@@ -122,7 +122,7 @@ namespace Proveedores
             do
             {
                 Console.WriteLine("---------- MENU FACTURA ---------- ");
-                Console.WriteLine("1.- AGREGAR FACTURA\n2.- CONSULTAR FACTURA\n3.- IMPRIMIR FACTURAS\n0.- SALIR");
+                Console.WriteLine("1.- AGREGAR FACTURA\n2.- CONSULTAR FACTURA\n3.- CAPTURAR DETALLE FACTURA \n4.-IMPRIMIR FACTURAS\n0.- SALIR");
                 opcion = Leer.Int();
                 switch (opcion)
                 {
@@ -133,6 +133,9 @@ namespace Proveedores
                         capaFactura.ConsultaFacturas();
                         break;
                     case 3:
+                        capaFactura.CapturaArticulos();
+                        break;
+                    case 4:
                         capaFactura.ImprimirFacturas();
                         break;
                     case 0:
@@ -146,7 +149,7 @@ namespace Proveedores
 
         public void MenuDetalles()
         {
-
+            capaFactura.CapturaArticulos();
         }
 
         static void Main(string[] args)

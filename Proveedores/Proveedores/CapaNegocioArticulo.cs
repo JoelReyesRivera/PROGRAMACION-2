@@ -79,7 +79,8 @@ namespace Proveedores
             else
             {
                 Console.WriteLine("  LOS ARTICULOS SON LOS SIGUIENTES ");
-                ManejadoraArticulo.ImprimeCatalogoArticulo();
+                
+                    Console.WriteLine(ManejadoraArticulo.ImprimeCatalogoArticulo());
             }
         }
     }
