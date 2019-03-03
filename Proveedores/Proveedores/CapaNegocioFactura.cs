@@ -50,17 +50,8 @@ namespace Proveedores
                 ClaveProv = Leer.Int();
             }
             Console.WriteLine("PROVEEDOR SELECCIONADO: {0}\n",mP.RetornaProveedorClave(ClaveProv).ToString());
-            Console.WriteLine("PRPOPORCIONE LA FECHA DE LA FACTURA EN FORMATO dd/mm/yyyy");
-            string Fecha = Leer.String();
-            Fecha = Fecha.Trim();
-            DateTime dt;
-            while (!DateTime.TryParseExact(Fecha, "dd/MM/yyyy", null, DateTimeStyles.None, out dt) && !mF.ValidaNula(Fecha))
-            {
-                Console.WriteLine("LA FECHA NO ES VÁLIDA, PROPORCIONE OTRA");
-                Fecha = Leer.String();
-            }
-
-            mF.AgregarFactura(ClaveFact, ClaveProv, Fecha.Substring(0, 2), mF.ConvierteMes(Fecha.Substring(3,2)), Fecha.Substring(6, 4));
+            DateTime fecha = DateTime.Now;
+            mF.AgregarFactura(ClaveFact, ClaveProv, fecha.Day, fecha.Month, fecha.Year);
             Console.WriteLine("Factura creada: {0}\n",mF.ImprimeIndividual(ClaveFact));
             CapturaArticulos(ClaveFact, ClaveProv);
         }
@@ -93,7 +84,7 @@ namespace Proveedores
                             Console.WriteLine("NO SE PUEDEN CAPTURAR MAS ARTICULOS A ESTA FACTURA, AGREGUE MAS ARTICULOS AL CATALAGO");
                             return;
                         }
-                        while (!(mD.DetalleRepetido(ClaveFactura,ClaveArt) == -1))
+                        while (!(mD.DetalleRepetido(ClaveFactura, ClaveArt) == -1))
                         {
                             Console.WriteLine("NO ES POSIBLE AGRERAR ESTE ARTICULO, YA ESTA REGISTRADO PARA ESTA FACTURA");
                             ClaveArt = Leer.Int();
@@ -118,7 +109,7 @@ namespace Proveedores
                         Console.WriteLine("Saldo del proveedor: $ {0}", P.pSaldo);
                         break;
                     case 2:
-                        return;
+                        break;
                 }
             } while (opcion != 2);
         }

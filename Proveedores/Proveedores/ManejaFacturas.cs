@@ -14,7 +14,7 @@ namespace Proveedores
         {
             Facturas = new Dictionary<int, Factura>();
         }
-        public void AgregarFactura(int Clave, int ClaveProv, string Dia, string Mes, string Año)
+        public void AgregarFactura(int Clave, int ClaveProv, int Dia, int Mes, int Año)
         {
             Facturas.Add(Clave, new Factura(ClaveProv, Dia, Mes, Año));
         }
