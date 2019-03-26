@@ -46,9 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Articulo.cs" />
     <Compile Include="DetalleFactura.cs" />
     <Compile Include="Factura.cs" />
+=======
+>>>>>>> master
     <Compile Include="frmAgregaArticulo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,9 +94,12 @@
     <Compile Include="frmVerArticulos.Designer.cs">
       <DependentUpon>frmVerArticulos.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="ManejaArticulo.cs" />
     <Compile Include="ManejaDetalleFactura.cs" />
     <Compile Include="ManejaFactura.cs" />
+=======
+>>>>>>> master
     <Compile Include="ManejaProveedores.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

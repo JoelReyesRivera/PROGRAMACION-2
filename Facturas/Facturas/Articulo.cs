@@ -24,6 +24,7 @@ namespace Facturas
 
         public int pClave
         {
+<<<<<<< HEAD
             get { return Clave; }
         }
         public string pNombre
@@ -49,3 +50,29 @@ namespace Facturas
     }
 }
 
+=======
+            get{ return Clave; }
+        }
+        public string pNombre
+        {
+            get{ return pNombre; }
+            set{ pNombre = value; }
+        }
+        public string pDescripcion
+        {
+            get{ return Descripcion; }
+            set{ Descripcion = value; }
+        }
+        public string pModelo
+        {
+            get{ return Modelo; }
+            set{ Modelo = value; }
+        }
+        public float pPrecio
+        {
+            get{ return Precio; }
+            set{ Precio = value; }
+        }
+    }
+}
+>>>>>>> master
