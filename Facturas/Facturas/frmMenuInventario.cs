@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Facturas
 {
-    public partial class frmMenuProvedor : Form
+    public partial class frmMenuInventario : Form
     {
-        public frmMenuProvedor()
+        public frmMenuInventario()
         {
             InitializeComponent();
-        }
-
-        private void btnAgregarProvedor_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
