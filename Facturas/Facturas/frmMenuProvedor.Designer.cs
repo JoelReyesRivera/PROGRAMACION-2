@@ -54,6 +54,7 @@
             this.btnAgregarProvedor.TabIndex = 1;
             this.btnAgregarProvedor.Text = "Agregar Provedor";
             this.btnAgregarProvedor.UseVisualStyleBackColor = true;
+            this.btnAgregarProvedor.Click += new System.EventHandler(this.btnAgregarProvedor_Click);
             // 
             // btnConsultarProvedor
             // 

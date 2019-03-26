@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAgregaArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgregaArticulo.Designer.cs">
+      <DependentUpon>frmAgregaArticulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaArticulo.Designer.cs">
+      <DependentUpon>frmConsultaArticulo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmConsultaProvedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,21 +70,45 @@
     <Compile Include="frmConsultaProvedores.Designer.cs">
       <DependentUpon>frmConsultaProvedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMenuInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenuInventario.Designer.cs">
+      <DependentUpon>frmMenuInventario.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMenuProvedor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMenuProvedor.Designer.cs">
       <DependentUpon>frmMenuProvedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmVerArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVerArticulos.Designer.cs">
+      <DependentUpon>frmVerArticulos.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManejaProveedores.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />
+    <EmbeddedResource Include="frmAgregaArticulo.resx">
+      <DependentUpon>frmAgregaArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaArticulo.resx">
+      <DependentUpon>frmConsultaArticulo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConsultaProvedores.resx">
       <DependentUpon>frmConsultaProvedores.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMenuInventario.resx">
+      <DependentUpon>frmMenuInventario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMenuProvedor.resx">
       <DependentUpon>frmMenuProvedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVerArticulos.resx">
+      <DependentUpon>frmVerArticulos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
