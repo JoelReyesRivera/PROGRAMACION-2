@@ -30,7 +30,7 @@ namespace Facturas
         {
             for (int i = 0; i < Cont; i++)
             {
-                if (Array[i].pDescripcion=Desc)
+                if (Array[i].pDescripcion.CompareTo(Desc)==0)
                     return i;
             }
             return -1;
@@ -57,8 +57,8 @@ namespace Facturas
         {
             for (int i = 0; i < Cont; i++)
             {
-                if (Array[i].pDescripcion == (Desc))
-                    return articulos[i];
+                if (Array[i].pDescripcion.CompareTo(Desc)==0)
+                    return Array[i];
             }
             return null;
         }
