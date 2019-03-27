@@ -53,6 +53,12 @@
     <Compile Include="frmAgregaArticulo.Designer.cs">
       <DependentUpon>frmAgregaArticulo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAgregarProvedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgregarProvedor.Designer.cs">
+      <DependentUpon>frmAgregarProvedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmConsultaArticulo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +71,18 @@
     <Compile Include="frmConsultaArticulos.Designer.cs">
       <DependentUpon>frmConsultaArticulos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmConsultaProvedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaProvedor.Designer.cs">
+      <DependentUpon>frmConsultaProvedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaProveedores.Designer.cs">
+      <DependentUpon>frmConsultaProveedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMenuInventario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +94,12 @@
     </Compile>
     <Compile Include="frmMenuPrincipal.Designer.cs">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenuProvedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenuProvedor.Designer.cs">
+      <DependentUpon>frmMenuProvedor.cs</DependentUpon>
     </Compile>
     <Compile Include="frmModificaExistenciaArticulo.cs">
       <SubType>Form</SubType>
@@ -91,17 +115,29 @@
     <EmbeddedResource Include="frmAgregaArticulo.resx">
       <DependentUpon>frmAgregaArticulo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAgregarProvedor.resx">
+      <DependentUpon>frmAgregarProvedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConsultaArticulo.resx">
       <DependentUpon>frmConsultaArticulo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConsultaArticulos.resx">
       <DependentUpon>frmConsultaArticulos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaProvedor.resx">
+      <DependentUpon>frmConsultaProvedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaProveedores.resx">
+      <DependentUpon>frmConsultaProveedores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMenuInventario.resx">
       <DependentUpon>frmMenuInventario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenuProvedor.resx">
+      <DependentUpon>frmMenuProvedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmModificaExistenciaArticulo.resx">
       <DependentUpon>frmModificaExistenciaArticulo.cs</DependentUpon>
