@@ -47,17 +47,43 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Articulo.cs" />
+    <Compile Include="DetalleFactura.cs" />
+    <Compile Include="Factura.cs" />
     <Compile Include="frmAgregaArticulo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAgregaArticulo.Designer.cs">
       <DependentUpon>frmAgregaArticulo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAgregarDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgregarDetalle.Designer.cs">
+      <DependentUpon>frmAgregarDetalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAgregarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgregarFactura.designer.cs">
+      <DependentUpon>frmAgregarFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAgregarProvedor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAgregarProvedor.Designer.cs">
       <DependentUpon>frmAgregarProvedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarDetalle.Designer.cs">
+      <DependentUpon>frmBuscarDetalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarFactura.designer.cs">
+      <DependentUpon>frmBuscarFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="frmConsultaArticulo.cs">
       <SubType>Form</SubType>
@@ -83,6 +109,30 @@
     <Compile Include="frmConsultaProveedores.Designer.cs">
       <DependentUpon>frmConsultaProveedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmConsultarFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultarFacturas.designer.cs">
+      <DependentUpon>frmConsultarFacturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenuDetalles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenuDetalles.designer.cs">
+      <DependentUpon>frmMenuDetalles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenuFacturaDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenuFacturaDetalle.Designer.cs">
+      <DependentUpon>frmMenuFacturaDetalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenuFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenuFacturas.designer.cs">
+      <DependentUpon>frmMenuFacturas.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMenuInventario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,7 +157,21 @@
     <Compile Include="frmModificaExistenciaArticulo.Designer.cs">
       <DependentUpon>frmModificaExistenciaArticulo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMostrarDetalles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMostrarDetalles.Designer.cs">
+      <DependentUpon>frmMostrarDetalles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMostrarFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMostrarFacturas.designer.cs">
+      <DependentUpon>frmMostrarFacturas.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManejaArticulos.cs" />
+    <Compile Include="ManejaDetalleFactura.cs" />
+    <Compile Include="ManejaFacturas.cs" />
     <Compile Include="ManejaProveedores.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,8 +179,20 @@
     <EmbeddedResource Include="frmAgregaArticulo.resx">
       <DependentUpon>frmAgregaArticulo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAgregarDetalle.resx">
+      <DependentUpon>frmAgregarDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAgregarFactura.resx">
+      <DependentUpon>frmAgregarFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarProvedor.resx">
       <DependentUpon>frmAgregarProvedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarDetalle.resx">
+      <DependentUpon>frmBuscarDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarFactura.resx">
+      <DependentUpon>frmBuscarFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConsultaArticulo.resx">
       <DependentUpon>frmConsultaArticulo.cs</DependentUpon>
@@ -130,6 +206,18 @@
     <EmbeddedResource Include="frmConsultaProveedores.resx">
       <DependentUpon>frmConsultaProveedores.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultarFacturas.resx">
+      <DependentUpon>frmConsultarFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenuDetalles.resx">
+      <DependentUpon>frmMenuDetalles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenuFacturaDetalle.resx">
+      <DependentUpon>frmMenuFacturaDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenuFacturas.resx">
+      <DependentUpon>frmMenuFacturas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMenuInventario.resx">
       <DependentUpon>frmMenuInventario.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +229,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmModificaExistenciaArticulo.resx">
       <DependentUpon>frmModificaExistenciaArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMostrarDetalles.resx">
+      <DependentUpon>frmMostrarDetalles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMostrarFacturas.resx">
+      <DependentUpon>frmMostrarFacturas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

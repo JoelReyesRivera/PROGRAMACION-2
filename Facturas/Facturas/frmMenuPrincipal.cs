@@ -22,5 +22,17 @@ namespace Facturas
             frmMenuInventario Inventario = new frmMenuInventario();
             Inventario.ShowDialog();
         }
+
+        private void btnMenuProvedor_Click(object sender, EventArgs e)
+        {
+            frmMenuProvedor Proveedor = new frmMenuProvedor();
+            Proveedor.ShowDialog();
+        }
+
+        private void btnMenuFactura_Click(object sender, EventArgs e)
+        {
+            frmMenuFacturaDetalle FacturaDetalle = new frmMenuFacturaDetalle();
+            FacturaDetalle.ShowDialog();
+        }
     }
 }

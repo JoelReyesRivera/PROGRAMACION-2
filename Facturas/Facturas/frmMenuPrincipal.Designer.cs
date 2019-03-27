@@ -68,6 +68,7 @@
             this.btnMenuProvedor.Text = "Menú Provedor";
             this.toolTipMostrar.SetToolTip(this.btnMenuProvedor, "Ir al menú de Provedores");
             this.btnMenuProvedor.UseVisualStyleBackColor = true;
+            this.btnMenuProvedor.Click += new System.EventHandler(this.btnMenuProvedor_Click);
             // 
             // btnMenuFactura
             // 
@@ -79,6 +80,7 @@
             this.btnMenuFactura.Text = "Menú Factura";
             this.toolTipMostrar.SetToolTip(this.btnMenuFactura, "Ir al menú de Facturas");
             this.btnMenuFactura.UseVisualStyleBackColor = true;
+            this.btnMenuFactura.Click += new System.EventHandler(this.btnMenuFactura_Click);
             // 
             // frmMenuPrincipal
             // 
