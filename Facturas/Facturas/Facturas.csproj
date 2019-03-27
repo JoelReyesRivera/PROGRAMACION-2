@@ -46,10 +46,66 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Articulo.cs" />
+    <Compile Include="frmAgregaArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgregaArticulo.Designer.cs">
+      <DependentUpon>frmAgregaArticulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaArticulo.Designer.cs">
+      <DependentUpon>frmConsultaArticulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaArticulos.Designer.cs">
+      <DependentUpon>frmConsultaArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenuInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenuInventario.Designer.cs">
+      <DependentUpon>frmMenuInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenuPrincipal.Designer.cs">
+      <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmModificaExistenciaArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModificaExistenciaArticulo.Designer.cs">
+      <DependentUpon>frmModificaExistenciaArticulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManejaArticulos.cs" />
     <Compile Include="ManejaProveedores.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />
+    <EmbeddedResource Include="frmAgregaArticulo.resx">
+      <DependentUpon>frmAgregaArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaArticulo.resx">
+      <DependentUpon>frmConsultaArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaArticulos.resx">
+      <DependentUpon>frmConsultaArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenuInventario.resx">
+      <DependentUpon>frmMenuInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenuPrincipal.resx">
+      <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModificaExistenciaArticulo.resx">
+      <DependentUpon>frmModificaExistenciaArticulo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
