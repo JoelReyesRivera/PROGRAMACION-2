@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Facturas
 {
-    class Articulo
+    public class Articulo
     {
         private int Clave, Cantidad, Count;
         private string Descripcion, Modelo;

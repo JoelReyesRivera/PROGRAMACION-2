@@ -94,6 +94,8 @@
             this.txtDescripcion.TabIndex = 1;
             this.toolTipMostrar.SetToolTip(this.txtDescripcion, "Descripción del Articulo");
             this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
+            this.txtDescripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescripcion_KeyPress);
+            this.txtDescripcion.Validated += new System.EventHandler(this.txtDescripcion_Validated);
             // 
             // txtModelo
             // 
@@ -103,6 +105,8 @@
             this.txtModelo.Size = new System.Drawing.Size(245, 20);
             this.txtModelo.TabIndex = 2;
             this.toolTipMostrar.SetToolTip(this.txtModelo, "Modelo del Articulo");
+            this.txtModelo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtModelo_KeyPress);
+            this.txtModelo.Validated += new System.EventHandler(this.txtModelo_Validated);
             // 
             // txtPrecio
             // 
@@ -112,6 +116,8 @@
             this.txtPrecio.Size = new System.Drawing.Size(111, 20);
             this.txtPrecio.TabIndex = 3;
             this.toolTipMostrar.SetToolTip(this.txtPrecio, "Precio del Articulo");
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
+            this.txtPrecio.Validated += new System.EventHandler(this.txtPrecio_Validated);
             // 
             // btnGuardar
             // 

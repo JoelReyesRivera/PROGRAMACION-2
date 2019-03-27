@@ -12,14 +12,17 @@ namespace Facturas
 {
     public partial class frmMenuInventario : Form
     {
-        public frmMenuInventario()
+        private ManejaArticulos AdmA;
+
+        public frmMenuInventario(ManejaArticulos AdmA)
         {
             InitializeComponent();
+            this.AdmA = AdmA;
         }
 
         private void btnAgregaArticulo_Click(object sender, EventArgs e)
         {
-            frmAgregaArticulo AgregaArt = new frmAgregaArticulo();
+            frmAgregaArticulo AgregaArt = new frmAgregaArticulo(AdmA);
             AgregaArt.ShowDialog();
         }
 

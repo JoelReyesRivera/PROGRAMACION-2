@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Facturas
 {
-    class ManejaArticulos
+    public class ManejaArticulos
     {
         private Articulo[] Array;
         private int Cont;
@@ -36,6 +36,15 @@ namespace Facturas
             for (int i = 0; i < Cont; i++)
             {
                 if (Array[i].pDescripcion.Equals(Desc) && (Array[i].pModelo.Equals(Modelo)))
+                    return true;
+            }
+            return false;
+        }
+        public bool BuscaDesc(string Desc)
+        {
+            for (int i = 0; i < Cont; i++)
+            {
+                if (Array[i].pDescripcion.Equals(Desc))
                     return true;
             }
             return false;

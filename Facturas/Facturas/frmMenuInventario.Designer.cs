@@ -90,7 +90,7 @@
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(139, 45);
             this.btnRegresar.TabIndex = 4;
-            this.btnRegresar.Text = "Salir";
+            this.btnRegresar.Text = "Regresar";
             this.toolTipMostrar.SetToolTip(this.btnRegresar, "Salir de la ventana");
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
