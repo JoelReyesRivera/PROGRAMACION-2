@@ -16,5 +16,28 @@ namespace Facturas
         {
             InitializeComponent();
         }
+
+        private void btnAgregarProvedor_Click(object sender, EventArgs e)
+        {
+            frmAgregarProvedor AgregaProveedor = new frmAgregarProvedor();
+            AgregaProveedor.ShowDialog();
+        }
+
+        private void btnConsultarProvedor_Click(object sender, EventArgs e)
+        {
+            frmConsultaProvedor ConsultaProveedor = new frmConsultaProvedor();
+            ConsultaProveedor.ShowDialog();
+        }
+
+        private void btnVerProvedores_Click(object sender, EventArgs e)
+        {
+            frmConsultaProveedores ConsultaProveedores = new frmConsultaProveedores();
+            ConsultaProveedores.ShowDialog();
+        }
+
+        private void btnMenuPrincipal_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

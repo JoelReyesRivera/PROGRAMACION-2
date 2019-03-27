@@ -45,6 +45,7 @@
             this.btnMenuPrincipal.Tag = "";
             this.btnMenuPrincipal.Text = "Menú Principal";
             this.btnMenuPrincipal.UseVisualStyleBackColor = true;
+            this.btnMenuPrincipal.Click += new System.EventHandler(this.btnMenuPrincipal_Click);
             // 
             // btnVerProvedores
             // 
@@ -55,6 +56,7 @@
             this.btnVerProvedores.TabIndex = 8;
             this.btnVerProvedores.Text = "Ver Provedores";
             this.btnVerProvedores.UseVisualStyleBackColor = true;
+            this.btnVerProvedores.Click += new System.EventHandler(this.btnVerProvedores_Click);
             // 
             // btnConsultarProvedor
             // 
@@ -65,6 +67,7 @@
             this.btnConsultarProvedor.TabIndex = 7;
             this.btnConsultarProvedor.Text = "Consultar Provedor";
             this.btnConsultarProvedor.UseVisualStyleBackColor = true;
+            this.btnConsultarProvedor.Click += new System.EventHandler(this.btnConsultarProvedor_Click);
             // 
             // btnAgregarProvedor
             // 
@@ -75,6 +78,7 @@
             this.btnAgregarProvedor.TabIndex = 6;
             this.btnAgregarProvedor.Text = "Agregar Provedor";
             this.btnAgregarProvedor.UseVisualStyleBackColor = true;
+            this.btnAgregarProvedor.Click += new System.EventHandler(this.btnAgregarProvedor_Click);
             // 
             // lblMenuProvedor
             // 
