@@ -16,10 +16,5 @@ namespace Facturas
         {
             InitializeComponent();
         }
-
-        private void frmAgregarFactura_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
