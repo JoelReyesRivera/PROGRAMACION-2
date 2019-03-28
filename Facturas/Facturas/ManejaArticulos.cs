@@ -9,22 +9,23 @@ namespace Facturas
     public class ManejaArticulos
     {
         private Articulo[] Array;
-        private int Cont;
+        private int Count;
 
         public ManejaArticulos()
         {
             Array = new Articulo[50];
-            Cont = 0;
+            Count = 0;
         }
 
         public void AgregaArt(string Desc, string Modelo, float Precio, int Cant)
         {
-            Array[Cont] = new Articulo(Desc, Modelo, Precio, Cant);
+            Array[Count] = new Articulo(Count,Desc, Modelo, Precio, Cant);
+            Count++;
         }
 
         public int BuscaArt(int Clave)
         {
-            for (int i = 0; i < Cont; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (Array[i].pClave == Clave)
                     return i;
@@ -33,7 +34,7 @@ namespace Facturas
         }
         public bool BuscaRep(string Desc, string Modelo)
         {
-            for (int i = 0; i < Cont; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (Array[i].pDescripcion.Equals(Desc) && (Array[i].pModelo.Equals(Modelo)))
                     return true;
@@ -42,7 +43,7 @@ namespace Facturas
         }
         public bool BuscaDesc(string Desc)
         {
-            for (int i = 0; i < Cont; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (Array[i].pDescripcion.Equals(Desc))
                     return true;
@@ -52,7 +53,7 @@ namespace Facturas
         public string ImprimeArticuloFactura(int ClaveArticulo)
         {
             string msj = "";
-            for (int i = 0; i < Cont; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (Array[i].pClave == ClaveArticulo)
                     msj += Array[i].ToString();
@@ -61,27 +62,34 @@ namespace Facturas
         }
         public Articulo RetornaArticulo(int Clave)//RETORNA POR CLAVE
         {
-            for (int i = 0; i < Cont; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (Array[i].pClave == Clave)
                     return Array[i];
             }
             return null;
         }
-        public int pCount
+        public List<Articulo> ObtenArt()
         {
-            get
-            { return Cont; }
-        }
+            List<Articulo> Lista = new List<Articulo>();
+            for (int i = 0; i < Count; i++)
+                Lista.Add(Array[i]);
 
+            return Lista;
+        }
         public string ImprimeCatalogoArticulo()
         {
             string Cadena = " ";
 
-            for (int i = 0; i < pCount; i++)
+            for (int i = 0; i < Count; i++)
                 Cadena += Array[i].ToString();
 
             return Cadena;
+        }
+        public int pCount
+        {
+            get
+            { return Count; }
         }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultaArticulo));
             this.lblArticulos = new System.Windows.Forms.Label();
             this.lblDesc = new System.Windows.Forms.Label();
             this.lblMod = new System.Windows.Forms.Label();
@@ -41,14 +42,16 @@
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblCant = new System.Windows.Forms.Label();
             this.toolTipMostrar = new System.Windows.Forms.ToolTip(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gbInfoArticulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblArticulos
             // 
             this.lblArticulos.AutoSize = true;
             this.lblArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArticulos.Location = new System.Drawing.Point(18, 116);
+            this.lblArticulos.Location = new System.Drawing.Point(12, 82);
             this.lblArticulos.Name = "lblArticulos";
             this.lblArticulos.Size = new System.Drawing.Size(79, 20);
             this.lblArticulos.TabIndex = 0;
@@ -87,12 +90,13 @@
             this.cmbArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbArticulos.FormattingEnabled = true;
             this.cmbArticulos.Items.AddRange(new object[] {
-            "-*SELECCIONE UN ARTICULO--"});
-            this.cmbArticulos.Location = new System.Drawing.Point(22, 148);
+            "-SELECCIONE UN ARTICULO-"});
+            this.cmbArticulos.Location = new System.Drawing.Point(16, 118);
             this.cmbArticulos.Name = "cmbArticulos";
             this.cmbArticulos.Size = new System.Drawing.Size(242, 26);
             this.cmbArticulos.TabIndex = 1;
             this.toolTipMostrar.SetToolTip(this.cmbArticulos, "Catalogo de Articulos");
+            this.cmbArticulos.SelectedIndexChanged += new System.EventHandler(this.cmbArticulos_SelectedIndexChanged);
             // 
             // gbInfoArticulo
             // 
@@ -118,36 +122,32 @@
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Location = new System.Drawing.Point(172, 152);
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(16, 18);
+            this.lblCantidad.Size = new System.Drawing.Size(0, 18);
             this.lblCantidad.TabIndex = 0;
-            this.lblCantidad.Text = "4";
             // 
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
             this.lblPrecio.Location = new System.Drawing.Point(172, 117);
             this.lblPrecio.Name = "lblPrecio";
-            this.lblPrecio.Size = new System.Drawing.Size(16, 18);
+            this.lblPrecio.Size = new System.Drawing.Size(0, 18);
             this.lblPrecio.TabIndex = 0;
-            this.lblPrecio.Text = "3";
             // 
             // lblModelo
             // 
             this.lblModelo.AutoSize = true;
             this.lblModelo.Location = new System.Drawing.Point(172, 84);
             this.lblModelo.Name = "lblModelo";
-            this.lblModelo.Size = new System.Drawing.Size(16, 18);
+            this.lblModelo.Size = new System.Drawing.Size(0, 18);
             this.lblModelo.TabIndex = 0;
-            this.lblModelo.Text = "2";
             // 
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
             this.lblDescripcion.Location = new System.Drawing.Point(172, 46);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(16, 18);
+            this.lblDescripcion.Size = new System.Drawing.Size(0, 18);
             this.lblDescripcion.TabIndex = 0;
-            this.lblDescripcion.Text = "1";
             // 
             // lblCant
             // 
@@ -158,18 +158,31 @@
             this.lblCant.TabIndex = 0;
             this.lblCant.Text = "Cantidad existente";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(41, 168);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(193, 144);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmConsultaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 348);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.gbInfoArticulo);
             this.Controls.Add(this.cmbArticulos);
             this.Controls.Add(this.lblArticulos);
             this.Name = "frmConsultaArticulo";
             this.Text = "Consulta Articulo";
+            this.Load += new System.EventHandler(this.frmConsultaArticulo_Load);
             this.gbInfoArticulo.ResumeLayout(false);
             this.gbInfoArticulo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,5 +202,6 @@
         private System.Windows.Forms.Label lblModelo;
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.ToolTip toolTipMostrar;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

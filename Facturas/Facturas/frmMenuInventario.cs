@@ -28,19 +28,44 @@ namespace Facturas
 
         private void lblConsultarArticulo_Click(object sender, EventArgs e)
         {
-            frmConsultaArticulo ConsultaArt = new frmConsultaArticulo();
+            if (AdmA.pCount == 0)
+            {
+                MessageBox.Show("NO HAY ARTICULOS EN EL SISTEMA", "INFORMACION", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                return;
+            }
+            frmConsultaArticulo ConsultaArt = new frmConsultaArticulo(AdmA);
             ConsultaArt.ShowDialog();
         }
 
         private void btnVerArticulos_Click(object sender, EventArgs e)
         {
-            frmConsultaArticulos VerArt = new frmConsultaArticulos();
+            if (AdmA.pCount == 0)
+            {
+                MessageBox.Show("NO HAY ARTICULOS EN EL SISTEMA", "INFORMACION", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                return;
+            }
+            frmConsultaArticulos VerArt = new frmConsultaArticulos(AdmA);
             VerArt.ShowDialog();
+        }
+
+        private void btnModificaArticulo_Click(object sender, EventArgs e)
+        {
+            if (AdmA.pCount == 0)
+            {
+                MessageBox.Show("NO HAY ARTICULOS EN EL SISTEMA", "INFORMACION", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                return;
+            }
+            frmModificaExistenciaArticulo Modifica = new frmModificaExistenciaArticulo(AdmA);
+            Modifica.ShowDialog();
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmMenuInventario_Load(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -41,13 +41,14 @@
             // lblProvedores
             // 
             this.lblProvedores.AutoSize = true;
+            this.lblProvedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.lblProvedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProvedores.ForeColor = System.Drawing.Color.Red;
-            this.lblProvedores.Location = new System.Drawing.Point(124, 27);
+            this.lblProvedores.ForeColor = System.Drawing.Color.Black;
+            this.lblProvedores.Location = new System.Drawing.Point(55, 31);
             this.lblProvedores.Name = "lblProvedores";
-            this.lblProvedores.Size = new System.Drawing.Size(390, 39);
+            this.lblProvedores.Size = new System.Drawing.Size(521, 39);
             this.lblProvedores.TabIndex = 3;
-            this.lblProvedores.Text = "Provedores Registrados";
+            this.lblProvedores.Text = "PROVEDORES REGISTRADOS";
             // 
             // dtgvProveedores
             // 

@@ -12,9 +12,40 @@ namespace Facturas
 {
     public partial class frmConsultaArticulo : Form
     {
-        public frmConsultaArticulo()
+        private ManejaArticulos AdmA;
+        private List<Articulo> Art;
+        public frmConsultaArticulo(ManejaArticulos AdmA)
         {
             InitializeComponent();
+            this.AdmA = AdmA;
+            cmbArticulos.SelectedIndex = 0;
+            Art = AdmA.ObtenArt();
+        }
+
+        private void frmConsultaArticulo_Load(object sender, EventArgs e)
+        {
+            for (int i = 0; i < AdmA.pCount; i++)
+                this.cmbArticulos.Items.Add(Art.ElementAt(i).pDescripcion);
+        }
+
+        private void cmbArticulos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbArticulos.SelectedIndex != 0)
+            {
+                int p = cmbArticulos.SelectedIndex;
+
+                lblDescripcion.Text= Art.ElementAt(p-1).pDescripcion;
+                lblModelo.Text = Art.ElementAt(p-1).pModelo;
+                lblPrecio.Text = "$"+Convert.ToString(Art.ElementAt(p-1).pPrecio);
+                lblCantidad.Text = Convert.ToString(Art.ElementAt(p-1).pCantidad);
+            }
+            else
+            {
+                lblDescripcion.Text = "";
+                lblModelo.Text = "";
+                lblPrecio.Text = "";
+                lblCantidad.Text = "";
+            }
         }
     }
 }

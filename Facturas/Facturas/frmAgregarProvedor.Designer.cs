@@ -48,13 +48,13 @@
             // lblAlta
             // 
             this.lblAlta.AutoSize = true;
-            this.lblAlta.BackColor = System.Drawing.Color.AliceBlue;
+            this.lblAlta.BackColor = System.Drawing.Color.LightGreen;
             this.lblAlta.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAlta.Location = new System.Drawing.Point(157, 9);
+            this.lblAlta.Location = new System.Drawing.Point(104, 9);
             this.lblAlta.Name = "lblAlta";
-            this.lblAlta.Size = new System.Drawing.Size(264, 39);
+            this.lblAlta.Size = new System.Drawing.Size(356, 39);
             this.lblAlta.TabIndex = 0;
-            this.lblAlta.Text = "Alta Provedores";
+            this.lblAlta.Text = "ALTA PROVEDORES";
             // 
             // lblClave
             // 
@@ -88,6 +88,7 @@
             // 
             // txtClave
             // 
+            this.txtClave.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtClave.Location = new System.Drawing.Point(404, 71);
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(100, 20);

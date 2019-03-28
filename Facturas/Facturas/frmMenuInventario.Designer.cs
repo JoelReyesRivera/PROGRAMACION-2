@@ -35,13 +35,14 @@
             this.btnVerArticulos = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
             this.toolTipMostrar = new System.Windows.Forms.ToolTip(this.components);
+            this.btnModificaArticulo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblMenuInventario
             // 
             this.lblMenuInventario.AutoSize = true;
             this.lblMenuInventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMenuInventario.Location = new System.Drawing.Point(134, 97);
+            this.lblMenuInventario.Location = new System.Drawing.Point(141, 67);
             this.lblMenuInventario.Name = "lblMenuInventario";
             this.lblMenuInventario.Size = new System.Drawing.Size(369, 55);
             this.lblMenuInventario.TabIndex = 0;
@@ -50,7 +51,7 @@
             // btnAgregaArticulo
             // 
             this.btnAgregaArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregaArticulo.Location = new System.Drawing.Point(25, 236);
+            this.btnAgregaArticulo.Location = new System.Drawing.Point(26, 196);
             this.btnAgregaArticulo.Name = "btnAgregaArticulo";
             this.btnAgregaArticulo.Size = new System.Drawing.Size(139, 45);
             this.btnAgregaArticulo.TabIndex = 1;
@@ -62,7 +63,7 @@
             // lblConsultarArticulo
             // 
             this.lblConsultarArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConsultarArticulo.Location = new System.Drawing.Point(187, 236);
+            this.lblConsultarArticulo.Location = new System.Drawing.Point(202, 196);
             this.lblConsultarArticulo.Name = "lblConsultarArticulo";
             this.lblConsultarArticulo.Size = new System.Drawing.Size(139, 45);
             this.lblConsultarArticulo.TabIndex = 2;
@@ -74,7 +75,7 @@
             // btnVerArticulos
             // 
             this.btnVerArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerArticulos.Location = new System.Drawing.Point(346, 236);
+            this.btnVerArticulos.Location = new System.Drawing.Point(371, 196);
             this.btnVerArticulos.Name = "btnVerArticulos";
             this.btnVerArticulos.Size = new System.Drawing.Size(139, 45);
             this.btnVerArticulos.TabIndex = 3;
@@ -86,20 +87,32 @@
             // btnRegresar
             // 
             this.btnRegresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegresar.Location = new System.Drawing.Point(510, 236);
+            this.btnRegresar.Location = new System.Drawing.Point(266, 277);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(139, 45);
-            this.btnRegresar.TabIndex = 4;
+            this.btnRegresar.TabIndex = 5;
             this.btnRegresar.Text = "Regresar";
             this.toolTipMostrar.SetToolTip(this.btnRegresar, "Salir de la ventana");
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
+            // btnModificaArticulo
+            // 
+            this.btnModificaArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificaArticulo.Location = new System.Drawing.Point(543, 196);
+            this.btnModificaArticulo.Name = "btnModificaArticulo";
+            this.btnModificaArticulo.Size = new System.Drawing.Size(139, 45);
+            this.btnModificaArticulo.TabIndex = 4;
+            this.btnModificaArticulo.Text = "Modifica Articulo";
+            this.btnModificaArticulo.UseVisualStyleBackColor = true;
+            this.btnModificaArticulo.Click += new System.EventHandler(this.btnModificaArticulo_Click);
+            // 
             // frmMenuInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(661, 377);
+            this.ClientSize = new System.Drawing.Size(707, 394);
+            this.Controls.Add(this.btnModificaArticulo);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.btnVerArticulos);
             this.Controls.Add(this.lblConsultarArticulo);
@@ -107,6 +120,7 @@
             this.Controls.Add(this.lblMenuInventario);
             this.Name = "frmMenuInventario";
             this.Text = "Menú Inventario";
+            this.Load += new System.EventHandler(this.frmMenuInventario_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,5 +134,6 @@
         private System.Windows.Forms.Button btnVerArticulos;
         private System.Windows.Forms.Button btnRegresar;
         private System.Windows.Forms.ToolTip toolTipMostrar;
+        private System.Windows.Forms.Button btnModificaArticulo;
     }
 }

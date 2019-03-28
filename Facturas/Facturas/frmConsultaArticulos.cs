@@ -12,9 +12,19 @@ namespace Facturas
 {
     public partial class frmConsultaArticulos : Form
     {
-        public frmConsultaArticulos()
+        private ManejaArticulos AdmA;
+
+        public frmConsultaArticulos(ManejaArticulos AdmA)
         {
             InitializeComponent();
+            this.AdmA = AdmA;
+        }
+
+        private void frmConsultaArticulos_Load(object sender, EventArgs e)
+        {
+            List<Articulo> Art = AdmA.ObtenArt();
+            for (int i = 0; i < AdmA.pCount; i++)
+                dgwArticulos.Rows.Add(Art.ElementAt(i).pClave, Art.ElementAt(i).pDescripcion, Art.ElementAt(i).pModelo, Art.ElementAt(i).pPrecio, Art.ElementAt(i).pCantidad); 
         }
     }
 }

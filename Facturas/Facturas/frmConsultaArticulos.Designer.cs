@@ -87,6 +87,7 @@
             this.Controls.Add(this.dgwArticulos);
             this.Name = "frmConsultaArticulos";
             this.Text = "Consulta todos los  Articulos";
+            this.Load += new System.EventHandler(this.frmConsultaArticulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwArticulos)).EndInit();
             this.ResumeLayout(false);
 

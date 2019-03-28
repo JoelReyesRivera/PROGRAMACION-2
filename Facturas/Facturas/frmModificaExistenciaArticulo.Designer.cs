@@ -37,7 +37,9 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.toolTipMostrar = new System.Windows.Forms.ToolTip(this.components);
+            this.Error = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Error)).BeginInit();
             this.SuspendLayout();
             // 
             // lblArticulos
@@ -55,12 +57,13 @@
             this.cmbArticulos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbArticulos.FormattingEnabled = true;
             this.cmbArticulos.Items.AddRange(new object[] {
-            "--SELECCIONE UN ARTICULO--"});
+            "-SELECCIONE UN ARTICULO-"});
             this.cmbArticulos.Location = new System.Drawing.Point(25, 98);
             this.cmbArticulos.Name = "cmbArticulos";
             this.cmbArticulos.Size = new System.Drawing.Size(203, 21);
             this.cmbArticulos.TabIndex = 1;
             this.toolTipMostrar.SetToolTip(this.cmbArticulos, "Catalogo de Articulos");
+            this.cmbArticulos.SelectedIndexChanged += new System.EventHandler(this.cmbArticulos_SelectedIndexChanged);
             // 
             // nudCantidad
             // 
@@ -75,6 +78,7 @@
             0,
             0,
             0});
+            this.nudCantidad.ValueChanged += new System.EventHandler(this.nudCantidad_ValueChanged);
             // 
             // lblCantidad
             // 
@@ -95,6 +99,7 @@
             this.btnGuardar.Text = "Guardar";
             this.toolTipMostrar.SetToolTip(this.btnGuardar, "Guardar datos");
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnLimpiar
             // 
@@ -105,6 +110,7 @@
             this.btnLimpiar.Text = "Limpiar";
             this.toolTipMostrar.SetToolTip(this.btnLimpiar, "Limpiar ventana");
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnSalir
             // 
@@ -115,6 +121,11 @@
             this.btnSalir.Text = "Salir";
             this.toolTipMostrar.SetToolTip(this.btnSalir, "Salir de la ventana");
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // Error
+            // 
+            this.Error.ContainerControl = this;
             // 
             // frmModificaExistenciaArticulo
             // 
@@ -130,7 +141,9 @@
             this.Controls.Add(this.lblArticulos);
             this.Name = "frmModificaExistenciaArticulo";
             this.Text = "Modifica la Existencia de un Articulo";
+            this.Load += new System.EventHandler(this.frmModificaExistenciaArticulo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Error)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,5 +159,6 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.ToolTip toolTipMostrar;
+        private System.Windows.Forms.ErrorProvider Error;
     }
 }

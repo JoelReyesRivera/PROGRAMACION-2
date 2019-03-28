@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregaArticulo));
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblModelo = new System.Windows.Forms.Label();
             this.lblPrecio = new System.Windows.Forms.Label();
@@ -41,8 +42,11 @@
             this.nudCantidad = new System.Windows.Forms.NumericUpDown();
             this.toolTipMostrar = new System.Windows.Forms.ToolTip(this.components);
             this.Error = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Picture = new System.Windows.Forms.PictureBox();
+            this.btnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Error)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Picture)).BeginInit();
             this.SuspendLayout();
             // 
             // lblDescripcion
@@ -69,7 +73,7 @@
             // 
             this.lblPrecio.AutoSize = true;
             this.lblPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecio.Location = new System.Drawing.Point(50, 196);
+            this.lblPrecio.Location = new System.Drawing.Point(50, 192);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(47, 16);
             this.lblPrecio.TabIndex = 2;
@@ -79,7 +83,7 @@
             // 
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(50, 267);
+            this.lblCantidad.Location = new System.Drawing.Point(50, 260);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(62, 16);
             this.lblCantidad.TabIndex = 3;
@@ -111,7 +115,7 @@
             // txtPrecio
             // 
             this.txtPrecio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPrecio.Location = new System.Drawing.Point(53, 224);
+            this.txtPrecio.Location = new System.Drawing.Point(53, 220);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(111, 20);
             this.txtPrecio.TabIndex = 3;
@@ -122,9 +126,9 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(37, 364);
+            this.btnGuardar.Location = new System.Drawing.Point(53, 364);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(127, 38);
+            this.btnGuardar.Size = new System.Drawing.Size(132, 49);
             this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "Guardar";
             this.toolTipMostrar.SetToolTip(this.btnGuardar, "Guardar datos");
@@ -134,9 +138,9 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(218, 364);
+            this.btnLimpiar.Location = new System.Drawing.Point(235, 364);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(127, 38);
+            this.btnLimpiar.Size = new System.Drawing.Size(136, 49);
             this.btnLimpiar.TabIndex = 6;
             this.btnLimpiar.Text = "Limpiar";
             this.toolTipMostrar.SetToolTip(this.btnLimpiar, "Limpiar todos los datos");
@@ -145,7 +149,7 @@
             // 
             // nudCantidad
             // 
-            this.nudCantidad.Location = new System.Drawing.Point(53, 295);
+            this.nudCantidad.Location = new System.Drawing.Point(53, 288);
             this.nudCantidad.Name = "nudCantidad";
             this.nudCantidad.ReadOnly = true;
             this.nudCantidad.Size = new System.Drawing.Size(122, 20);
@@ -156,16 +160,40 @@
             0,
             0,
             0});
+            this.nudCantidad.ValueChanged += new System.EventHandler(this.nudCantidad_ValueChanged);
             // 
             // Error
             // 
             this.Error.ContainerControl = this;
             // 
+            // Picture
+            // 
+            this.Picture.Image = ((System.Drawing.Image)(resources.GetObject("Picture.Image")));
+            this.Picture.Location = new System.Drawing.Point(316, 44);
+            this.Picture.Name = "Picture";
+            this.Picture.Size = new System.Drawing.Size(268, 288);
+            this.Picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Picture.TabIndex = 7;
+            this.Picture.TabStop = false;
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Location = new System.Drawing.Point(416, 364);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(136, 49);
+            this.btnSalir.TabIndex = 7;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // frmAgregaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 455);
+            this.ClientSize = new System.Drawing.Size(606, 455);
+            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.Picture);
             this.Controls.Add(this.nudCantidad);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnGuardar);
@@ -180,6 +208,7 @@
             this.Text = "Agrega Articulo";
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Error)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Picture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,5 +228,7 @@
         private System.Windows.Forms.NumericUpDown nudCantidad;
         private System.Windows.Forms.ToolTip toolTipMostrar;
         private System.Windows.Forms.ErrorProvider Error;
+        private System.Windows.Forms.PictureBox Picture;
+        private System.Windows.Forms.Button btnSalir;
     }
 }

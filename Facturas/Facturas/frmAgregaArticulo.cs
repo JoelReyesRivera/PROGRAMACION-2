@@ -31,12 +31,12 @@ namespace Facturas
 
             if (IsEmpty(Desc))
             {
-                MessageBox.Show("FAVOR DE ESCRIBIR UNA DESCRIPCION EN FORMATO CORRECTO", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("FAVOR DE ESCRIBIR UNA DESCRIPCION EN FORMATO CORRECTO", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (IsEmpty(Modelo))
             {
-                MessageBox.Show("FAVOR DE ESCRIBIR EL MODELO EN FORMATO CORRECTO", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("FAVOR DE ESCRIBIR EL MODELO EN FORMATO CORRECTO", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (!(ValidaTexto(Desc)))
@@ -57,11 +57,6 @@ namespace Facturas
                 Limpiar();
                 return;
             }
-            if (Cant < 1)
-            {
-                MessageBox.Show("LA CANTIDAD DE ARTICULOS A INGRESAR NO PUEDE SER MENOR A 1", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
             try
             {
                 Precio = Convert.ToSingle(txtPrecio.Text);
@@ -72,15 +67,25 @@ namespace Facturas
                 Limpiar();
                 return;
             }
-            //solo por descripcion
-            if (AdmA.BuscaRep(Desc, Modelo))
+            if (Precio < 1)
+            {
+                MessageBox.Show("EL PRECIO NO PUEDE SER MENOR A 1", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (Cant < 1)
+            {
+                MessageBox.Show("LA CANTIDAD DE ARTICULOS A INGRESAR NO PUEDE SER MENOR A 1", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (AdmA.BuscaDesc(Desc))
             {
                 MessageBox.Show("EL ARTICULO YA FUE REGISTRADO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Limpiar();
                 return;
             }
+
             AdmA.AgregaArt(Desc, Modelo, Precio, Cant);
-            MessageBox.Show("ARTICULO AGREGADO EXITOSAMENTE", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("ARTICULO AGREGADO EXITOSAMENTE", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Limpiar();
         }
 
@@ -88,6 +93,7 @@ namespace Facturas
         {
             Limpiar();
         }
+
         private void Limpiar()
         {
             txtDescripcion.Text = "";
@@ -96,7 +102,7 @@ namespace Facturas
             nudCantidad.Value = 1;
             Error.Clear();
         }
-
+    
         private bool IsEmpty(string Cadena)
         {
             if (string.IsNullOrWhiteSpace(Cadena) || string.IsNullOrEmpty(Cadena))
@@ -141,7 +147,7 @@ namespace Facturas
             string D = txtDescripcion.Text;
             if (!ValidaTexto(D))
             {
-                Error.SetError(txtDescripcion, "DESCRIPCION NO CAPTURADA");
+                Error.SetError(txtDescripcion, "DESCRIPCION ESCRITA EN FORMA INCORRECTA");
                 txtDescripcion.Focus();
             }
             else
@@ -164,7 +170,7 @@ namespace Facturas
             string M = txtModelo.Text;
             if (!ValidaTexto(M))
             {
-                Error.SetError(txtModelo, "MODELO NO CAPTURADA");
+                Error.SetError(txtModelo, "MODELO ESCRITO EN FORMA INCORRECTA");
                 txtModelo.Focus();
             }
             else
@@ -188,14 +194,34 @@ namespace Facturas
             string P = txtPrecio.Text;
             if (!(ValidaTextoNum(P)))
             {
-                Error.SetError(txtPrecio, "PRECIO NO CAPTURADO");
-                txtModelo.Focus();
+                Error.SetError(txtPrecio, "PRECIO ESCRITO EN FORMA INCORRECTA");
+                txtPrecio.Focus();
             }
             else
                 Error.SetError(txtPrecio, "");
         }
+
+        private void nudCantidad_ValueChanged(object sender, EventArgs e)
+        {
+            int Cant = Convert.ToInt32(nudCantidad.Value);
+
+            if (Cant == 0)
+                Error.SetError(nudCantidad, "NUMERO FUERA DEL RANGO PERMITIDO");
+            else
+                Error.SetError(nudCantidad, "");
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult Result = MessageBox.Show("¿DESEA SALIR DE ESTA VENTANA?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (Result == DialogResult.Yes)
+                this.Close();
+        }
+
         private void txtDescripcion_TextChanged(object sender, EventArgs e)
         {
         }
+
     }
 }
