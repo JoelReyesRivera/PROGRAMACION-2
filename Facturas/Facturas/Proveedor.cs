@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Facturas
 {
-    class Proveedor
+    public class Proveedor
     {
         private string RFC, Nombre, Domicilio;
         private float Saldo;

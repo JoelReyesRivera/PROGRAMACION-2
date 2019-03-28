@@ -12,26 +12,38 @@ namespace Facturas
 {
     public partial class frmMenuProvedor : Form
     {
-        public frmMenuProvedor()
+        ManejaProveedores proveedores;
+        public frmMenuProvedor(ManejaProveedores proveedores)
         {
             InitializeComponent();
+            this.proveedores = proveedores;
         }
 
         private void btnAgregarProvedor_Click(object sender, EventArgs e)
         {
-            frmAgregarProvedor AgregaProveedor = new frmAgregarProvedor();
+            frmAgregarProvedor AgregaProveedor = new frmAgregarProvedor(proveedores);
             AgregaProveedor.ShowDialog();
         }
 
         private void btnConsultarProvedor_Click(object sender, EventArgs e)
         {
-            frmConsultaProvedor ConsultaProveedor = new frmConsultaProvedor();
+            if (proveedores.pCount==0)
+            {
+                MessageBox.Show("NO HAY PROVEEDORES REGISTRADOS", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            frmConsultaProvedor ConsultaProveedor = new frmConsultaProvedor(proveedores);
             ConsultaProveedor.ShowDialog();
         }
 
         private void btnVerProvedores_Click(object sender, EventArgs e)
         {
-            frmConsultaProveedores ConsultaProveedores = new frmConsultaProveedores();
+            if (proveedores.pCount == 0)
+            {
+                MessageBox.Show("NO HAY PROVEEDORES REGISTRADOS", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            frmConsultaProveedores ConsultaProveedores = new frmConsultaProveedores(proveedores);
             ConsultaProveedores.ShowDialog();
         }
 

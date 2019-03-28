@@ -39,23 +39,23 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.grpEliminarArticulo = new System.Windows.Forms.GroupBox();
+            this.btnEliminarArticulo = new System.Windows.Forms.Button();
             this.lblClaveArticuloEliminar = new System.Windows.Forms.Label();
             this.txtClaveArticuloEliminar = new System.Windows.Forms.TextBox();
-            this.btnEliminarArticulo = new System.Windows.Forms.Button();
             this.grpAgregarArticulo = new System.Windows.Forms.GroupBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.lblCantidad = new System.Windows.Forms.Label();
             this.btnAgregarArticulo = new System.Windows.Forms.Button();
             this.lblClaveArticuloAgregar = new System.Windows.Forms.Label();
             this.txtClaveArticuloAgregar = new System.Windows.Forms.TextBox();
+            this.lblImporteTotal = new System.Windows.Forms.Label();
+            this.lblImporte = new System.Windows.Forms.Label();
             this.ClaveArticulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblCantidad = new System.Windows.Forms.Label();
-            this.lblImporteTotal = new System.Windows.Forms.Label();
-            this.lblImporte = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.grpDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -167,24 +167,7 @@
             this.grpEliminarArticulo.Size = new System.Drawing.Size(167, 154);
             this.grpEliminarArticulo.TabIndex = 7;
             this.grpEliminarArticulo.TabStop = false;
-            this.grpEliminarArticulo.Text = "Eliminar Articulo";
-            // 
-            // lblClaveArticuloEliminar
-            // 
-            this.lblClaveArticuloEliminar.AutoSize = true;
-            this.lblClaveArticuloEliminar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClaveArticuloEliminar.Location = new System.Drawing.Point(19, 26);
-            this.lblClaveArticuloEliminar.Name = "lblClaveArticuloEliminar";
-            this.lblClaveArticuloEliminar.Size = new System.Drawing.Size(98, 14);
-            this.lblClaveArticuloEliminar.TabIndex = 0;
-            this.lblClaveArticuloEliminar.Text = "Clave del Articulo";
-            // 
-            // txtClaveArticuloEliminar
-            // 
-            this.txtClaveArticuloEliminar.Location = new System.Drawing.Point(20, 52);
-            this.txtClaveArticuloEliminar.Name = "txtClaveArticuloEliminar";
-            this.txtClaveArticuloEliminar.Size = new System.Drawing.Size(115, 20);
-            this.txtClaveArticuloEliminar.TabIndex = 1;
+            this.grpEliminarArticulo.Text = "Eliminar Artículo";
             // 
             // btnEliminarArticulo
             // 
@@ -196,6 +179,23 @@
             this.btnEliminarArticulo.TabIndex = 9;
             this.btnEliminarArticulo.Text = "Eliminar Articulo";
             this.btnEliminarArticulo.UseVisualStyleBackColor = true;
+            // 
+            // lblClaveArticuloEliminar
+            // 
+            this.lblClaveArticuloEliminar.AutoSize = true;
+            this.lblClaveArticuloEliminar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClaveArticuloEliminar.Location = new System.Drawing.Point(19, 26);
+            this.lblClaveArticuloEliminar.Name = "lblClaveArticuloEliminar";
+            this.lblClaveArticuloEliminar.Size = new System.Drawing.Size(98, 14);
+            this.lblClaveArticuloEliminar.TabIndex = 0;
+            this.lblClaveArticuloEliminar.Text = "Clave del Artículo";
+            // 
+            // txtClaveArticuloEliminar
+            // 
+            this.txtClaveArticuloEliminar.Location = new System.Drawing.Point(20, 52);
+            this.txtClaveArticuloEliminar.Name = "txtClaveArticuloEliminar";
+            this.txtClaveArticuloEliminar.Size = new System.Drawing.Size(115, 20);
+            this.txtClaveArticuloEliminar.TabIndex = 1;
             // 
             // grpAgregarArticulo
             // 
@@ -209,7 +209,24 @@
             this.grpAgregarArticulo.Size = new System.Drawing.Size(167, 179);
             this.grpAgregarArticulo.TabIndex = 10;
             this.grpAgregarArticulo.TabStop = false;
-            this.grpAgregarArticulo.Text = "Agregar Articulo";
+            this.grpAgregarArticulo.Text = "Agregar Artículo";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(22, 114);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 12;
+            // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(19, 87);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(54, 14);
+            this.lblCantidad.TabIndex = 10;
+            this.lblCantidad.Text = "Cantidad";
             // 
             // btnAgregarArticulo
             // 
@@ -219,7 +236,7 @@
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(103, 23);
             this.btnAgregarArticulo.TabIndex = 9;
-            this.btnAgregarArticulo.Text = "Agregar Articulo";
+            this.btnAgregarArticulo.Text = "Agregar Artculo";
             this.btnAgregarArticulo.UseVisualStyleBackColor = true;
             // 
             // lblClaveArticuloAgregar
@@ -230,7 +247,7 @@
             this.lblClaveArticuloAgregar.Name = "lblClaveArticuloAgregar";
             this.lblClaveArticuloAgregar.Size = new System.Drawing.Size(98, 14);
             this.lblClaveArticuloAgregar.TabIndex = 0;
-            this.lblClaveArticuloAgregar.Text = "Clave del Articulo";
+            this.lblClaveArticuloAgregar.Text = "Clave del Artículo";
             // 
             // txtClaveArticuloAgregar
             // 
@@ -239,14 +256,34 @@
             this.txtClaveArticuloAgregar.Size = new System.Drawing.Size(115, 20);
             this.txtClaveArticuloAgregar.TabIndex = 1;
             // 
+            // lblImporteTotal
+            // 
+            this.lblImporteTotal.AutoSize = true;
+            this.lblImporteTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImporteTotal.Location = new System.Drawing.Point(599, 279);
+            this.lblImporteTotal.Name = "lblImporteTotal";
+            this.lblImporteTotal.Size = new System.Drawing.Size(111, 20);
+            this.lblImporteTotal.TabIndex = 11;
+            this.lblImporteTotal.Text = "ImporteTotal : ";
+            // 
+            // lblImporte
+            // 
+            this.lblImporte.AutoSize = true;
+            this.lblImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImporte.Location = new System.Drawing.Point(704, 279);
+            this.lblImporte.Name = "lblImporte";
+            this.lblImporte.Size = new System.Drawing.Size(27, 20);
+            this.lblImporte.TabIndex = 12;
+            this.lblImporte.Text = "$0";
+            // 
             // ClaveArticulo
             // 
-            this.ClaveArticulo.HeaderText = "ClaveArticulo";
+            this.ClaveArticulo.HeaderText = "ClaveArtiículo";
             this.ClaveArticulo.Name = "ClaveArticulo";
             // 
             // Descripcion
             // 
-            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.HeaderText = "Descripción";
             this.Descripcion.Name = "Descripcion";
             // 
             // Marca
@@ -271,43 +308,6 @@
             this.Importe.HeaderText = "Importe";
             this.Importe.Name = "Importe";
             this.Importe.Width = 80;
-            // 
-            // lblCantidad
-            // 
-            this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(19, 87);
-            this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(54, 14);
-            this.lblCantidad.TabIndex = 10;
-            this.lblCantidad.Text = "Cantidad";
-            // 
-            // lblImporteTotal
-            // 
-            this.lblImporteTotal.AutoSize = true;
-            this.lblImporteTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImporteTotal.Location = new System.Drawing.Point(599, 279);
-            this.lblImporteTotal.Name = "lblImporteTotal";
-            this.lblImporteTotal.Size = new System.Drawing.Size(111, 20);
-            this.lblImporteTotal.TabIndex = 11;
-            this.lblImporteTotal.Text = "ImporteTotal : ";
-            // 
-            // lblImporte
-            // 
-            this.lblImporte.AutoSize = true;
-            this.lblImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImporte.Location = new System.Drawing.Point(704, 279);
-            this.lblImporte.Name = "lblImporte";
-            this.lblImporte.Size = new System.Drawing.Size(27, 20);
-            this.lblImporte.TabIndex = 12;
-            this.lblImporte.Text = "$0";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(22, 114);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 12;
             // 
             // frmAgregarFactura
             // 
@@ -350,12 +350,6 @@
         private System.Windows.Forms.GroupBox grpDatos;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClaveArticulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioUnitario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
         private System.Windows.Forms.GroupBox grpEliminarArticulo;
         private System.Windows.Forms.Button btnEliminarArticulo;
         private System.Windows.Forms.Label lblClaveArticuloEliminar;
@@ -368,6 +362,12 @@
         private System.Windows.Forms.Label lblImporteTotal;
         private System.Windows.Forms.Label lblImporte;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClaveArticulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioUnitario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
     }
 }
 

@@ -12,12 +12,14 @@ namespace Facturas
 {
     public partial class frmMenuPrincipal : Form
     {
-        private ManejaArticulos AdmA;
+        public ManejaArticulos AdmA;
+        public ManejaProveedores proveedores;
 
         public frmMenuPrincipal()
         {
             InitializeComponent();
             AdmA = new ManejaArticulos();
+            proveedores = new ManejaProveedores();
         }
 
         private void btnArticulo_Click(object sender, EventArgs e)
@@ -28,7 +30,7 @@ namespace Facturas
 
         private void btnMenuProvedor_Click(object sender, EventArgs e)
         {
-            frmMenuProvedor Proveedor = new frmMenuProvedor();
+            frmMenuProvedor Proveedor = new frmMenuProvedor(proveedores);
             Proveedor.ShowDialog();
         }
 

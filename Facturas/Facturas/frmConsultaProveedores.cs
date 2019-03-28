@@ -12,9 +12,22 @@ namespace Facturas
 {
     public partial class frmConsultaProveedores : Form
     {
-        public frmConsultaProveedores()
+        ManejaProveedores proveedores;
+        public frmConsultaProveedores(ManejaProveedores proveedores)
         {
             InitializeComponent();
+            this.proveedores = proveedores;
+            CargarDataGridView();
+        }
+
+        public void CargarDataGridView()
+        {
+            int[] claves = proveedores.GetClaves();
+            Proveedor[] provedoresExistentes = proveedores.GetProveedores();
+            for (int i = 0; i < claves.Length; i++)
+            {
+                dtgvProveedores.Rows.Add(claves[i], provedoresExistentes[i].pRFC, provedoresExistentes[i].pNombre, provedoresExistentes[i].pDomicilio, provedoresExistentes[i].pSaldo);
+            }
         }
     }
 }

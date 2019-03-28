@@ -29,38 +29,39 @@
         private void InitializeComponent()
         {
             this.lblProvedores = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtgvProveedores = new System.Windows.Forms.DataGridView();
             this.Clave = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Saldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvProveedores)).BeginInit();
             this.SuspendLayout();
             // 
             // lblProvedores
             // 
             this.lblProvedores.AutoSize = true;
             this.lblProvedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProvedores.Location = new System.Drawing.Point(204, 26);
+            this.lblProvedores.ForeColor = System.Drawing.Color.Red;
+            this.lblProvedores.Location = new System.Drawing.Point(124, 27);
             this.lblProvedores.Name = "lblProvedores";
-            this.lblProvedores.Size = new System.Drawing.Size(195, 39);
+            this.lblProvedores.Size = new System.Drawing.Size(390, 39);
             this.lblProvedores.TabIndex = 3;
-            this.lblProvedores.Text = "Provedores";
+            this.lblProvedores.Text = "Provedores Registrados";
             // 
-            // dataGridView1
+            // dtgvProveedores
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtgvProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvProveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Clave,
             this.RFC,
             this.Nombre,
             this.Domicilio,
             this.Saldo});
-            this.dataGridView1.Location = new System.Drawing.Point(83, 105);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(494, 150);
-            this.dataGridView1.TabIndex = 2;
+            this.dtgvProveedores.Location = new System.Drawing.Point(51, 94);
+            this.dtgvProveedores.Name = "dtgvProveedores";
+            this.dtgvProveedores.Size = new System.Drawing.Size(541, 150);
+            this.dtgvProveedores.TabIndex = 2;
             // 
             // Clave
             // 
@@ -93,10 +94,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 291);
             this.Controls.Add(this.lblProvedores);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dtgvProveedores);
             this.Name = "frmConsultaProveedores";
             this.Text = "Consulta Proveedores";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvProveedores)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,7 +106,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblProvedores;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtgvProveedores;
         private System.Windows.Forms.DataGridViewTextBoxColumn Clave;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFC;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;

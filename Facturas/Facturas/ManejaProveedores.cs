@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Facturas
 {
-    class ManejaProveedores
+    public class ManejaProveedores
     {
-        public Dictionary<int, Proveedor> proveedores;
+        private Dictionary<int, Proveedor> proveedores;
 
         public ManejaProveedores()
         {
@@ -22,7 +22,7 @@ namespace Facturas
 
         public int BuscarPosNombre(String nombre)
         {
-            foreach(KeyValuePair<int,Proveedor> pair in proveedores)
+            foreach (KeyValuePair<int, Proveedor> pair in proveedores)
             {
                 if (pair.Value.pNombre.CompareTo(nombre) == 0)
                     return pair.Key;
@@ -89,7 +89,7 @@ namespace Facturas
         }
         public string ConsultaSaldos(string Nombre)
         {
-            int Proveedor=-1;
+            int Proveedor = -1;
             float Saldo = 0;
             string msj = "";
             foreach (KeyValuePair<int, Proveedor> pair in proveedores)
@@ -104,7 +104,18 @@ namespace Facturas
             if (Proveedor == -1)
                 return "NO SE ENCONTRÓ DICHO PROVEEDOR EN EL SISTEMA";
 
-            return msj + "\nPROVEEDOR: "+Nombre+ "\nCLAVE: " + Proveedor+ "\nSALDO: $" + Saldo;
+            return msj + "\nPROVEEDOR: " + Nombre + "\nCLAVE: " + Proveedor + "\nSALDO: $" + Saldo;
+        }
+        public int GetClave(String nombre)
+        {
+            foreach (var item in proveedores)
+            {
+                if (item.Value.pNombre.Equals(nombre))
+                {
+                    return item.Key;
+                }
+            }
+            return -1;
         }
         public int pCount
         {
@@ -112,6 +123,29 @@ namespace Facturas
             {
                 return proveedores.Count;
             }
+        }
+
+        public Proveedor[] GetProveedores()
+        {
+            Proveedor[] array = new Proveedor[proveedores.Count];
+            int i = 0;
+            foreach (var item in proveedores)
+            {
+                array[i] = item.Value;
+                i++;
+            }
+            return array;
+        }
+        public int[] GetClaves()
+        {
+            int[] array = new int[proveedores.Count];
+            int i = 0;
+            foreach (var item in proveedores)
+            {
+                array[i] = item.Key;
+                i++;
+            }
+            return array;
         }
     }
 }
