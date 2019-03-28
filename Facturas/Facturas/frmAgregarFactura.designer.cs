@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarFactura));
             this.lblClaveFactura = new System.Windows.Forms.Label();
             this.txtClaveFactura = new System.Windows.Forms.TextBox();
@@ -38,30 +39,32 @@
             this.grpDatos = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.grpEliminarArticulo = new System.Windows.Forms.GroupBox();
-            this.btnEliminarArticulo = new System.Windows.Forms.Button();
-            this.lblClaveArticuloEliminar = new System.Windows.Forms.Label();
-            this.txtClaveArticuloEliminar = new System.Windows.Forms.TextBox();
-            this.grpAgregarArticulo = new System.Windows.Forms.GroupBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.lblCantidad = new System.Windows.Forms.Label();
-            this.btnAgregarArticulo = new System.Windows.Forms.Button();
-            this.lblClaveArticuloAgregar = new System.Windows.Forms.Label();
-            this.txtClaveArticuloAgregar = new System.Windows.Forms.TextBox();
-            this.lblImporteTotal = new System.Windows.Forms.Label();
-            this.lblImporte = new System.Windows.Forms.Label();
             this.ClaveArticulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grpEliminarArticulo = new System.Windows.Forms.GroupBox();
+            this.btnEliminarArticulo = new System.Windows.Forms.Button();
+            this.lblClaveArticuloEliminar = new System.Windows.Forms.Label();
+            this.txtClaveArticuloEliminar = new System.Windows.Forms.TextBox();
+            this.grpAgregarArticulo = new System.Windows.Forms.GroupBox();
+            this.numUpCantidad = new System.Windows.Forms.NumericUpDown();
+            this.lblCantidad = new System.Windows.Forms.Label();
+            this.btnAgregarArticulo = new System.Windows.Forms.Button();
+            this.lblClaveArticuloAgregar = new System.Windows.Forms.Label();
+            this.txtClaveArticuloAgregar = new System.Windows.Forms.TextBox();
+            this.lblImporteTotal = new System.Windows.Forms.Label();
+            this.lblImporte = new System.Windows.Forms.Label();
+            this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.grpDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grpEliminarArticulo.SuspendLayout();
             this.grpAgregarArticulo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpCantidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.SuspendLayout();
             // 
             // lblClaveFactura
@@ -80,6 +83,8 @@
             this.txtClaveFactura.Name = "txtClaveFactura";
             this.txtClaveFactura.Size = new System.Drawing.Size(115, 20);
             this.txtClaveFactura.TabIndex = 1;
+            this.txtClaveFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveFactura_KeyPress);
+            this.txtClaveFactura.Validated += new System.EventHandler(this.Valida_Factura);
             // 
             // lblClaveProveedor
             // 
@@ -97,6 +102,8 @@
             this.txtClaveProveedor.Name = "txtClaveProveedor";
             this.txtClaveProveedor.Size = new System.Drawing.Size(115, 20);
             this.txtClaveProveedor.TabIndex = 3;
+            this.txtClaveProveedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveProveedor_KeyPress);
+            this.txtClaveProveedor.Validated += new System.EventHandler(this.Valida_proveedor);
             // 
             // btnAgregar
             // 
@@ -157,6 +164,39 @@
             this.dataGridView1.Size = new System.Drawing.Size(574, 150);
             this.dataGridView1.TabIndex = 8;
             // 
+            // ClaveArticulo
+            // 
+            this.ClaveArticulo.HeaderText = "ClaveArtiículo";
+            this.ClaveArticulo.Name = "ClaveArticulo";
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripción";
+            this.Descripcion.Name = "Descripcion";
+            // 
+            // Marca
+            // 
+            this.Marca.HeaderText = "Marca";
+            this.Marca.Name = "Marca";
+            // 
+            // PrecioUnitario
+            // 
+            this.PrecioUnitario.HeaderText = "PrecioUnitario";
+            this.PrecioUnitario.Name = "PrecioUnitario";
+            this.PrecioUnitario.Width = 80;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.Width = 70;
+            // 
+            // Importe
+            // 
+            this.Importe.HeaderText = "Importe";
+            this.Importe.Name = "Importe";
+            this.Importe.Width = 80;
+            // 
             // grpEliminarArticulo
             // 
             this.grpEliminarArticulo.Controls.Add(this.btnEliminarArticulo);
@@ -196,10 +236,12 @@
             this.txtClaveArticuloEliminar.Name = "txtClaveArticuloEliminar";
             this.txtClaveArticuloEliminar.Size = new System.Drawing.Size(115, 20);
             this.txtClaveArticuloEliminar.TabIndex = 1;
+            this.txtClaveArticuloEliminar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveArticuloEliminar_KeyPress);
+            this.txtClaveArticuloEliminar.Validated += new System.EventHandler(this.Valida_claveart);
             // 
             // grpAgregarArticulo
             // 
-            this.grpAgregarArticulo.Controls.Add(this.numericUpDown1);
+            this.grpAgregarArticulo.Controls.Add(this.numUpCantidad);
             this.grpAgregarArticulo.Controls.Add(this.lblCantidad);
             this.grpAgregarArticulo.Controls.Add(this.btnAgregarArticulo);
             this.grpAgregarArticulo.Controls.Add(this.lblClaveArticuloAgregar);
@@ -211,12 +253,14 @@
             this.grpAgregarArticulo.TabStop = false;
             this.grpAgregarArticulo.Text = "Agregar Artículo";
             // 
-            // numericUpDown1
+            // numUpCantidad
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(22, 114);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 12;
+            this.numUpCantidad.Location = new System.Drawing.Point(22, 114);
+            this.numUpCantidad.Name = "numUpCantidad";
+            this.numUpCantidad.ReadOnly = true;
+            this.numUpCantidad.Size = new System.Drawing.Size(120, 20);
+            this.numUpCantidad.TabIndex = 12;
+            this.numUpCantidad.Validated += new System.EventHandler(this.numUpCantidad_Validated);
             // 
             // lblCantidad
             // 
@@ -255,6 +299,8 @@
             this.txtClaveArticuloAgregar.Name = "txtClaveArticuloAgregar";
             this.txtClaveArticuloAgregar.Size = new System.Drawing.Size(115, 20);
             this.txtClaveArticuloAgregar.TabIndex = 1;
+            this.txtClaveArticuloAgregar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveArticuloAgregar_KeyPress);
+            this.txtClaveArticuloAgregar.Validated += new System.EventHandler(this.Valida_claveartAgrega);
             // 
             // lblImporteTotal
             // 
@@ -276,38 +322,9 @@
             this.lblImporte.TabIndex = 12;
             this.lblImporte.Text = "$0";
             // 
-            // ClaveArticulo
+            // errorP
             // 
-            this.ClaveArticulo.HeaderText = "ClaveArtiículo";
-            this.ClaveArticulo.Name = "ClaveArticulo";
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripción";
-            this.Descripcion.Name = "Descripcion";
-            // 
-            // Marca
-            // 
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
-            // 
-            // PrecioUnitario
-            // 
-            this.PrecioUnitario.HeaderText = "PrecioUnitario";
-            this.PrecioUnitario.Name = "PrecioUnitario";
-            this.PrecioUnitario.Width = 80;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Width = 70;
-            // 
-            // Importe
-            // 
-            this.Importe.HeaderText = "Importe";
-            this.Importe.Name = "Importe";
-            this.Importe.Width = 80;
+            this.errorP.ContainerControl = this;
             // 
             // frmAgregarFactura
             // 
@@ -325,6 +342,7 @@
             this.Controls.Add(this.btnAgregar);
             this.Name = "frmAgregarFactura";
             this.Text = "Agregar nueva factura";
+            this.Load += new System.EventHandler(this.frmAgregarFactura_Load);
             this.grpDatos.ResumeLayout(false);
             this.grpDatos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -333,7 +351,8 @@
             this.grpEliminarArticulo.PerformLayout();
             this.grpAgregarArticulo.ResumeLayout(false);
             this.grpAgregarArticulo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpCantidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -361,13 +380,14 @@
         private System.Windows.Forms.TextBox txtClaveArticuloAgregar;
         private System.Windows.Forms.Label lblImporteTotal;
         private System.Windows.Forms.Label lblImporte;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numUpCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClaveArticulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioUnitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
+        private System.Windows.Forms.ErrorProvider errorP;
     }
 }
 

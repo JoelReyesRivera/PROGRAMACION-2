@@ -28,15 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtClaveFactura = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ClaveArticulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblInformacion = new System.Windows.Forms.Label();
+            this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -49,12 +52,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "CLAVE FACTURA";
             // 
-            // textBox1
+            // txtClaveFactura
             // 
-            this.textBox1.Location = new System.Drawing.Point(139, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(143, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtClaveFactura.Location = new System.Drawing.Point(139, 35);
+            this.txtClaveFactura.Name = "txtClaveFactura";
+            this.txtClaveFactura.Size = new System.Drawing.Size(143, 20);
+            this.txtClaveFactura.TabIndex = 1;
+            this.txtClaveFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveFactura_KeyPress);
+            this.txtClaveFactura.Validated += new System.EventHandler(this.Valida_factura);
             // 
             // dataGridView1
             // 
@@ -103,6 +108,10 @@
             this.lblInformacion.TabIndex = 3;
             this.lblInformacion.Text = "Detalles de la factura";
             // 
+            // errorP
+            // 
+            this.errorP.ContainerControl = this;
+            // 
             // frmBuscarDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -110,12 +119,13 @@
             this.ClientSize = new System.Drawing.Size(710, 324);
             this.Controls.Add(this.lblInformacion);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtClaveFactura);
             this.Controls.Add(this.label1);
             this.Name = "frmBuscarDetalle";
             this.Text = "Buscar Detalle de Factura";
             this.Load += new System.EventHandler(this.frmBuscarDetalle_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,12 +134,13 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtClaveFactura;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClaveArticulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Articulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioUnitario;
         private System.Windows.Forms.Label lblInformacion;
+        private System.Windows.Forms.ErrorProvider errorP;
     }
 }

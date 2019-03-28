@@ -14,12 +14,16 @@ namespace Facturas
     {
         public ManejaArticulos AdmA;
         public ManejaProveedores proveedores;
+        private ManejaFacturas mF;
+        private ManejaDetalleFactura mD;
 
         public frmMenuPrincipal()
         {
             InitializeComponent();
             AdmA = new ManejaArticulos();
             proveedores = new ManejaProveedores();
+            mF = new ManejaFacturas();
+            mD = new ManejaDetalleFactura();
         }
 
         private void btnArticulo_Click(object sender, EventArgs e)
@@ -36,8 +40,13 @@ namespace Facturas
 
         private void btnMenuFactura_Click(object sender, EventArgs e)
         {
-            frmMenuFacturaDetalle FacturaDetalle = new frmMenuFacturaDetalle();
+            frmMenuFacturaDetalle FacturaDetalle = new frmMenuFacturaDetalle(mF,mD,proveedores,AdmA);
             FacturaDetalle.ShowDialog();
+        }
+
+        private void frmMenuPrincipal_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

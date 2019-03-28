@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Facturas
 {
-    class ManejaFacturas
+    public class ManejaFacturas
     {
         private Dictionary<int, Factura> Facturas;
 

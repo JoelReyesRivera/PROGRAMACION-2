@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Facturas
 {
-    class ManejaDetalleFactura
+    public class ManejaDetalleFactura
     {
         private List<DetalleFactura> DetalleFactura;
 

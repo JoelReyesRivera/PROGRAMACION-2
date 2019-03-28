@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblClaveProveedor = new System.Windows.Forms.Label();
             this.txtClaveProveedor = new System.Windows.Forms.TextBox();
             this.lblClaveFactura = new System.Windows.Forms.Label();
@@ -35,14 +36,17 @@
             this.lblClaveArticulo = new System.Windows.Forms.Label();
             this.txtClaveArticulo = new System.Windows.Forms.TextBox();
             this.lblCantidad = new System.Windows.Forms.Label();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.txtMuestraProveedor = new System.Windows.Forms.TextBox();
             this.txtMuestraFactura = new System.Windows.Forms.TextBox();
             this.txtMuestraArticulo = new System.Windows.Forms.TextBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.grpDatos = new System.Windows.Forms.GroupBox();
+            this.numUpCantidad = new System.Windows.Forms.NumericUpDown();
+            this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.grpDatos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpCantidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.SuspendLayout();
             // 
             // lblClaveProveedor
@@ -61,6 +65,8 @@
             this.txtClaveProveedor.Name = "txtClaveProveedor";
             this.txtClaveProveedor.Size = new System.Drawing.Size(120, 20);
             this.txtClaveProveedor.TabIndex = 1;
+            this.txtClaveProveedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveProveedor_KeyPress);
+            this.txtClaveProveedor.Validated += new System.EventHandler(this.Valida_proveedor);
             // 
             // lblClaveFactura
             // 
@@ -78,6 +84,8 @@
             this.txtClaveFactura.Name = "txtClaveFactura";
             this.txtClaveFactura.Size = new System.Drawing.Size(120, 20);
             this.txtClaveFactura.TabIndex = 3;
+            this.txtClaveFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveFactura_KeyPress);
+            this.txtClaveFactura.Validated += new System.EventHandler(this.Valida_factura);
             // 
             // lblClaveArticulo
             // 
@@ -95,6 +103,8 @@
             this.txtClaveArticulo.Name = "txtClaveArticulo";
             this.txtClaveArticulo.Size = new System.Drawing.Size(120, 20);
             this.txtClaveArticulo.TabIndex = 5;
+            this.txtClaveArticulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveArticulo_KeyPress);
+            this.txtClaveArticulo.Validated += new System.EventHandler(this.Valida_articulo);
             // 
             // lblCantidad
             // 
@@ -105,13 +115,6 @@
             this.lblCantidad.Size = new System.Drawing.Size(54, 14);
             this.lblCantidad.TabIndex = 6;
             this.lblCantidad.Text = "Cantidad";
-            // 
-            // txtCantidad
-            // 
-            this.txtCantidad.Location = new System.Drawing.Point(17, 261);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(74, 20);
-            this.txtCantidad.TabIndex = 7;
             // 
             // btnAgregar
             // 
@@ -161,6 +164,7 @@
             // 
             // grpDatos
             // 
+            this.grpDatos.Controls.Add(this.numUpCantidad);
             this.grpDatos.Controls.Add(this.txtMuestraArticulo);
             this.grpDatos.Controls.Add(this.lblClaveProveedor);
             this.grpDatos.Controls.Add(this.txtClaveProveedor);
@@ -169,7 +173,6 @@
             this.grpDatos.Controls.Add(this.txtMuestraProveedor);
             this.grpDatos.Controls.Add(this.txtClaveFactura);
             this.grpDatos.Controls.Add(this.lblClaveArticulo);
-            this.grpDatos.Controls.Add(this.txtCantidad);
             this.grpDatos.Controls.Add(this.txtClaveArticulo);
             this.grpDatos.Controls.Add(this.lblCantidad);
             this.grpDatos.Location = new System.Drawing.Point(12, 23);
@@ -178,6 +181,19 @@
             this.grpDatos.TabIndex = 14;
             this.grpDatos.TabStop = false;
             this.grpDatos.Text = "Datos del detalle";
+            // 
+            // numUpCantidad
+            // 
+            this.numUpCantidad.Location = new System.Drawing.Point(18, 261);
+            this.numUpCantidad.Name = "numUpCantidad";
+            this.numUpCantidad.ReadOnly = true;
+            this.numUpCantidad.Size = new System.Drawing.Size(76, 20);
+            this.numUpCantidad.TabIndex = 15;
+            this.numUpCantidad.Validated += new System.EventHandler(this.numUpCantidad_Validated);
+            // 
+            // errorP
+            // 
+            this.errorP.ContainerControl = this;
             // 
             // frmAgregarDetalle
             // 
@@ -192,6 +208,8 @@
             this.Load += new System.EventHandler(this.frmAgregarDetalle_Load);
             this.grpDatos.ResumeLayout(false);
             this.grpDatos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpCantidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -205,12 +223,13 @@
         private System.Windows.Forms.Label lblClaveArticulo;
         private System.Windows.Forms.TextBox txtClaveArticulo;
         private System.Windows.Forms.Label lblCantidad;
-        private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.TextBox txtMuestraProveedor;
         private System.Windows.Forms.TextBox txtMuestraFactura;
         private System.Windows.Forms.TextBox txtMuestraArticulo;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.GroupBox grpDatos;
+        private System.Windows.Forms.NumericUpDown numUpCantidad;
+        private System.Windows.Forms.ErrorProvider errorP;
     }
 }

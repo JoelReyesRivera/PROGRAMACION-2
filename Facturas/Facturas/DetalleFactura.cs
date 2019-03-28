@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Facturas
 {
-    class DetalleFactura
+    public class DetalleFactura
     {
         private int ClaveFact, ClaveArt;
         private int Cant;

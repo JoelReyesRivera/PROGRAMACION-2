@@ -93,6 +93,7 @@
             this.Controls.Add(this.lblMenuPrincipal);
             this.Name = "frmMenuPrincipal";
             this.Text = "Menú Principal";
+            this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -91,6 +91,7 @@
             this.Controls.Add(this.btnFacturas);
             this.Name = "frmMenuFacturaDetalle";
             this.Text = "Menú factura detalle";
+            this.Load += new System.EventHandler(this.frmMenuFacturaDetalle_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

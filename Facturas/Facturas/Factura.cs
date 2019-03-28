@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Facturas
 {
-    class Factura
+    public class Factura
     {
         private int ClaveProv;
         private float Importe;

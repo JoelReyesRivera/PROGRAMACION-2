@@ -12,9 +12,18 @@ namespace Facturas
 {
     public partial class frmMenuFacturas : Form
     {
-        public frmMenuFacturas()
+        private ManejaArticulos AdmA;
+        private ManejaProveedores proveedores;
+        private ManejaFacturas mF;
+        private ManejaDetalleFactura mD;
+
+        public frmMenuFacturas(ManejaFacturas mF, ManejaDetalleFactura mD, ManejaProveedores proveedores,ManejaArticulos AdmA)
         {
             InitializeComponent();
+            this.mF = mF;
+            this.mD = mD;
+            this.proveedores = proveedores;
+            this.AdmA = AdmA;
         }
 
         private void lblMenu_Click(object sender, EventArgs e)
@@ -35,18 +44,33 @@ namespace Facturas
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
+            if (mF.pCount == 0)
+            {
+                MessageBox.Show("NO HAY FACTURAS REGISTRADAS","SIN FACTURAS",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
             frmConsultarFacturas ConsultaFacturas = new frmConsultarFacturas();
             ConsultaFacturas.ShowDialog();
         }
 
         private void btnMostrar_Click(object sender, EventArgs e)
         {
+            if (mF.pCount == 0)
+            {
+                MessageBox.Show("NO HAY FACTURAS REGISTRADAS", "SIN FACTURAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             frmMostrarFacturas MostrarFacturas = new frmMostrarFacturas();
             MostrarFacturas.ShowDialog();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            if (mF.pCount == 0)
+            {
+                MessageBox.Show("NO HAY FACTURAS REGISTRADAS", "SIN FACTURAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             frmBuscarFactura BuscarFactura = new frmBuscarFactura();
             BuscarFactura.ShowDialog();
         }

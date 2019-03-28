@@ -30,7 +30,7 @@ namespace Facturas
         {
             if (AdmA.pCount == 0)
             {
-                MessageBox.Show("NO HAY ARTICULOS EN EL SISTEMA", "INFORMACION", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                MessageBox.Show("NO HAY ARTICULOS EN EL SISTEMA", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             frmConsultaArticulo ConsultaArt = new frmConsultaArticulo(AdmA);
@@ -41,7 +41,7 @@ namespace Facturas
         {
             if (AdmA.pCount == 0)
             {
-                MessageBox.Show("NO HAY ARTICULOS EN EL SISTEMA", "INFORMACION", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                MessageBox.Show("NO HAY ARTICULOS EN EL SISTEMA", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             frmConsultaArticulos VerArt = new frmConsultaArticulos(AdmA);
@@ -52,7 +52,7 @@ namespace Facturas
         {
             if (AdmA.pCount == 0)
             {
-                MessageBox.Show("NO HAY ARTICULOS EN EL SISTEMA", "INFORMACION", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                MessageBox.Show("NO HAY ARTICULOS EN EL SISTEMA", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             frmModificaExistenciaArticulo Modifica = new frmModificaExistenciaArticulo(AdmA);

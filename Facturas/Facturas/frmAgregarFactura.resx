@@ -121,7 +121,7 @@
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        qgAADaoBbwWC3AAAABh0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzT7MfTgAANNNJREFUeF7t3c15
+        qQAADakBwryjsQAAABh0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzT7MfTgAANNNJREFUeF7t3c15
         G8mSheF5rgdyQau7pwt0QYt2QC7IBblAF+iCXOB6dnJBLvRE9ACdqOABiZ+Thcqsb/E+M4jLQhZakZGB
         +sP//P333xjAX3/99TU8h+/hR3gJr+Et/A5/A3ionIc5J3N+Pql5DGyJDOLxooB8Cd8OBeVPUAUHwHbl
         3P2i5jewBTKIx4hikd/y8xv+r6AKCoCxZPP+Tc134NFkEOvKAhHyUL4qIADG96LmPvBIMoh1RFHIc/os
@@ -367,5 +367,8 @@
   </metadata>
   <metadata name="Importe.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="errorP.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
 </root>
