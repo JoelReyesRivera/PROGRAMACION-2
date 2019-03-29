@@ -12,9 +12,14 @@ namespace Facturas
 {
     public partial class frmMostrarFacturas : Form
     {
-        public frmMostrarFacturas()
+        ManejaFacturas mF;
+        ManejaProveedores proveedores;
+
+        public frmMostrarFacturas(ManejaFacturas mF, ManejaProveedores proveedores)
         {
             InitializeComponent();
+            this.mF = mF;
+            this.proveedores = proveedores;
         }
 
         private void frmMostrarFacturas_Load(object sender, EventArgs e)

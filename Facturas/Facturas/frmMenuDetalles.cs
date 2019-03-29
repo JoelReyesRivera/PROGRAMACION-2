@@ -38,6 +38,16 @@ namespace Facturas
                 MessageBox.Show("NO HAY FACTURAS REGISTRADAS", "SIN FACTURAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (proveedores.pCount == 0)
+            {
+                MessageBox.Show("NO HAY PROVEEDORES REGISTRADOS","SIN PROVEEDORES",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+            if (AdmA.pCount == 0)
+            {
+                MessageBox.Show("NO HAY ARTÍCULOS REGISTRADOS","SIN ARTICULOS",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
             frmAgregarDetalle AgregaDetalle = new frmAgregarDetalle(mD, mF, proveedores, AdmA);
             AgregaDetalle.ShowDialog();
         }

@@ -38,7 +38,17 @@ namespace Facturas
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            frmAgregarFactura AgregaFactura = new frmAgregarFactura();
+            if (proveedores.pCount == 0)
+            {
+                MessageBox.Show("NO HAY PROVEEDORES REGISTRADOS", "SIN PROVEEDORES", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (AdmA.pCount == 0)
+            {
+                MessageBox.Show("NO HAY ARTÍCULOS REGISTRADOS", "SIN ARTÍCULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            frmAgregarFactura AgregaFactura = new frmAgregarFactura(mF,mD,proveedores,AdmA);
             AgregaFactura.ShowDialog();
         }
 
@@ -60,7 +70,7 @@ namespace Facturas
                 MessageBox.Show("NO HAY FACTURAS REGISTRADAS", "SIN FACTURAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            frmMostrarFacturas MostrarFacturas = new frmMostrarFacturas();
+            frmMostrarFacturas MostrarFacturas = new frmMostrarFacturas(mF,proveedores);
             MostrarFacturas.ShowDialog();
         }
 

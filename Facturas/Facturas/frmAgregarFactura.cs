@@ -12,9 +12,79 @@ namespace Facturas
 {
     public partial class frmAgregarFactura : Form
     {
-        public frmAgregarFactura()
+        ManejaFacturas mF;
+        ManejaDetalleFactura mD;
+        ManejaProveedores proveedores;
+        ManejaArticulos AdmA;
+
+        public frmAgregarFactura(ManejaFacturas mF, ManejaDetalleFactura mD, ManejaProveedores proveedores, ManejaArticulos AdmA)
         {
             InitializeComponent();
+            this.mF = mF;
+            this.mD = mD;
+            this.proveedores = proveedores;
+            this.AdmA = AdmA;
+        }
+        
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            DialogResult D = MessageBox.Show("¿DESEA AGREGAR LA FACTURA?","CONFIRMAR",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (D == DialogResult.Yes)
+            {
+                int ClaveFactura;
+                int ClaveProveedor;
+                if (txtClaveFactura.Text.Length == 0)
+                {
+                    MessageBox.Show("CLAVE DE FACTURA VACÍA","CAMPO VACÍO",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return;
+                }
+                if (!ValidaNumCadena(txtClaveFactura.Text))
+                {
+                    MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA","SÓLO NÚMEROS",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return;
+                }
+                try
+                {
+                    ClaveFactura = int.Parse(txtClaveFactura.Text);
+
+                }catch (Exception Ex)
+                {
+                    MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (mF.BuscaFacturaClave(ClaveFactura) != -1)
+                {
+                    MessageBox.Show("LA FACTURA YA EXISTE", "CLAVE FACTURA DUPLICADA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (txtClaveProveedor.Text.Length == 0)
+                {
+                    MessageBox.Show("CLAVE DE PROVEEDOR VACÍA","CAMPO VACÍO",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return;
+                }
+                if (!ValidaNumCadena(txtClaveProveedor.Text))
+                {
+                    MessageBox.Show("CLAVE DE PROVEEDOR NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                try
+                {
+                    ClaveProveedor = int.Parse(txtClaveProveedor.Text);
+
+                }catch (Exception Ex)
+                {
+                    MessageBox.Show("CLAVE DE PROVEEDOR NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (proveedores.getPosClave(ClaveProveedor) == -1)
+                {
+                    MessageBox.Show("EL PROVEEDOR NO EXISTE", "PROVEEDOR NO ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                DateTime fecha = DateTime.Now;
+                mF.AgregarFactura(ClaveFactura, ClaveProveedor, fecha.Day, fecha.Month, fecha.Year);
+                MessageBox.Show("FACTURA CREADA CORRECTAMENTE","FACTURA",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
         }
 
         private void Valida_Factura(object sender, EventArgs e)
@@ -22,7 +92,7 @@ namespace Facturas
             string ClaveFactura = txtClaveFactura.Text;
             if (!ValidaNumCadena(ClaveFactura))
             {
-                errorP.SetError(txtClaveFactura, "Clave de factura no válida");
+                errorP.SetError(txtClaveFactura, "CLAVE DE FACTURA NO VÁLIDA");
                 txtClaveFactura.Focus();
             }
             else
@@ -30,12 +100,11 @@ namespace Facturas
                 errorP.SetError(txtClaveFactura, "");
             }
         }
-
         private void txtClaveFactura_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
             {
-                errorP.SetError(txtClaveFactura, "Sólo se permiten números");
+                errorP.SetError(txtClaveFactura, "SÓLO SE PERMITEN NÚMEROS");
                 e.Handled = false;
             }
             else
@@ -49,7 +118,7 @@ namespace Facturas
             string Proveedor = txtClaveProveedor.Text;
             if (!ValidaNumCadena(Proveedor))
             {
-                errorP.SetError(txtClaveProveedor, "Clave de proveedor no válida");
+                errorP.SetError(txtClaveProveedor, "CLAVE DE PROVEEDOR NO VÁLIDA");
                 txtClaveProveedor.Focus();
             }
             else
@@ -62,7 +131,7 @@ namespace Facturas
         {
             if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
             {
-                errorP.SetError(txtClaveProveedor, "Sólo se permiten números");
+                errorP.SetError(txtClaveProveedor, "SÓLO SE PERMITEN NÚMEROS");
                 e.Handled = false;
             }
             else
@@ -75,7 +144,7 @@ namespace Facturas
             string ClaveArticulo = txtClaveArticuloEliminar.Text;
             if (!ValidaNumCadena(ClaveArticulo))
             {
-                errorP.SetError(txtClaveArticuloEliminar, "Clave de artículo no válida");
+                errorP.SetError(txtClaveArticuloEliminar, "CLAVE DE ARTÍCULO NO VÁLIDA");
                 txtClaveArticuloEliminar.Focus();
             }
             else
@@ -88,7 +157,7 @@ namespace Facturas
         {
             if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
             {
-                errorP.SetError(txtClaveArticuloEliminar, "Sólo se permiten números");
+                errorP.SetError(txtClaveArticuloEliminar, "SÓLO SE PERMITEN NÚMEROS");
                 e.Handled = false;
             }
             else
@@ -101,7 +170,7 @@ namespace Facturas
             string ClaveArticulo = txtClaveArticuloAgregar.Text;
             if (!ValidaNumCadena(ClaveArticulo))
             {
-                errorP.SetError(txtClaveArticuloAgregar, "Clave de artículo no válida");
+                errorP.SetError(txtClaveArticuloAgregar, "CLAVE DE ARTÍCULO NO VÁLIDA");
                 txtClaveArticuloAgregar.Focus();
             }
             else
@@ -114,7 +183,7 @@ namespace Facturas
         {
             if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
             {
-                errorP.SetError(txtClaveArticuloAgregar, "Sólo se permiten números");
+                errorP.SetError(txtClaveArticuloAgregar, "SÓLO SE PERMITEN NÚMEROS");
                 e.Handled = false;
             }
             else

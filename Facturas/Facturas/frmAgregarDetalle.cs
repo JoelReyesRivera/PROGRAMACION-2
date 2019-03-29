@@ -30,6 +30,131 @@ namespace Facturas
         {
 
         }
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            DialogResult D = MessageBox.Show("¿DESEA AGREGAR EL DETALLE?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (D == DialogResult.Yes)
+            {
+                int ClaveFactura, ClaveProveedor, ClaveArticulo;
+
+                if (txtClaveProveedor.Text.Length == 0)
+                {
+                    MessageBox.Show("CLAVE DE PROVEEDOR VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!ValidaNumCadena(txtClaveProveedor.Text))
+                {
+                    MessageBox.Show("CLAVE DE PROVEEDOR NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                try
+                {
+                    ClaveProveedor = int.Parse(txtClaveProveedor.Text);
+
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("CLAVE DE PROVEEDOR NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (proveedores.getPosClave(ClaveProveedor) == -1)
+                {
+                    MessageBox.Show("EL PROVEEDOR NO EXISTE", "PROVEEDOR NO ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (txtClaveFactura.Text.Length == 0)
+                {
+                    MessageBox.Show("CLAVE DE FACTURA VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!ValidaNumCadena(txtClaveFactura.Text))
+                {
+                    MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                try
+                {
+                    ClaveFactura = int.Parse(txtClaveFactura.Text);
+
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (mF.BuscaFacturaClaveProv(ClaveFactura, ClaveProveedor) == -1)
+                {
+                    MessageBox.Show("EL PROVEEDOR NO CUENTA CON LA FACTURA PROPORCIONADA", "NO SE ENCONTRÓ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (mD.DetallesPorFactura(ClaveFactura) >= 3)
+                {
+                    MessageBox.Show("CAPTURA MÁXIMA DE ARTÍCULOS SUPERADA PARA ESTA FACTURA", "DETALLES MÁXIMOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (AdmA.pCount - mD.DetallesPorFactura(ClaveFactura) == 0)
+                {
+                    MessageBox.Show("NO SE PUEDEN CAPTURAR MAS ARTICULOS A ESTA FACTURA, AGREGUE MAS ARTICULOS AL CATALAGO", "SIN ARTÍCULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (txtClaveArticulo.Text.Length == 0)
+                {
+                    MessageBox.Show("CLAVE DE ARTÍCULO VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!ValidaNumCadena(txtClaveArticulo.Text))
+                {
+                    MessageBox.Show("CLAVE DE ARTÍCULO NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                try
+                {
+                    ClaveArticulo = int.Parse(txtClaveArticulo.Text);
+
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("CLAVE DE ARTÍCULO NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (AdmA.BuscaArt(ClaveArticulo) == -1)
+                {
+                    MessageBox.Show("ARTÍCULO NO ENCONTRADO", "ARTÍCULO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (mD.DetalleRepetido(ClaveFactura, ClaveArticulo) != -1)
+                {
+                    MessageBox.Show("ARTÍCULO YA CAPTUDARO PARA ESTA FACTURA", "ARTICULO REPETIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (numUpCantidad.Value == 0)
+                {
+                    MessageBox.Show("CANTIDAD NO VÁLIDA", "CANTIDAD", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                int CantArt = (int)numUpCantidad.Value;
+                Articulo A = AdmA.RetornaArticulo(ClaveArticulo);
+                Factura F = mF.RetornaFactura(ClaveFactura);
+                Proveedor P = proveedores.RetornaProveedorClave(ClaveProveedor);
+                if (A.pCantidad - CantArt < 0)
+                {
+                    MessageBox.Show("EXISTENCIA NO SUFICIENTE PARA DICHA CANTIDAD", "SIN EXISTENCIA SUFICIENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                float Precio, TotalImp = 0;
+                Precio = A.pPrecio;
+                TotalImp = Precio * CantArt;
+                mD.AgregarDetalle(ClaveFactura, ClaveArticulo, CantArt, Precio);
+                F.pImporte = TotalImp;
+                P.pSaldo += TotalImp;
+                A.pCantidad -= CantArt;
+                MessageBox.Show("\n----------DATDOS DEL DETALLE----------"+"\nCLAVE ARTÍCULO: "+A.pClave+ "\nDESCRIPCIÓN: "+A.pDescripcion+"\nCANTIDAD: "+CantArt+ "\nPRECIO UNITARIO: "+A.pPrecio+
+                "\nEXISTENCIA RESTANTE: " + A.pCantidad+ "\nIMPORTE DE LA FACTURA: "+F.pImporte+ "\nSALDO DEL PROVEEDOR: "+P.pSaldo, "DETALLE AGREGADO",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                Limpiar();
+            }
+        }
 
         private void Valida_proveedor(object sender, EventArgs e)
         {
@@ -141,6 +266,18 @@ namespace Facturas
                     return false;
             }
             return true;
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+        private void Limpiar()
+        {
+            txtClaveProveedor.Text = "";
+            txtClaveFactura.Text = "";
+            txtClaveArticulo.Text = "";
+            numUpCantidad.Value = 0;
         }
     }
 }

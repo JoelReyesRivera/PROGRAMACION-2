@@ -38,7 +38,7 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.grpDatos = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvDetalles = new System.Windows.Forms.DataGridView();
             this.ClaveArticulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,7 +60,7 @@
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.grpDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).BeginInit();
             this.grpEliminarArticulo.SuspendLayout();
             this.grpAgregarArticulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpCantidad)).BeginInit();
@@ -101,7 +101,7 @@
             this.txtClaveProveedor.Location = new System.Drawing.Point(20, 116);
             this.txtClaveProveedor.Name = "txtClaveProveedor";
             this.txtClaveProveedor.Size = new System.Drawing.Size(115, 20);
-            this.txtClaveProveedor.TabIndex = 3;
+            this.txtClaveProveedor.TabIndex = 2;
             this.txtClaveProveedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveProveedor_KeyPress);
             this.txtClaveProveedor.Validated += new System.EventHandler(this.Valida_proveedor);
             // 
@@ -112,9 +112,10 @@
             this.btnAgregar.Location = new System.Drawing.Point(232, 44);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 4;
+            this.btnAgregar.TabIndex = 3;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnLimpiar
             // 
@@ -122,7 +123,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(232, 124);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiar.TabIndex = 5;
+            this.btnLimpiar.TabIndex = 4;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             // 
@@ -149,20 +150,20 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
-            // dataGridView1
+            // dgvDetalles
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDetalles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetalles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClaveArticulo,
             this.Descripcion,
             this.Marca,
             this.PrecioUnitario,
             this.Cantidad,
             this.Importe});
-            this.dataGridView1.Location = new System.Drawing.Point(15, 197);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(574, 150);
-            this.dataGridView1.TabIndex = 8;
+            this.dgvDetalles.Location = new System.Drawing.Point(15, 197);
+            this.dgvDetalles.Name = "dgvDetalles";
+            this.dgvDetalles.Size = new System.Drawing.Size(574, 150);
+            this.dgvDetalles.TabIndex = 8;
             // 
             // ClaveArticulo
             // 
@@ -216,7 +217,7 @@
             this.btnEliminarArticulo.Location = new System.Drawing.Point(22, 102);
             this.btnEliminarArticulo.Name = "btnEliminarArticulo";
             this.btnEliminarArticulo.Size = new System.Drawing.Size(103, 23);
-            this.btnEliminarArticulo.TabIndex = 9;
+            this.btnEliminarArticulo.TabIndex = 6;
             this.btnEliminarArticulo.Text = "Eliminar Articulo";
             this.btnEliminarArticulo.UseVisualStyleBackColor = true;
             // 
@@ -235,7 +236,7 @@
             this.txtClaveArticuloEliminar.Location = new System.Drawing.Point(20, 52);
             this.txtClaveArticuloEliminar.Name = "txtClaveArticuloEliminar";
             this.txtClaveArticuloEliminar.Size = new System.Drawing.Size(115, 20);
-            this.txtClaveArticuloEliminar.TabIndex = 1;
+            this.txtClaveArticuloEliminar.TabIndex = 5;
             this.txtClaveArticuloEliminar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveArticuloEliminar_KeyPress);
             this.txtClaveArticuloEliminar.Validated += new System.EventHandler(this.Valida_claveart);
             // 
@@ -259,7 +260,7 @@
             this.numUpCantidad.Name = "numUpCantidad";
             this.numUpCantidad.ReadOnly = true;
             this.numUpCantidad.Size = new System.Drawing.Size(120, 20);
-            this.numUpCantidad.TabIndex = 12;
+            this.numUpCantidad.TabIndex = 8;
             this.numUpCantidad.Validated += new System.EventHandler(this.numUpCantidad_Validated);
             // 
             // lblCantidad
@@ -298,7 +299,7 @@
             this.txtClaveArticuloAgregar.Location = new System.Drawing.Point(20, 52);
             this.txtClaveArticuloAgregar.Name = "txtClaveArticuloAgregar";
             this.txtClaveArticuloAgregar.Size = new System.Drawing.Size(115, 20);
-            this.txtClaveArticuloAgregar.TabIndex = 1;
+            this.txtClaveArticuloAgregar.TabIndex = 7;
             this.txtClaveArticuloAgregar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveArticuloAgregar_KeyPress);
             this.txtClaveArticuloAgregar.Validated += new System.EventHandler(this.Valida_claveartAgrega);
             // 
@@ -335,7 +336,7 @@
             this.Controls.Add(this.lblImporteTotal);
             this.Controls.Add(this.grpAgregarArticulo);
             this.Controls.Add(this.grpEliminarArticulo);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvDetalles);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.grpDatos);
             this.Controls.Add(this.btnLimpiar);
@@ -346,7 +347,7 @@
             this.grpDatos.ResumeLayout(false);
             this.grpDatos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).EndInit();
             this.grpEliminarArticulo.ResumeLayout(false);
             this.grpEliminarArticulo.PerformLayout();
             this.grpAgregarArticulo.ResumeLayout(false);
@@ -368,7 +369,7 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.GroupBox grpDatos;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvDetalles;
         private System.Windows.Forms.GroupBox grpEliminarArticulo;
         private System.Windows.Forms.Button btnEliminarArticulo;
         private System.Windows.Forms.Label lblClaveArticuloEliminar;

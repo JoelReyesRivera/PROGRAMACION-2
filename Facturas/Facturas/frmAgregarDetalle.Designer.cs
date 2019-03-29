@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarDetalle));
             this.lblClaveProveedor = new System.Windows.Forms.Label();
             this.txtClaveProveedor = new System.Windows.Forms.TextBox();
             this.lblClaveFactura = new System.Windows.Forms.Label();
@@ -37,14 +38,15 @@
             this.txtClaveArticulo = new System.Windows.Forms.TextBox();
             this.lblCantidad = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.txtMuestraProveedor = new System.Windows.Forms.TextBox();
-            this.txtMuestraFactura = new System.Windows.Forms.TextBox();
-            this.txtMuestraArticulo = new System.Windows.Forms.TextBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.grpDatos = new System.Windows.Forms.GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.numUpCantidad = new System.Windows.Forms.NumericUpDown();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.grpDatos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.SuspendLayout();
@@ -53,18 +55,18 @@
             // 
             this.lblClaveProveedor.AutoSize = true;
             this.lblClaveProveedor.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClaveProveedor.Location = new System.Drawing.Point(14, 23);
+            this.lblClaveProveedor.Location = new System.Drawing.Point(16, 96);
             this.lblClaveProveedor.Name = "lblClaveProveedor";
-            this.lblClaveProveedor.Size = new System.Drawing.Size(123, 14);
+            this.lblClaveProveedor.Size = new System.Drawing.Size(92, 14);
             this.lblClaveProveedor.TabIndex = 0;
-            this.lblClaveProveedor.Text = "Número de proveedor";
+            this.lblClaveProveedor.Text = "Clave Proveedor";
             // 
             // txtClaveProveedor
             // 
-            this.txtClaveProveedor.Location = new System.Drawing.Point(17, 50);
+            this.txtClaveProveedor.Location = new System.Drawing.Point(19, 113);
             this.txtClaveProveedor.Name = "txtClaveProveedor";
             this.txtClaveProveedor.Size = new System.Drawing.Size(120, 20);
-            this.txtClaveProveedor.TabIndex = 1;
+            this.txtClaveProveedor.TabIndex = 2;
             this.txtClaveProveedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveProveedor_KeyPress);
             this.txtClaveProveedor.Validated += new System.EventHandler(this.Valida_proveedor);
             // 
@@ -72,7 +74,7 @@
             // 
             this.lblClaveFactura.AutoSize = true;
             this.lblClaveFactura.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClaveFactura.Location = new System.Drawing.Point(15, 97);
+            this.lblClaveFactura.Location = new System.Drawing.Point(16, 23);
             this.lblClaveFactura.Name = "lblClaveFactura";
             this.lblClaveFactura.Size = new System.Drawing.Size(76, 14);
             this.lblClaveFactura.TabIndex = 2;
@@ -80,10 +82,10 @@
             // 
             // txtClaveFactura
             // 
-            this.txtClaveFactura.Location = new System.Drawing.Point(17, 124);
+            this.txtClaveFactura.Location = new System.Drawing.Point(19, 42);
             this.txtClaveFactura.Name = "txtClaveFactura";
             this.txtClaveFactura.Size = new System.Drawing.Size(120, 20);
-            this.txtClaveFactura.TabIndex = 3;
+            this.txtClaveFactura.TabIndex = 1;
             this.txtClaveFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveFactura_KeyPress);
             this.txtClaveFactura.Validated += new System.EventHandler(this.Valida_factura);
             // 
@@ -99,10 +101,10 @@
             // 
             // txtClaveArticulo
             // 
-            this.txtClaveArticulo.Location = new System.Drawing.Point(17, 192);
+            this.txtClaveArticulo.Location = new System.Drawing.Point(18, 183);
             this.txtClaveArticulo.Name = "txtClaveArticulo";
             this.txtClaveArticulo.Size = new System.Drawing.Size(120, 20);
-            this.txtClaveArticulo.TabIndex = 5;
+            this.txtClaveArticulo.TabIndex = 3;
             this.txtClaveArticulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveArticulo_KeyPress);
             this.txtClaveArticulo.Validated += new System.EventHandler(this.Valida_articulo);
             // 
@@ -110,7 +112,7 @@
             // 
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(15, 235);
+            this.lblCantidad.Location = new System.Drawing.Point(16, 231);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(54, 14);
             this.lblCantidad.TabIndex = 6;
@@ -123,33 +125,10 @@
             this.btnAgregar.Location = new System.Drawing.Point(63, 348);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 8;
+            this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "Agregar Detalle";
             this.btnAgregar.UseVisualStyleBackColor = true;
-            // 
-            // txtMuestraProveedor
-            // 
-            this.txtMuestraProveedor.Location = new System.Drawing.Point(173, 50);
-            this.txtMuestraProveedor.Name = "txtMuestraProveedor";
-            this.txtMuestraProveedor.ReadOnly = true;
-            this.txtMuestraProveedor.Size = new System.Drawing.Size(117, 20);
-            this.txtMuestraProveedor.TabIndex = 10;
-            // 
-            // txtMuestraFactura
-            // 
-            this.txtMuestraFactura.Location = new System.Drawing.Point(173, 124);
-            this.txtMuestraFactura.Name = "txtMuestraFactura";
-            this.txtMuestraFactura.ReadOnly = true;
-            this.txtMuestraFactura.Size = new System.Drawing.Size(117, 20);
-            this.txtMuestraFactura.TabIndex = 11;
-            // 
-            // txtMuestraArticulo
-            // 
-            this.txtMuestraArticulo.Location = new System.Drawing.Point(173, 191);
-            this.txtMuestraArticulo.Name = "txtMuestraArticulo";
-            this.txtMuestraArticulo.ReadOnly = true;
-            this.txtMuestraArticulo.Size = new System.Drawing.Size(117, 20);
-            this.txtMuestraArticulo.TabIndex = 12;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnLimpiar
             // 
@@ -158,19 +137,19 @@
             this.btnLimpiar.Location = new System.Drawing.Point(198, 348);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiar.TabIndex = 13;
+            this.btnLimpiar.TabIndex = 6;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // grpDatos
             // 
+            this.grpDatos.Controls.Add(this.pictureBox2);
+            this.grpDatos.Controls.Add(this.pictureBox1);
             this.grpDatos.Controls.Add(this.numUpCantidad);
-            this.grpDatos.Controls.Add(this.txtMuestraArticulo);
             this.grpDatos.Controls.Add(this.lblClaveProveedor);
             this.grpDatos.Controls.Add(this.txtClaveProveedor);
-            this.grpDatos.Controls.Add(this.txtMuestraFactura);
             this.grpDatos.Controls.Add(this.lblClaveFactura);
-            this.grpDatos.Controls.Add(this.txtMuestraProveedor);
             this.grpDatos.Controls.Add(this.txtClaveFactura);
             this.grpDatos.Controls.Add(this.lblClaveArticulo);
             this.grpDatos.Controls.Add(this.txtClaveArticulo);
@@ -182,13 +161,33 @@
             this.grpDatos.TabStop = false;
             this.grpDatos.Text = "Datos del detalle";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(167, 222);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(126, 69);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 17;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(167, 42);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(133, 138);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            // 
             // numUpCantidad
             // 
-            this.numUpCantidad.Location = new System.Drawing.Point(18, 261);
+            this.numUpCantidad.Location = new System.Drawing.Point(19, 248);
             this.numUpCantidad.Name = "numUpCantidad";
             this.numUpCantidad.ReadOnly = true;
             this.numUpCantidad.Size = new System.Drawing.Size(76, 20);
-            this.numUpCantidad.TabIndex = 15;
+            this.numUpCantidad.TabIndex = 4;
             this.numUpCantidad.Validated += new System.EventHandler(this.numUpCantidad_Validated);
             // 
             // errorP
@@ -208,6 +207,8 @@
             this.Load += new System.EventHandler(this.frmAgregarDetalle_Load);
             this.grpDatos.ResumeLayout(false);
             this.grpDatos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpCantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.ResumeLayout(false);
@@ -224,12 +225,11 @@
         private System.Windows.Forms.TextBox txtClaveArticulo;
         private System.Windows.Forms.Label lblCantidad;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.TextBox txtMuestraProveedor;
-        private System.Windows.Forms.TextBox txtMuestraFactura;
-        private System.Windows.Forms.TextBox txtMuestraArticulo;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.GroupBox grpDatos;
         private System.Windows.Forms.NumericUpDown numUpCantidad;
         private System.Windows.Forms.ErrorProvider errorP;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
