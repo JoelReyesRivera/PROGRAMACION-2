@@ -27,7 +27,7 @@ namespace Facturas
             if (Result == DialogResult.No)
                 return;
 
-            string Desc = txtDescripcion.Text; string Modelo = txtModelo.Text; ; float Precio; int Cant = Convert.ToInt32(nudCantidad.Value);
+            string Desc = txtDescripcion.Text, Prec = txtPrecio.Text, Modelo = txtModelo.Text; ; float Precio; int Cant = Convert.ToInt32(nudCantidad.Value);
 
             if (IsEmpty(Desc))
             {
@@ -51,7 +51,7 @@ namespace Facturas
                 Limpiar();
                 return;
             }
-            if (!(ValidaTextoNum(txtPrecio.Text)))
+            if (!(ValidaTextoNum(Prec)))
             {
                 MessageBox.Show("EL PRECIO ESTA ESCRITO DE FORMA INCORRECTA", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Limpiar();
