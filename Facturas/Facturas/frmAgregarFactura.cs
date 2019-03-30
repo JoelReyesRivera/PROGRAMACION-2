@@ -25,29 +25,31 @@ namespace Facturas
             this.proveedores = proveedores;
             this.AdmA = AdmA;
         }
-        
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            DialogResult D = MessageBox.Show("¿DESEA AGREGAR LA FACTURA?","CONFIRMAR",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            //HACER EL DETALLE FACTURA
+            DialogResult D = MessageBox.Show("¿DESEA AGREGAR LA FACTURA?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (D == DialogResult.Yes)
             {
-                int ClaveFactura;
-                int ClaveProveedor;
-                if (txtClaveFactura.Text.Length == 0)
+                int ClaveFactura, ClaveProveedor; string ClaveF = txtClaveFactura.Text, ClaveP = txtClaveProveedor.Text;
+
+                if (ClaveF.Length == 0)
                 {
-                    MessageBox.Show("CLAVE DE FACTURA VACÍA","CAMPO VACÍO",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("CLAVE DE FACTURA VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (!ValidaNumCadena(txtClaveFactura.Text))
+                if (!ValidaNumCadena(ClaveF))
                 {
-                    MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA","SÓLO NÚMEROS",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 try
                 {
                     ClaveFactura = int.Parse(txtClaveFactura.Text);
 
-                }catch (Exception Ex)
+                }
+                catch (Exception Ex)
                 {
                     MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -57,12 +59,12 @@ namespace Facturas
                     MessageBox.Show("LA FACTURA YA EXISTE", "CLAVE FACTURA DUPLICADA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (txtClaveProveedor.Text.Length == 0)
+                if (ClaveP.Length == 0)
                 {
-                    MessageBox.Show("CLAVE DE PROVEEDOR VACÍA","CAMPO VACÍO",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("CLAVE DE PROVEEDOR VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (!ValidaNumCadena(txtClaveProveedor.Text))
+                if (!ValidaNumCadena(ClaveP))
                 {
                     MessageBox.Show("CLAVE DE PROVEEDOR NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -71,7 +73,8 @@ namespace Facturas
                 {
                     ClaveProveedor = int.Parse(txtClaveProveedor.Text);
 
-                }catch (Exception Ex)
+                }
+                catch (Exception Ex)
                 {
                     MessageBox.Show("CLAVE DE PROVEEDOR NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -81,9 +84,25 @@ namespace Facturas
                     MessageBox.Show("EL PROVEEDOR NO EXISTE", "PROVEEDOR NO ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                int CantArt = lvArticulos.Items.Count;
+                if (CantArt == 0)
+                {
+                    MessageBox.Show("NO SE PUEDE GUARDAR LA FACTURA, NO HAY ARTICULOS SELECCIONADOS", "SIN ARTICULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 DateTime fecha = DateTime.Now;
                 mF.AgregarFactura(ClaveFactura, ClaveProveedor, fecha.Day, fecha.Month, fecha.Year);
-                MessageBox.Show("FACTURA CREADA CORRECTAMENTE","FACTURA",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+                //CREA DETALLE FACTURA POR CADA DIFERENTE TIPO DE ARTICULO
+                for (int i = 0; i < lvArticulos.Items.Count; i++)
+                {
+                    int ClaveArt = Convert.ToInt32(lvArticulos.Items[i].Text);
+                    int Cant = Convert.ToInt32(lvArticulos.Items[i].SubItems[4].Text);
+                    float Precio = Convert.ToSingle(lvArticulos.Items[i].SubItems[3].Text);
+                    mD.AgregarDetalle(ClaveFactura, ClaveArt, Cant, Precio);
+                }
+                MessageBox.Show("FACTURA CREADA CORRECTAMENTE CON SUS " + CantArt + " DETALLES DE FACTURA", "FACTURA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Limpiar();
             }
         }
 
@@ -139,32 +158,6 @@ namespace Facturas
                 errorP.SetError(txtClaveProveedor, "");
             }
         }
-        private void Valida_claveart(object sender, EventArgs e)
-        {
-            string ClaveArticulo = txtClaveArticuloEliminar.Text;
-            if (!ValidaNumCadena(ClaveArticulo))
-            {
-                errorP.SetError(txtClaveArticuloEliminar, "CLAVE DE ARTÍCULO NO VÁLIDA");
-                txtClaveArticuloEliminar.Focus();
-            }
-            else
-            {
-                errorP.SetError(txtClaveArticuloEliminar, "");
-            }
-        }
-
-        private void txtClaveArticuloEliminar_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
-            {
-                errorP.SetError(txtClaveArticuloEliminar, "SÓLO SE PERMITEN NÚMEROS");
-                e.Handled = false;
-            }
-            else
-            {
-                errorP.SetError(txtClaveArticuloEliminar, "");
-            }
-        }
         private void Valida_claveartAgrega(object sender, EventArgs e)
         {
             string ClaveArticulo = txtClaveArticuloAgregar.Text;
@@ -200,7 +193,7 @@ namespace Facturas
             }
             else
             {
-                errorP.SetError(numUpCantidad,"");
+                errorP.SetError(numUpCantidad, "");
             }
         }
         private bool ValidaNumCadena(string Cadena)
@@ -222,9 +215,151 @@ namespace Facturas
             return true;
         }
 
-        private void frmAgregarFactura_Load(object sender, EventArgs e)
+        private void btnLimpiar_Click(object sender, EventArgs e)
         {
+            Limpiar();
+        }
 
+        private void Limpiar()
+        {
+            errorP.Clear();
+            txtClaveFactura.Text = "";
+            txtClaveProveedor.Text = "";
+            txtClaveArticuloAgregar.Text = "";
+            numUpCantidad.Value = 1;
+            for (int i = 0; i < lvArticulos.Items.Count; i++)
+            {
+                int Cantidad = Convert.ToInt32(lvArticulos.Items[i].SubItems[4].Text);
+                int Calve = Convert.ToInt32(lvArticulos.Items[i].Text);
+                Articulo Art = AdmA.RetornaArticulo(Calve);
+                Art.pCantidad += Cantidad;
+            }
+            lvArticulos.Items.Clear();
+            lblImporte.Text = "$0";
+        }
+
+        private void btnAgregarArticulo_Click(object sender, EventArgs e)
+        {
+            string ClaveF = txtClaveFactura.Text, ClaveP = txtClaveProveedor.Text;
+            if (ClaveF.Length == 0)
+            {
+                MessageBox.Show("NO PUEDE AGREGAR ARTICULOS SI NO TIENE UNA FACTURA", "SIN FACTURA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (ClaveP.Length == 0)
+            {
+                MessageBox.Show("NO PUEDE AGREGAR ARTICULOS SI NO TIENE UNA PROVEEDOR", "SIN PROVEDOR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int CantArt = lvArticulos.Items.Count;
+            if (CantArt > 3)
+            {
+                MessageBox.Show("NO SE PUEDE AGRGAR MÁS DE 3 TIPOS DIFERENTES DE ARTICULOS", "ARTICULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int ClaveArticulo; string ClaveA = txtClaveArticuloAgregar.Text;
+
+            if (ClaveA.Length == 0)
+            {
+                MessageBox.Show("CLAVE DEL ARTICULO VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!ValidaNumCadena(ClaveA))
+            {
+                MessageBox.Show("CLAVE DEL ARTICULO NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                ClaveArticulo = Convert.ToInt32(txtClaveArticuloAgregar.Text);
+
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("CLAVE DEL ARTICULO NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (AdmA.BuscaArt(ClaveArticulo) == -1)
+            {
+                MessageBox.Show("CLAVE DE ARTICULO INEXISTENTE", "ARTICULO INEXISTENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            Articulo Art = AdmA.RetornaArticulo(ClaveArticulo); int Cant = Convert.ToInt32(numUpCantidad.Value);
+            if (Art.pCantidad < Cant)
+            {
+                MessageBox.Show("LA EXISTENCIA DEL ARTICULO NO ES LA SUFICIENTE PARA LA CANTIDAD INGRESADA", "EXISTENCIA INSUFICIENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            float PrecioTotal = Cant * Art.pPrecio;
+
+            for (int i = 0; i < lvArticulos.Items.Count; i++) //BUSCA SI EL ARTICULO YA ESTA AGREGADO EN EL LIST VIEW
+            {
+                if (lvArticulos.Items[i].Text.Trim() == ClaveA)
+                {
+                    int rc = Convert.ToInt32(lvArticulos.Items[i].SubItems[4].Text);
+                    int cf = rc + Cant;
+                    lvArticulos.Items[i].SubItems[4].Text = cf.ToString();
+                    Art.pCantidad -= Cant;
+                    float rp = Convert.ToInt32(lvArticulos.Items[i].SubItems[5].Text);
+                    float pf = PrecioTotal + rp;
+                    lvArticulos.Items[i].SubItems[5].Text = pf.ToString();
+                    CalculaImporte();
+                    return;
+                }
+            }
+            //SI EL ARTICULO A AGREGAR NO SE ENCUENTRA EN LA LIST VIEW 
+            //AGREGA LOS DATOS DEL ARTICULO EN UNA LISTA
+            ListViewItem Registro = new ListViewItem(ClaveA);
+            Registro.SubItems.Add(Art.pDescripcion);
+            Registro.SubItems.Add(Art.pModelo);
+            Registro.SubItems.Add(Art.pPrecio.ToString());
+            Registro.SubItems.Add(Cant.ToString());
+            Registro.SubItems.Add(PrecioTotal.ToString());
+            //AGREGA LA LISTA CON TODOS LOS DATOS DEL ARTICULO EN EL LIST VIEW
+            lvArticulos.Items.Add(Registro);
+            Art.pCantidad -= Cant;
+            CalculaImporte();
+        }
+
+        private void CalculaImporte()
+        {
+            float Importe = 0;
+            for (int i = 0; i < lvArticulos.Items.Count; i++)
+            {
+                float Cantidad = Convert.ToSingle(lvArticulos.Items[i].SubItems[5].Text);
+                Importe += Cantidad;
+                lblImporte.Text = "$" + Importe;
+            }
+        }
+        private void numUpCantidad_ValueChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void btnEliminarArticulo_Click(object sender, EventArgs e)
+        {
+            if (lvArticulos.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("NO HA SELECCIONADO NINGUN ARTICULO", "SIN SELECCIONAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DialogResult R = MessageBox.Show("¿DESEA ELIMINAR EL ARTICULO SELECCIONADO?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (R == DialogResult.Yes)
+            {
+                for (int i = 0; i < lvArticulos.Items.Count; i++)
+                {
+                    if (lvArticulos.SelectedItems.Contains(lvArticulos.Items[i]))
+                    {
+                        int Cantidad = Convert.ToInt32(lvArticulos.Items[i].SubItems[4].Text);
+                        int Calve = Convert.ToInt32(lvArticulos.Items[i].Text);
+                        Articulo Art = AdmA.RetornaArticulo(Calve);
+                        Art.pCantidad += Cantidad;
+                        lvArticulos.Items[i].Remove();
+                    }
+                }
+            }
+            CalculaImporte();
         }
     }
 }

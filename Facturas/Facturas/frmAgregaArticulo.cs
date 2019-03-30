@@ -213,15 +213,12 @@ namespace Facturas
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            DialogResult Result = MessageBox.Show("¿DESEA SALIR DE ESTA VENTANA?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult Result = MessageBox.Show("¿DESEA SALIR?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (Result == DialogResult.Yes)
                 this.Close();
         }
 
-        private void txtDescripcion_TextChanged(object sender, EventArgs e)
-        {
-        }
-
+        
     }
 }

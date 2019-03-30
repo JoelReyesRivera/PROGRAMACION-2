@@ -97,7 +97,6 @@
             this.txtDescripcion.Size = new System.Drawing.Size(245, 20);
             this.txtDescripcion.TabIndex = 1;
             this.toolTipMostrar.SetToolTip(this.txtDescripcion, "Descripción del Articulo");
-            this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
             this.txtDescripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescripcion_KeyPress);
             this.txtDescripcion.Validated += new System.EventHandler(this.txtDescripcion_Validated);
             // 

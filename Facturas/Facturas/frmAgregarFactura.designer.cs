@@ -38,17 +38,6 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.grpDatos = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dgvDetalles = new System.Windows.Forms.DataGridView();
-            this.ClaveArticulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grpEliminarArticulo = new System.Windows.Forms.GroupBox();
-            this.btnEliminarArticulo = new System.Windows.Forms.Button();
-            this.lblClaveArticuloEliminar = new System.Windows.Forms.Label();
-            this.txtClaveArticuloEliminar = new System.Windows.Forms.TextBox();
             this.grpAgregarArticulo = new System.Windows.Forms.GroupBox();
             this.numUpCantidad = new System.Windows.Forms.NumericUpDown();
             this.lblCantidad = new System.Windows.Forms.Label();
@@ -58,10 +47,16 @@
             this.lblImporteTotal = new System.Windows.Forms.Label();
             this.lblImporte = new System.Windows.Forms.Label();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnEliminarArticulo = new System.Windows.Forms.Button();
+            this.lvArticulos = new System.Windows.Forms.ListView();
+            this.ColumnClave = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnDesc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnModelo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnPrecio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnCantidad = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnPrecioFinal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.grpDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).BeginInit();
-            this.grpEliminarArticulo.SuspendLayout();
             this.grpAgregarArticulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
@@ -109,22 +104,22 @@
             // 
             this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(232, 44);
+            this.btnAgregar.Location = new System.Drawing.Point(451, 276);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 3;
-            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.Size = new System.Drawing.Size(137, 45);
+            this.btnAgregar.TabIndex = 7;
+            this.btnAgregar.Text = "Agregar Factura";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnLimpiar
             // 
             this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLimpiar.Location = new System.Drawing.Point(232, 124);
+            this.btnLimpiar.Location = new System.Drawing.Point(679, 277);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiar.TabIndex = 4;
-            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(137, 44);
+            this.btnLimpiar.TabIndex = 8;
+            this.btnLimpiar.Text = "Limpiar Ventana";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             // 
             // grpDatos
@@ -143,113 +138,22 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(814, 255);
+            this.pictureBox1.Location = new System.Drawing.Point(219, 48);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 92);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
-            // dgvDetalles
-            // 
-            this.dgvDetalles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDetalles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ClaveArticulo,
-            this.Descripcion,
-            this.Marca,
-            this.PrecioUnitario,
-            this.Cantidad,
-            this.Importe});
-            this.dgvDetalles.Location = new System.Drawing.Point(15, 197);
-            this.dgvDetalles.Name = "dgvDetalles";
-            this.dgvDetalles.Size = new System.Drawing.Size(574, 150);
-            this.dgvDetalles.TabIndex = 8;
-            // 
-            // ClaveArticulo
-            // 
-            this.ClaveArticulo.HeaderText = "ClaveArtiículo";
-            this.ClaveArticulo.Name = "ClaveArticulo";
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripción";
-            this.Descripcion.Name = "Descripcion";
-            // 
-            // Marca
-            // 
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
-            // 
-            // PrecioUnitario
-            // 
-            this.PrecioUnitario.HeaderText = "PrecioUnitario";
-            this.PrecioUnitario.Name = "PrecioUnitario";
-            this.PrecioUnitario.Width = 80;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Width = 70;
-            // 
-            // Importe
-            // 
-            this.Importe.HeaderText = "Importe";
-            this.Importe.Name = "Importe";
-            this.Importe.Width = 80;
-            // 
-            // grpEliminarArticulo
-            // 
-            this.grpEliminarArticulo.Controls.Add(this.btnEliminarArticulo);
-            this.grpEliminarArticulo.Controls.Add(this.lblClaveArticuloEliminar);
-            this.grpEliminarArticulo.Controls.Add(this.txtClaveArticuloEliminar);
-            this.grpEliminarArticulo.Location = new System.Drawing.Point(360, 22);
-            this.grpEliminarArticulo.Name = "grpEliminarArticulo";
-            this.grpEliminarArticulo.Size = new System.Drawing.Size(167, 154);
-            this.grpEliminarArticulo.TabIndex = 7;
-            this.grpEliminarArticulo.TabStop = false;
-            this.grpEliminarArticulo.Text = "Eliminar Artículo";
-            // 
-            // btnEliminarArticulo
-            // 
-            this.btnEliminarArticulo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminarArticulo.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarArticulo.Location = new System.Drawing.Point(22, 102);
-            this.btnEliminarArticulo.Name = "btnEliminarArticulo";
-            this.btnEliminarArticulo.Size = new System.Drawing.Size(103, 23);
-            this.btnEliminarArticulo.TabIndex = 6;
-            this.btnEliminarArticulo.Text = "Eliminar Articulo";
-            this.btnEliminarArticulo.UseVisualStyleBackColor = true;
-            // 
-            // lblClaveArticuloEliminar
-            // 
-            this.lblClaveArticuloEliminar.AutoSize = true;
-            this.lblClaveArticuloEliminar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClaveArticuloEliminar.Location = new System.Drawing.Point(19, 26);
-            this.lblClaveArticuloEliminar.Name = "lblClaveArticuloEliminar";
-            this.lblClaveArticuloEliminar.Size = new System.Drawing.Size(98, 14);
-            this.lblClaveArticuloEliminar.TabIndex = 0;
-            this.lblClaveArticuloEliminar.Text = "Clave del Artículo";
-            // 
-            // txtClaveArticuloEliminar
-            // 
-            this.txtClaveArticuloEliminar.Location = new System.Drawing.Point(20, 52);
-            this.txtClaveArticuloEliminar.Name = "txtClaveArticuloEliminar";
-            this.txtClaveArticuloEliminar.Size = new System.Drawing.Size(115, 20);
-            this.txtClaveArticuloEliminar.TabIndex = 5;
-            this.txtClaveArticuloEliminar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveArticuloEliminar_KeyPress);
-            this.txtClaveArticuloEliminar.Validated += new System.EventHandler(this.Valida_claveart);
-            // 
             // grpAgregarArticulo
             // 
             this.grpAgregarArticulo.Controls.Add(this.numUpCantidad);
             this.grpAgregarArticulo.Controls.Add(this.lblCantidad);
-            this.grpAgregarArticulo.Controls.Add(this.btnAgregarArticulo);
             this.grpAgregarArticulo.Controls.Add(this.lblClaveArticuloAgregar);
             this.grpAgregarArticulo.Controls.Add(this.txtClaveArticuloAgregar);
-            this.grpAgregarArticulo.Location = new System.Drawing.Point(608, 22);
+            this.grpAgregarArticulo.Location = new System.Drawing.Point(22, 187);
             this.grpAgregarArticulo.Name = "grpAgregarArticulo";
-            this.grpAgregarArticulo.Size = new System.Drawing.Size(167, 179);
+            this.grpAgregarArticulo.Size = new System.Drawing.Size(167, 160);
             this.grpAgregarArticulo.TabIndex = 10;
             this.grpAgregarArticulo.TabStop = false;
             this.grpAgregarArticulo.Text = "Agregar Artículo";
@@ -260,7 +164,12 @@
             this.numUpCantidad.Name = "numUpCantidad";
             this.numUpCantidad.ReadOnly = true;
             this.numUpCantidad.Size = new System.Drawing.Size(120, 20);
-            this.numUpCantidad.TabIndex = 8;
+            this.numUpCantidad.TabIndex = 4;
+            this.numUpCantidad.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numUpCantidad.Validated += new System.EventHandler(this.numUpCantidad_Validated);
             // 
             // lblCantidad
@@ -277,10 +186,10 @@
             // 
             this.btnAgregarArticulo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregarArticulo.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarArticulo.Location = new System.Drawing.Point(22, 149);
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(216, 204);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(103, 23);
-            this.btnAgregarArticulo.TabIndex = 9;
+            this.btnAgregarArticulo.TabIndex = 5;
             this.btnAgregarArticulo.Text = "Agregar Artculo";
             this.btnAgregarArticulo.UseVisualStyleBackColor = true;
             // 
@@ -299,7 +208,7 @@
             this.txtClaveArticuloAgregar.Location = new System.Drawing.Point(20, 52);
             this.txtClaveArticuloAgregar.Name = "txtClaveArticuloAgregar";
             this.txtClaveArticuloAgregar.Size = new System.Drawing.Size(115, 20);
-            this.txtClaveArticuloAgregar.TabIndex = 7;
+            this.txtClaveArticuloAgregar.TabIndex = 3;
             this.txtClaveArticuloAgregar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveArticuloAgregar_KeyPress);
             this.txtClaveArticuloAgregar.Validated += new System.EventHandler(this.Valida_claveartAgrega);
             // 
@@ -307,7 +216,7 @@
             // 
             this.lblImporteTotal.AutoSize = true;
             this.lblImporteTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImporteTotal.Location = new System.Drawing.Point(599, 279);
+            this.lblImporteTotal.Location = new System.Drawing.Point(748, 237);
             this.lblImporteTotal.Name = "lblImporteTotal";
             this.lblImporteTotal.Size = new System.Drawing.Size(111, 20);
             this.lblImporteTotal.TabIndex = 11;
@@ -317,7 +226,7 @@
             // 
             this.lblImporte.AutoSize = true;
             this.lblImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImporte.Location = new System.Drawing.Point(704, 279);
+            this.lblImporte.Location = new System.Drawing.Point(865, 237);
             this.lblImporte.Name = "lblImporte";
             this.lblImporte.Size = new System.Drawing.Size(27, 20);
             this.lblImporte.TabIndex = 12;
@@ -327,29 +236,82 @@
             // 
             this.errorP.ContainerControl = this;
             // 
+            // btnEliminarArticulo
+            // 
+            this.btnEliminarArticulo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminarArticulo.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarArticulo.Location = new System.Drawing.Point(216, 265);
+            this.btnEliminarArticulo.Name = "btnEliminarArticulo";
+            this.btnEliminarArticulo.Size = new System.Drawing.Size(103, 23);
+            this.btnEliminarArticulo.TabIndex = 6;
+            this.btnEliminarArticulo.Text = "Eliminar Articulo";
+            this.btnEliminarArticulo.UseVisualStyleBackColor = true;
+            // 
+            // lvArticulos
+            // 
+            this.lvArticulos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ColumnClave,
+            this.ColumnDesc,
+            this.ColumnModelo,
+            this.ColumnPrecio,
+            this.ColumnCantidad,
+            this.ColumnPrecioFinal});
+            this.lvArticulos.Location = new System.Drawing.Point(373, 32);
+            this.lvArticulos.Name = "lvArticulos";
+            this.lvArticulos.Size = new System.Drawing.Size(519, 195);
+            this.lvArticulos.TabIndex = 13;
+            this.lvArticulos.UseCompatibleStateImageBehavior = false;
+            this.lvArticulos.View = System.Windows.Forms.View.Details;
+            // 
+            // ColumnClave
+            // 
+            this.ColumnClave.Text = "Clave Articulo";
+            this.ColumnClave.Width = 90;
+            // 
+            // ColumnDesc
+            // 
+            this.ColumnDesc.Text = "Descripción";
+            this.ColumnDesc.Width = 104;
+            // 
+            // ColumnModelo
+            // 
+            this.ColumnModelo.Text = "Modelo";
+            this.ColumnModelo.Width = 88;
+            // 
+            // ColumnPrecio
+            // 
+            this.ColumnPrecio.Text = "Precio Unitario";
+            this.ColumnPrecio.Width = 88;
+            // 
+            // ColumnCantidad
+            // 
+            this.ColumnCantidad.Text = "Cantidad";
+            this.ColumnCantidad.Width = 82;
+            // 
+            // ColumnPrecioFinal
+            // 
+            this.ColumnPrecioFinal.Text = "Precio ";
+            // 
             // frmAgregarFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 354);
+            this.Controls.Add(this.lvArticulos);
+            this.Controls.Add(this.btnEliminarArticulo);
             this.Controls.Add(this.lblImporte);
+            this.Controls.Add(this.btnAgregarArticulo);
             this.Controls.Add(this.lblImporteTotal);
             this.Controls.Add(this.grpAgregarArticulo);
-            this.Controls.Add(this.grpEliminarArticulo);
-            this.Controls.Add(this.dgvDetalles);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.grpDatos);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnAgregar);
             this.Name = "frmAgregarFactura";
             this.Text = "Agregar nueva factura";
-            this.Load += new System.EventHandler(this.frmAgregarFactura_Load);
             this.grpDatos.ResumeLayout(false);
             this.grpDatos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).EndInit();
-            this.grpEliminarArticulo.ResumeLayout(false);
-            this.grpEliminarArticulo.PerformLayout();
             this.grpAgregarArticulo.ResumeLayout(false);
             this.grpAgregarArticulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpCantidad)).EndInit();
@@ -369,11 +331,6 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.GroupBox grpDatos;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView dgvDetalles;
-        private System.Windows.Forms.GroupBox grpEliminarArticulo;
-        private System.Windows.Forms.Button btnEliminarArticulo;
-        private System.Windows.Forms.Label lblClaveArticuloEliminar;
-        private System.Windows.Forms.TextBox txtClaveArticuloEliminar;
         private System.Windows.Forms.GroupBox grpAgregarArticulo;
         private System.Windows.Forms.Label lblCantidad;
         private System.Windows.Forms.Button btnAgregarArticulo;
@@ -382,13 +339,15 @@
         private System.Windows.Forms.Label lblImporteTotal;
         private System.Windows.Forms.Label lblImporte;
         private System.Windows.Forms.NumericUpDown numUpCantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClaveArticulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioUnitario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
         private System.Windows.Forms.ErrorProvider errorP;
+        private System.Windows.Forms.ListView lvArticulos;
+        private System.Windows.Forms.ColumnHeader ColumnClave;
+        private System.Windows.Forms.ColumnHeader ColumnDesc;
+        private System.Windows.Forms.ColumnHeader ColumnModelo;
+        private System.Windows.Forms.ColumnHeader ColumnPrecio;
+        private System.Windows.Forms.ColumnHeader ColumnCantidad;
+        private System.Windows.Forms.ColumnHeader ColumnPrecioFinal;
+        private System.Windows.Forms.Button btnEliminarArticulo;
     }
 }
 
