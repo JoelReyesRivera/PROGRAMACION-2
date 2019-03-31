@@ -41,9 +41,9 @@
             this.grpAgregarArticulo = new System.Windows.Forms.GroupBox();
             this.numUpCantidad = new System.Windows.Forms.NumericUpDown();
             this.lblCantidad = new System.Windows.Forms.Label();
-            this.btnAgregarArticulo = new System.Windows.Forms.Button();
             this.lblClaveArticuloAgregar = new System.Windows.Forms.Label();
             this.txtClaveArticuloAgregar = new System.Windows.Forms.TextBox();
+            this.btnAgregarArticulo = new System.Windows.Forms.Button();
             this.lblImporteTotal = new System.Windows.Forms.Label();
             this.lblImporte = new System.Windows.Forms.Label();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
@@ -182,17 +182,6 @@
             this.lblCantidad.TabIndex = 10;
             this.lblCantidad.Text = "Cantidad";
             // 
-            // btnAgregarArticulo
-            // 
-            this.btnAgregarArticulo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAgregarArticulo.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarArticulo.Location = new System.Drawing.Point(216, 204);
-            this.btnAgregarArticulo.Name = "btnAgregarArticulo";
-            this.btnAgregarArticulo.Size = new System.Drawing.Size(103, 23);
-            this.btnAgregarArticulo.TabIndex = 5;
-            this.btnAgregarArticulo.Text = "Agregar Artculo";
-            this.btnAgregarArticulo.UseVisualStyleBackColor = true;
-            // 
             // lblClaveArticuloAgregar
             // 
             this.lblClaveArticuloAgregar.AutoSize = true;
@@ -211,6 +200,18 @@
             this.txtClaveArticuloAgregar.TabIndex = 3;
             this.txtClaveArticuloAgregar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveArticuloAgregar_KeyPress);
             this.txtClaveArticuloAgregar.Validated += new System.EventHandler(this.Valida_claveartAgrega);
+            // 
+            // btnAgregarArticulo
+            // 
+            this.btnAgregarArticulo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregarArticulo.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(216, 204);
+            this.btnAgregarArticulo.Name = "btnAgregarArticulo";
+            this.btnAgregarArticulo.Size = new System.Drawing.Size(103, 23);
+            this.btnAgregarArticulo.TabIndex = 5;
+            this.btnAgregarArticulo.Text = "Agregar Artculo";
+            this.btnAgregarArticulo.UseVisualStyleBackColor = true;
+            this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
             // 
             // lblImporteTotal
             // 
@@ -246,6 +247,7 @@
             this.btnEliminarArticulo.TabIndex = 6;
             this.btnEliminarArticulo.Text = "Eliminar Articulo";
             this.btnEliminarArticulo.UseVisualStyleBackColor = true;
+            this.btnEliminarArticulo.Click += new System.EventHandler(this.btnEliminarArticulo_Click);
             // 
             // lvArticulos
             // 

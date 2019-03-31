@@ -28,7 +28,16 @@ namespace Facturas
 
         private void frmMostrarDetalles_Load(object sender, EventArgs e)
         {
-
+            List<DetalleFactura> D = mD.RetornaDetalles();
+            Articulo A;
+            float Importe = 0;
+            for (int i = 0; i < D.Count; i++)
+            {
+                A = AdmA.RetornaArticulo(D.ElementAt(i).pClaveArt);
+                Importe = D.ElementAt(i).pCant * A.pPrecio;
+                dgvDetalles.Rows.Add(D.ElementAt(i).pClaveFact,D.ElementAt(i).pClaveArt,A.pDescripcion,D.ElementAt(i).pPrecio,D.ElementAt(i).pCant,Importe);
+            }
+                
         }
     }
 }

@@ -82,7 +82,14 @@ namespace Facturas
             }
             return D;
         }
-    public int DetalleRepetido(int ClaveFactura,int ClaveArt)
+       public List<DetalleFactura> RetornaDetalles()
+        {
+            List<DetalleFactura> D = new List<DetalleFactura>();
+            for (int i = 0; i < DetalleFactura.Count; i++)
+                D.Add(DetalleFactura.ElementAt(i));
+            return D;
+        }
+        public int DetalleRepetido(int ClaveFactura,int ClaveArt)
         {
             for (int i = 0; i < DetalleFactura.Count; i++)
             {

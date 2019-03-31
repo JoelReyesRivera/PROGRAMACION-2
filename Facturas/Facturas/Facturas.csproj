@@ -176,6 +176,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />
+    <Compile Include="Rutinas.cs" />
     <EmbeddedResource Include="frmAgregaArticulo.resx">
       <DependentUpon>frmAgregaArticulo.cs</DependentUpon>
     </EmbeddedResource>

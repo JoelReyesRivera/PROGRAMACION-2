@@ -81,7 +81,7 @@ namespace Facturas
                 MessageBox.Show("NO HAY FACTURAS REGISTRADAS", "SIN FACTURAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            frmBuscarFactura BuscarFactura = new frmBuscarFactura();
+            frmBuscarFactura BuscarFactura = new frmBuscarFactura(mF,mD,proveedores,AdmA);
             BuscarFactura.ShowDialog();
         }
 

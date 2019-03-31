@@ -36,6 +36,14 @@ namespace Facturas
             }
             return -1;
         }
+        public KeyValuePair<int,Factura>[] RetornaFacturas()
+        {
+            KeyValuePair<int, Factura>[] F = new KeyValuePair<int, Factura>[Facturas.Count];
+            int c = 0;
+            foreach(KeyValuePair<int,Factura> pair in Facturas)
+                F[c++] = pair;
+            return F;
+        }
         public Factura RetornaFactura(int Clave)
         {
             if (Facturas.TryGetValue(Clave, out Factura F))

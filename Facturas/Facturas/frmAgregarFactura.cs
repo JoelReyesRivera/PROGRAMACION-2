@@ -92,7 +92,8 @@ namespace Facturas
                 }
                 DateTime fecha = DateTime.Now;
                 mF.AgregarFactura(ClaveFactura, ClaveProveedor, fecha.Day, fecha.Month, fecha.Year);
-
+                Factura F=mF.RetornaFactura(ClaveFactura);
+                Proveedor P = proveedores.RetornaProveedorClave(ClaveProveedor);
                 //CREA DETALLE FACTURA POR CADA DIFERENTE TIPO DE ARTICULO
                 for (int i = 0; i < lvArticulos.Items.Count; i++)
                 {
@@ -101,6 +102,9 @@ namespace Facturas
                     float Precio = Convert.ToSingle(lvArticulos.Items[i].SubItems[3].Text);
                     mD.AgregarDetalle(ClaveFactura, ClaveArt, Cant, Precio);
                 }
+                float Importe = CalculaImporte();
+                F.pImporte += Importe;
+                P.pSaldo += Importe;
                 MessageBox.Show("FACTURA CREADA CORRECTAMENTE CON SUS " + CantArt + " DETALLES DE FACTURA", "FACTURA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Limpiar();
             }
@@ -322,7 +326,7 @@ namespace Facturas
             CalculaImporte();
         }
 
-        private void CalculaImporte()
+        private float CalculaImporte()
         {
             float Importe = 0;
             for (int i = 0; i < lvArticulos.Items.Count; i++)
@@ -331,6 +335,7 @@ namespace Facturas
                 Importe += Cantidad;
                 lblImporte.Text = "$" + Importe;
             }
+            return Importe;
         }
         private void numUpCantidad_ValueChanged(object sender, EventArgs e)
         {

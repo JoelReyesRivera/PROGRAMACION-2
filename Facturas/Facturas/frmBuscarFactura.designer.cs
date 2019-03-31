@@ -39,6 +39,11 @@
             this.txtImporte = new System.Windows.Forms.TextBox();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.grpInformacion = new System.Windows.Forms.GroupBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.lblCantDetalles = new System.Windows.Forms.Label();
+            this.lblNumDetalles = new System.Windows.Forms.LinkLabel();
+            this.txtCantDetalles = new System.Windows.Forms.TextBox();
             this.grpInformacion.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +51,7 @@
             // 
             this.lblClaveFactura.AutoSize = true;
             this.lblClaveFactura.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClaveFactura.Location = new System.Drawing.Point(53, 45);
+            this.lblClaveFactura.Location = new System.Drawing.Point(62, 20);
             this.lblClaveFactura.Name = "lblClaveFactura";
             this.lblClaveFactura.Size = new System.Drawing.Size(95, 14);
             this.lblClaveFactura.TabIndex = 0;
@@ -54,7 +59,7 @@
             // 
             // txtClaveFactura
             // 
-            this.txtClaveFactura.Location = new System.Drawing.Point(153, 42);
+            this.txtClaveFactura.Location = new System.Drawing.Point(47, 47);
             this.txtClaveFactura.Name = "txtClaveFactura";
             this.txtClaveFactura.Size = new System.Drawing.Size(124, 20);
             this.txtClaveFactura.TabIndex = 1;
@@ -133,6 +138,9 @@
             // 
             // grpInformacion
             // 
+            this.grpInformacion.Controls.Add(this.lblNumDetalles);
+            this.grpInformacion.Controls.Add(this.lblCantDetalles);
+            this.grpInformacion.Controls.Add(this.txtCantDetalles);
             this.grpInformacion.Controls.Add(this.txtClaveProveedor);
             this.grpInformacion.Controls.Add(this.txtFecha);
             this.grpInformacion.Controls.Add(this.lblClaveProveedor);
@@ -144,16 +152,68 @@
             this.grpInformacion.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.grpInformacion.Location = new System.Drawing.Point(24, 96);
             this.grpInformacion.Name = "grpInformacion";
-            this.grpInformacion.Size = new System.Drawing.Size(279, 194);
+            this.grpInformacion.Size = new System.Drawing.Size(280, 244);
             this.grpInformacion.TabIndex = 11;
             this.grpInformacion.TabStop = false;
             this.grpInformacion.Text = "Información de la factura";
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBuscar.Location = new System.Drawing.Point(218, 20);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 12;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLimpiar.Location = new System.Drawing.Point(217, 56);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.TabIndex = 13;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // lblCantDetalles
+            // 
+            this.lblCantDetalles.AutoSize = true;
+            this.lblCantDetalles.Location = new System.Drawing.Point(32, 203);
+            this.lblCantDetalles.Name = "lblCantDetalles";
+            this.lblCantDetalles.Size = new System.Drawing.Size(73, 13);
+            this.lblCantDetalles.TabIndex = 12;
+            this.lblCantDetalles.Text = "Num. Detalles";
+            // 
+            // lblNumDetalles
+            // 
+            this.lblNumDetalles.AutoSize = true;
+            this.lblNumDetalles.LinkColor = System.Drawing.Color.Black;
+            this.lblNumDetalles.Location = new System.Drawing.Point(179, 203);
+            this.lblNumDetalles.Name = "lblNumDetalles";
+            this.lblNumDetalles.Size = new System.Drawing.Size(0, 13);
+            this.lblNumDetalles.TabIndex = 13;
+            this.lblNumDetalles.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblNumDetalles_LinkClicked);
+            this.lblNumDetalles.Click += new System.EventHandler(this.lblNumDetalles_Click);
+            // 
+            // txtCantDetalles
+            // 
+            this.txtCantDetalles.Location = new System.Drawing.Point(130, 200);
+            this.txtCantDetalles.Name = "txtCantDetalles";
+            this.txtCantDetalles.ReadOnly = true;
+            this.txtCantDetalles.Size = new System.Drawing.Size(114, 20);
+            this.txtCantDetalles.TabIndex = 11;
             // 
             // frmBuscarFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(322, 326);
+            this.ClientSize = new System.Drawing.Size(330, 361);
+            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.grpInformacion);
             this.Controls.Add(this.txtClaveFactura);
             this.Controls.Add(this.lblClaveFactura);
@@ -180,5 +240,10 @@
         private System.Windows.Forms.TextBox txtImporte;
         private System.Windows.Forms.TextBox txtFecha;
         private System.Windows.Forms.GroupBox grpInformacion;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Label lblCantDetalles;
+        private System.Windows.Forms.LinkLabel lblNumDetalles;
+        private System.Windows.Forms.TextBox txtCantDetalles;
     }
 }

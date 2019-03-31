@@ -26,6 +26,52 @@ namespace Facturas
             this.AdmA = AdmA;
         }
 
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            dvgBuscaDetalles.Rows.Clear();
+            lblImporte.Text = "";
+            string ClaveFact = txtClaveFactura.Text;
+            int ClaveFactura;
+
+            if (ClaveFact.Length == 0)
+            {
+                MessageBox.Show("CLAVE DE FACTURA VACÍA", "CAMPO NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!ValidaNumCadena(ClaveFact))
+            {
+                MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                ClaveFactura = int.Parse(ClaveFact);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (mF.BuscaFacturaClave(ClaveFactura) == -1)
+            {
+                MessageBox.Show("LA FACTURA NO EXISTE", "FACTURA NO ENCONTRADA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            DetalleFactura[] D = mD.RetornaDetallesFactura(ClaveFactura);
+            Articulo A;
+            float ImporteDetalle = 0,ImporteTotal=0;
+            for (int i = 0; i < D.Length; i++)
+            {
+                if (D[i] != null)
+                {
+                    A = AdmA.RetornaArticulo(D[i].pClaveArt);
+                    ImporteDetalle = D[i].pCant * A.pPrecio;
+                    ImporteTotal += ImporteDetalle;
+                    dvgBuscaDetalles.Rows.Add(D[i].pClaveArt,A.pDescripcion,D[i].pPrecio,D[i].pCant,ImporteDetalle);
+                }
+            }
+            lblImporte.Text = ImporteDetalle + "";
+        }
         private void frmBuscarDetalle_Load(object sender, EventArgs e)
         {
 
@@ -74,6 +120,17 @@ namespace Facturas
                     return false;
             }
             return true;
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+        private void Limpiar()
+        {
+            txtClaveFactura.Text = "";
+            lblImporte.Text = "";
+            dvgBuscaDetalles.Rows.Clear();
         }
     }
 }

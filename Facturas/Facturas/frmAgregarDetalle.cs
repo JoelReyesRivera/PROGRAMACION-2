@@ -147,11 +147,11 @@ namespace Facturas
                 Precio = A.pPrecio;
                 TotalImp = Precio * CantArt;
                 mD.AgregarDetalle(ClaveFactura, ClaveArticulo, CantArt, Precio);
-                F.pImporte = TotalImp;
+                F.pImporte += TotalImp;
                 P.pSaldo += TotalImp;
                 A.pCantidad -= CantArt;
                 MessageBox.Show("\n----------DATDOS DEL DETALLE----------"+"\nCLAVE ARTÍCULO: "+A.pClave+ "\nDESCRIPCIÓN: "+A.pDescripcion+"\nCANTIDAD: "+CantArt+ "\nPRECIO UNITARIO: "+A.pPrecio+
-                "\nEXISTENCIA RESTANTE: " + A.pCantidad+ "\nIMPORTE DE LA FACTURA: "+F.pImporte+ "\nSALDO DEL PROVEEDOR: "+P.pSaldo, "DETALLE AGREGADO",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                "\nEXISTENCIA RESTANTE: " + A.pCantidad+ "\nIMPORTE DE LA FACTURA: "+TotalImp+ "\nSALDO DEL PROVEEDOR: "+P.pSaldo, "DETALLE AGREGADO",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 Limpiar();
             }
         }
