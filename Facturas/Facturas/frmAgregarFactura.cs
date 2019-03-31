@@ -94,11 +94,14 @@ namespace Facturas
                 mF.AgregarFactura(ClaveFactura, ClaveProveedor, fecha.Day, fecha.Month, fecha.Year);
                 Factura F=mF.RetornaFactura(ClaveFactura);
                 Proveedor P = proveedores.RetornaProveedorClave(ClaveProveedor);
+
                 //CREA DETALLE FACTURA POR CADA DIFERENTE TIPO DE ARTICULO
                 for (int i = 0; i < lvArticulos.Items.Count; i++)
                 {
                     int ClaveArt = Convert.ToInt32(lvArticulos.Items[i].Text);
                     int Cant = Convert.ToInt32(lvArticulos.Items[i].SubItems[4].Text);
+                    Articulo Art = AdmA.RetornaArticulo(ClaveArt);
+                    Art.pCantidad -= Cant;
                     float Precio = Convert.ToSingle(lvArticulos.Items[i].SubItems[3].Text);
                     mD.AgregarDetalle(ClaveFactura, ClaveArt, Cant, Precio);
                 }
@@ -231,13 +234,6 @@ namespace Facturas
             txtClaveProveedor.Text = "";
             txtClaveArticuloAgregar.Text = "";
             numUpCantidad.Value = 1;
-            for (int i = 0; i < lvArticulos.Items.Count; i++)
-            {
-                int Cantidad = Convert.ToInt32(lvArticulos.Items[i].SubItems[4].Text);
-                int Calve = Convert.ToInt32(lvArticulos.Items[i].Text);
-                Articulo Art = AdmA.RetornaArticulo(Calve);
-                Art.pCantidad += Cantidad;
-            }
             lvArticulos.Items.Clear();
             lblImporte.Text = "$0";
         }
@@ -256,7 +252,7 @@ namespace Facturas
                 return;
             }
             int CantArt = lvArticulos.Items.Count;
-            if (CantArt > 3)
+            if (CantArt >= 3)
             {
                 MessageBox.Show("NO SE PUEDE AGRGAR MÁS DE 3 TIPOS DIFERENTES DE ARTICULOS", "ARTICULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -288,31 +284,37 @@ namespace Facturas
                 MessageBox.Show("CLAVE DE ARTICULO INEXISTENTE", "ARTICULO INEXISTENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            Articulo Art = AdmA.RetornaArticulo(ClaveArticulo); int Cant = Convert.ToInt32(numUpCantidad.Value);
-            if (Art.pCantidad < Cant)
-            {
-                MessageBox.Show("LA EXISTENCIA DEL ARTICULO NO ES LA SUFICIENTE PARA LA CANTIDAD INGRESADA", "EXISTENCIA INSUFICIENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            Articulo Art = AdmA.RetornaArticulo(ClaveArticulo);
 
-            float PrecioTotal = Cant * Art.pPrecio;
+            int Cant = Convert.ToInt32(numUpCantidad.Value); float PrecioTotal = Cant * Art.pPrecio; 
 
             for (int i = 0; i < lvArticulos.Items.Count; i++) //BUSCA SI EL ARTICULO YA ESTA AGREGADO EN EL LIST VIEW
             {
                 if (lvArticulos.Items[i].Text.Trim() == ClaveA)
                 {
-                    int rc = Convert.ToInt32(lvArticulos.Items[i].SubItems[4].Text);
-                    int cf = rc + Cant;
+                    int rc = Convert.ToInt32(lvArticulos.Items[i].SubItems[4].Text); //CANTIDAD DEL ARTICULO REGISTRADO
+                    int SumCant = Art.pCantidad - (rc + Cant);
+                    if (SumCant < 0)
+                    {
+                        MessageBox.Show("LA EXISTENCIA DEL ARTICULO NO ES LA SUFICIENTE PARA LA CANTIDAD INGRESADA", "EXISTENCIA INSUFICIENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    int cf = rc + Cant; //CANTIDAD FINAL
                     lvArticulos.Items[i].SubItems[4].Text = cf.ToString();
-                    Art.pCantidad -= Cant;
-                    float rp = Convert.ToInt32(lvArticulos.Items[i].SubItems[5].Text);
-                    float pf = PrecioTotal + rp;
+                    float rp = Convert.ToInt32(lvArticulos.Items[i].SubItems[5].Text); //PRECIO DEL ARTICULO REGISTRADO
+                    float pf = PrecioTotal + rp; //PRECIO FINAL
                     lvArticulos.Items[i].SubItems[5].Text = pf.ToString();
                     CalculaImporte();
                     return;
                 }
             }
             //SI EL ARTICULO A AGREGAR NO SE ENCUENTRA EN LA LIST VIEW 
+            int DifCant = Art.pCantidad - Cant;
+            if (DifCant < 0)
+            {
+                MessageBox.Show("LA EXISTENCIA DEL ARTICULO NO ES LA SUFICIENTE PARA LA CANTIDAD INGRESADA", "EXISTENCIA INSUFICIENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             //AGREGA LOS DATOS DEL ARTICULO EN UNA LISTA
             ListViewItem Registro = new ListViewItem(ClaveA);
             Registro.SubItems.Add(Art.pDescripcion);
@@ -322,7 +324,6 @@ namespace Facturas
             Registro.SubItems.Add(PrecioTotal.ToString());
             //AGREGA LA LISTA CON TODOS LOS DATOS DEL ARTICULO EN EL LIST VIEW
             lvArticulos.Items.Add(Registro);
-            Art.pCantidad -= Cant;
             CalculaImporte();
         }
 
@@ -337,9 +338,6 @@ namespace Facturas
             }
             return Importe;
         }
-        private void numUpCantidad_ValueChanged(object sender, EventArgs e)
-        {
-        }
 
         private void btnEliminarArticulo_Click(object sender, EventArgs e)
         {
@@ -352,19 +350,13 @@ namespace Facturas
             DialogResult R = MessageBox.Show("¿DESEA ELIMINAR EL ARTICULO SELECCIONADO?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (R == DialogResult.Yes)
             {
-                for (int i = 0; i < lvArticulos.Items.Count; i++)
-                {
-                    if (lvArticulos.SelectedItems.Contains(lvArticulos.Items[i]))
-                    {
-                        int Cantidad = Convert.ToInt32(lvArticulos.Items[i].SubItems[4].Text);
-                        int Calve = Convert.ToInt32(lvArticulos.Items[i].Text);
-                        Articulo Art = AdmA.RetornaArticulo(Calve);
-                        Art.pCantidad += Cantidad;
-                        lvArticulos.Items[i].Remove();
-                    }
-                }
+                 for (int i = 0; i < lvArticulos.Items.Count; i++)
+                 {
+                     if (lvArticulos.SelectedItems.Contains(lvArticulos.Items[i]))
+                         lvArticulos.Items[i].Remove();
+                 }
+                CalculaImporte();
             }
-            CalculaImporte();
-        }
+        } 
     }
 }

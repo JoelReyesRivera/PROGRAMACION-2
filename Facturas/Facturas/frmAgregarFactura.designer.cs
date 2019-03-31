@@ -121,6 +121,7 @@
             this.btnLimpiar.TabIndex = 8;
             this.btnLimpiar.Text = "Limpiar Ventana";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // grpDatos
             // 
@@ -131,7 +132,7 @@
             this.grpDatos.Location = new System.Drawing.Point(22, 22);
             this.grpDatos.Name = "grpDatos";
             this.grpDatos.Size = new System.Drawing.Size(167, 154);
-            this.grpDatos.TabIndex = 6;
+            this.grpDatos.TabIndex = 1;
             this.grpDatos.TabStop = false;
             this.grpDatos.Text = "Datos de la factura";
             // 
@@ -154,7 +155,7 @@
             this.grpAgregarArticulo.Location = new System.Drawing.Point(22, 187);
             this.grpAgregarArticulo.Name = "grpAgregarArticulo";
             this.grpAgregarArticulo.Size = new System.Drawing.Size(167, 160);
-            this.grpAgregarArticulo.TabIndex = 10;
+            this.grpAgregarArticulo.TabIndex = 2;
             this.grpAgregarArticulo.TabStop = false;
             this.grpAgregarArticulo.Text = "Agregar Artículo";
             // 
@@ -261,7 +262,7 @@
             this.lvArticulos.Location = new System.Drawing.Point(373, 32);
             this.lvArticulos.Name = "lvArticulos";
             this.lvArticulos.Size = new System.Drawing.Size(519, 195);
-            this.lvArticulos.TabIndex = 13;
+            this.lvArticulos.TabIndex = 0;
             this.lvArticulos.UseCompatibleStateImageBehavior = false;
             this.lvArticulos.View = System.Windows.Forms.View.Details;
             // 
