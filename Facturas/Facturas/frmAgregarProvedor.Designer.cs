@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarProvedor));
             this.lblAlta = new System.Windows.Forms.Label();
             this.lblClave = new System.Windows.Forms.Label();
@@ -42,7 +43,9 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.pbImagen = new System.Windows.Forms.PictureBox();
+            this.errorProviderProveedores = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderProveedores)).BeginInit();
             this.SuspendLayout();
             // 
             // lblAlta
@@ -93,6 +96,8 @@
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(100, 20);
             this.txtClave.TabIndex = 0;
+            this.txtClave.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClave_KeyPress);
+            this.txtClave.Validated += new System.EventHandler(this.txtClave_Validated);
             // 
             // txtRFC
             // 
@@ -109,6 +114,8 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 2;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
+            this.txtNombre.Validated += new System.EventHandler(this.txtNombre_Validated);
             // 
             // lblDomicilio
             // 
@@ -171,6 +178,10 @@
             this.pbImagen.TabIndex = 12;
             this.pbImagen.TabStop = false;
             // 
+            // errorProviderProveedores
+            // 
+            this.errorProviderProveedores.ContainerControl = this;
+            // 
             // frmAgregarProvedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,6 +203,7 @@
             this.Name = "frmAgregarProvedor";
             this.Text = "Agregar Provedor";
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderProveedores)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,5 +224,6 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.PictureBox pbImagen;
+        private System.Windows.Forms.ErrorProvider errorProviderProveedores;
     }
 }

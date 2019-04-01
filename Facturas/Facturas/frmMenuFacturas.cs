@@ -26,16 +26,6 @@ namespace Facturas
             this.AdmA = AdmA;
         }
 
-        private void lblMenu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmMenuFacturas_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (proveedores.pCount == 0)

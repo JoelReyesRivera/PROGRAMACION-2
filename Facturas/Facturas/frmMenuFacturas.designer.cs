@@ -93,7 +93,6 @@
             this.lblMenu.Size = new System.Drawing.Size(192, 26);
             this.lblMenu.TabIndex = 4;
             this.lblMenu.Text = "MENÚ FACTURAS";
-            this.lblMenu.Click += new System.EventHandler(this.lblMenu_Click);
             // 
             // btnRegresar
             // 
@@ -120,7 +119,6 @@
             this.Controls.Add(this.btnAgregar);
             this.Name = "frmMenuFacturas";
             this.Text = "Menú Facturas";
-            this.Load += new System.EventHandler(this.frmMenuFacturas_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

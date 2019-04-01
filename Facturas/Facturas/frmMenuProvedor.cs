@@ -51,5 +51,16 @@ namespace Facturas
         {
             this.Close();
         }
+
+        private void btnPagoProveedores_Click(object sender, EventArgs e)
+        {
+            if (proveedores.pCount == 0)
+            {
+                MessageBox.Show("NO HAY PROVEEDORES REGISTRADOS", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            frmAgregarPagoProveedor pagoProveedores = new frmAgregarPagoProveedor(proveedores);
+            pagoProveedores.ShowDialog();
+        }
     }
 }

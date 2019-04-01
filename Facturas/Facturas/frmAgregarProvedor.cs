@@ -25,12 +25,16 @@ namespace Facturas
             DialogResult result = MessageBox.Show("¿DESEA GUARDAR?", "GUARDAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                if (!ValidaTextbox(txtClave) || !ValidaTextbox(txtNombre) || !ValidaTextbox(txtDomicilio) || !ValidaTextbox(txtRFC))
+                String domicilio, RFC, nombre, claveTexto;
+                domicilio = txtDomicilio.Text;
+                RFC = txtRFC.Text;
+                nombre = txtNombre.Text;
+                claveTexto = txtClave.Text;
+                if (!ValidaTexto(claveTexto) || !ValidaTexto(nombre) || !ValidaTexto(domicilio) || !ValidaTexto(RFC))
                 {
                     MessageBox.Show("CAMPO VACÍO", "AGREGAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                String domicilio, RFC, nombre;
                 int clave=0;
                 try
                 {
@@ -41,7 +45,6 @@ namespace Facturas
                     MessageBox.Show("CLAVE INVÁLIDA", "AGREGAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                nombre = txtNombre.Text;
                 if (proveedores.ClaveExistente(clave))
                 {
                     MessageBox.Show("CLAVE YA EXISTENTE", "AGREGAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -52,8 +55,6 @@ namespace Facturas
                     MessageBox.Show("NOMBRE YA EXISTENTE", "AGREGAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                domicilio = txtDomicilio.Text;
-                RFC = txtRFC.Text;
                 proveedores.AgregaProveedor(clave,RFC,nombre,domicilio);
                 MessageBox.Show("PROVEEDOR AGREGADO EXITOSAMENTE", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Clear();
@@ -61,9 +62,9 @@ namespace Facturas
             if (result == DialogResult.No)
                 return;
         }
-        public bool ValidaTextbox(TextBox textBox)
+        public bool ValidaTexto( String texto)
         {
-            if (textBox.Text!="")
+            if (texto != "")
             {
                 return true;
             }
@@ -92,5 +93,72 @@ namespace Facturas
             if (result == DialogResult.No)
                 return;
         }
+
+        private bool ValidaCadena(string Cadena)
+        {
+            foreach (char C in Cadena)
+            {
+                if (!(Char.IsLetter(C)))
+                    return false;
+            }
+            return true;
+        }
+
+        private bool ValidaTextoNum(string Cadena)
+        {
+            foreach (char C in Cadena)
+            {
+                if (C < '0' || C > '9')
+                    return false;
+            }
+            return true;
+        }
+
+        private void txtClave_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)(Keys.Back)))
+            {
+                errorProviderProveedores.SetError(txtClave, "EN ESTE APARTADO SOLO SE ACEPTAN NUMEROS");
+                e.Handled = false;
+            }
+            else
+                errorProviderProveedores.SetError(txtClave, "");
+        }
+
+        private void txtClave_Validated(object sender, EventArgs e)
+        {
+            string P = txtClave.Text;
+            if (!(ValidaTextoNum(P)))
+            {
+                errorProviderProveedores.SetError(txtClave, "SOLO DEBE TENER NÚMEROS");
+                txtClave.Focus();
+            }
+            else
+                errorProviderProveedores.SetError(txtClave, "");
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
+            {
+                errorProviderProveedores.SetError(txtNombre, "EN ESTE APARADO SOLO SE ACEPTAN LETRAS");
+                e.Handled = false;
+            }
+            else
+                errorProviderProveedores.SetError(txtNombre, "");
+        }
+
+        private void txtNombre_Validated(object sender, EventArgs e)
+        {
+            string M = txtNombre.Text;
+            if (!ValidaCadena(M))
+            {
+                errorProviderProveedores.SetError(txtNombre, "NOMBRE ESCRITO EN FORMA INCORRECTA");
+                txtNombre.Focus();
+            }
+            else
+                errorProviderProveedores.SetError(txtNombre, "");
+        }
     }
+
 }

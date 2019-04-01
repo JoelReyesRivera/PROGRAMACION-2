@@ -33,24 +33,25 @@
             this.btnConsultarProvedor = new System.Windows.Forms.Button();
             this.btnAgregarProvedor = new System.Windows.Forms.Button();
             this.lblMenuProvedor = new System.Windows.Forms.Label();
+            this.btnPagoProveedores = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnMenuPrincipal
             // 
             this.btnMenuPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuPrincipal.Location = new System.Drawing.Point(604, 188);
+            this.btnMenuPrincipal.Location = new System.Drawing.Point(680, 241);
             this.btnMenuPrincipal.Name = "btnMenuPrincipal";
-            this.btnMenuPrincipal.Size = new System.Drawing.Size(148, 31);
+            this.btnMenuPrincipal.Size = new System.Drawing.Size(108, 35);
             this.btnMenuPrincipal.TabIndex = 9;
             this.btnMenuPrincipal.Tag = "";
-            this.btnMenuPrincipal.Text = "Menú Principal";
+            this.btnMenuPrincipal.Text = "Regresar";
             this.btnMenuPrincipal.UseVisualStyleBackColor = true;
             this.btnMenuPrincipal.Click += new System.EventHandler(this.btnMenuPrincipal_Click);
             // 
             // btnVerProvedores
             // 
             this.btnVerProvedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerProvedores.Location = new System.Drawing.Point(418, 188);
+            this.btnVerProvedores.Location = new System.Drawing.Point(370, 167);
             this.btnVerProvedores.Name = "btnVerProvedores";
             this.btnVerProvedores.Size = new System.Drawing.Size(161, 31);
             this.btnVerProvedores.TabIndex = 8;
@@ -61,7 +62,7 @@
             // btnConsultarProvedor
             // 
             this.btnConsultarProvedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConsultarProvedor.Location = new System.Drawing.Point(248, 188);
+            this.btnConsultarProvedor.Location = new System.Drawing.Point(205, 167);
             this.btnConsultarProvedor.Name = "btnConsultarProvedor";
             this.btnConsultarProvedor.Size = new System.Drawing.Size(138, 31);
             this.btnConsultarProvedor.TabIndex = 7;
@@ -72,7 +73,7 @@
             // btnAgregarProvedor
             // 
             this.btnAgregarProvedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarProvedor.Location = new System.Drawing.Point(70, 188);
+            this.btnAgregarProvedor.Location = new System.Drawing.Point(16, 167);
             this.btnAgregarProvedor.Name = "btnAgregarProvedor";
             this.btnAgregarProvedor.Size = new System.Drawing.Size(154, 31);
             this.btnAgregarProvedor.TabIndex = 6;
@@ -90,11 +91,23 @@
             this.lblMenuProvedor.TabIndex = 5;
             this.lblMenuProvedor.Text = "Menú Provedores";
             // 
+            // btnPagoProveedores
+            // 
+            this.btnPagoProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPagoProveedores.Location = new System.Drawing.Point(559, 167);
+            this.btnPagoProveedores.Name = "btnPagoProveedores";
+            this.btnPagoProveedores.Size = new System.Drawing.Size(206, 31);
+            this.btnPagoProveedores.TabIndex = 10;
+            this.btnPagoProveedores.Text = "Realizar Pago Proveedor";
+            this.btnPagoProveedores.UseVisualStyleBackColor = true;
+            this.btnPagoProveedores.Click += new System.EventHandler(this.btnPagoProveedores_Click);
+            // 
             // frmMenuProvedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 288);
+            this.Controls.Add(this.btnPagoProveedores);
             this.Controls.Add(this.btnMenuPrincipal);
             this.Controls.Add(this.btnVerProvedores);
             this.Controls.Add(this.btnConsultarProvedor);
@@ -114,5 +127,6 @@
         private System.Windows.Forms.Button btnConsultarProvedor;
         private System.Windows.Forms.Button btnAgregarProvedor;
         private System.Windows.Forms.Label lblMenuProvedor;
+        private System.Windows.Forms.Button btnPagoProveedores;
     }
 }

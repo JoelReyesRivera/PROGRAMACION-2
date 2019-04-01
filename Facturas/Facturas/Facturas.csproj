@@ -67,6 +67,12 @@
     <Compile Include="frmAgregarFactura.designer.cs">
       <DependentUpon>frmAgregarFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAgregarPagoProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgregarPagoProveedor.Designer.cs">
+      <DependentUpon>frmAgregarPagoProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAgregarProvedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarFactura.resx">
       <DependentUpon>frmAgregarFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAgregarPagoProveedor.resx">
+      <DependentUpon>frmAgregarPagoProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarProvedor.resx">
       <DependentUpon>frmAgregarProvedor.cs</DependentUpon>
