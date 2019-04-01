@@ -36,6 +36,11 @@ namespace Facturas
                     MessageBox.Show("CLAVE INVÁLIDA", "PAGO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                if (!proveedores.ClaveExistente(claveProveedor))
+                {
+                    MessageBox.Show("LA CLAVE INGRESADA NO LE PERTENECE A NINGUN PROVEEDOR", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 try
                 {
                     importe = float.Parse(importeTexto);
@@ -87,6 +92,11 @@ namespace Facturas
             catch (Exception)
             {
                 MessageBox.Show("CLAVE INVÁLIDA", "PAGO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!proveedores.ClaveExistente(claveProveedor))
+            {
+                MessageBox.Show("LA CLAVE INGRESADA NO LE PERTENECE A NINGUN PROVEEDOR", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             Proveedor proveedor = proveedores.RetornaProveedorClave(claveProveedor);
