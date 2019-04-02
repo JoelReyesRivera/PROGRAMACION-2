@@ -26,6 +26,16 @@ namespace Facturas
             this.AdmA = AdmA;
         }
 
+        private void lblMenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmMenuFacturas_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (proveedores.pCount == 0)
@@ -77,7 +87,9 @@ namespace Facturas
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult D = MessageBox.Show("¿DESEA REGRESAR A LA PANTALLA ANTERIOR?", "CERRAR VENTANA", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (D == DialogResult.Yes)
+                this.Close();
         }
     }
 }

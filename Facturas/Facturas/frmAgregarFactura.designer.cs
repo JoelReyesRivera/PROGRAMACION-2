@@ -55,6 +55,8 @@
             this.ColumnPrecio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnCantidad = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnPrecioFinal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnSalir = new System.Windows.Forms.Button();
             this.grpDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpAgregarArticulo.SuspendLayout();
@@ -78,6 +80,7 @@
             this.txtClaveFactura.Name = "txtClaveFactura";
             this.txtClaveFactura.Size = new System.Drawing.Size(115, 20);
             this.txtClaveFactura.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.txtClaveFactura, "Proporcione una clave a la factura");
             this.txtClaveFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveFactura_KeyPress);
             this.txtClaveFactura.Validated += new System.EventHandler(this.Valida_Factura);
             // 
@@ -97,6 +100,7 @@
             this.txtClaveProveedor.Name = "txtClaveProveedor";
             this.txtClaveProveedor.Size = new System.Drawing.Size(115, 20);
             this.txtClaveProveedor.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.txtClaveProveedor, "Proporcione la clave del proveedor");
             this.txtClaveProveedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveProveedor_KeyPress);
             this.txtClaveProveedor.Validated += new System.EventHandler(this.Valida_proveedor);
             // 
@@ -104,22 +108,24 @@
             // 
             this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(451, 276);
+            this.btnAgregar.Location = new System.Drawing.Point(407, 274);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(137, 45);
             this.btnAgregar.TabIndex = 7;
             this.btnAgregar.Text = "Agregar Factura";
+            this.toolTip1.SetToolTip(this.btnAgregar, "Crear la factura con la información correspondiente");
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnLimpiar
             // 
             this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLimpiar.Location = new System.Drawing.Point(679, 277);
+            this.btnLimpiar.Location = new System.Drawing.Point(576, 275);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(137, 44);
             this.btnLimpiar.TabIndex = 8;
             this.btnLimpiar.Text = "Limpiar Ventana";
+            this.toolTip1.SetToolTip(this.btnLimpiar, "Limpiar campos de texto y selección");
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
@@ -166,6 +172,7 @@
             this.numUpCantidad.ReadOnly = true;
             this.numUpCantidad.Size = new System.Drawing.Size(120, 20);
             this.numUpCantidad.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.numUpCantidad, "Seleccione una cantidad");
             this.numUpCantidad.Value = new decimal(new int[] {
             1,
             0,
@@ -199,6 +206,7 @@
             this.txtClaveArticuloAgregar.Name = "txtClaveArticuloAgregar";
             this.txtClaveArticuloAgregar.Size = new System.Drawing.Size(115, 20);
             this.txtClaveArticuloAgregar.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.txtClaveArticuloAgregar, "Proporcione la clave del artículo");
             this.txtClaveArticuloAgregar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveArticuloAgregar_KeyPress);
             this.txtClaveArticuloAgregar.Validated += new System.EventHandler(this.Valida_claveartAgrega);
             // 
@@ -211,6 +219,7 @@
             this.btnAgregarArticulo.Size = new System.Drawing.Size(103, 23);
             this.btnAgregarArticulo.TabIndex = 5;
             this.btnAgregarArticulo.Text = "Agregar Artculo";
+            this.toolTip1.SetToolTip(this.btnAgregarArticulo, "Agregar artículo a la lista de detalle");
             this.btnAgregarArticulo.UseVisualStyleBackColor = true;
             this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
             // 
@@ -247,6 +256,7 @@
             this.btnEliminarArticulo.Size = new System.Drawing.Size(103, 23);
             this.btnEliminarArticulo.TabIndex = 6;
             this.btnEliminarArticulo.Text = "Eliminar Articulo";
+            this.toolTip1.SetToolTip(this.btnEliminarArticulo, "Eliminar artículo de la lista de detalle");
             this.btnEliminarArticulo.UseVisualStyleBackColor = true;
             this.btnEliminarArticulo.Click += new System.EventHandler(this.btnEliminarArticulo_Click);
             // 
@@ -295,11 +305,25 @@
             // 
             this.ColumnPrecioFinal.Text = "Precio ";
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Location = new System.Drawing.Point(743, 277);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(137, 44);
+            this.btnSalir.TabIndex = 13;
+            this.btnSalir.Text = "Salir";
+            this.toolTip1.SetToolTip(this.btnSalir, "Cerrar ventana");
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // frmAgregarFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 354);
+            this.ControlBox = false;
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lvArticulos);
             this.Controls.Add(this.btnEliminarArticulo);
             this.Controls.Add(this.lblImporte);
@@ -351,6 +375,8 @@
         private System.Windows.Forms.ColumnHeader ColumnCantidad;
         private System.Windows.Forms.ColumnHeader ColumnPrecioFinal;
         private System.Windows.Forms.Button btnEliminarArticulo;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnSalir;
     }
 }
 

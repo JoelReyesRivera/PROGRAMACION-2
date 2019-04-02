@@ -41,6 +41,7 @@ namespace Facturas
             if (!ValidaNumCadena(ClaveFact))
             {
                 MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClaveFactura.ForeColor = Color.Red;
                 return;
             }
             try
@@ -50,13 +51,16 @@ namespace Facturas
             catch (Exception Ex)
             {
                 MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClaveFactura.ForeColor = Color.Red;
                 return;
             }
             if (mF.BuscaFacturaClave(ClaveFactura) == -1)
             {
                 MessageBox.Show("LA FACTURA NO EXISTE", "FACTURA NO ENCONTRADA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClaveFactura.ForeColor = Color.Red;
                 return;
             }
+            txtClaveFactura.ForeColor = Color.Green;
             DetalleFactura[] D = mD.RetornaDetallesFactura(ClaveFactura);
             Articulo A;
             float ImporteDetalle = 0,ImporteTotal=0;
@@ -70,7 +74,7 @@ namespace Facturas
                     dvgBuscaDetalles.Rows.Add(D[i].pClaveArt,A.pDescripcion,D[i].pPrecio,D[i].pCant,ImporteDetalle);
                 }
             }
-            lblImporte.Text = ImporteDetalle + "";
+            lblImporte.Text = ImporteTotal + "";
         }
         private void frmBuscarDetalle_Load(object sender, EventArgs e)
         {
@@ -82,7 +86,7 @@ namespace Facturas
             string ClaveFactura = txtClaveFactura.Text;
             if (!ValidaNumCadena(ClaveFactura))
             {
-                errorP.SetError(txtClaveFactura, "Clave de factura no válida");
+                errorP.SetError(txtClaveFactura, "CLAVE DE FACTURA NO VÁLIDA");
                 txtClaveFactura.Focus();
             }
             else
@@ -95,7 +99,7 @@ namespace Facturas
         {
             if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
             {
-                errorP.SetError(txtClaveFactura, "Sólo se permiten números");
+                errorP.SetError(txtClaveFactura, "CLAVE DE FACTURA NO VÁLIDA");
                 e.Handled = false;
             }
             else
@@ -131,6 +135,14 @@ namespace Facturas
             txtClaveFactura.Text = "";
             lblImporte.Text = "";
             dvgBuscaDetalles.Rows.Clear();
+            txtClaveFactura.ForeColor = Color.Black;
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            DialogResult D = MessageBox.Show("¿DESEA SALIR?", "CERRAR VENTANA", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (D == DialogResult.Yes)
+                this.Close();
         }
     }
 }

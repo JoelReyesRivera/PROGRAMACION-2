@@ -44,6 +44,7 @@ namespace Facturas
             if (!ValidaNumCadena(ClaveFact))
             {
                 MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClaveFactura.ForeColor = Color.Red;
                 return;
             }
             try
@@ -52,13 +53,16 @@ namespace Facturas
             }catch(Exception Ex)
             {
                 MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClaveFactura.ForeColor = Color.Red;
                 return;
             }
             if (mF.BuscaFacturaClave(ClaveFactura) == -1)
             {
                 MessageBox.Show("LA FACTURA NO EXISTE", "FACTURA NO ENCONTRADA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClaveFactura.ForeColor = Color.Red;
                 return;
             }
+            txtClaveFactura.ForeColor = Color.Green;
             Factura F = mF.RetornaFactura(ClaveFactura);
             Proveedor P = proveedores.RetornaProveedorClave(F.pClaveProv);
             int NumDetalles = mD.DetallesPorFactura(ClaveFactura);
@@ -74,18 +78,8 @@ namespace Facturas
         private void lblNumDetalles_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             int ClaveFactura = int.Parse(txtClaveFactura.Text);
-            DetalleFactura[] D = mD.RetornaDetallesFactura(ClaveFactura);
-            Articulo A;
-            string Detalles = "--------- DETALLES DE LA FACTURA ----------\n";
-            for (int i = 0; i < D.Length; i++)
-            {
-                if (D[i] != null)
-                {
-                    A = AdmA.RetornaArticulo(D[i].pClaveArt);
-                    Detalles += "\n***DETALLE " + (i + 1) + "\nClAVE ARTÍCULO: " + D[i].pClaveArt + "\nDESCRIPCIÓN: " + A.pDescripcion + "\nPRECIO UNITARIO: " + A.pPrecio + "\nCANTIDAD: " + D[i].pCant + "\n";
-                }
-            }
-            MessageBox.Show(Detalles, "DETALLES DE LA FACTURA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmVistaBuscaFactura VistaDetalles = new frmVistaBuscaFactura(mD,AdmA,ClaveFactura);
+            VistaDetalles.ShowDialog();
         }
         private bool ValidaNumCadena(string Cadena)
         {
@@ -113,6 +107,7 @@ namespace Facturas
             txtProveedor.Text = "";
             txtImporte.Text = "";
             lblNumDetalles.Text = "";
+            txtClaveFactura.ForeColor = Color.Black;
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -123,6 +118,45 @@ namespace Facturas
         private void lblNumDetalles_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Valida_factura(object sender, EventArgs e)
+        {
+            string ClaveFactura = txtClaveFactura.Text;
+            if (!ValidaNumCadena(ClaveFactura))
+            {
+                errorP.SetError(txtClaveFactura, "CLAVE DE FACTURA NO VÁLIDA");
+                txtClaveFactura.Focus();
+            }
+            else
+            {
+                errorP.SetError(txtClaveFactura, "");
+            }
+        }
+
+        private void txtClaveFactura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
+            {
+                errorP.SetError(txtClaveFactura, "CLAVE DE FACTURA NO VÁLIDA");
+                e.Handled = false;
+            }
+            else
+            {
+                errorP.SetError(txtClaveFactura, "");
+            }
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            DialogResult D = MessageBox.Show("¿DESEA SALIR?", "CERRAR VENTANA", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (D == DialogResult.Yes)
+                this.Close();
         }
     }
 }

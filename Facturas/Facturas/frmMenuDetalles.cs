@@ -76,7 +76,9 @@ namespace Facturas
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult D = MessageBox.Show("¿DESEA REGRESAR A LA PANTALLA ANTERIOR?", "CERRAR VENTANA", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (D == DialogResult.Yes)
+                this.Close();
         }
     }
 }

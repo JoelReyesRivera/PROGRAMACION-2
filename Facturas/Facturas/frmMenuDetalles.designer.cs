@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblMenuDetalles = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnMostrar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // lblMenuDetalles
@@ -53,6 +55,7 @@
             this.btnAgregar.Size = new System.Drawing.Size(111, 39);
             this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Agregar Detalle";
+            this.toolTip1.SetToolTip(this.btnAgregar, "Agregar un detalle");
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
@@ -64,6 +67,7 @@
             this.btnMostrar.Size = new System.Drawing.Size(118, 39);
             this.btnMostrar.TabIndex = 2;
             this.btnMostrar.Text = "Mostrar Detalles";
+            this.toolTip1.SetToolTip(this.btnMostrar, "Ver todos los detalles registrados");
             this.btnMostrar.UseVisualStyleBackColor = true;
             this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
             // 
@@ -75,6 +79,7 @@
             this.btnBuscar.Size = new System.Drawing.Size(111, 39);
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "Buscar Detalle";
+            this.toolTip1.SetToolTip(this.btnBuscar, "Buscar detalles de una factura en específico");
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -86,6 +91,7 @@
             this.btnRegresar.Size = new System.Drawing.Size(111, 39);
             this.btnRegresar.TabIndex = 4;
             this.btnRegresar.Text = "Regresar";
+            this.toolTip1.SetToolTip(this.btnRegresar, "Regresar al menú factura-detalle");
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
@@ -94,6 +100,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 240);
+            this.ControlBox = false;
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnMostrar);
@@ -114,5 +121,6 @@
         private System.Windows.Forms.Button btnMostrar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnRegresar;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

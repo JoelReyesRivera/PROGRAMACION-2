@@ -34,5 +34,12 @@ namespace Facturas
                 dgvFacturas.Rows.Add(F[i].Key,F[i].Value.pClaveProv,Proveedor,F[i].Value.pImporte,Fecha);
             }
         }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            DialogResult D = MessageBox.Show("¿DESEA SALIR?", "CERRAR VENTANA", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (D == DialogResult.Yes)
+                this.Close();
+        }
     }
 }

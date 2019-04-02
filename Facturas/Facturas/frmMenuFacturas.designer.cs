@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuFacturas));
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.btnMostrar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.lblMenu = new System.Windows.Forms.Label();
             this.btnRegresar = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // btnAgregar
@@ -45,6 +48,7 @@
             this.btnAgregar.Size = new System.Drawing.Size(122, 43);
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Agregar Factura";
+            this.toolTip1.SetToolTip(this.btnAgregar, "Agregar una factura");
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
@@ -57,6 +61,7 @@
             this.btnConsultar.Size = new System.Drawing.Size(122, 43);
             this.btnConsultar.TabIndex = 1;
             this.btnConsultar.Text = "Consultar Facturas";
+            this.toolTip1.SetToolTip(this.btnConsultar, "Consultar facturas y detalles de un proveedor");
             this.btnConsultar.UseVisualStyleBackColor = true;
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
@@ -69,6 +74,7 @@
             this.btnMostrar.Size = new System.Drawing.Size(122, 43);
             this.btnMostrar.TabIndex = 2;
             this.btnMostrar.Text = "Mostrar Facturas";
+            this.toolTip1.SetToolTip(this.btnMostrar, "Ver todas las facturas registradas");
             this.btnMostrar.UseVisualStyleBackColor = true;
             this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
             // 
@@ -81,6 +87,7 @@
             this.btnBuscar.Size = new System.Drawing.Size(122, 43);
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "Buscar Factura";
+            this.toolTip1.SetToolTip(this.btnBuscar, "Buscar una factura específica");
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -93,6 +100,7 @@
             this.lblMenu.Size = new System.Drawing.Size(192, 26);
             this.lblMenu.TabIndex = 4;
             this.lblMenu.Text = "MENÚ FACTURAS";
+            this.lblMenu.Click += new System.EventHandler(this.lblMenu_Click);
             // 
             // btnRegresar
             // 
@@ -103,6 +111,7 @@
             this.btnRegresar.Size = new System.Drawing.Size(122, 43);
             this.btnRegresar.TabIndex = 5;
             this.btnRegresar.Text = "Regresar";
+            this.toolTip1.SetToolTip(this.btnRegresar, "Regresar al menú Factura-Detalle");
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
@@ -111,14 +120,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(775, 242);
+            this.ControlBox = false;
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.lblMenu);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnMostrar);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.btnAgregar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMenuFacturas";
             this.Text = "Menú Facturas";
+            this.Load += new System.EventHandler(this.frmMenuFacturas_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,5 +144,6 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label lblMenu;
         private System.Windows.Forms.Button btnRegresar;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

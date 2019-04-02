@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cmbProveedores = new System.Windows.Forms.ComboBox();
             this.lblProveedor = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -45,6 +46,7 @@
             this.lblFacturas = new System.Windows.Forms.Label();
             this.lblDetalles = new System.Windows.Forms.Label();
             this.grpInfomacion = new System.Windows.Forms.GroupBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.grpInfomacion.SuspendLayout();
@@ -60,6 +62,7 @@
             this.cmbProveedores.Name = "cmbProveedores";
             this.cmbProveedores.Size = new System.Drawing.Size(148, 21);
             this.cmbProveedores.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.cmbProveedores, "Seleccione un proveedor");
             // 
             // lblProveedor
             // 
@@ -233,5 +236,6 @@
         private System.Windows.Forms.Label lblFacturas;
         private System.Windows.Forms.Label lblDetalles;
         private System.Windows.Forms.GroupBox grpInfomacion;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

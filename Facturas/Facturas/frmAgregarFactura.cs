@@ -357,6 +357,13 @@ namespace Facturas
                  }
                 CalculaImporte();
             }
-        } 
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult D = MessageBox.Show("¿DESEA SALIR?", "CERRAR VENTANA", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (D == DialogResult.Yes)
+                this.Close();
+        }
     }
 }

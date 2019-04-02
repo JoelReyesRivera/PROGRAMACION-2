@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnFacturas = new System.Windows.Forms.Button();
             this.btnDetalles = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnMenu = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // btnFacturas
@@ -43,6 +45,7 @@
             this.btnFacturas.Size = new System.Drawing.Size(111, 33);
             this.btnFacturas.TabIndex = 0;
             this.btnFacturas.Text = "Menú Facturas";
+            this.toolTip1.SetToolTip(this.btnFacturas, "Menú de facturas");
             this.btnFacturas.UseVisualStyleBackColor = true;
             this.btnFacturas.Click += new System.EventHandler(this.btnFacturas_Click);
             // 
@@ -55,6 +58,7 @@
             this.btnDetalles.Size = new System.Drawing.Size(111, 32);
             this.btnDetalles.TabIndex = 1;
             this.btnDetalles.Text = "Menú Detalles";
+            this.toolTip1.SetToolTip(this.btnDetalles, "Menú de detalles");
             this.btnDetalles.UseVisualStyleBackColor = true;
             this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
             // 
@@ -77,6 +81,7 @@
             this.btnMenu.Size = new System.Drawing.Size(111, 32);
             this.btnMenu.TabIndex = 3;
             this.btnMenu.Text = "Menu Principal";
+            this.toolTip1.SetToolTip(this.btnMenu, "Regresar al menú principal");
             this.btnMenu.UseVisualStyleBackColor = true;
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
@@ -85,6 +90,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(505, 204);
+            this.ControlBox = false;
             this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDetalles);
@@ -103,5 +109,6 @@
         private System.Windows.Forms.Button btnDetalles;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnMenu;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

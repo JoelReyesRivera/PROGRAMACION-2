@@ -35,59 +35,68 @@ namespace Facturas
             DialogResult D = MessageBox.Show("¿DESEA AGREGAR EL DETALLE?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (D == DialogResult.Yes)
             {
+                string ClaveF=txtClaveFactura.Text, ClaveP=txtClaveProveedor.Text, ClaveA=txtClaveArticulo.Text;
                 int ClaveFactura, ClaveProveedor, ClaveArticulo;
 
-                if (txtClaveProveedor.Text.Length == 0)
-                {
-                    MessageBox.Show("CLAVE DE PROVEEDOR VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (!ValidaNumCadena(txtClaveProveedor.Text))
-                {
-                    MessageBox.Show("CLAVE DE PROVEEDOR NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                try
-                {
-                    ClaveProveedor = int.Parse(txtClaveProveedor.Text);
-
-                }
-                catch (Exception Ex)
-                {
-                    MessageBox.Show("CLAVE DE PROVEEDOR NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (proveedores.getPosClave(ClaveProveedor) == -1)
-                {
-                    MessageBox.Show("EL PROVEEDOR NO EXISTE", "PROVEEDOR NO ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (txtClaveFactura.Text.Length == 0)
+                if (ClaveF.Length == 0)
                 {
                     MessageBox.Show("CLAVE DE FACTURA VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (!ValidaNumCadena(txtClaveFactura.Text))
+                if (!ValidaNumCadena(ClaveF))
                 {
                     MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClaveFactura.ForeColor = Color.Red;
                     return;
                 }
                 try
                 {
-                    ClaveFactura = int.Parse(txtClaveFactura.Text);
+                    ClaveFactura = int.Parse(ClaveF);
 
                 }
                 catch (Exception Ex)
                 {
                     MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClaveFactura.ForeColor = Color.Red;
                     return;
                 }
 
+                if (ClaveP.Length == 0)
+                {
+                    MessageBox.Show("CLAVE DE PROVEEDOR VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!ValidaNumCadena(ClaveP))
+                {
+                    MessageBox.Show("CLAVE DE PROVEEDOR NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClaveProveedor.ForeColor = Color.Red;
+                    return;
+                }
+                try
+                {
+                    ClaveProveedor = int.Parse(ClaveP);
+
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("CLAVE DE PROVEEDOR NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClaveProveedor.ForeColor = Color.Red;
+                    return;
+                }
+                if (proveedores.getPosClave(ClaveProveedor) == -1)
+                {
+                    MessageBox.Show("EL PROVEEDOR NO EXISTE", "PROVEEDOR NO ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClaveProveedor.ForeColor = Color.Red;
+                    return;
+                }
+                txtClaveProveedor.ForeColor = Color.Green;
                 if (mF.BuscaFacturaClaveProv(ClaveFactura, ClaveProveedor) == -1)
                 {
                     MessageBox.Show("EL PROVEEDOR NO CUENTA CON LA FACTURA PROPORCIONADA", "NO SE ENCONTRÓ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClaveFactura.ForeColor = Color.Red;
                     return;
                 }
+                txtClaveFactura.ForeColor = Color.Green;
                 if (mD.DetallesPorFactura(ClaveFactura) >= 3)
                 {
                     MessageBox.Show("CAPTURA MÁXIMA DE ARTÍCULOS SUPERADA PARA ESTA FACTURA", "DETALLES MÁXIMOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -96,39 +105,45 @@ namespace Facturas
                 if (AdmA.pCount - mD.DetallesPorFactura(ClaveFactura) == 0)
                 {
                     MessageBox.Show("NO SE PUEDEN CAPTURAR MAS ARTICULOS A ESTA FACTURA, AGREGUE MAS ARTICULOS AL CATALAGO", "SIN ARTÍCULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClaveArticulo.ForeColor = Color.Red;
                     return;
                 }
-                if (txtClaveArticulo.Text.Length == 0)
+                if (ClaveA.Length == 0)
                 {
                     MessageBox.Show("CLAVE DE ARTÍCULO VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (!ValidaNumCadena(txtClaveArticulo.Text))
+                if (!ValidaNumCadena(ClaveA))
                 {
                     MessageBox.Show("CLAVE DE ARTÍCULO NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClaveArticulo.ForeColor = Color.Red;
                     return;
                 }
                 try
                 {
-                    ClaveArticulo = int.Parse(txtClaveArticulo.Text);
+                    ClaveArticulo = int.Parse(ClaveA);
 
                 }
                 catch (Exception Ex)
                 {
                     MessageBox.Show("CLAVE DE ARTÍCULO NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClaveArticulo.ForeColor = Color.Red;
                     return;
                 }
 
                 if (AdmA.BuscaArt(ClaveArticulo) == -1)
                 {
                     MessageBox.Show("ARTÍCULO NO ENCONTRADO", "ARTÍCULO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClaveArticulo.ForeColor = Color.Red;
                     return;
                 }
                 if (mD.DetalleRepetido(ClaveFactura, ClaveArticulo) != -1)
                 {
                     MessageBox.Show("ARTÍCULO YA CAPTUDARO PARA ESTA FACTURA", "ARTICULO REPETIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClaveArticulo.ForeColor = Color.Red;
                     return;
                 }
+                txtClaveArticulo.ForeColor = Color.Green;
                 if (numUpCantidad.Value == 0)
                 {
                     MessageBox.Show("CANTIDAD NO VÁLIDA", "CANTIDAD", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -161,7 +176,7 @@ namespace Facturas
             string Proveedor = txtClaveProveedor.Text;
             if (!ValidaNumCadena(Proveedor))
             {
-                errorP.SetError(txtClaveProveedor, "Clave de proveedor no válida");
+                errorP.SetError(txtClaveProveedor, "CLAVE DE PROVEEDOR NO VÁLIDA");
                 txtClaveProveedor.Focus();
             }
             else
@@ -174,7 +189,7 @@ namespace Facturas
         {
             if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
             {
-                errorP.SetError(txtClaveProveedor, "Sólo se permiten números");
+                errorP.SetError(txtClaveProveedor, "SÓLO SE PERMITEN NÚMEROS");
                 e.Handled = false;
             }
             else
@@ -188,7 +203,7 @@ namespace Facturas
             string ClaveFactura = txtClaveFactura.Text;
             if (!ValidaNumCadena(ClaveFactura))
             {
-                errorP.SetError(txtClaveFactura, "Clave de factura no válida");
+                errorP.SetError(txtClaveFactura, "CLAVE DE FACTURA NO VÁLIDA");
                 txtClaveFactura.Focus();
             }
             else
@@ -201,7 +216,7 @@ namespace Facturas
         {
             if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
             {
-                errorP.SetError(txtClaveFactura, "Sólo se permiten números");
+                errorP.SetError(txtClaveFactura, "SÓLO SE PERMITEN NÚMEROS");
                 e.Handled = false;
             }
             else
@@ -215,7 +230,7 @@ namespace Facturas
             string ClaveArticulo = txtClaveArticulo.Text;
             if (!ValidaNumCadena(ClaveArticulo))
             {
-                errorP.SetError(txtClaveArticulo, "Clave de artículo no válida");
+                errorP.SetError(txtClaveArticulo, "CLAVE DE ARTÍCULO NO VÁLIDA");
                 txtClaveArticulo.Focus();
             }
             else
@@ -228,7 +243,7 @@ namespace Facturas
         {
             if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
             {
-                errorP.SetError(txtClaveArticulo, "Sólo se permiten números");
+                errorP.SetError(txtClaveArticulo, "SÓLO SE PERMITEN NÚMEROS");
                 e.Handled = false;
             }
             else
@@ -278,6 +293,16 @@ namespace Facturas
             txtClaveFactura.Text = "";
             txtClaveArticulo.Text = "";
             numUpCantidad.Value = 0;
+            txtClaveFactura.ForeColor = Color.Black;
+            txtClaveProveedor.ForeColor = Color.Black;
+            txtClaveArticulo.ForeColor = Color.Black;
+        }
+
+        private void brnRegresar_Click(object sender, EventArgs e)
+        {
+            DialogResult D = MessageBox.Show("¿DESEA SALIR?","CERRAR VENTANA",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (D == DialogResult.Yes)
+                this.Close();
         }
     }
 }

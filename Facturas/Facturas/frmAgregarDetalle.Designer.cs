@@ -44,6 +44,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.numUpCantidad = new System.Windows.Forms.NumericUpDown();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.brnSalir = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.grpDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -65,8 +67,9 @@
             // 
             this.txtClaveProveedor.Location = new System.Drawing.Point(19, 113);
             this.txtClaveProveedor.Name = "txtClaveProveedor";
-            this.txtClaveProveedor.Size = new System.Drawing.Size(120, 20);
+            this.txtClaveProveedor.Size = new System.Drawing.Size(143, 20);
             this.txtClaveProveedor.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.txtClaveProveedor, "Introduzca la clave del proveedor");
             this.txtClaveProveedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveProveedor_KeyPress);
             this.txtClaveProveedor.Validated += new System.EventHandler(this.Valida_proveedor);
             // 
@@ -84,8 +87,9 @@
             // 
             this.txtClaveFactura.Location = new System.Drawing.Point(19, 42);
             this.txtClaveFactura.Name = "txtClaveFactura";
-            this.txtClaveFactura.Size = new System.Drawing.Size(120, 20);
+            this.txtClaveFactura.Size = new System.Drawing.Size(143, 20);
             this.txtClaveFactura.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.txtClaveFactura, "Introduzca la clave de la factura");
             this.txtClaveFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveFactura_KeyPress);
             this.txtClaveFactura.Validated += new System.EventHandler(this.Valida_factura);
             // 
@@ -103,8 +107,9 @@
             // 
             this.txtClaveArticulo.Location = new System.Drawing.Point(18, 183);
             this.txtClaveArticulo.Name = "txtClaveArticulo";
-            this.txtClaveArticulo.Size = new System.Drawing.Size(120, 20);
+            this.txtClaveArticulo.Size = new System.Drawing.Size(144, 20);
             this.txtClaveArticulo.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.txtClaveArticulo, "Introduzca la clave del artículo");
             this.txtClaveArticulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveArticulo_KeyPress);
             this.txtClaveArticulo.Validated += new System.EventHandler(this.Valida_articulo);
             // 
@@ -112,7 +117,7 @@
             // 
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(16, 231);
+            this.lblCantidad.Location = new System.Drawing.Point(16, 228);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(54, 14);
             this.lblCantidad.TabIndex = 6;
@@ -121,24 +126,28 @@
             // btnAgregar
             // 
             this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAgregar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(63, 348);
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Location = new System.Drawing.Point(74, 337);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(120, 38);
             this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "Agregar Detalle";
+            this.toolTip1.SetToolTip(this.btnAgregar, "Agregar el detalle a la factura");
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnLimpiar
             // 
             this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(198, 348);
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Location = new System.Drawing.Point(99, 240);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.Size = new System.Drawing.Size(83, 26);
             this.btnLimpiar.TabIndex = 6;
             this.btnLimpiar.Text = "Limpiar";
+            this.toolTip1.SetToolTip(this.btnLimpiar, "Limpiar campos de texto y selección");
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
@@ -146,6 +155,7 @@
             // 
             this.grpDatos.Controls.Add(this.pictureBox2);
             this.grpDatos.Controls.Add(this.pictureBox1);
+            this.grpDatos.Controls.Add(this.btnLimpiar);
             this.grpDatos.Controls.Add(this.numUpCantidad);
             this.grpDatos.Controls.Add(this.lblClaveProveedor);
             this.grpDatos.Controls.Add(this.txtClaveProveedor);
@@ -156,7 +166,7 @@
             this.grpDatos.Controls.Add(this.lblCantidad);
             this.grpDatos.Location = new System.Drawing.Point(12, 23);
             this.grpDatos.Name = "grpDatos";
-            this.grpDatos.Size = new System.Drawing.Size(306, 297);
+            this.grpDatos.Size = new System.Drawing.Size(382, 295);
             this.grpDatos.TabIndex = 14;
             this.grpDatos.TabStop = false;
             this.grpDatos.Text = "Datos del detalle";
@@ -164,9 +174,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(167, 222);
+            this.pictureBox2.Location = new System.Drawing.Point(214, 202);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(126, 69);
+            this.pictureBox2.Size = new System.Drawing.Size(133, 69);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 17;
             this.pictureBox2.TabStop = false;
@@ -174,36 +184,51 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(167, 42);
+            this.pictureBox1.Location = new System.Drawing.Point(198, 23);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(133, 138);
+            this.pictureBox1.Size = new System.Drawing.Size(168, 157);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
             // 
             // numUpCantidad
             // 
-            this.numUpCantidad.Location = new System.Drawing.Point(19, 248);
+            this.numUpCantidad.Location = new System.Drawing.Point(19, 245);
             this.numUpCantidad.Name = "numUpCantidad";
             this.numUpCantidad.ReadOnly = true;
-            this.numUpCantidad.Size = new System.Drawing.Size(76, 20);
+            this.numUpCantidad.Size = new System.Drawing.Size(51, 20);
             this.numUpCantidad.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.numUpCantidad, "Seleccione una cantidad");
             this.numUpCantidad.Validated += new System.EventHandler(this.numUpCantidad_Validated);
             // 
             // errorP
             // 
             this.errorP.ContainerControl = this;
             // 
+            // brnSalir
+            // 
+            this.brnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.brnSalir.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brnSalir.Location = new System.Drawing.Point(226, 337);
+            this.brnSalir.Name = "brnSalir";
+            this.brnSalir.Size = new System.Drawing.Size(115, 38);
+            this.brnSalir.TabIndex = 15;
+            this.brnSalir.Text = "Salir";
+            this.toolTip1.SetToolTip(this.brnSalir, "Cerrar ventana");
+            this.brnSalir.UseVisualStyleBackColor = true;
+            this.brnSalir.Click += new System.EventHandler(this.brnRegresar_Click);
+            // 
             // frmAgregarDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(340, 397);
+            this.ClientSize = new System.Drawing.Size(413, 395);
+            this.ControlBox = false;
+            this.Controls.Add(this.brnSalir);
             this.Controls.Add(this.grpDatos);
-            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnAgregar);
             this.Name = "frmAgregarDetalle";
-            this.Text = "Módulo Detalles de Factura";
+            this.Text = "Agregar Detalle";
             this.Load += new System.EventHandler(this.frmAgregarDetalle_Load);
             this.grpDatos.ResumeLayout(false);
             this.grpDatos.PerformLayout();
@@ -231,5 +256,7 @@
         private System.Windows.Forms.ErrorProvider errorP;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button brnSalir;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
