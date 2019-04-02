@@ -44,16 +44,18 @@
             this.Error = new System.Windows.Forms.ErrorProvider(this.components);
             this.Picture = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.gbAgregaArticulo = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Error)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Picture)).BeginInit();
+            this.gbAgregaArticulo.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
             this.lblDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescripcion.Location = new System.Drawing.Point(50, 44);
+            this.lblDescripcion.Location = new System.Drawing.Point(15, 28);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(80, 16);
             this.lblDescripcion.TabIndex = 0;
@@ -63,7 +65,7 @@
             // 
             this.lblModelo.AutoSize = true;
             this.lblModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModelo.Location = new System.Drawing.Point(50, 118);
+            this.lblModelo.Location = new System.Drawing.Point(15, 90);
             this.lblModelo.Name = "lblModelo";
             this.lblModelo.Size = new System.Drawing.Size(54, 16);
             this.lblModelo.TabIndex = 1;
@@ -73,7 +75,7 @@
             // 
             this.lblPrecio.AutoSize = true;
             this.lblPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecio.Location = new System.Drawing.Point(50, 192);
+            this.lblPrecio.Location = new System.Drawing.Point(15, 164);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(47, 16);
             this.lblPrecio.TabIndex = 2;
@@ -83,7 +85,7 @@
             // 
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(50, 260);
+            this.lblCantidad.Location = new System.Drawing.Point(15, 232);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(62, 16);
             this.lblCantidad.TabIndex = 3;
@@ -92,7 +94,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDescripcion.Location = new System.Drawing.Point(53, 72);
+            this.txtDescripcion.Location = new System.Drawing.Point(18, 56);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(245, 20);
             this.txtDescripcion.TabIndex = 1;
@@ -103,7 +105,7 @@
             // txtModelo
             // 
             this.txtModelo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtModelo.Location = new System.Drawing.Point(53, 146);
+            this.txtModelo.Location = new System.Drawing.Point(18, 118);
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.Size = new System.Drawing.Size(245, 20);
             this.txtModelo.TabIndex = 2;
@@ -114,7 +116,7 @@
             // txtPrecio
             // 
             this.txtPrecio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPrecio.Location = new System.Drawing.Point(53, 220);
+            this.txtPrecio.Location = new System.Drawing.Point(18, 192);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(111, 20);
             this.txtPrecio.TabIndex = 3;
@@ -125,7 +127,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(53, 364);
+            this.btnGuardar.Location = new System.Drawing.Point(28, 351);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(132, 49);
             this.btnGuardar.TabIndex = 5;
@@ -137,7 +139,7 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(235, 364);
+            this.btnLimpiar.Location = new System.Drawing.Point(210, 351);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(136, 49);
             this.btnLimpiar.TabIndex = 6;
@@ -148,7 +150,7 @@
             // 
             // nudCantidad
             // 
-            this.nudCantidad.Location = new System.Drawing.Point(53, 288);
+            this.nudCantidad.Location = new System.Drawing.Point(18, 260);
             this.nudCantidad.Name = "nudCantidad";
             this.nudCantidad.ReadOnly = true;
             this.nudCantidad.Size = new System.Drawing.Size(122, 20);
@@ -168,48 +170,60 @@
             // Picture
             // 
             this.Picture.Image = ((System.Drawing.Image)(resources.GetObject("Picture.Image")));
-            this.Picture.Location = new System.Drawing.Point(316, 44);
+            this.Picture.Location = new System.Drawing.Point(296, 42);
             this.Picture.Name = "Picture";
-            this.Picture.Size = new System.Drawing.Size(268, 288);
-            this.Picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Picture.Size = new System.Drawing.Size(268, 183);
+            this.Picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Picture.TabIndex = 7;
             this.Picture.TabStop = false;
             // 
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(416, 364);
+            this.btnSalir.Location = new System.Drawing.Point(391, 351);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(136, 49);
             this.btnSalir.TabIndex = 7;
             this.btnSalir.Text = "Salir";
+            this.toolTipMostrar.SetToolTip(this.btnSalir, "Salir de la ventana");
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // gbAgregaArticulo
+            // 
+            this.gbAgregaArticulo.Controls.Add(this.nudCantidad);
+            this.gbAgregaArticulo.Controls.Add(this.txtPrecio);
+            this.gbAgregaArticulo.Controls.Add(this.txtModelo);
+            this.gbAgregaArticulo.Controls.Add(this.txtDescripcion);
+            this.gbAgregaArticulo.Controls.Add(this.lblCantidad);
+            this.gbAgregaArticulo.Controls.Add(this.lblPrecio);
+            this.gbAgregaArticulo.Controls.Add(this.lblModelo);
+            this.gbAgregaArticulo.Controls.Add(this.lblDescripcion);
+            this.gbAgregaArticulo.Location = new System.Drawing.Point(7, 25);
+            this.gbAgregaArticulo.Name = "gbAgregaArticulo";
+            this.gbAgregaArticulo.Size = new System.Drawing.Size(283, 299);
+            this.gbAgregaArticulo.TabIndex = 0;
+            this.gbAgregaArticulo.TabStop = false;
+            this.gbAgregaArticulo.Text = "Agrega Articulo";
             // 
             // frmAgregaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 455);
+            this.ClientSize = new System.Drawing.Size(572, 412);
+            this.Controls.Add(this.gbAgregaArticulo);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.Picture);
-            this.Controls.Add(this.nudCantidad);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.txtPrecio);
-            this.Controls.Add(this.txtModelo);
-            this.Controls.Add(this.txtDescripcion);
-            this.Controls.Add(this.lblCantidad);
-            this.Controls.Add(this.lblPrecio);
-            this.Controls.Add(this.lblModelo);
-            this.Controls.Add(this.lblDescripcion);
             this.Name = "frmAgregaArticulo";
             this.Text = "Agrega Articulo";
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Error)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Picture)).EndInit();
+            this.gbAgregaArticulo.ResumeLayout(false);
+            this.gbAgregaArticulo.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -229,5 +243,6 @@
         private System.Windows.Forms.ErrorProvider Error;
         private System.Windows.Forms.PictureBox Picture;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.GroupBox gbAgregaArticulo;
     }
 }

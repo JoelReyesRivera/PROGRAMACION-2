@@ -29,29 +29,29 @@ namespace Facturas
 
             string Desc = txtDescripcion.Text, Prec = txtPrecio.Text, Modelo = txtModelo.Text; ; float Precio; int Cant = Convert.ToInt32(nudCantidad.Value);
 
-            if (IsEmpty(Desc))
+            if (Rutinas.IsEmpty(Desc))
             {
                 MessageBox.Show("FAVOR DE ESCRIBIR UNA DESCRIPCION EN FORMATO CORRECTO", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (IsEmpty(Modelo))
+            if (Rutinas.IsEmpty(Modelo))
             {
                 MessageBox.Show("FAVOR DE ESCRIBIR EL MODELO EN FORMATO CORRECTO", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!(ValidaTexto(Desc)))
+            if (!(Rutinas.ValidaTexto(Desc)))
             {
                 MessageBox.Show("LA DESCRIPCION ESTA ESCRITA DE FORMA INCORRECTA","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 Limpiar();
                 return;
             }
-            if (!(ValidaTexto(Modelo)))
+            if (!(Rutinas.ValidaTexto(Modelo)))
             {
                 MessageBox.Show("EL MODELO ESTA ESCRITO DE FORMA INCORRECTA", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Limpiar();
                 return;
             }
-            if (!(ValidaTextoNum(Prec)))
+            if (!(Rutinas.ValidaTextoNum(Prec)))
             {
                 MessageBox.Show("EL PRECIO ESTA ESCRITO DE FORMA INCORRECTA", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Limpiar();
@@ -102,35 +102,7 @@ namespace Facturas
             nudCantidad.Value = 1;
             Error.Clear();
         }
-    
-        private bool IsEmpty(string Cadena)
-        {
-            if (string.IsNullOrWhiteSpace(Cadena) || string.IsNullOrEmpty(Cadena))
-                return true;
-
-            return false;
-        }
-
-        private bool ValidaTexto(string Cadena)
-        {
-            foreach (char C in Cadena)
-            {
-                if (!(Char.IsLetter(C)))
-                    return false;
-            }
-            return true;
-        }
-
-        private bool ValidaTextoNum(string Cadena)
-        {
-            foreach (char C in Cadena)
-            {
-                if (C < '0' || C > '9')
-                    return false;
-            }
-            return true;
-        }
-
+  
         private void txtDescripcion_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
@@ -145,7 +117,7 @@ namespace Facturas
         private void txtDescripcion_Validated(object sender, EventArgs e)
         {
             string D = txtDescripcion.Text;
-            if (!ValidaTexto(D))
+            if (!Rutinas.ValidaTexto(D))
             {
                 Error.SetError(txtDescripcion, "DESCRIPCION ESCRITA EN FORMA INCORRECTA");
                 txtDescripcion.Focus();
@@ -168,7 +140,7 @@ namespace Facturas
         private void txtModelo_Validated(object sender, EventArgs e)
         {
             string M = txtModelo.Text;
-            if (!ValidaTexto(M))
+            if (!Rutinas.ValidaTexto(M))
             {
                 Error.SetError(txtModelo, "MODELO ESCRITO EN FORMA INCORRECTA");
                 txtModelo.Focus();
@@ -192,7 +164,7 @@ namespace Facturas
         private void txtPrecio_Validated(object sender, EventArgs e)
         {
             string P = txtPrecio.Text;
-            if (!(ValidaTextoNum(P)))
+            if (!(Rutinas.ValidaTextoNum(P)))
             {
                 Error.SetError(txtPrecio, "PRECIO ESCRITO EN FORMA INCORRECTA");
                 txtPrecio.Focus();
@@ -218,7 +190,5 @@ namespace Facturas
             if (Result == DialogResult.Yes)
                 this.Close();
         }
-
-        
     }
 }

@@ -19,5 +19,30 @@ namespace Facturas
             string[] Meses = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
             return Meses[Mes - 1];
         }
+        public static bool ValidaTexto(string Cadena)
+        {
+            foreach (char C in Cadena)
+            {
+                if (!(Char.IsLetter(C)))
+                    return false;
+            }
+            return true;
+        }
+        public static bool ValidaTextoNum(string Cadena)
+        {
+            foreach (char C in Cadena)
+            {
+                if (C < '0' || C > '9')
+                    return false;
+            }
+            return true;
+        }
+        public static bool IsEmpty(string Cadena)
+        {
+            if (string.IsNullOrWhiteSpace(Cadena) || string.IsNullOrEmpty(Cadena))
+                return true;
+
+            return false;
+        }
     }
 }

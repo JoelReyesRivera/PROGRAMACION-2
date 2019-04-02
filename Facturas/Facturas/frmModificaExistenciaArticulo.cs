@@ -63,7 +63,10 @@ namespace Facturas
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult Result = MessageBox.Show("¿DESEA SALIR?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (Result == DialogResult.Yes)
+                this.Close();
         }
 
         private void Limpiar()
@@ -80,10 +83,6 @@ namespace Facturas
                 Error.SetError(nudCantidad, "NUMERO FUERA DEL RANGO PERMITIDO");
             else
                 Error.SetError(nudCantidad, "");
-        }
-
-        private void cmbArticulos_SelectedIndexChanged(object sender, EventArgs e)
-        {
         }
     }
 }

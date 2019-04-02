@@ -43,6 +43,8 @@
             this.lblCant = new System.Windows.Forms.Label();
             this.toolTipMostrar = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.gbInfoArticulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +53,7 @@
             // 
             this.lblArticulos.AutoSize = true;
             this.lblArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArticulos.Location = new System.Drawing.Point(12, 82);
+            this.lblArticulos.Location = new System.Drawing.Point(19, 79);
             this.lblArticulos.Name = "lblArticulos";
             this.lblArticulos.Size = new System.Drawing.Size(79, 20);
             this.lblArticulos.TabIndex = 0;
@@ -91,7 +93,7 @@
             this.cmbArticulos.FormattingEnabled = true;
             this.cmbArticulos.Items.AddRange(new object[] {
             "-SELECCIONE UN ARTICULO-"});
-            this.cmbArticulos.Location = new System.Drawing.Point(16, 118);
+            this.cmbArticulos.Location = new System.Drawing.Point(23, 115);
             this.cmbArticulos.Name = "cmbArticulos";
             this.cmbArticulos.Size = new System.Drawing.Size(242, 26);
             this.cmbArticulos.TabIndex = 1;
@@ -112,7 +114,7 @@
             this.gbInfoArticulo.Location = new System.Drawing.Point(281, 72);
             this.gbInfoArticulo.Name = "gbInfoArticulo";
             this.gbInfoArticulo.Size = new System.Drawing.Size(421, 199);
-            this.gbInfoArticulo.TabIndex = 2;
+            this.gbInfoArticulo.TabIndex = 0;
             this.gbInfoArticulo.TabStop = false;
             this.gbInfoArticulo.Text = "Información Articulo";
             this.toolTipMostrar.SetToolTip(this.gbInfoArticulo, "Información basica del Articulo");
@@ -161,18 +163,42 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(41, 168);
+            this.pictureBox1.Location = new System.Drawing.Point(47, 178);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(193, 144);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Location = new System.Drawing.Point(526, 304);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(103, 32);
+            this.btnSalir.TabIndex = 2;
+            this.btnSalir.Text = "Salir";
+            this.toolTipMostrar.SetToolTip(this.btnSalir, "Salir de la ventana");
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(163, 19);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(434, 29);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "CONSULTA ARTICULO INDIVIDUAL";
             // 
             // frmConsultaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 348);
+            this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.gbInfoArticulo);
             this.Controls.Add(this.cmbArticulos);
@@ -203,5 +229,7 @@
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.ToolTip toolTipMostrar;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label lblTitulo;
     }
 }

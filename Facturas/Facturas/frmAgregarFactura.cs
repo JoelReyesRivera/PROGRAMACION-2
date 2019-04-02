@@ -28,7 +28,6 @@ namespace Facturas
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            //HACER EL DETALLE FACTURA
             DialogResult D = MessageBox.Show("¿DESEA AGREGAR LA FACTURA?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (D == DialogResult.Yes)
             {
@@ -39,7 +38,7 @@ namespace Facturas
                     MessageBox.Show("CLAVE DE FACTURA VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (!ValidaNumCadena(ClaveF))
+                if (!Rutinas.ValidaTextoNum(ClaveF))
                 {
                     MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -64,7 +63,7 @@ namespace Facturas
                     MessageBox.Show("CLAVE DE PROVEEDOR VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (!ValidaNumCadena(ClaveP))
+                if (!Rutinas.ValidaTextoNum(ClaveP))
                 {
                     MessageBox.Show("CLAVE DE PROVEEDOR NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -116,7 +115,7 @@ namespace Facturas
         private void Valida_Factura(object sender, EventArgs e)
         {
             string ClaveFactura = txtClaveFactura.Text;
-            if (!ValidaNumCadena(ClaveFactura))
+            if (!Rutinas.ValidaTextoNum(ClaveFactura))
             {
                 errorP.SetError(txtClaveFactura, "CLAVE DE FACTURA NO VÁLIDA");
                 txtClaveFactura.Focus();
@@ -142,7 +141,7 @@ namespace Facturas
         private void Valida_proveedor(object sender, EventArgs e)
         {
             string Proveedor = txtClaveProveedor.Text;
-            if (!ValidaNumCadena(Proveedor))
+            if (!Rutinas.ValidaTextoNum(Proveedor))
             {
                 errorP.SetError(txtClaveProveedor, "CLAVE DE PROVEEDOR NO VÁLIDA");
                 txtClaveProveedor.Focus();
@@ -168,7 +167,7 @@ namespace Facturas
         private void Valida_claveartAgrega(object sender, EventArgs e)
         {
             string ClaveArticulo = txtClaveArticuloAgregar.Text;
-            if (!ValidaNumCadena(ClaveArticulo))
+            if (!Rutinas.ValidaTextoNum(ClaveArticulo))
             {
                 errorP.SetError(txtClaveArticuloAgregar, "CLAVE DE ARTÍCULO NO VÁLIDA");
                 txtClaveArticuloAgregar.Focus();
@@ -202,24 +201,6 @@ namespace Facturas
             {
                 errorP.SetError(numUpCantidad, "");
             }
-        }
-        private bool ValidaNumCadena(string Cadena)
-        {
-            foreach (char c in Cadena)
-            {
-                if (c < '0' || c > '9')
-                    return false;
-            }
-            return true;
-        }
-        private bool ValidaTxtCadena(string Cadena)
-        {
-            foreach (char c in Cadena)
-            {
-                if (!Char.IsLetter(c))
-                    return false;
-            }
-            return true;
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -264,7 +245,7 @@ namespace Facturas
                 MessageBox.Show("CLAVE DEL ARTICULO VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (!ValidaNumCadena(ClaveA))
+            if (!Rutinas.ValidaTextoNum(ClaveA))
             {
                 MessageBox.Show("CLAVE DEL ARTICULO NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

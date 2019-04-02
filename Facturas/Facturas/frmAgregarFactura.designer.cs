@@ -138,7 +138,7 @@
             this.grpDatos.Location = new System.Drawing.Point(22, 22);
             this.grpDatos.Name = "grpDatos";
             this.grpDatos.Size = new System.Drawing.Size(167, 154);
-            this.grpDatos.TabIndex = 1;
+            this.grpDatos.TabIndex = 0;
             this.grpDatos.TabStop = false;
             this.grpDatos.Text = "Datos de la factura";
             // 
@@ -161,7 +161,7 @@
             this.grpAgregarArticulo.Location = new System.Drawing.Point(22, 187);
             this.grpAgregarArticulo.Name = "grpAgregarArticulo";
             this.grpAgregarArticulo.Size = new System.Drawing.Size(167, 160);
-            this.grpAgregarArticulo.TabIndex = 2;
+            this.grpAgregarArticulo.TabIndex = 0;
             this.grpAgregarArticulo.TabStop = false;
             this.grpAgregarArticulo.Text = "Agregar Artículo";
             // 
@@ -307,7 +307,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Location = new System.Drawing.Point(743, 277);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(137, 44);
