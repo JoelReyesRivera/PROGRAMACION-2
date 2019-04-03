@@ -31,29 +31,17 @@ namespace Facturas
 
             if (Rutinas.IsEmpty(Desc))
             {
-                MessageBox.Show("FAVOR DE ESCRIBIR UNA DESCRIPCION EN FORMATO CORRECTO", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("FAVOR DE ESCRIBIR UNA DESCRIPCION", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (Rutinas.IsEmpty(Modelo))
             {
-                MessageBox.Show("FAVOR DE ESCRIBIR EL MODELO EN FORMATO CORRECTO", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (!(Rutinas.ValidaTexto(Desc)))
-            {
-                MessageBox.Show("LA DESCRIPCION ESTA ESCRITA DE FORMA INCORRECTA","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                Limpiar();
-                return;
-            }
-            if (!(Rutinas.ValidaTexto(Modelo)))
-            {
-                MessageBox.Show("EL MODELO ESTA ESCRITO DE FORMA INCORRECTA", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Limpiar();
+                MessageBox.Show("FAVOR DE ESCRIBIR EL MODELO", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (!(Rutinas.ValidaTextoNum(Prec)))
             {
-                MessageBox.Show("EL PRECIO ESTA ESCRITO DE FORMA INCORRECTA", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("EL PRECIO SOLO PUEDE CONTENER NUMEROS", "FORMATO INCORRECTO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Limpiar();
                 return;
             }
@@ -63,18 +51,18 @@ namespace Facturas
             }
             catch (FormatException E)
             {
-                MessageBox.Show("EL PRECIO ESTA ESCRITO EN UN FORMATO INCORRECTO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("EL PRECIO NO PUEDE ESTAR VACIO", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Limpiar();
                 return;
             }
             if (Precio < 1)
             {
-                MessageBox.Show("EL PRECIO NO PUEDE SER MENOR A 1", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("EL PRECIO NO PUEDE SER MENOR A 1", "VALOR FUERA DE RANGO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (Cant < 1)
             {
-                MessageBox.Show("LA CANTIDAD DE ARTICULOS A INGRESAR NO PUEDE SER MENOR A 1", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("LA CANTIDAD DE ARTICULOS A INGRESAR NO PUEDE SER MENOR A 1", "VALOR FUERA DE RANGO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (AdmA.BuscaDesc(Desc))
@@ -103,52 +91,6 @@ namespace Facturas
             Error.Clear();
         }
   
-        private void txtDescripcion_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
-            {
-                Error.SetError(txtDescripcion, "EN ESTE APARADO SOLO SE ACEPTAN LETRAS");
-                e.Handled = false;
-            }
-            else
-                Error.SetError(txtDescripcion, "");
-        }
-
-        private void txtDescripcion_Validated(object sender, EventArgs e)
-        {
-            string D = txtDescripcion.Text;
-            if (!Rutinas.ValidaTexto(D))
-            {
-                Error.SetError(txtDescripcion, "DESCRIPCION ESCRITA EN FORMA INCORRECTA");
-                txtDescripcion.Focus();
-            }
-            else
-                Error.SetError(txtDescripcion, "");
-        }
-
-        private void txtModelo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
-            {
-                Error.SetError(txtModelo, "EN ESTE APARADO SOLO SE ACEPTAN LETRAS");
-                e.Handled = false;
-            }
-            else
-                Error.SetError(txtModelo, "");
-        }
-
-        private void txtModelo_Validated(object sender, EventArgs e)
-        {
-            string M = txtModelo.Text;
-            if (!Rutinas.ValidaTexto(M))
-            {
-                Error.SetError(txtModelo, "MODELO ESCRITO EN FORMA INCORRECTA");
-                txtModelo.Focus();
-            }
-            else
-                Error.SetError(txtModelo, "");
-        }
-
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)(Keys.Back)))

@@ -25,11 +25,6 @@ namespace Facturas
             this.proveedores = proveedores;
             this.AdmA = AdmA;
         }
-
-        private void frmAgregarDetalle_Load(object sender, EventArgs e)
-        {
-
-        }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             DialogResult D = MessageBox.Show("¿DESEA AGREGAR EL DETALLE?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

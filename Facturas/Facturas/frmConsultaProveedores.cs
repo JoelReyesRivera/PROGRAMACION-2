@@ -29,5 +29,13 @@ namespace Facturas
                 dtgvProveedores.Rows.Add(claves[i], provedoresExistentes[i].pRFC, provedoresExistentes[i].pNombre, provedoresExistentes[i].pDomicilio, provedoresExistentes[i].pSaldo);
             }
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult Result = MessageBox.Show("¿DESEA SALIR?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (Result == DialogResult.Yes)
+                this.Close();
+        }
     }
 }

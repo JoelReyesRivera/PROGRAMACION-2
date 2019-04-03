@@ -77,7 +77,7 @@
             this.nudCantidad.ReadOnly = true;
             this.nudCantidad.Size = new System.Drawing.Size(81, 20);
             this.nudCantidad.TabIndex = 2;
-            this.toolTipMostrar.SetToolTip(this.nudCantidad, "Cantidad de Articulos ");
+            this.toolTipMostrar.SetToolTip(this.nudCantidad, "Seleccione Cantidad de Articulos ");
             this.nudCantidad.Value = new decimal(new int[] {
             1,
             0,
@@ -92,7 +92,7 @@
             this.lblCantidad.Location = new System.Drawing.Point(3, 90);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(147, 18);
-            this.lblCantidad.TabIndex = 3;
+            this.lblCantidad.TabIndex = 0;
             this.lblCantidad.Text = "Cantidad de Articulos";
             // 
             // btnGuardar
@@ -142,7 +142,7 @@
             this.lblTitulo.Location = new System.Drawing.Point(57, 31);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(343, 24);
-            this.lblTitulo.TabIndex = 6;
+            this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "MODIFICA EXISTENCIA ARTICULO";
             // 
             // pbArticulo
@@ -173,6 +173,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(469, 354);
+            this.ControlBox = false;
             this.Controls.Add(this.gpArticulo);
             this.Controls.Add(this.pbArticulo);
             this.Controls.Add(this.lblTitulo);
