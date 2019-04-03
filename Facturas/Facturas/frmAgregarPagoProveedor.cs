@@ -50,16 +50,21 @@ namespace Facturas
                     MessageBox.Show("IMPORTE INVALIDO", "PAGO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                if (importe < 1)
+                {
+                    MessageBox.Show("IMPORTE INVALIDO", "PAGO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 Proveedor proveedor = proveedores.RetornaProveedorClave(claveProveedor);
                 txtNombre.Text = proveedor.pNombre;
-                lblImporteSaldoActual.Text = String.Format("" + proveedor.pSaldo);
+                lblImporteSaldoActual.Text = String.Format("$" + proveedor.pSaldo);
                 if (proveedor.pSaldo - importe < 0)
                 {
                     MessageBox.Show("IMPORTE INVALIDO; EL IMPORTE DEBE SER IGUAL O MENOR QUE $" + proveedor.pSaldo, "PAGO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 proveedor.pSaldo = proveedor.pSaldo - importe;
-                MessageBox.Show("SALDO NUEVO DE PROVEEDOR $" + clave + ": " + proveedor.pSaldo, "PAGO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("SALDO NUEVO DE PROVEEDOR " + clave + ": $" + proveedor.pSaldo, "PAGO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MessageBox.Show("PAGO REALIZADO CORRECTAMENTE", "PAGO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Clear();
             }

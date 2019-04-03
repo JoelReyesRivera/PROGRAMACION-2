@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultaProvedor));
             this.lblClave = new System.Windows.Forms.Label();
             this.lblConsultaProvedor = new System.Windows.Forms.Label();
@@ -41,6 +42,7 @@
             this.txtClave = new System.Windows.Forms.TextBox();
             this.cmbNombre = new System.Windows.Forms.ComboBox();
             this.pbImagen = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,6 +75,7 @@
             this.txtRFC.ReadOnly = true;
             this.txtRFC.Size = new System.Drawing.Size(121, 20);
             this.txtRFC.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.txtRFC, "RFC del Proveedor");
             // 
             // lblRFC
             // 
@@ -121,6 +124,7 @@
             this.txtSueldo.ReadOnly = true;
             this.txtSueldo.Size = new System.Drawing.Size(121, 20);
             this.txtSueldo.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.txtSueldo, "Saldo del proveedor");
             // 
             // lblSaldo
             // 
@@ -141,6 +145,7 @@
             this.txtClave.ReadOnly = true;
             this.txtClave.Size = new System.Drawing.Size(121, 20);
             this.txtClave.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.txtClave, "Clave del Proveedor");
             // 
             // cmbNombre
             // 
@@ -150,6 +155,7 @@
             this.cmbNombre.Name = "cmbNombre";
             this.cmbNombre.Size = new System.Drawing.Size(121, 21);
             this.cmbNombre.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.cmbNombre, "Nombre del Proveedor");
             this.cmbNombre.SelectedIndexChanged += new System.EventHandler(this.cmbNombre_SelectedIndexChanged);
             // 
             // pbImagen
@@ -202,5 +208,6 @@
         private System.Windows.Forms.TextBox txtClave;
         private System.Windows.Forms.ComboBox cmbNombre;
         private System.Windows.Forms.PictureBox pbImagen;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

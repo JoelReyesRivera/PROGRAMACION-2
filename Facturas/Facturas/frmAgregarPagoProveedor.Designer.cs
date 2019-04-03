@@ -45,6 +45,7 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.errorProviderProveedores = new System.Windows.Forms.ErrorProvider(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderProveedores)).BeginInit();
             this.SuspendLayout();
@@ -55,6 +56,7 @@
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(100, 20);
             this.txtClave.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.txtClave, "Clave del proveedor");
             this.txtClave.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClave_KeyPress);
             this.txtClave.Validated += new System.EventHandler(this.txtClave_Validated);
             // 
@@ -96,6 +98,7 @@
             this.lblImporteSaldoActual.Size = new System.Drawing.Size(19, 13);
             this.lblImporteSaldoActual.TabIndex = 6;
             this.lblImporteSaldoActual.Text = "$0";
+            this.toolTip1.SetToolTip(this.lblImporteSaldoActual, "Saldo Actual");
             // 
             // lblSaldoActual
             // 
@@ -115,6 +118,7 @@
             this.btnRealizarPago.Size = new System.Drawing.Size(147, 35);
             this.btnRealizarPago.TabIndex = 10;
             this.btnRealizarPago.Text = "Realizar Pago";
+            this.toolTip1.SetToolTip(this.btnRealizarPago, "Concretar pago");
             this.btnRealizarPago.UseVisualStyleBackColor = true;
             this.btnRealizarPago.Click += new System.EventHandler(this.btnRealizarPago_Click);
             // 
@@ -134,6 +138,7 @@
             this.txtImporte.Name = "txtImporte";
             this.txtImporte.Size = new System.Drawing.Size(100, 20);
             this.txtImporte.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.txtImporte, "Importe que se pagará");
             this.txtImporte.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImporte_KeyPress);
             this.txtImporte.Validated += new System.EventHandler(this.txtImporte_Validated);
             // 
@@ -145,6 +150,7 @@
             this.btnLimpiar.Size = new System.Drawing.Size(147, 35);
             this.btnLimpiar.TabIndex = 13;
             this.btnLimpiar.Text = "Limpiar";
+            this.toolTip1.SetToolTip(this.btnLimpiar, "Limpiar Ventana");
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
@@ -176,6 +182,7 @@
             this.txtNombre.ReadOnly = true;
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.txtNombre, "Nombre del proveedor");
             // 
             // btnBuscar
             // 
@@ -184,6 +191,7 @@
             this.btnBuscar.Size = new System.Drawing.Size(91, 23);
             this.btnBuscar.TabIndex = 15;
             this.btnBuscar.Text = "Ver Proveedor";
+            this.toolTip1.SetToolTip(this.btnBuscar, "Ver Proveedor");
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -237,5 +245,6 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.ErrorProvider errorProviderProveedores;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

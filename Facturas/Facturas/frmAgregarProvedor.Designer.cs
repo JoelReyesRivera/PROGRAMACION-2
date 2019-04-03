@@ -44,6 +44,7 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.pbImagen = new System.Windows.Forms.PictureBox();
             this.errorProviderProveedores = new System.Windows.Forms.ErrorProvider(this.components);
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderProveedores)).BeginInit();
             this.SuspendLayout();
@@ -96,6 +97,8 @@
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(100, 20);
             this.txtClave.TabIndex = 0;
+            this.txtClave.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip.SetToolTip(this.txtClave, "Clave del Proveedor");
             this.txtClave.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClave_KeyPress);
             this.txtClave.Validated += new System.EventHandler(this.txtClave_Validated);
             // 
@@ -106,6 +109,7 @@
             this.txtRFC.Name = "txtRFC";
             this.txtRFC.Size = new System.Drawing.Size(100, 20);
             this.txtRFC.TabIndex = 1;
+            this.toolTip.SetToolTip(this.txtRFC, "RFC del proveedor");
             // 
             // txtNombre
             // 
@@ -114,6 +118,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 2;
+            this.toolTip.SetToolTip(this.txtNombre, "Nombre del proveedor");
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             this.txtNombre.Validated += new System.EventHandler(this.txtNombre_Validated);
             // 
@@ -134,6 +139,7 @@
             this.txtDomicilio.Name = "txtDomicilio";
             this.txtDomicilio.Size = new System.Drawing.Size(100, 20);
             this.txtDomicilio.TabIndex = 3;
+            this.toolTip.SetToolTip(this.txtDomicilio, "Domicilio del Proveedor");
             // 
             // btnAgregar
             // 
@@ -143,6 +149,7 @@
             this.btnAgregar.Size = new System.Drawing.Size(81, 26);
             this.btnAgregar.TabIndex = 4;
             this.btnAgregar.Text = "Agregar";
+            this.toolTip.SetToolTip(this.btnAgregar, "Agregar Proveedor");
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
@@ -154,6 +161,7 @@
             this.btnLimpiar.Size = new System.Drawing.Size(81, 26);
             this.btnLimpiar.TabIndex = 5;
             this.btnLimpiar.Text = "Limpiar";
+            this.toolTip.SetToolTip(this.btnLimpiar, "Limpiar Ventana");
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
@@ -225,5 +233,6 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.PictureBox pbImagen;
         private System.Windows.Forms.ErrorProvider errorProviderProveedores;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

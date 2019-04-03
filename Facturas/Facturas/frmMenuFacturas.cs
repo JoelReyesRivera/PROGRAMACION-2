@@ -59,7 +59,7 @@ namespace Facturas
                 MessageBox.Show("NO HAY FACTURAS REGISTRADAS","SIN FACTURAS",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
-            frmConsultarFacturas ConsultaFacturas = new frmConsultarFacturas();
+            frmConsultarFacturas ConsultaFacturas = new frmConsultarFacturas(proveedores, AdmA,mD,mF);
             ConsultaFacturas.ShowDialog();
         }
 

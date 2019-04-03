@@ -45,9 +45,9 @@ namespace Facturas
                     MessageBox.Show("CLAVE INVÁLIDA", "AGREGAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (proveedores.ClaveExistente(clave))
+                if (proveedores.ClaveExistente(clave) || clave<1)
                 {
-                    MessageBox.Show("CLAVE YA EXISTENTE", "AGREGAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("CLAVE INVÁLIDA", "AGREGAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (proveedores.NombreExistente(nombre))
