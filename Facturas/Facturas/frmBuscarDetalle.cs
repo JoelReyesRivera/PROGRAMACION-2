@@ -38,7 +38,7 @@ namespace Facturas
                 MessageBox.Show("CLAVE DE FACTURA VACÍA", "CAMPO NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (!ValidaNumCadena(ClaveFact))
+            if (!Rutinas.ValidaTextoNum(ClaveFact))
             {
                 MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtClaveFactura.ForeColor = Color.Red;
@@ -84,7 +84,7 @@ namespace Facturas
         private void Valida_factura(object sender, EventArgs e)
         {
             string ClaveFactura = txtClaveFactura.Text;
-            if (!ValidaNumCadena(ClaveFactura))
+            if (!Rutinas.ValidaTextoNum(ClaveFactura))
             {
                 errorP.SetError(txtClaveFactura, "CLAVE DE FACTURA NO VÁLIDA");
                 txtClaveFactura.Focus();
@@ -106,24 +106,6 @@ namespace Facturas
             {
                 errorP.SetError(txtClaveFactura, "");
             }
-        }
-        private bool ValidaNumCadena(string Cadena)
-        {
-            foreach (char c in Cadena)
-            {
-                if (c < '0' || c > '9')
-                    return false;
-            }
-            return true;
-        }
-        private bool ValidaTxtCadena(string Cadena)
-        {
-            foreach (char c in Cadena)
-            {
-                if (!Char.IsLetter(c))
-                    return false;
-            }
-            return true;
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)

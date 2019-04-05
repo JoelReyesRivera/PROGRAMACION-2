@@ -121,41 +121,17 @@
     <Compile Include="frmConsultarFacturas.designer.cs">
       <DependentUpon>frmConsultarFacturas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMenuDetalles.cs">
+    <Compile Include="frmInformacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMenuDetalles.designer.cs">
-      <DependentUpon>frmMenuDetalles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmMenuFacturaDetalle.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMenuFacturaDetalle.Designer.cs">
-      <DependentUpon>frmMenuFacturaDetalle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmMenuFacturas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMenuFacturas.designer.cs">
-      <DependentUpon>frmMenuFacturas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmMenuInventario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMenuInventario.Designer.cs">
-      <DependentUpon>frmMenuInventario.cs</DependentUpon>
+    <Compile Include="frmInformacion.Designer.cs">
+      <DependentUpon>frmInformacion.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMenuPrincipal.Designer.cs">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmMenuProvedor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMenuProvedor.Designer.cs">
-      <DependentUpon>frmMenuProvedor.cs</DependentUpon>
     </Compile>
     <Compile Include="frmModificaExistenciaArticulo.cs">
       <SubType>Form</SubType>
@@ -225,23 +201,11 @@
     <EmbeddedResource Include="frmConsultarFacturas.resx">
       <DependentUpon>frmConsultarFacturas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMenuDetalles.resx">
-      <DependentUpon>frmMenuDetalles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMenuFacturaDetalle.resx">
-      <DependentUpon>frmMenuFacturaDetalle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMenuFacturas.resx">
-      <DependentUpon>frmMenuFacturas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMenuInventario.resx">
-      <DependentUpon>frmMenuInventario.cs</DependentUpon>
+    <EmbeddedResource Include="frmInformacion.resx">
+      <DependentUpon>frmInformacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMenuProvedor.resx">
-      <DependentUpon>frmMenuProvedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmModificaExistenciaArticulo.resx">
       <DependentUpon>frmModificaExistenciaArticulo.cs</DependentUpon>

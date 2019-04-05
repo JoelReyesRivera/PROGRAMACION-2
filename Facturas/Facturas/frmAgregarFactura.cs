@@ -282,7 +282,15 @@ namespace Facturas
                     }
                     int cf = rc + Cant; //CANTIDAD FINAL
                     lvArticulos.Items[i].SubItems[4].Text = cf.ToString();
-                    float rp = Convert.ToInt32(lvArticulos.Items[i].SubItems[5].Text); //PRECIO DEL ARTICULO REGISTRADO
+                    float rp;
+                    try
+                    {
+                        rp = Convert.ToInt32(lvArticulos.Items[i].SubItems[5].Text); //PRECIO DEL ARTICULO REGISTRADO
+                    }
+                    catch (Exception)
+                    {
+                        return;
+                    }
                     float pf = PrecioTotal + rp; //PRECIO FINAL
                     lvArticulos.Items[i].SubItems[5].Text = pf.ToString();
                     CalculaImporte();
@@ -299,7 +307,7 @@ namespace Facturas
             //AGREGA LOS DATOS DEL ARTICULO EN UNA LISTA
             ListViewItem Registro = new ListViewItem(ClaveA);
             Registro.SubItems.Add(Art.pDescripcion);
-            Registro.SubItems.Add(Art.pModelo);
+            Registro.SubItems.Add(Art.pMarca);
             Registro.SubItems.Add(Art.pPrecio.ToString());
             Registro.SubItems.Add(Cant.ToString());
             Registro.SubItems.Add(PrecioTotal.ToString());
@@ -310,12 +318,19 @@ namespace Facturas
 
         private float CalculaImporte()
         {
-            float Importe = 0;
-            for (int i = 0; i < lvArticulos.Items.Count; i++)
+            int Count = lvArticulos.Items.Count;  float Importe = 0;
+            if (Count==0)
             {
-                float Cantidad = Convert.ToSingle(lvArticulos.Items[i].SubItems[5].Text);
-                Importe += Cantidad;
-                lblImporte.Text = "$" + Importe;
+                lblImporte.Text = "$0";
+            }
+            else
+            {
+                for (int i = 0; i < Count; i++)
+                {
+                    float Cantidad = Convert.ToSingle(lvArticulos.Items[i].SubItems[5].Text);
+                    Importe += Cantidad;
+                    lblImporte.Text = "$" + Importe;
+                }
             }
             return Importe;
         }
@@ -339,7 +354,6 @@ namespace Facturas
                 CalculaImporte();
             }
         }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             DialogResult D = MessageBox.Show("¿DESEA SALIR?", "CERRAR VENTANA", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

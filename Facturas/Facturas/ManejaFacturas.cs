@@ -71,53 +71,6 @@ namespace Facturas
             }
             return F;
         }
-        public String ImprimeFacturaClaveProv(int Proveedor, ManejaDetalleFactura mD, ManejaArticulos mA)
-        {
-            string msj="";
-            foreach(KeyValuePair<int, Factura> pair in Facturas)
-            {
-                if (pair.Value.pClaveProv == Proveedor)
-                {
-                    msj += pair.Value.ToString();
-                    msj += mD.ImprimeDetalleFactura(pair.Key,mA);
-                }
-            }
-            return msj;
-        }
-        public string ImprimeIndividual(int Clave)
-        {
-            return RetornaFactura(Clave).ToString();
-        }
-        public string ImprimeTodo()
-        {
-            string msj="";
-            foreach(KeyValuePair<int, Factura> pair in Facturas)
-            {
-                msj += "\nCLAVE: " + pair.Key+pair.Value.ToString();
-            }
-            if (msj.Length == 0)
-                return "NO HAY FACTURAS REGISTRADAS";
-            return msj;
-        }
-        public string ConvierteMes(string Mes)
-        {
-            int M = int.Parse(Mes);
-            string[] Meses = { "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE" };
-            return Meses[M-1];
-        }
-        public bool ValidaNula(string Fecha)
-        {
-            int A = int.Parse(Fecha.Substring(0, 2));
-            int M = int.Parse(Fecha.Substring(3, 2));
-            int Y = int.Parse(Fecha.Substring(6, 4));
-            if (A <= 0)
-                return false;
-            if (M <= 0)
-                return false;
-            if (Y > 2019 || Y <= 0)
-                return false;
-            return true;
-        }
         public int pCount
         {
             get

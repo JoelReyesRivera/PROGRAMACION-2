@@ -52,17 +52,6 @@ namespace Facturas
         {
             return proveedores.ContainsKey(clave);
         }
-
-        public String Imprimir()
-        {
-            String salida = "\nPROVEEDORES\n";
-            foreach (KeyValuePair<int, Proveedor> pair in proveedores)
-            {
-                salida += String.Format("CLAVE : {0}{1}", pair.Key, pair.Value.ToString());
-                salida += "\n---------------------------\n";
-            }
-            return salida;
-        }
         public Proveedor RetornaProveedorNom(string Nombre)
         {
             foreach (KeyValuePair<int, Proveedor> pair in proveedores)
@@ -86,25 +75,6 @@ namespace Facturas
             if (proveedores.TryGetValue(clave, out Proveedor P))
                 return P;
             return null;
-        }
-        public string ConsultaSaldos(string Nombre)
-        {
-            int Proveedor = -1;
-            float Saldo = 0;
-            string msj = "";
-            foreach (KeyValuePair<int, Proveedor> pair in proveedores)
-            {
-                if (pair.Value.pNombre.CompareTo(Nombre) == 0)
-                {
-                    Proveedor = pair.Key;
-                    Saldo = pair.Value.pSaldo;
-                    break;
-                }
-            }
-            if (Proveedor == -1)
-                return "NO SE ENCONTRÓ DICHO PROVEEDOR EN EL SISTEMA";
-
-            return msj + "\nPROVEEDOR: " + Nombre + "\nCLAVE: " + Proveedor + "\nSALDO: $" + Saldo;
         }
         public int GetClave(String nombre)
         {

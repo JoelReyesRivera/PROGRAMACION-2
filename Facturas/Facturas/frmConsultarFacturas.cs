@@ -104,9 +104,17 @@ namespace Facturas
                 if (lista[i].pClaveFact == factura)
                 {
                     articulo = articulos.RetornaArticulo(lista[i].pClaveArt);
-                    dtgvDetalles.Rows.Add(factura, lista[i].pClaveArt,articulo.pDescripcion,articulo.pModelo,lista[i].pCant,lista[i].pPrecio);
+                    dtgvDetalles.Rows.Add(factura, lista[i].pClaveArt,articulo.pDescripcion,articulo.pMarca, lista[i].pCant,lista[i].pPrecio);
                 }
             }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult Result = MessageBox.Show("¿DESEA SALIR?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (Result == DialogResult.Yes)
+                this.Close();
         }
     }
 }

@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace Facturas
 {
-    public partial class frmConsultaArticulos : Form
+    public partial class frmInformacion : Form
     {
-        private ManejaArticulos AdmA;
-
-        public frmConsultaArticulos(ManejaArticulos AdmA)
+        public frmInformacion()
         {
             InitializeComponent();
-            this.AdmA = AdmA;
-        }
-
-        private void frmConsultaArticulos_Load(object sender, EventArgs e)
-        {
-            List<Articulo> Art = AdmA.ObtenArt();
-            for (int i = 0; i < AdmA.pCount; i++)
-                dgwArticulos.Rows.Add(Art.ElementAt(i).pClave, Art.ElementAt(i).pDescripcion, Art.ElementAt(i).pMarca, Art.ElementAt(i).pPrecio, Art.ElementAt(i).pCantidad); 
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

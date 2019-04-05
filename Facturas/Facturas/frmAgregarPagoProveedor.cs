@@ -112,7 +112,7 @@ namespace Facturas
         private void txtClave_Validated(object sender, EventArgs e)
         {
             string P = txtClave.Text;
-            if (!(ValidaTextoNum(P)))
+            if (!(Rutinas.ValidaTextoNum(P)))
             {
                 errorProviderProveedores.SetError(txtClave, "SOLO DEBE TENER NÚMEROS");
                 txtClave.Focus();
@@ -132,32 +132,13 @@ namespace Facturas
                 errorProviderProveedores.SetError(txtClave, "");
         }
 
-        private bool ValidaCadena(string Cadena)
-        {
-            foreach (char C in Cadena)
-            {
-                if (!(Char.IsLetter(C)))
-                    return false;
-            }
-            return true;
-        }
-
-        private bool ValidaTextoNum(string Cadena)
-        {
-            foreach (char C in Cadena)
-            {
-                if (C < '0' || C > '9')
-                    return false;
-            }
-            return true;
-        }
 
         private void txtImporte_Validated(object sender, EventArgs e)
         {
             string P = txtImporte.Text;
-            if (!(ValidaTextoNum(P)))
+            if (!(Rutinas.validadDecimal(P)))
             {
-                errorProviderProveedores.SetError(txtImporte, "SOLO DEBE TENER NÚMEROS");
+                errorProviderProveedores.SetError(txtImporte, "SOLO DEBE TENER NÚMEROS,  FORMATO (0.00)");
                 txtImporte.Focus();
             }
             else
@@ -166,9 +147,13 @@ namespace Facturas
 
         private void txtImporte_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar.Equals(".") || e.KeyChar == 46)
+            {
+                return;
+            }
             if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)(Keys.Back)))
             {
-                errorProviderProveedores.SetError(txtImporte, "EN ESTE APARTADO SOLO SE ACEPTAN NUMEROS");
+                errorProviderProveedores.SetError(txtImporte, "EN ESTE APARTADO SOLO SE ACEPTAN NUMEROS, FORMATO (0.00)");
                 e.Handled = false;
             }
             else

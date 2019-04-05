@@ -50,6 +50,7 @@
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnSalir = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.grpInformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
@@ -58,16 +59,17 @@
             // lblClaveFactura
             // 
             this.lblClaveFactura.AutoSize = true;
-            this.lblClaveFactura.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClaveFactura.Location = new System.Drawing.Point(84, 25);
+            this.lblClaveFactura.BackColor = System.Drawing.Color.Transparent;
+            this.lblClaveFactura.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClaveFactura.Location = new System.Drawing.Point(78, 48);
             this.lblClaveFactura.Name = "lblClaveFactura";
-            this.lblClaveFactura.Size = new System.Drawing.Size(95, 14);
+            this.lblClaveFactura.Size = new System.Drawing.Size(113, 17);
             this.lblClaveFactura.TabIndex = 0;
             this.lblClaveFactura.Text = "CLAVE FACTURA";
             // 
             // txtClaveFactura
             // 
-            this.txtClaveFactura.Location = new System.Drawing.Point(56, 56);
+            this.txtClaveFactura.Location = new System.Drawing.Point(60, 78);
             this.txtClaveFactura.Name = "txtClaveFactura";
             this.txtClaveFactura.Size = new System.Drawing.Size(150, 20);
             this.txtClaveFactura.TabIndex = 1;
@@ -78,10 +80,10 @@
             // lblClaveProveedor
             // 
             this.lblClaveProveedor.AutoSize = true;
-            this.lblClaveProveedor.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClaveProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClaveProveedor.Location = new System.Drawing.Point(29, 35);
             this.lblClaveProveedor.Name = "lblClaveProveedor";
-            this.lblClaveProveedor.Size = new System.Drawing.Size(92, 14);
+            this.lblClaveProveedor.Size = new System.Drawing.Size(95, 15);
             this.lblClaveProveedor.TabIndex = 3;
             this.lblClaveProveedor.Text = "Clave proveedor";
             // 
@@ -90,37 +92,37 @@
             this.txtClaveProveedor.Location = new System.Drawing.Point(130, 35);
             this.txtClaveProveedor.Name = "txtClaveProveedor";
             this.txtClaveProveedor.ReadOnly = true;
-            this.txtClaveProveedor.Size = new System.Drawing.Size(114, 20);
+            this.txtClaveProveedor.Size = new System.Drawing.Size(114, 21);
             this.txtClaveProveedor.TabIndex = 4;
             this.toolTip1.SetToolTip(this.txtClaveProveedor, "Clave correspondiente al proveedor");
             // 
             // lblProveedor
             // 
             this.lblProveedor.AutoSize = true;
-            this.lblProveedor.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProveedor.Location = new System.Drawing.Point(29, 79);
             this.lblProveedor.Name = "lblProveedor";
-            this.lblProveedor.Size = new System.Drawing.Size(61, 14);
+            this.lblProveedor.Size = new System.Drawing.Size(63, 15);
             this.lblProveedor.TabIndex = 5;
             this.lblProveedor.Text = "Proveedor";
             // 
             // lblImporte
             // 
             this.lblImporte.AutoSize = true;
-            this.lblImporte.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblImporte.Location = new System.Drawing.Point(32, 119);
             this.lblImporte.Name = "lblImporte";
-            this.lblImporte.Size = new System.Drawing.Size(48, 14);
+            this.lblImporte.Size = new System.Drawing.Size(49, 15);
             this.lblImporte.TabIndex = 6;
             this.lblImporte.Text = "Importe";
             // 
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFecha.Location = new System.Drawing.Point(32, 158);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(37, 14);
+            this.lblFecha.Size = new System.Drawing.Size(41, 15);
             this.lblFecha.TabIndex = 7;
             this.lblFecha.Text = "Fecha";
             // 
@@ -129,7 +131,7 @@
             this.txtProveedor.Location = new System.Drawing.Point(130, 76);
             this.txtProveedor.Name = "txtProveedor";
             this.txtProveedor.ReadOnly = true;
-            this.txtProveedor.Size = new System.Drawing.Size(114, 20);
+            this.txtProveedor.Size = new System.Drawing.Size(114, 21);
             this.txtProveedor.TabIndex = 8;
             this.toolTip1.SetToolTip(this.txtProveedor, "Nombre del proveedor");
             // 
@@ -138,7 +140,7 @@
             this.txtImporte.Location = new System.Drawing.Point(130, 116);
             this.txtImporte.Name = "txtImporte";
             this.txtImporte.ReadOnly = true;
-            this.txtImporte.Size = new System.Drawing.Size(114, 20);
+            this.txtImporte.Size = new System.Drawing.Size(114, 21);
             this.txtImporte.TabIndex = 9;
             this.toolTip1.SetToolTip(this.txtImporte, "Importe de la factura $");
             // 
@@ -147,12 +149,13 @@
             this.txtFecha.Location = new System.Drawing.Point(130, 158);
             this.txtFecha.Name = "txtFecha";
             this.txtFecha.ReadOnly = true;
-            this.txtFecha.Size = new System.Drawing.Size(114, 20);
+            this.txtFecha.Size = new System.Drawing.Size(114, 21);
             this.txtFecha.TabIndex = 10;
             this.toolTip1.SetToolTip(this.txtFecha, "Fecha de la factura");
             // 
             // grpInformacion
             // 
+            this.grpInformacion.BackColor = System.Drawing.SystemColors.ControlLight;
             this.grpInformacion.Controls.Add(this.lblNumDetalles);
             this.grpInformacion.Controls.Add(this.lblCantDetalles);
             this.grpInformacion.Controls.Add(this.txtCantDetalles);
@@ -165,9 +168,10 @@
             this.grpInformacion.Controls.Add(this.lblImporte);
             this.grpInformacion.Controls.Add(this.lblFecha);
             this.grpInformacion.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.grpInformacion.Location = new System.Drawing.Point(266, 25);
+            this.grpInformacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpInformacion.Location = new System.Drawing.Point(266, 48);
             this.grpInformacion.Name = "grpInformacion";
-            this.grpInformacion.Size = new System.Drawing.Size(280, 244);
+            this.grpInformacion.Size = new System.Drawing.Size(283, 248);
             this.grpInformacion.TabIndex = 11;
             this.grpInformacion.TabStop = false;
             this.grpInformacion.Text = "Información de la factura";
@@ -178,7 +182,7 @@
             this.lblNumDetalles.LinkColor = System.Drawing.Color.Black;
             this.lblNumDetalles.Location = new System.Drawing.Point(179, 203);
             this.lblNumDetalles.Name = "lblNumDetalles";
-            this.lblNumDetalles.Size = new System.Drawing.Size(0, 13);
+            this.lblNumDetalles.Size = new System.Drawing.Size(0, 15);
             this.lblNumDetalles.TabIndex = 13;
             this.lblNumDetalles.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblNumDetalles_LinkClicked);
             this.lblNumDetalles.Click += new System.EventHandler(this.lblNumDetalles_Click);
@@ -186,9 +190,10 @@
             // lblCantDetalles
             // 
             this.lblCantDetalles.AutoSize = true;
+            this.lblCantDetalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCantDetalles.Location = new System.Drawing.Point(32, 203);
             this.lblCantDetalles.Name = "lblCantDetalles";
-            this.lblCantDetalles.Size = new System.Drawing.Size(73, 13);
+            this.lblCantDetalles.Size = new System.Drawing.Size(85, 15);
             this.lblCantDetalles.TabIndex = 12;
             this.lblCantDetalles.Text = "Num. Detalles";
             // 
@@ -197,15 +202,15 @@
             this.txtCantDetalles.Location = new System.Drawing.Point(130, 200);
             this.txtCantDetalles.Name = "txtCantDetalles";
             this.txtCantDetalles.ReadOnly = true;
-            this.txtCantDetalles.Size = new System.Drawing.Size(114, 20);
+            this.txtCantDetalles.Size = new System.Drawing.Size(114, 21);
             this.txtCantDetalles.TabIndex = 11;
             this.toolTip1.SetToolTip(this.txtCantDetalles, "Cantidad de detalles de la factura (clic para visualizarlos)");
             // 
             // btnBuscar
             // 
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnBuscar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(260, 298);
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Location = new System.Drawing.Point(260, 321);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(96, 41);
             this.btnBuscar.TabIndex = 12;
@@ -217,8 +222,8 @@
             // btnLimpiar
             // 
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(364, 298);
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Location = new System.Drawing.Point(364, 321);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(95, 41);
             this.btnLimpiar.TabIndex = 13;
@@ -229,8 +234,9 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(27, 95);
+            this.pictureBox1.Location = new System.Drawing.Point(27, 118);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(212, 211);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -245,8 +251,8 @@
             // btnSalir
             // 
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSalir.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(465, 298);
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Location = new System.Drawing.Point(465, 321);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(95, 41);
             this.btnSalir.TabIndex = 15;
@@ -255,12 +261,25 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(201, 9);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(171, 20);
+            this.lblTitulo.TabIndex = 16;
+            this.lblTitulo.Text = "BUSCAR FACTURA";
+            // 
             // frmBuscarFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(572, 361);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(574, 373);
             this.ControlBox = false;
+            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLimpiar);
@@ -302,5 +321,6 @@
         private System.Windows.Forms.ErrorProvider errorP;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label lblTitulo;
     }
 }

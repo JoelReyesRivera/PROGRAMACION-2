@@ -56,10 +56,10 @@
             // lblClaveProveedor
             // 
             this.lblClaveProveedor.AutoSize = true;
-            this.lblClaveProveedor.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClaveProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClaveProveedor.Location = new System.Drawing.Point(16, 96);
             this.lblClaveProveedor.Name = "lblClaveProveedor";
-            this.lblClaveProveedor.Size = new System.Drawing.Size(92, 14);
+            this.lblClaveProveedor.Size = new System.Drawing.Size(110, 16);
             this.lblClaveProveedor.TabIndex = 0;
             this.lblClaveProveedor.Text = "Clave Proveedor";
             // 
@@ -67,7 +67,7 @@
             // 
             this.txtClaveProveedor.Location = new System.Drawing.Point(19, 113);
             this.txtClaveProveedor.Name = "txtClaveProveedor";
-            this.txtClaveProveedor.Size = new System.Drawing.Size(143, 20);
+            this.txtClaveProveedor.Size = new System.Drawing.Size(143, 21);
             this.txtClaveProveedor.TabIndex = 2;
             this.toolTip1.SetToolTip(this.txtClaveProveedor, "Introduzca la clave del proveedor");
             this.txtClaveProveedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveProveedor_KeyPress);
@@ -76,18 +76,18 @@
             // lblClaveFactura
             // 
             this.lblClaveFactura.AutoSize = true;
-            this.lblClaveFactura.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClaveFactura.Location = new System.Drawing.Point(16, 23);
+            this.lblClaveFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClaveFactura.Location = new System.Drawing.Point(16, 33);
             this.lblClaveFactura.Name = "lblClaveFactura";
-            this.lblClaveFactura.Size = new System.Drawing.Size(76, 14);
+            this.lblClaveFactura.Size = new System.Drawing.Size(91, 16);
             this.lblClaveFactura.TabIndex = 2;
             this.lblClaveFactura.Text = "Clave Factura";
             // 
             // txtClaveFactura
             // 
-            this.txtClaveFactura.Location = new System.Drawing.Point(19, 42);
+            this.txtClaveFactura.Location = new System.Drawing.Point(19, 52);
             this.txtClaveFactura.Name = "txtClaveFactura";
-            this.txtClaveFactura.Size = new System.Drawing.Size(143, 20);
+            this.txtClaveFactura.Size = new System.Drawing.Size(143, 21);
             this.txtClaveFactura.TabIndex = 1;
             this.toolTip1.SetToolTip(this.txtClaveFactura, "Introduzca la clave de la factura");
             this.txtClaveFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveFactura_KeyPress);
@@ -96,18 +96,18 @@
             // lblClaveArticulo
             // 
             this.lblClaveArticulo.AutoSize = true;
-            this.lblClaveArticulo.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClaveArticulo.Location = new System.Drawing.Point(15, 166);
+            this.lblClaveArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClaveArticulo.Location = new System.Drawing.Point(16, 154);
             this.lblClaveArticulo.Name = "lblClaveArticulo";
-            this.lblClaveArticulo.Size = new System.Drawing.Size(79, 14);
+            this.lblClaveArticulo.Size = new System.Drawing.Size(90, 16);
             this.lblClaveArticulo.TabIndex = 4;
             this.lblClaveArticulo.Text = "Clave Artículo";
             // 
             // txtClaveArticulo
             // 
-            this.txtClaveArticulo.Location = new System.Drawing.Point(18, 183);
+            this.txtClaveArticulo.Location = new System.Drawing.Point(19, 171);
             this.txtClaveArticulo.Name = "txtClaveArticulo";
-            this.txtClaveArticulo.Size = new System.Drawing.Size(144, 20);
+            this.txtClaveArticulo.Size = new System.Drawing.Size(144, 21);
             this.txtClaveArticulo.TabIndex = 3;
             this.toolTip1.SetToolTip(this.txtClaveArticulo, "Introduzca la clave del artículo");
             this.txtClaveArticulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveArticulo_KeyPress);
@@ -116,10 +116,10 @@
             // lblCantidad
             // 
             this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(16, 228);
+            this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(16, 211);
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(54, 14);
+            this.lblCantidad.Size = new System.Drawing.Size(56, 15);
             this.lblCantidad.TabIndex = 6;
             this.lblCantidad.Text = "Cantidad";
             // 
@@ -127,11 +127,11 @@
             // 
             this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAgregar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(74, 337);
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Location = new System.Drawing.Point(55, 333);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(120, 38);
-            this.btnAgregar.TabIndex = 5;
+            this.btnAgregar.TabIndex = 6;
             this.btnAgregar.Text = "Agregar Detalle";
             this.toolTip1.SetToolTip(this.btnAgregar, "Agregar el detalle a la factura");
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -141,11 +141,11 @@
             // 
             this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(99, 240);
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Location = new System.Drawing.Point(99, 224);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(83, 26);
-            this.btnLimpiar.TabIndex = 6;
+            this.btnLimpiar.TabIndex = 5;
             this.btnLimpiar.Text = "Limpiar";
             this.toolTip1.SetToolTip(this.btnLimpiar, "Limpiar campos de texto y selección");
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -153,6 +153,7 @@
             // 
             // grpDatos
             // 
+            this.grpDatos.BackColor = System.Drawing.Color.Transparent;
             this.grpDatos.Controls.Add(this.pictureBox2);
             this.grpDatos.Controls.Add(this.pictureBox1);
             this.grpDatos.Controls.Add(this.btnLimpiar);
@@ -164,9 +165,10 @@
             this.grpDatos.Controls.Add(this.lblClaveArticulo);
             this.grpDatos.Controls.Add(this.txtClaveArticulo);
             this.grpDatos.Controls.Add(this.lblCantidad);
+            this.grpDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpDatos.Location = new System.Drawing.Point(12, 23);
             this.grpDatos.Name = "grpDatos";
-            this.grpDatos.Size = new System.Drawing.Size(382, 295);
+            this.grpDatos.Size = new System.Drawing.Size(382, 283);
             this.grpDatos.TabIndex = 14;
             this.grpDatos.TabStop = false;
             this.grpDatos.Text = "Datos del detalle";
@@ -193,10 +195,10 @@
             // 
             // numUpCantidad
             // 
-            this.numUpCantidad.Location = new System.Drawing.Point(19, 245);
+            this.numUpCantidad.Location = new System.Drawing.Point(19, 229);
             this.numUpCantidad.Name = "numUpCantidad";
             this.numUpCantidad.ReadOnly = true;
-            this.numUpCantidad.Size = new System.Drawing.Size(51, 20);
+            this.numUpCantidad.Size = new System.Drawing.Size(51, 21);
             this.numUpCantidad.TabIndex = 4;
             this.toolTip1.SetToolTip(this.numUpCantidad, "Seleccione una cantidad");
             this.numUpCantidad.Validated += new System.EventHandler(this.numUpCantidad_Validated);
@@ -208,11 +210,11 @@
             // brnSalir
             // 
             this.brnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.brnSalir.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brnSalir.Location = new System.Drawing.Point(226, 337);
+            this.brnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brnSalir.Location = new System.Drawing.Point(226, 333);
             this.brnSalir.Name = "brnSalir";
-            this.brnSalir.Size = new System.Drawing.Size(115, 38);
-            this.brnSalir.TabIndex = 15;
+            this.brnSalir.Size = new System.Drawing.Size(120, 38);
+            this.brnSalir.TabIndex = 7;
             this.brnSalir.Text = "Salir";
             this.toolTip1.SetToolTip(this.brnSalir, "Cerrar ventana");
             this.brnSalir.UseVisualStyleBackColor = true;
@@ -222,6 +224,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(413, 395);
             this.ControlBox = false;
             this.Controls.Add(this.brnSalir);
@@ -229,7 +232,6 @@
             this.Controls.Add(this.btnAgregar);
             this.Name = "frmAgregarDetalle";
             this.Text = "Agregar Detalle";
-            this.Load += new System.EventHandler(this.frmAgregarDetalle_Load);
             this.grpDatos.ResumeLayout(false);
             this.grpDatos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -27,34 +28,21 @@ namespace Facturas
             if (Result == DialogResult.No)
                 return;
 
-            string Desc = txtDescripcion.Text, Prec = txtPrecio.Text, Modelo = txtModelo.Text; ; float Precio; int Cant = Convert.ToInt32(nudCantidad.Value);
+            string Desc = txtDescripcion.Text, Prec = txtPrecio.Text, Marca = txtMarca.Text; ; float Precio; int Cant = Convert.ToInt32(nudCantidad.Value);
 
             if (Rutinas.IsEmpty(Desc))
             {
-                MessageBox.Show("FAVOR DE ESCRIBIR UNA DESCRIPCION EN FORMATO CORRECTO", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("FAVOR DE ESCRIBIR UNA DESCRIPCION", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (Rutinas.IsEmpty(Modelo))
+            if (Rutinas.IsEmpty(Marca))
             {
-                MessageBox.Show("FAVOR DE ESCRIBIR EL MODELO EN FORMATO CORRECTO", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("FAVOR DE ESCRIBIR EL MODELO", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!(Rutinas.ValidaTexto(Desc)))
+            if (!(Rutinas.validadDecimal(Prec)))
             {
-                MessageBox.Show("LA DESCRIPCION ESTA ESCRITA DE FORMA INCORRECTA","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                Limpiar();
-                return;
-            }
-            if (!(Rutinas.ValidaTexto(Modelo)))
-            {
-                MessageBox.Show("EL MODELO ESTA ESCRITO DE FORMA INCORRECTA", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Limpiar();
-                return;
-            }
-            if (!(Rutinas.ValidaTextoNum(Prec)))
-            {
-                MessageBox.Show("EL PRECIO ESTA ESCRITO DE FORMA INCORRECTA", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Limpiar();
+                MessageBox.Show("SOLO SE ACEPTAN NUMEROS EN FORMATO (0.00)", "FORMATO INCORRECTO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
@@ -63,28 +51,26 @@ namespace Facturas
             }
             catch (FormatException E)
             {
-                MessageBox.Show("EL PRECIO ESTA ESCRITO EN UN FORMATO INCORRECTO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Limpiar();
+                MessageBox.Show("EL PRECIO NO PUEDE ESTAR VACIO", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (Precio < 1)
             {
-                MessageBox.Show("EL PRECIO NO PUEDE SER MENOR A 1", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("EL PRECIO NO PUEDE SER MENOR A 1", "VALOR FUERA DE RANGO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (Cant < 1)
             {
-                MessageBox.Show("LA CANTIDAD DE ARTICULOS A INGRESAR NO PUEDE SER MENOR A 1", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("LA CANTIDAD DE ARTICULOS A INGRESAR NO PUEDE SER MENOR A 1", "VALOR FUERA DE RANGO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (AdmA.BuscaDesc(Desc))
             {
                 MessageBox.Show("EL ARTICULO YA FUE REGISTRADO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Limpiar();
                 return;
             }
 
-            AdmA.AgregaArt(Desc, Modelo, Precio, Cant);
+            AdmA.AgregaArt(Desc, Marca, Precio, Cant);
             MessageBox.Show("ARTICULO AGREGADO EXITOSAMENTE", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Limpiar();
         }
@@ -97,76 +83,33 @@ namespace Facturas
         private void Limpiar()
         {
             txtDescripcion.Text = "";
-            txtModelo.Text = "";
+            txtMarca.Text = "";
             txtPrecio.Text = "";
             nudCantidad.Value = 1;
             Error.Clear();
         }
   
-        private void txtDescripcion_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
-            {
-                Error.SetError(txtDescripcion, "EN ESTE APARADO SOLO SE ACEPTAN LETRAS");
-                e.Handled = false;
-            }
-            else
-                Error.SetError(txtDescripcion, "");
-        }
-
-        private void txtDescripcion_Validated(object sender, EventArgs e)
-        {
-            string D = txtDescripcion.Text;
-            if (!Rutinas.ValidaTexto(D))
-            {
-                Error.SetError(txtDescripcion, "DESCRIPCION ESCRITA EN FORMA INCORRECTA");
-                txtDescripcion.Focus();
-            }
-            else
-                Error.SetError(txtDescripcion, "");
-        }
-
-        private void txtModelo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
-            {
-                Error.SetError(txtModelo, "EN ESTE APARADO SOLO SE ACEPTAN LETRAS");
-                e.Handled = false;
-            }
-            else
-                Error.SetError(txtModelo, "");
-        }
-
-        private void txtModelo_Validated(object sender, EventArgs e)
-        {
-            string M = txtModelo.Text;
-            if (!Rutinas.ValidaTexto(M))
-            {
-                Error.SetError(txtModelo, "MODELO ESCRITO EN FORMA INCORRECTA");
-                txtModelo.Focus();
-            }
-            else
-                Error.SetError(txtModelo, "");
-        }
-
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar.Equals(".") || e.KeyChar==46)
+            {
+                return;
+            }
             if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)(Keys.Back)))
             {
-                Error.SetError(txtPrecio, "EN ESTE APARTADO SOLO SE ACEPTAN NUMEROS");
+                Error.SetError(txtPrecio, "EN ESTE APARTADO SOLO SE ACEPTAN NUMEROS, FORMATO (0.00)");
                 e.Handled = false;
             }
             else
                 Error.SetError(txtPrecio, "");
-
         }
 
         private void txtPrecio_Validated(object sender, EventArgs e)
         {
             string P = txtPrecio.Text;
-            if (!(Rutinas.ValidaTextoNum(P)))
+            if (!(Rutinas.validadDecimal(P)))
             {
-                Error.SetError(txtPrecio, "PRECIO ESCRITO EN FORMA INCORRECTA");
+                Error.SetError(txtPrecio,"PRECIO ESCRITO EN FORMA INCORRECTA, FORMATO (0.00)");
                 txtPrecio.Focus();
             }
             else
@@ -190,5 +133,6 @@ namespace Facturas
             if (Result == DialogResult.Yes)
                 this.Close();
         }
+
     }
 }

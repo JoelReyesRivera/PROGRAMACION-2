@@ -25,11 +25,6 @@ namespace Facturas
             this.proveedores = proveedores;
             this.AdmA = AdmA;
         }
-
-        private void frmAgregarDetalle_Load(object sender, EventArgs e)
-        {
-
-        }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             DialogResult D = MessageBox.Show("¿DESEA AGREGAR EL DETALLE?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -43,7 +38,7 @@ namespace Facturas
                     MessageBox.Show("CLAVE DE FACTURA VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (!ValidaNumCadena(ClaveF))
+                if (!Rutinas.ValidaTextoNum(ClaveF))
                 {
                     MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtClaveFactura.ForeColor = Color.Red;
@@ -66,7 +61,7 @@ namespace Facturas
                     MessageBox.Show("CLAVE DE PROVEEDOR VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (!ValidaNumCadena(ClaveP))
+                if (!Rutinas.ValidaTextoNum(ClaveP))
                 {
                     MessageBox.Show("CLAVE DE PROVEEDOR NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtClaveProveedor.ForeColor = Color.Red;
@@ -113,7 +108,7 @@ namespace Facturas
                     MessageBox.Show("CLAVE DE ARTÍCULO VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (!ValidaNumCadena(ClaveA))
+                if (!Rutinas.ValidaTextoNum(ClaveA))
                 {
                     MessageBox.Show("CLAVE DE ARTÍCULO NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtClaveArticulo.ForeColor = Color.Red;
@@ -174,7 +169,7 @@ namespace Facturas
         private void Valida_proveedor(object sender, EventArgs e)
         {
             string Proveedor = txtClaveProveedor.Text;
-            if (!ValidaNumCadena(Proveedor))
+            if (!Rutinas.ValidaTextoNum(Proveedor))
             {
                 errorP.SetError(txtClaveProveedor, "CLAVE DE PROVEEDOR NO VÁLIDA");
                 txtClaveProveedor.Focus();
@@ -201,7 +196,7 @@ namespace Facturas
         private void Valida_factura(object sender, EventArgs e)
         {
             string ClaveFactura = txtClaveFactura.Text;
-            if (!ValidaNumCadena(ClaveFactura))
+            if (!Rutinas.ValidaTextoNum(ClaveFactura))
             {
                 errorP.SetError(txtClaveFactura, "CLAVE DE FACTURA NO VÁLIDA");
                 txtClaveFactura.Focus();
@@ -228,7 +223,7 @@ namespace Facturas
         private void Valida_articulo(object sender, EventArgs e)
         {
             string ClaveArticulo = txtClaveArticulo.Text;
-            if (!ValidaNumCadena(ClaveArticulo))
+            if (!Rutinas.ValidaTextoNum(ClaveArticulo))
             {
                 errorP.SetError(txtClaveArticulo, "CLAVE DE ARTÍCULO NO VÁLIDA");
                 txtClaveArticulo.Focus();
@@ -264,25 +259,6 @@ namespace Facturas
                 errorP.SetError(numUpCantidad, "");
             }
         }
-        private bool ValidaNumCadena(string Cadena)
-        {
-            foreach (char c in Cadena)
-            {
-                if (c < '0' || c > '9')
-                    return false;
-            }
-            return true;
-        }
-        private bool ValidaTxtCadena(string Cadena)
-        {
-            foreach (char c in Cadena)
-            {
-                if (!Char.IsLetter(c))
-                    return false;
-            }
-            return true;
-        }
-
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             Limpiar();

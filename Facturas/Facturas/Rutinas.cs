@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Facturas
@@ -42,6 +43,16 @@ namespace Facturas
             if (string.IsNullOrWhiteSpace(Cadena) || string.IsNullOrEmpty(Cadena))
                 return true;
 
+            return false;
+        }
+        public static bool validadDecimal(String Numero)
+        {
+            Regex regex = new Regex(@"^\d+\.+([0-9]{1,2})$");
+            Match match = regex.Match(Numero);
+            if (match.Success)
+            {
+                return true;
+            }
             return false;
         }
     }

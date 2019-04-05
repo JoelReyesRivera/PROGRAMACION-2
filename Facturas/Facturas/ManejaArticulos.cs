@@ -17,9 +17,9 @@ namespace Facturas
             Count = 0;
         }
 
-        public void AgregaArt(string Desc, string Modelo, float Precio, int Cant)
+        public void AgregaArt(string Desc, string Marca, float Precio, int Cant)
         {
-            Array[Count] = new Articulo(Count,Desc, Modelo, Precio, Cant);
+            Array[Count] = new Articulo(Count,Desc, Marca, Precio, Cant);
             Count++;
         }
 
@@ -32,11 +32,11 @@ namespace Facturas
             }
             return -1;
         }
-        public bool BuscaRep(string Desc, string Modelo)
+        public bool BuscaRep(string Desc, string Marca)
         {
             for (int i = 0; i < Count; i++)
             {
-                if (Array[i].pDescripcion.Equals(Desc) && (Array[i].pModelo.Equals(Modelo)))
+                if (Array[i].pDescripcion.Equals(Desc) && (Array[i].pMarca.Equals(Marca)))
                     return true;
             }
             return false;
@@ -49,16 +49,6 @@ namespace Facturas
                     return true;
             }
             return false;
-        }
-        public string ImprimeArticuloFactura(int ClaveArticulo)
-        {
-            string msj = "";
-            for (int i = 0; i < Count; i++)
-            {
-                if (Array[i].pClave == ClaveArticulo)
-                    msj += Array[i].ToString();
-            }
-            return msj;
         }
         public Articulo RetornaArticulo(int Clave)//RETORNA POR CLAVE
         {
@@ -77,15 +67,7 @@ namespace Facturas
 
             return Lista;
         }
-        public string ImprimeCatalogoArticulo()
-        {
-            string Cadena = " ";
-
-            for (int i = 0; i < Count; i++)
-                Cadena += Array[i].ToString();
-
-            return Cadena;
-        }
+       
         public int pCount
         {
             get

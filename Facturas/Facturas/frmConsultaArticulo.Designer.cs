@@ -32,55 +32,58 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultaArticulo));
             this.lblArticulos = new System.Windows.Forms.Label();
             this.lblDesc = new System.Windows.Forms.Label();
-            this.lblMod = new System.Windows.Forms.Label();
+            this.lblMar = new System.Windows.Forms.Label();
             this.lblPrec = new System.Windows.Forms.Label();
             this.cmbArticulos = new System.Windows.Forms.ComboBox();
             this.gbInfoArticulo = new System.Windows.Forms.GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblCantidad = new System.Windows.Forms.Label();
             this.lblPrecio = new System.Windows.Forms.Label();
-            this.lblModelo = new System.Windows.Forms.Label();
+            this.lblMarca = new System.Windows.Forms.Label();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblCant = new System.Windows.Forms.Label();
             this.toolTipMostrar = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.gbInfoArticulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblArticulos
             // 
             this.lblArticulos.AutoSize = true;
-            this.lblArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArticulos.Location = new System.Drawing.Point(19, 79);
+            this.lblArticulos.BackColor = System.Drawing.Color.Transparent;
+            this.lblArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArticulos.Location = new System.Drawing.Point(14, 59);
             this.lblArticulos.Name = "lblArticulos";
-            this.lblArticulos.Size = new System.Drawing.Size(79, 20);
+            this.lblArticulos.Size = new System.Drawing.Size(149, 18);
             this.lblArticulos.TabIndex = 0;
-            this.lblArticulos.Text = "Articulos";
+            this.lblArticulos.Text = "Catalogo de Articulos";
             // 
             // lblDesc
             // 
             this.lblDesc.AutoSize = true;
-            this.lblDesc.Location = new System.Drawing.Point(23, 46);
+            this.lblDesc.Location = new System.Drawing.Point(15, 42);
             this.lblDesc.Name = "lblDesc";
             this.lblDesc.Size = new System.Drawing.Size(87, 18);
             this.lblDesc.TabIndex = 0;
             this.lblDesc.Text = "Descripción";
             // 
-            // lblMod
+            // lblMar
             // 
-            this.lblMod.AutoSize = true;
-            this.lblMod.Location = new System.Drawing.Point(23, 84);
-            this.lblMod.Name = "lblMod";
-            this.lblMod.Size = new System.Drawing.Size(58, 18);
-            this.lblMod.TabIndex = 0;
-            this.lblMod.Text = "Modelo";
+            this.lblMar.AutoSize = true;
+            this.lblMar.Location = new System.Drawing.Point(15, 80);
+            this.lblMar.Name = "lblMar";
+            this.lblMar.Size = new System.Drawing.Size(50, 18);
+            this.lblMar.TabIndex = 0;
+            this.lblMar.Text = "Marca";
             // 
             // lblPrec
             // 
             this.lblPrec.AutoSize = true;
-            this.lblPrec.Location = new System.Drawing.Point(23, 117);
+            this.lblPrec.Location = new System.Drawing.Point(15, 113);
             this.lblPrec.Name = "lblPrec";
             this.lblPrec.Size = new System.Drawing.Size(51, 18);
             this.lblPrec.TabIndex = 0;
@@ -93,7 +96,7 @@
             this.cmbArticulos.FormattingEnabled = true;
             this.cmbArticulos.Items.AddRange(new object[] {
             "-SELECCIONE UN ARTICULO-"});
-            this.cmbArticulos.Location = new System.Drawing.Point(23, 115);
+            this.cmbArticulos.Location = new System.Drawing.Point(15, 82);
             this.cmbArticulos.Name = "cmbArticulos";
             this.cmbArticulos.Size = new System.Drawing.Size(242, 26);
             this.cmbArticulos.TabIndex = 1;
@@ -102,16 +105,18 @@
             // 
             // gbInfoArticulo
             // 
+            this.gbInfoArticulo.BackColor = System.Drawing.Color.White;
+            this.gbInfoArticulo.Controls.Add(this.pictureBox2);
             this.gbInfoArticulo.Controls.Add(this.lblCantidad);
             this.gbInfoArticulo.Controls.Add(this.lblPrecio);
-            this.gbInfoArticulo.Controls.Add(this.lblModelo);
+            this.gbInfoArticulo.Controls.Add(this.lblMarca);
             this.gbInfoArticulo.Controls.Add(this.lblDescripcion);
             this.gbInfoArticulo.Controls.Add(this.lblCant);
             this.gbInfoArticulo.Controls.Add(this.lblDesc);
-            this.gbInfoArticulo.Controls.Add(this.lblMod);
+            this.gbInfoArticulo.Controls.Add(this.lblMar);
             this.gbInfoArticulo.Controls.Add(this.lblPrec);
             this.gbInfoArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbInfoArticulo.Location = new System.Drawing.Point(281, 72);
+            this.gbInfoArticulo.Location = new System.Drawing.Point(267, 63);
             this.gbInfoArticulo.Name = "gbInfoArticulo";
             this.gbInfoArticulo.Size = new System.Drawing.Size(421, 199);
             this.gbInfoArticulo.TabIndex = 0;
@@ -119,10 +124,21 @@
             this.gbInfoArticulo.Text = "Información Articulo";
             this.toolTipMostrar.SetToolTip(this.gbInfoArticulo, "Información basica del Articulo");
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(356, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(65, 45);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            // 
             // lblCantidad
             // 
             this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Location = new System.Drawing.Point(172, 152);
+            this.lblCantidad.Location = new System.Drawing.Point(164, 148);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(0, 18);
             this.lblCantidad.TabIndex = 0;
@@ -130,23 +146,23 @@
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(172, 117);
+            this.lblPrecio.Location = new System.Drawing.Point(164, 113);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(0, 18);
             this.lblPrecio.TabIndex = 0;
             // 
-            // lblModelo
+            // lblMarca
             // 
-            this.lblModelo.AutoSize = true;
-            this.lblModelo.Location = new System.Drawing.Point(172, 84);
-            this.lblModelo.Name = "lblModelo";
-            this.lblModelo.Size = new System.Drawing.Size(0, 18);
-            this.lblModelo.TabIndex = 0;
+            this.lblMarca.AutoSize = true;
+            this.lblMarca.Location = new System.Drawing.Point(164, 80);
+            this.lblMarca.Name = "lblMarca";
+            this.lblMarca.Size = new System.Drawing.Size(0, 18);
+            this.lblMarca.TabIndex = 0;
             // 
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(172, 46);
+            this.lblDescripcion.Location = new System.Drawing.Point(164, 42);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(0, 18);
             this.lblDescripcion.TabIndex = 0;
@@ -154,26 +170,16 @@
             // lblCant
             // 
             this.lblCant.AutoSize = true;
-            this.lblCant.Location = new System.Drawing.Point(23, 152);
+            this.lblCant.Location = new System.Drawing.Point(15, 148);
             this.lblCant.Name = "lblCant";
             this.lblCant.Size = new System.Drawing.Size(128, 18);
             this.lblCant.TabIndex = 0;
             this.lblCant.Text = "Cantidad existente";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(47, 178);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(193, 144);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(526, 304);
+            this.btnSalir.Location = new System.Drawing.Point(572, 275);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(103, 32);
             this.btnSalir.TabIndex = 2;
@@ -182,21 +188,35 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(53, 132);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(149, 144);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(163, 19);
+            this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(238, 9);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(434, 29);
+            this.lblTitulo.Size = new System.Drawing.Size(227, 24);
             this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "CONSULTA ARTICULO INDIVIDUAL";
+            this.lblTitulo.Text = "CONSULTA ARTICULO";
             // 
             // frmConsultaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(721, 348);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(696, 321);
+            this.ControlBox = false;
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.pictureBox1);
@@ -208,6 +228,7 @@
             this.Load += new System.EventHandler(this.frmConsultaArticulo_Load);
             this.gbInfoArticulo.ResumeLayout(false);
             this.gbInfoArticulo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -218,18 +239,19 @@
 
         private System.Windows.Forms.Label lblArticulos;
         private System.Windows.Forms.Label lblDesc;
-        private System.Windows.Forms.Label lblMod;
+        private System.Windows.Forms.Label lblMar;
         private System.Windows.Forms.Label lblPrec;
         private System.Windows.Forms.ComboBox cmbArticulos;
         private System.Windows.Forms.GroupBox gbInfoArticulo;
         private System.Windows.Forms.Label lblCant;
         private System.Windows.Forms.Label lblCantidad;
         private System.Windows.Forms.Label lblPrecio;
-        private System.Windows.Forms.Label lblModelo;
+        private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.ToolTip toolTipMostrar;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

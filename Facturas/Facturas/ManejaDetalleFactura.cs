@@ -19,48 +19,6 @@ namespace Facturas
         {
             DetalleFactura.Add(new DetalleFactura(ClaveFact,ClaveArt,Cant,Precio));
         }
-        public string ImprimeDetallesClave(int ClaveFactura)
-        {
-            string msj = "";
-            for (int i = 0; i < DetalleFactura.Count; i++)
-            {
-                if (DetalleFactura[i].pClaveFact == ClaveFactura)
-                    msj += DetalleFactura[i].ToString();
-            }
-            if (msj.Length == 0)
-                return "NO HAY DETALLES PARA ESTA FACTURA";
-            return msj;
-        }
-        public string ImprimeDetalleClaveArticulo(int ClaveArticulo)
-        {
-            for (int i = 0; i < DetalleFactura.Count; i++)
-            {
-                if (DetalleFactura[i].pClaveArt==ClaveArticulo)
-                    return DetalleFactura[i].ToString();
-            }
-            return "NO HAY DETALLE PARA ESTE ARTICULO";
-        }
-        public string ImprimeDetalleFactura(int ClaveFactura, ManejaArticulos mA)
-        {
-            string msj = "";
-            for (int i = 0; i < DetalleFactura.Count; i++)
-            {
-                if (DetalleFactura[i].pClaveFact == ClaveFactura)
-                    msj += mA.ImprimeArticuloFactura(DetalleFactura[i].pClaveArt);
-            }
-            return msj;
-        }
-        public string ImprimeTodo()
-        {
-            string Cadena = "";
-            for (int i = 0; i < DetalleFactura.Count; i++)
-                Cadena += DetalleFactura[i].ToString();
-
-            if (Cadena.Length == 0)
-                return "NO HAY NINGUN DETALLE REGISTRADO";
-
-            return Cadena;
-        }
         public int DetallesPorFactura(int ClaveFactura)
         {
             int NumeroDetalles=0;

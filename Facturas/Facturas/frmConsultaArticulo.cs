@@ -35,14 +35,14 @@ namespace Facturas
                 int p = cmbArticulos.SelectedIndex;
 
                 lblDescripcion.Text= Art.ElementAt(p-1).pDescripcion;
-                lblModelo.Text = Art.ElementAt(p-1).pModelo;
+                lblMarca.Text = Art.ElementAt(p-1).pMarca;
                 lblPrecio.Text = "$"+Convert.ToString(Art.ElementAt(p-1).pPrecio);
                 lblCantidad.Text = Convert.ToString(Art.ElementAt(p-1).pCantidad);
             }
             else
             {
                 lblDescripcion.Text = "";
-                lblModelo.Text = "";
+                lblMarca.Text = "";
                 lblPrecio.Text = "";
                 lblCantidad.Text = "";
             }

@@ -9,14 +9,14 @@ namespace Facturas
     public class Articulo
     {
         private int Clave, Cantidad;
-        private string Descripcion, Modelo;
+        private string Descripcion, Marca;
         private float Precio;
 
-        public Articulo(int Clave, string Descripcion, string Modelo, float Precio, int Cantidad)
+        public Articulo(int Clave, string Descripcion, string Marca, float Precio, int Cantidad)
         {
             this.Clave = Clave+1;
             this.Descripcion = Descripcion;
-            this.Modelo = Modelo;
+            this.Marca = Marca;
             this.Precio = Precio;
             this.Cantidad = Cantidad;
         }
@@ -30,10 +30,10 @@ namespace Facturas
             get { return Descripcion; }
             set { Descripcion = value; }
         }
-        public string pModelo
+        public string pMarca
         {
-            get { return Modelo; }
-            set { Modelo = value; }
+            get { return Marca; }
+            set { Marca = value; }
         }
         public float pPrecio
         {
@@ -44,10 +44,6 @@ namespace Facturas
         {
             get { return Cantidad; }
             set { Cantidad = value; }
-        }
-        public override string ToString()
-        {
-            return string.Format("\nClAVE: {0}\nDESCRIPCION: {1}\nMODELO :{2}\nPRECIO: {3} \nCANTIDAD EN EXISTENCIA: {4}", Clave, Descripcion, Modelo, Precio,Cantidad);
         }
     }
 }
