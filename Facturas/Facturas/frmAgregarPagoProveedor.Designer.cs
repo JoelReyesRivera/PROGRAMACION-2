@@ -68,15 +68,25 @@
             this.lblClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClave.Location = new System.Drawing.Point(11, 31);
             this.lblClave.Name = "lblClave";
+<<<<<<< HEAD
             this.lblClave.Size = new System.Drawing.Size(110, 16);
             this.lblClave.TabIndex = 0;
             this.lblClave.Text = "Clave Proveedor";
+=======
+            this.lblClave.Size = new System.Drawing.Size(132, 16);
+            this.lblClave.TabIndex = 0;
+            this.lblClave.Text = "Clave del Proveedor";
+>>>>>>> master
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+<<<<<<< HEAD
             this.pictureBox1.Location = new System.Drawing.Point(327, 24);
+=======
+            this.pictureBox1.Location = new System.Drawing.Point(350, 42);
+>>>>>>> master
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(219, 221);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -86,10 +96,17 @@
             // lblImporteSaldoActual
             // 
             this.lblImporteSaldoActual.AutoSize = true;
+<<<<<<< HEAD
             this.lblImporteSaldoActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblImporteSaldoActual.Location = new System.Drawing.Point(137, 217);
             this.lblImporteSaldoActual.Name = "lblImporteSaldoActual";
             this.lblImporteSaldoActual.Size = new System.Drawing.Size(22, 16);
+=======
+            this.lblImporteSaldoActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImporteSaldoActual.Location = new System.Drawing.Point(193, 212);
+            this.lblImporteSaldoActual.Name = "lblImporteSaldoActual";
+            this.lblImporteSaldoActual.Size = new System.Drawing.Size(24, 16);
+>>>>>>> master
             this.lblImporteSaldoActual.TabIndex = 0;
             this.lblImporteSaldoActual.Text = "$0";
             this.toolTip1.SetToolTip(this.lblImporteSaldoActual, "Saldo Actual");
@@ -97,10 +114,17 @@
             // lblSaldoActual
             // 
             this.lblSaldoActual.AutoSize = true;
+<<<<<<< HEAD
             this.lblSaldoActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSaldoActual.Location = new System.Drawing.Point(14, 217);
             this.lblSaldoActual.Name = "lblSaldoActual";
             this.lblSaldoActual.Size = new System.Drawing.Size(90, 16);
+=======
+            this.lblSaldoActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSaldoActual.Location = new System.Drawing.Point(84, 212);
+            this.lblSaldoActual.Name = "lblSaldoActual";
+            this.lblSaldoActual.Size = new System.Drawing.Size(104, 16);
+>>>>>>> master
             this.lblSaldoActual.TabIndex = 0;
             this.lblSaldoActual.Text = "Saldo Actual :";
             // 
@@ -184,15 +208,24 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.ReadOnly = true;
             this.txtNombre.Size = new System.Drawing.Size(156, 22);
+<<<<<<< HEAD
             this.txtNombre.TabIndex = 1;
+=======
+            this.txtNombre.TabIndex = 0;
+>>>>>>> master
             this.toolTip1.SetToolTip(this.txtNombre, "Nombre del proveedor");
             // 
             // btnBuscar
             // 
+<<<<<<< HEAD
             this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.Location = new System.Drawing.Point(176, 52);
+=======
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Location = new System.Drawing.Point(191, 52);
+>>>>>>> master
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(108, 30);
             this.btnBuscar.TabIndex = 1;
@@ -207,7 +240,10 @@
             // 
             // grpProveedor
             // 
+<<<<<<< HEAD
             this.grpProveedor.BackColor = System.Drawing.Color.Transparent;
+=======
+>>>>>>> master
             this.grpProveedor.Controls.Add(this.btnBuscar);
             this.grpProveedor.Controls.Add(this.lblImporte);
             this.grpProveedor.Controls.Add(this.txtImporte);
@@ -217,6 +253,7 @@
             this.grpProveedor.Controls.Add(this.txtNombre);
             this.grpProveedor.Controls.Add(this.lblClave);
             this.grpProveedor.Controls.Add(this.txtClave);
+<<<<<<< HEAD
             this.grpProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpProveedor.Location = new System.Drawing.Point(12, 12);
             this.grpProveedor.Name = "grpProveedor";
@@ -224,14 +261,27 @@
             this.grpProveedor.TabIndex = 0;
             this.grpProveedor.TabStop = false;
             this.grpProveedor.Text = "Pago proveedor";
+=======
+            this.grpProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpProveedor.Location = new System.Drawing.Point(15, 15);
+            this.grpProveedor.Name = "grpProveedor";
+            this.grpProveedor.Size = new System.Drawing.Size(318, 248);
+            this.grpProveedor.TabIndex = 0;
+            this.grpProveedor.TabStop = false;
+            this.grpProveedor.Text = "Pago Proveedor";
+>>>>>>> master
             // 
             // frmAgregarPagoProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(553, 337);
+=======
+            this.ClientSize = new System.Drawing.Size(581, 351);
+>>>>>>> master
             this.ControlBox = false;
             this.Controls.Add(this.grpProveedor);
             this.Controls.Add(this.btnSalir);

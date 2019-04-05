@@ -40,9 +40,16 @@ namespace Facturas
                 MessageBox.Show("FAVOR DE ESCRIBIR EL MODELO", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+<<<<<<< HEAD
             if (!(Rutinas.validadDecimal(Prec)))
             {
                 MessageBox.Show("SOLO SE ACEPTAN NUMEROS EN FORMATO (0.00)", "FORMATO INCORRECTO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+=======
+            if (!(Rutinas.ValidaTextoNum(Prec)))
+            {
+                MessageBox.Show("EL PRECIO SOLO PUEDE CONTENER NUMEROS", "FORMATO INCORRECTO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Limpiar();
+>>>>>>> master
                 return;
             }
             try
@@ -52,6 +59,10 @@ namespace Facturas
             catch (FormatException E)
             {
                 MessageBox.Show("EL PRECIO NO PUEDE ESTAR VACIO", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+<<<<<<< HEAD
+=======
+                Limpiar();
+>>>>>>> master
                 return;
             }
             if (Precio < 1)
@@ -91,10 +102,13 @@ namespace Facturas
   
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
+<<<<<<< HEAD
             if (e.KeyChar.Equals(".") || e.KeyChar==46)
             {
                 return;
             }
+=======
+>>>>>>> master
             if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)(Keys.Back)))
             {
                 Error.SetError(txtPrecio, "EN ESTE APARTADO SOLO SE ACEPTAN NUMEROS, FORMATO (0.00)");

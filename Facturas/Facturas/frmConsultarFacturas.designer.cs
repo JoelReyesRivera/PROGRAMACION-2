@@ -104,35 +104,50 @@
             // 
             this.Factura.HeaderText = "Factura";
             this.Factura.Name = "Factura";
+<<<<<<< HEAD
             this.Factura.ReadOnly = true;
+=======
+>>>>>>> master
             this.Factura.Width = 150;
             // 
             // ClaveProveedor
             // 
             this.ClaveProveedor.HeaderText = "Clave Provedor";
             this.ClaveProveedor.Name = "ClaveProveedor";
+<<<<<<< HEAD
             this.ClaveProveedor.ReadOnly = true;
+=======
+>>>>>>> master
             this.ClaveProveedor.Width = 150;
             // 
             // Provedor
             // 
             this.Provedor.HeaderText = "Proveedor";
             this.Provedor.Name = "Provedor";
+<<<<<<< HEAD
             this.Provedor.ReadOnly = true;
+=======
+>>>>>>> master
             this.Provedor.Width = 150;
             // 
             // Importe
             // 
             this.Importe.HeaderText = "Importe";
             this.Importe.Name = "Importe";
+<<<<<<< HEAD
             this.Importe.ReadOnly = true;
+=======
+>>>>>>> master
             this.Importe.Width = 150;
             // 
             // Fecha
             // 
             this.Fecha.HeaderText = "Fecha";
             this.Fecha.Name = "Fecha";
+<<<<<<< HEAD
             this.Fecha.ReadOnly = true;
+=======
+>>>>>>> master
             this.Fecha.Width = 150;
             // 
             // dtgvDetalles
@@ -147,10 +162,16 @@
             this.Modelo,
             this.Cantidad,
             this.PrecioUnitario});
+<<<<<<< HEAD
             this.dtgvDetalles.Location = new System.Drawing.Point(6, 337);
             this.dtgvDetalles.Name = "dtgvDetalles";
             this.dtgvDetalles.ReadOnly = true;
             this.dtgvDetalles.Size = new System.Drawing.Size(825, 177);
+=======
+            this.dtgvDetalles.Location = new System.Drawing.Point(6, 351);
+            this.dtgvDetalles.Name = "dtgvDetalles";
+            this.dtgvDetalles.Size = new System.Drawing.Size(825, 209);
+>>>>>>> master
             this.dtgvDetalles.TabIndex = 0;
             // 
             // ClaveFactura
@@ -202,7 +223,11 @@
             // 
             this.lblDetalles.AutoSize = true;
             this.lblDetalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.lblDetalles.Location = new System.Drawing.Point(9, 314);
+=======
+            this.lblDetalles.Location = new System.Drawing.Point(9, 328);
+>>>>>>> master
             this.lblDetalles.Name = "lblDetalles";
             this.lblDetalles.Size = new System.Drawing.Size(199, 20);
             this.lblDetalles.TabIndex = 5;
@@ -210,7 +235,10 @@
             // 
             // grpInfomacion
             // 
+<<<<<<< HEAD
             this.grpInfomacion.BackColor = System.Drawing.Color.Transparent;
+=======
+>>>>>>> master
             this.grpInfomacion.Controls.Add(this.lblSeleccionarFactura);
             this.grpInfomacion.Controls.Add(this.cmbFacturas);
             this.grpInfomacion.Controls.Add(this.dtgvDetalles);
@@ -259,15 +287,22 @@
             // 
             // btnSalir
             // 
+<<<<<<< HEAD
             this.btnSalir.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+=======
+>>>>>>> master
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Location = new System.Drawing.Point(777, 569);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(92, 34);
             this.btnSalir.TabIndex = 2;
             this.btnSalir.Text = "Salir";
+<<<<<<< HEAD
             this.btnSalir.UseVisualStyleBackColor = false;
+=======
+            this.btnSalir.UseVisualStyleBackColor = true;
+>>>>>>> master
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // frmConsultarFacturas

@@ -43,8 +43,11 @@
             this.pbImagen = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnSalir = new System.Windows.Forms.Button();
+<<<<<<< HEAD
             this.grpDatos = new System.Windows.Forms.GroupBox();
             this.lblTitulo = new System.Windows.Forms.Label();
+=======
+>>>>>>> master
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.grpDatos.SuspendLayout();
             this.SuspendLayout();
@@ -53,20 +56,44 @@
             // 
             this.lblClave.AutoSize = true;
             this.lblClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.lblClave.Location = new System.Drawing.Point(19, 133);
+=======
+            this.lblClave.Location = new System.Drawing.Point(30, 172);
+>>>>>>> master
             this.lblClave.Name = "lblClave";
             this.lblClave.Size = new System.Drawing.Size(45, 18);
             this.lblClave.TabIndex = 0;
             this.lblClave.Text = "Clave";
             // 
+<<<<<<< HEAD
+=======
+            // lblConsultaProvedor
+            // 
+            this.lblConsultaProvedor.AutoSize = true;
+            this.lblConsultaProvedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConsultaProvedor.Location = new System.Drawing.Point(128, 9);
+            this.lblConsultaProvedor.Name = "lblConsultaProvedor";
+            this.lblConsultaProvedor.Size = new System.Drawing.Size(255, 24);
+            this.lblConsultaProvedor.TabIndex = 2;
+            this.lblConsultaProvedor.Text = "CONSULTA PROVEEDOR";
+            // 
+>>>>>>> master
             // txtRFC
             // 
             this.txtRFC.CausesValidation = false;
             this.txtRFC.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+<<<<<<< HEAD
             this.txtRFC.Location = new System.Drawing.Point(94, 76);
             this.txtRFC.Name = "txtRFC";
             this.txtRFC.ReadOnly = true;
             this.txtRFC.Size = new System.Drawing.Size(144, 21);
+=======
+            this.txtRFC.Location = new System.Drawing.Point(105, 115);
+            this.txtRFC.Name = "txtRFC";
+            this.txtRFC.ReadOnly = true;
+            this.txtRFC.Size = new System.Drawing.Size(173, 20);
+>>>>>>> master
             this.txtRFC.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtRFC, "RFC del Proveedor");
             // 
@@ -74,7 +101,11 @@
             // 
             this.lblRFC.AutoSize = true;
             this.lblRFC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.lblRFC.Location = new System.Drawing.Point(19, 82);
+=======
+            this.lblRFC.Location = new System.Drawing.Point(30, 121);
+>>>>>>> master
             this.lblRFC.Name = "lblRFC";
             this.lblRFC.Size = new System.Drawing.Size(39, 18);
             this.lblRFC.TabIndex = 0;
@@ -84,7 +115,11 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.lblNombre.Location = new System.Drawing.Point(19, 31);
+=======
+            this.lblNombre.Location = new System.Drawing.Point(30, 70);
+>>>>>>> master
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(62, 18);
             this.lblNombre.TabIndex = 0;
@@ -94,17 +129,28 @@
             // 
             this.txtDomicilio.CausesValidation = false;
             this.txtDomicilio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+<<<<<<< HEAD
             this.txtDomicilio.Location = new System.Drawing.Point(94, 185);
             this.txtDomicilio.Name = "txtDomicilio";
             this.txtDomicilio.ReadOnly = true;
             this.txtDomicilio.Size = new System.Drawing.Size(160, 21);
+=======
+            this.txtDomicilio.Location = new System.Drawing.Point(105, 224);
+            this.txtDomicilio.Name = "txtDomicilio";
+            this.txtDomicilio.ReadOnly = true;
+            this.txtDomicilio.Size = new System.Drawing.Size(189, 20);
+>>>>>>> master
             this.txtDomicilio.TabIndex = 0;
             // 
             // lblDomicilio
             // 
             this.lblDomicilio.AutoSize = true;
             this.lblDomicilio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.lblDomicilio.Location = new System.Drawing.Point(19, 187);
+=======
+            this.lblDomicilio.Location = new System.Drawing.Point(30, 226);
+>>>>>>> master
             this.lblDomicilio.Name = "lblDomicilio";
             this.lblDomicilio.Size = new System.Drawing.Size(70, 18);
             this.lblDomicilio.TabIndex = 0;
@@ -112,10 +158,17 @@
             // 
             // txtSueldo
             // 
+<<<<<<< HEAD
             this.txtSueldo.Location = new System.Drawing.Point(94, 237);
             this.txtSueldo.Name = "txtSueldo";
             this.txtSueldo.ReadOnly = true;
             this.txtSueldo.Size = new System.Drawing.Size(92, 21);
+=======
+            this.txtSueldo.Location = new System.Drawing.Point(105, 276);
+            this.txtSueldo.Name = "txtSueldo";
+            this.txtSueldo.ReadOnly = true;
+            this.txtSueldo.Size = new System.Drawing.Size(121, 20);
+>>>>>>> master
             this.txtSueldo.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtSueldo, "Saldo del proveedor");
             // 
@@ -123,7 +176,11 @@
             // 
             this.lblSaldo.AutoSize = true;
             this.lblSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.lblSaldo.Location = new System.Drawing.Point(19, 239);
+=======
+            this.lblSaldo.Location = new System.Drawing.Point(30, 278);
+>>>>>>> master
             this.lblSaldo.Name = "lblSaldo";
             this.lblSaldo.Size = new System.Drawing.Size(46, 18);
             this.lblSaldo.TabIndex = 0;
@@ -133,10 +190,17 @@
             // 
             this.txtClave.CausesValidation = false;
             this.txtClave.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+<<<<<<< HEAD
             this.txtClave.Location = new System.Drawing.Point(94, 131);
             this.txtClave.Name = "txtClave";
             this.txtClave.ReadOnly = true;
             this.txtClave.Size = new System.Drawing.Size(92, 21);
+=======
+            this.txtClave.Location = new System.Drawing.Point(105, 170);
+            this.txtClave.Name = "txtClave";
+            this.txtClave.ReadOnly = true;
+            this.txtClave.Size = new System.Drawing.Size(121, 20);
+>>>>>>> master
             this.txtClave.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtClave, "Clave del Proveedor");
             // 
@@ -144,10 +208,16 @@
             // 
             this.cmbNombre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNombre.FormattingEnabled = true;
+<<<<<<< HEAD
             this.cmbNombre.Location = new System.Drawing.Point(94, 30);
             this.cmbNombre.Name = "cmbNombre";
             this.cmbNombre.Size = new System.Drawing.Size(144, 23);
             this.cmbNombre.Sorted = true;
+=======
+            this.cmbNombre.Location = new System.Drawing.Point(105, 69);
+            this.cmbNombre.Name = "cmbNombre";
+            this.cmbNombre.Size = new System.Drawing.Size(173, 21);
+>>>>>>> master
             this.cmbNombre.TabIndex = 1;
             this.toolTip1.SetToolTip(this.cmbNombre, "Nombre del Proveedor");
             this.cmbNombre.SelectedIndexChanged += new System.EventHandler(this.cmbNombre_SelectedIndexChanged);
@@ -156,7 +226,11 @@
             // 
             this.pbImagen.BackColor = System.Drawing.Color.Transparent;
             this.pbImagen.Image = ((System.Drawing.Image)(resources.GetObject("pbImagen.Image")));
+<<<<<<< HEAD
             this.pbImagen.Location = new System.Drawing.Point(330, 62);
+=======
+            this.pbImagen.Location = new System.Drawing.Point(330, 56);
+>>>>>>> master
             this.pbImagen.Name = "pbImagen";
             this.pbImagen.Size = new System.Drawing.Size(222, 223);
             this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -165,7 +239,11 @@
             // 
             // btnSalir
             // 
+<<<<<<< HEAD
             this.btnSalir.Location = new System.Drawing.Point(372, 305);
+=======
+            this.btnSalir.Location = new System.Drawing.Point(408, 302);
+>>>>>>> master
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(108, 35);
             this.btnSalir.TabIndex = 2;
@@ -173,6 +251,7 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+<<<<<<< HEAD
             // grpDatos
             // 
             this.grpDatos.BackColor = System.Drawing.Color.Transparent;
@@ -205,6 +284,8 @@
             this.lblTitulo.TabIndex = 16;
             this.lblTitulo.Text = "CONSULTA PROVEEDOR";
             // 
+=======
+>>>>>>> master
             // frmConsultaProvedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,8 +295,11 @@
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(564, 352);
             this.ControlBox = false;
+<<<<<<< HEAD
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.grpDatos);
+=======
+>>>>>>> master
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.pbImagen);
             this.Name = "frmConsultaProvedor";
@@ -243,7 +327,10 @@
         private System.Windows.Forms.PictureBox pbImagen;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btnSalir;
+<<<<<<< HEAD
         private System.Windows.Forms.GroupBox grpDatos;
         private System.Windows.Forms.Label lblTitulo;
+=======
+>>>>>>> master
     }
 }

@@ -65,17 +65,29 @@
             // 
             this.lblModelo.AutoSize = true;
             this.lblModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.lblModelo.Location = new System.Drawing.Point(15, 92);
             this.lblModelo.Name = "lblModelo";
             this.lblModelo.Size = new System.Drawing.Size(46, 16);
             this.lblModelo.TabIndex = 0;
             this.lblModelo.Text = "Marca";
+=======
+            this.lblModelo.Location = new System.Drawing.Point(15, 81);
+            this.lblModelo.Name = "lblModelo";
+            this.lblModelo.Size = new System.Drawing.Size(54, 16);
+            this.lblModelo.TabIndex = 0;
+            this.lblModelo.Text = "Modelo";
+>>>>>>> master
             // 
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
             this.lblPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.lblPrecio.Location = new System.Drawing.Point(15, 146);
+=======
+            this.lblPrecio.Location = new System.Drawing.Point(15, 135);
+>>>>>>> master
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(47, 16);
             this.lblPrecio.TabIndex = 0;
@@ -85,7 +97,11 @@
             // 
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.lblCantidad.Location = new System.Drawing.Point(15, 199);
+=======
+            this.lblCantidad.Location = new System.Drawing.Point(15, 188);
+>>>>>>> master
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(62, 16);
             this.lblCantidad.TabIndex = 0;
@@ -94,15 +110,22 @@
             // txtDescripcion
             // 
             this.txtDescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+<<<<<<< HEAD
             this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion.Location = new System.Drawing.Point(18, 58);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(214, 22);
+=======
+            this.txtDescripcion.Location = new System.Drawing.Point(18, 47);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(214, 20);
+>>>>>>> master
             this.txtDescripcion.TabIndex = 1;
             this.toolTipMostrar.SetToolTip(this.txtDescripcion, "Ingrese Descripción del Articulo");
             // 
             // txtMarca
             // 
+<<<<<<< HEAD
             this.txtMarca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMarca.Location = new System.Drawing.Point(18, 111);
@@ -110,12 +133,24 @@
             this.txtMarca.Size = new System.Drawing.Size(214, 22);
             this.txtMarca.TabIndex = 2;
             this.toolTipMostrar.SetToolTip(this.txtMarca, "Ingrese Modelo del Articulo");
+=======
+            this.txtModelo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtModelo.Location = new System.Drawing.Point(18, 100);
+            this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Size = new System.Drawing.Size(214, 20);
+            this.txtModelo.TabIndex = 2;
+            this.toolTipMostrar.SetToolTip(this.txtModelo, "Ingrese Modelo del Articulo");
+>>>>>>> master
             // 
             // txtPrecio
             // 
             this.txtPrecio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+<<<<<<< HEAD
             this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecio.Location = new System.Drawing.Point(18, 165);
+=======
+            this.txtPrecio.Location = new System.Drawing.Point(18, 154);
+>>>>>>> master
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(111, 21);
             this.txtPrecio.TabIndex = 3;
@@ -126,7 +161,11 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.btnGuardar.Location = new System.Drawing.Point(34, 316);
+=======
+            this.btnGuardar.Location = new System.Drawing.Point(34, 287);
+>>>>>>> master
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(113, 38);
             this.btnGuardar.TabIndex = 5;
@@ -138,7 +177,11 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.btnLimpiar.Location = new System.Drawing.Point(191, 316);
+=======
+            this.btnLimpiar.Location = new System.Drawing.Point(197, 287);
+>>>>>>> master
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(113, 38);
             this.btnLimpiar.TabIndex = 6;
@@ -149,8 +192,12 @@
             // 
             // nudCantidad
             // 
+<<<<<<< HEAD
             this.nudCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudCantidad.Location = new System.Drawing.Point(18, 227);
+=======
+            this.nudCantidad.Location = new System.Drawing.Point(18, 216);
+>>>>>>> master
             this.nudCantidad.Name = "nudCantidad";
             this.nudCantidad.ReadOnly = true;
             this.nudCantidad.Size = new System.Drawing.Size(122, 21);
@@ -166,7 +213,11 @@
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.btnSalir.Location = new System.Drawing.Point(352, 316);
+=======
+            this.btnSalir.Location = new System.Drawing.Point(365, 287);
+>>>>>>> master
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(113, 38);
             this.btnSalir.TabIndex = 7;
@@ -181,11 +232,19 @@
             // 
             // Picture
             // 
+<<<<<<< HEAD
             this.Picture.BackColor = System.Drawing.Color.Transparent;
             this.Picture.Image = ((System.Drawing.Image)(resources.GetObject("Picture.Image")));
             this.Picture.Location = new System.Drawing.Point(299, 53);
             this.Picture.Name = "Picture";
             this.Picture.Size = new System.Drawing.Size(181, 195);
+=======
+            this.Picture.BackColor = System.Drawing.Color.Azure;
+            this.Picture.Image = ((System.Drawing.Image)(resources.GetObject("Picture.Image")));
+            this.Picture.Location = new System.Drawing.Point(289, 37);
+            this.Picture.Name = "Picture";
+            this.Picture.Size = new System.Drawing.Size(217, 213);
+>>>>>>> master
             this.Picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Picture.TabIndex = 7;
             this.Picture.TabStop = false;
@@ -201,10 +260,16 @@
             this.gbAgregaArticulo.Controls.Add(this.lblPrecio);
             this.gbAgregaArticulo.Controls.Add(this.lblModelo);
             this.gbAgregaArticulo.Controls.Add(this.lblDescripcion);
+<<<<<<< HEAD
             this.gbAgregaArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAgregaArticulo.Location = new System.Drawing.Point(7, 14);
             this.gbAgregaArticulo.Name = "gbAgregaArticulo";
             this.gbAgregaArticulo.Size = new System.Drawing.Size(276, 269);
+=======
+            this.gbAgregaArticulo.Location = new System.Drawing.Point(7, 14);
+            this.gbAgregaArticulo.Name = "gbAgregaArticulo";
+            this.gbAgregaArticulo.Size = new System.Drawing.Size(276, 257);
+>>>>>>> master
             this.gbAgregaArticulo.TabIndex = 0;
             this.gbAgregaArticulo.TabStop = false;
             this.gbAgregaArticulo.Text = "Agrega Articulo";
@@ -213,8 +278,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(492, 366);
+=======
+            this.ClientSize = new System.Drawing.Size(518, 352);
+>>>>>>> master
             this.ControlBox = false;
             this.Controls.Add(this.gbAgregaArticulo);
             this.Controls.Add(this.btnSalir);

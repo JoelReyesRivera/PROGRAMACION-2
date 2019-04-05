@@ -46,11 +46,19 @@
             // 
             this.lblProvedores.AutoSize = true;
             this.lblProvedores.BackColor = System.Drawing.Color.Transparent;
+<<<<<<< HEAD
             this.lblProvedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProvedores.ForeColor = System.Drawing.Color.Black;
             this.lblProvedores.Location = new System.Drawing.Point(50, 36);
             this.lblProvedores.Name = "lblProvedores";
             this.lblProvedores.Size = new System.Drawing.Size(460, 33);
+=======
+            this.lblProvedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProvedores.ForeColor = System.Drawing.Color.Black;
+            this.lblProvedores.Location = new System.Drawing.Point(144, 36);
+            this.lblProvedores.Name = "lblProvedores";
+            this.lblProvedores.Size = new System.Drawing.Size(303, 24);
+>>>>>>> master
             this.lblProvedores.TabIndex = 0;
             this.lblProvedores.Text = "PROVEDORES REGISTRADOS";
             // 
@@ -64,7 +72,11 @@
             this.Nombre,
             this.Domicilio,
             this.Saldo});
+<<<<<<< HEAD
             this.dtgvProveedores.Location = new System.Drawing.Point(38, 92);
+=======
+            this.dtgvProveedores.Location = new System.Drawing.Point(28, 106);
+>>>>>>> master
             this.dtgvProveedores.Name = "dtgvProveedores";
             this.dtgvProveedores.ReadOnly = true;
             this.dtgvProveedores.Size = new System.Drawing.Size(541, 150);
@@ -124,13 +136,38 @@
             this.pbProveedor.TabIndex = 2;
             this.pbProveedor.TabStop = false;
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Location = new System.Drawing.Point(502, 285);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(87, 32);
+            this.btnSalir.TabIndex = 1;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // pbProveedor
+            // 
+            this.pbProveedor.Image = ((System.Drawing.Image)(resources.GetObject("pbProveedor.Image")));
+            this.pbProveedor.Location = new System.Drawing.Point(472, 12);
+            this.pbProveedor.Name = "pbProveedor";
+            this.pbProveedor.Size = new System.Drawing.Size(110, 74);
+            this.pbProveedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbProveedor.TabIndex = 2;
+            this.pbProveedor.TabStop = false;
+            // 
             // frmConsultaProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(634, 319);
+=======
+            this.ClientSize = new System.Drawing.Size(601, 329);
+>>>>>>> master
             this.ControlBox = false;
             this.Controls.Add(this.pbProveedor);
             this.Controls.Add(this.btnSalir);

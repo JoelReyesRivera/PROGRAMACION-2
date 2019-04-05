@@ -46,15 +46,20 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.gbInfoArticulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // lblArticulos
             // 
             this.lblArticulos.AutoSize = true;
+<<<<<<< HEAD
             this.lblArticulos.BackColor = System.Drawing.Color.Transparent;
+=======
+>>>>>>> master
             this.lblArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArticulos.Location = new System.Drawing.Point(14, 59);
             this.lblArticulos.Name = "lblArticulos";
@@ -73,12 +78,21 @@
             // 
             // lblMar
             // 
+<<<<<<< HEAD
             this.lblMar.AutoSize = true;
             this.lblMar.Location = new System.Drawing.Point(15, 80);
             this.lblMar.Name = "lblMar";
             this.lblMar.Size = new System.Drawing.Size(50, 18);
             this.lblMar.TabIndex = 0;
             this.lblMar.Text = "Marca";
+=======
+            this.lblMod.AutoSize = true;
+            this.lblMod.Location = new System.Drawing.Point(15, 80);
+            this.lblMod.Name = "lblMod";
+            this.lblMod.Size = new System.Drawing.Size(58, 18);
+            this.lblMod.TabIndex = 0;
+            this.lblMod.Text = "Modelo";
+>>>>>>> master
             // 
             // lblPrec
             // 
@@ -153,11 +167,19 @@
             // 
             // lblMarca
             // 
+<<<<<<< HEAD
             this.lblMarca.AutoSize = true;
             this.lblMarca.Location = new System.Drawing.Point(164, 80);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(0, 18);
             this.lblMarca.TabIndex = 0;
+=======
+            this.lblModelo.AutoSize = true;
+            this.lblModelo.Location = new System.Drawing.Point(164, 80);
+            this.lblModelo.Name = "lblModelo";
+            this.lblModelo.Size = new System.Drawing.Size(0, 18);
+            this.lblModelo.TabIndex = 0;
+>>>>>>> master
             // 
             // lblDescripcion
             // 
@@ -190,18 +212,27 @@
             // 
             // pictureBox1
             // 
+<<<<<<< HEAD
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(53, 132);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(149, 144);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+=======
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(39, 145);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(193, 144);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+>>>>>>> master
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
+<<<<<<< HEAD
             this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Location = new System.Drawing.Point(238, 9);
@@ -209,12 +240,34 @@
             this.lblTitulo.Size = new System.Drawing.Size(227, 24);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "CONSULTA ARTICULO";
+=======
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(240, 19);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(197, 20);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "CONSULTA ARTICULO";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(356, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(65, 45);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+>>>>>>> master
             // 
             // frmConsultaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+=======
+>>>>>>> master
             this.ClientSize = new System.Drawing.Size(696, 321);
             this.ControlBox = false;
             this.Controls.Add(this.lblTitulo);
@@ -230,6 +283,7 @@
             this.gbInfoArticulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

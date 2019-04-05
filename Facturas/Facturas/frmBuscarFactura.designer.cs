@@ -59,9 +59,14 @@
             // lblClaveFactura
             // 
             this.lblClaveFactura.AutoSize = true;
+<<<<<<< HEAD
             this.lblClaveFactura.BackColor = System.Drawing.Color.Transparent;
             this.lblClaveFactura.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClaveFactura.Location = new System.Drawing.Point(78, 48);
+=======
+            this.lblClaveFactura.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClaveFactura.Location = new System.Drawing.Point(83, 48);
+>>>>>>> master
             this.lblClaveFactura.Name = "lblClaveFactura";
             this.lblClaveFactura.Size = new System.Drawing.Size(113, 17);
             this.lblClaveFactura.TabIndex = 0;
@@ -69,7 +74,11 @@
             // 
             // txtClaveFactura
             // 
+<<<<<<< HEAD
             this.txtClaveFactura.Location = new System.Drawing.Point(60, 78);
+=======
+            this.txtClaveFactura.Location = new System.Drawing.Point(56, 79);
+>>>>>>> master
             this.txtClaveFactura.Name = "txtClaveFactura";
             this.txtClaveFactura.Size = new System.Drawing.Size(150, 20);
             this.txtClaveFactura.TabIndex = 1;
@@ -264,6 +273,7 @@
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
+<<<<<<< HEAD
             this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Location = new System.Drawing.Point(201, 9);
@@ -271,12 +281,23 @@
             this.lblTitulo.Size = new System.Drawing.Size(171, 20);
             this.lblTitulo.TabIndex = 16;
             this.lblTitulo.Text = "BUSCAR FACTURA";
+=======
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(194, 9);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(145, 18);
+            this.lblTitulo.TabIndex = 16;
+            this.lblTitulo.Text = "BUSCA FACTURA";
+>>>>>>> master
             // 
             // frmBuscarFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+=======
+>>>>>>> master
             this.ClientSize = new System.Drawing.Size(574, 373);
             this.ControlBox = false;
             this.Controls.Add(this.lblTitulo);

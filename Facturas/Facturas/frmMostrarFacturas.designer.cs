@@ -99,6 +99,7 @@
             // lblFacturas
             // 
             this.lblFacturas.AutoSize = true;
+<<<<<<< HEAD
             this.lblFacturas.BackColor = System.Drawing.Color.Transparent;
             this.lblFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFacturas.Location = new System.Drawing.Point(200, 28);
@@ -106,13 +107,25 @@
             this.lblFacturas.Size = new System.Drawing.Size(429, 24);
             this.lblFacturas.TabIndex = 0;
             this.lblFacturas.Text = "FACTURAS REGISTRADAS EN EL SISTEMA";
+=======
+            this.lblFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFacturas.Location = new System.Drawing.Point(233, 30);
+            this.lblFacturas.Name = "lblFacturas";
+            this.lblFacturas.Size = new System.Drawing.Size(416, 24);
+            this.lblFacturas.TabIndex = 0;
+            this.lblFacturas.Text = "FACTURAS REGISTRADAS EN EL SITEMA";
+>>>>>>> master
             // 
             // btnSalir
             // 
             this.btnSalir.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.btnSalir.Location = new System.Drawing.Point(705, 261);
+=======
+            this.btnSalir.Location = new System.Drawing.Point(714, 261);
+>>>>>>> master
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(107, 39);
             this.btnSalir.TabIndex = 1;
@@ -125,7 +138,11 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+<<<<<<< HEAD
             this.pictureBox1.Location = new System.Drawing.Point(677, 12);
+=======
+            this.pictureBox1.Location = new System.Drawing.Point(714, 12);
+>>>>>>> master
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(92, 56);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

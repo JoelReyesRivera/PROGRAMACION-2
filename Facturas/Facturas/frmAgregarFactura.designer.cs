@@ -154,7 +154,11 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+<<<<<<< HEAD
             this.pictureBox1.Location = new System.Drawing.Point(207, 33);
+=======
+            this.pictureBox1.Location = new System.Drawing.Point(216, 32);
+>>>>>>> master
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(109, 105);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -238,7 +242,10 @@
             // lblImporteTotal
             // 
             this.lblImporteTotal.AutoSize = true;
+<<<<<<< HEAD
             this.lblImporteTotal.BackColor = System.Drawing.Color.Transparent;
+=======
+>>>>>>> master
             this.lblImporteTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblImporteTotal.Location = new System.Drawing.Point(721, 253);
             this.lblImporteTotal.Name = "lblImporteTotal";
@@ -249,7 +256,10 @@
             // lblImporte
             // 
             this.lblImporte.AutoSize = true;
+<<<<<<< HEAD
             this.lblImporte.BackColor = System.Drawing.Color.Transparent;
+=======
+>>>>>>> master
             this.lblImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblImporte.Location = new System.Drawing.Point(835, 253);
             this.lblImporte.Name = "lblImporte";
@@ -322,7 +332,10 @@
             // 
             // btnSalir
             // 
+<<<<<<< HEAD
             this.btnSalir.BackColor = System.Drawing.SystemColors.ControlLight;
+=======
+>>>>>>> master
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Location = new System.Drawing.Point(722, 295);
             this.btnSalir.Name = "btnSalir";
@@ -336,7 +349,10 @@
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
+<<<<<<< HEAD
             this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
+=======
+>>>>>>> master
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Location = new System.Drawing.Point(509, 22);
             this.lblTitulo.Name = "lblTitulo";
@@ -348,7 +364,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+=======
+>>>>>>> master
             this.ClientSize = new System.Drawing.Size(883, 349);
             this.ControlBox = false;
             this.Controls.Add(this.lblTitulo);

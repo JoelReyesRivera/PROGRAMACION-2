@@ -95,7 +95,11 @@
             this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCantidad.Location = new System.Drawing.Point(6, 112);
             this.lblCantidad.Name = "lblCantidad";
+<<<<<<< HEAD
             this.lblCantidad.Size = new System.Drawing.Size(135, 16);
+=======
+            this.lblCantidad.Size = new System.Drawing.Size(147, 18);
+>>>>>>> master
             this.lblCantidad.TabIndex = 0;
             this.lblCantidad.Text = "Cantidad de Articulos";
             // 
@@ -194,7 +198,10 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(469, 354);
             this.ControlBox = false;
+<<<<<<< HEAD
             this.Controls.Add(this.pbImagen2);
+=======
+>>>>>>> master
             this.Controls.Add(this.gpArticulo);
             this.Controls.Add(this.pbImagen1);
             this.Controls.Add(this.lblTitulo);

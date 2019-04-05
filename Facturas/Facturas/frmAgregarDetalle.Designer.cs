@@ -214,7 +214,11 @@
             this.brnSalir.Location = new System.Drawing.Point(226, 333);
             this.brnSalir.Name = "brnSalir";
             this.brnSalir.Size = new System.Drawing.Size(120, 38);
+<<<<<<< HEAD
             this.brnSalir.TabIndex = 7;
+=======
+            this.brnSalir.TabIndex = 15;
+>>>>>>> master
             this.brnSalir.Text = "Salir";
             this.toolTip1.SetToolTip(this.brnSalir, "Cerrar ventana");
             this.brnSalir.UseVisualStyleBackColor = true;

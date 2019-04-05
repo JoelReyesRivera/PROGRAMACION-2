@@ -53,7 +53,10 @@
             // lblClave
             // 
             this.lblClave.AutoSize = true;
+<<<<<<< HEAD
             this.lblClave.BackColor = System.Drawing.Color.Transparent;
+=======
+>>>>>>> master
             this.lblClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClave.Location = new System.Drawing.Point(7, 30);
             this.lblClave.Name = "lblClave";
@@ -64,7 +67,10 @@
             // lblRFC
             // 
             this.lblRFC.AutoSize = true;
+<<<<<<< HEAD
             this.lblRFC.BackColor = System.Drawing.Color.Transparent;
+=======
+>>>>>>> master
             this.lblRFC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRFC.Location = new System.Drawing.Point(7, 83);
             this.lblRFC.Name = "lblRFC";
@@ -75,7 +81,10 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
+<<<<<<< HEAD
             this.lblNombre.BackColor = System.Drawing.Color.Transparent;
+=======
+>>>>>>> master
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombre.Location = new System.Drawing.Point(7, 134);
             this.lblNombre.Name = "lblNombre";
@@ -86,10 +95,16 @@
             // txtClave
             // 
             this.txtClave.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+<<<<<<< HEAD
             this.txtClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClave.Location = new System.Drawing.Point(10, 49);
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(122, 22);
+=======
+            this.txtClave.Location = new System.Drawing.Point(10, 49);
+            this.txtClave.Name = "txtClave";
+            this.txtClave.Size = new System.Drawing.Size(122, 20);
+>>>>>>> master
             this.txtClave.TabIndex = 0;
             this.toolTip.SetToolTip(this.txtClave, "Clave del Proveedor");
             this.txtClave.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClave_KeyPress);
@@ -98,20 +113,32 @@
             // txtRFC
             // 
             this.txtRFC.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+<<<<<<< HEAD
             this.txtRFC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRFC.Location = new System.Drawing.Point(10, 102);
             this.txtRFC.Name = "txtRFC";
             this.txtRFC.Size = new System.Drawing.Size(151, 22);
+=======
+            this.txtRFC.Location = new System.Drawing.Point(10, 102);
+            this.txtRFC.Name = "txtRFC";
+            this.txtRFC.Size = new System.Drawing.Size(151, 20);
+>>>>>>> master
             this.txtRFC.TabIndex = 1;
             this.toolTip.SetToolTip(this.txtRFC, "RFC del proveedor");
             // 
             // txtNombre
             // 
             this.txtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+<<<<<<< HEAD
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.Location = new System.Drawing.Point(10, 153);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(198, 22);
+=======
+            this.txtNombre.Location = new System.Drawing.Point(10, 153);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(198, 20);
+>>>>>>> master
             this.txtNombre.TabIndex = 2;
             this.toolTip.SetToolTip(this.txtNombre, "Nombre del proveedor");
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
@@ -120,7 +147,10 @@
             // lblDomicilio
             // 
             this.lblDomicilio.AutoSize = true;
+<<<<<<< HEAD
             this.lblDomicilio.BackColor = System.Drawing.Color.Transparent;
+=======
+>>>>>>> master
             this.lblDomicilio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDomicilio.Location = new System.Drawing.Point(7, 192);
             this.lblDomicilio.Name = "lblDomicilio";
@@ -131,10 +161,16 @@
             // txtDomicilio
             // 
             this.txtDomicilio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+<<<<<<< HEAD
             this.txtDomicilio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDomicilio.Location = new System.Drawing.Point(10, 211);
             this.txtDomicilio.Name = "txtDomicilio";
             this.txtDomicilio.Size = new System.Drawing.Size(213, 22);
+=======
+            this.txtDomicilio.Location = new System.Drawing.Point(10, 211);
+            this.txtDomicilio.Name = "txtDomicilio";
+            this.txtDomicilio.Size = new System.Drawing.Size(213, 20);
+>>>>>>> master
             this.txtDomicilio.TabIndex = 3;
             this.toolTip.SetToolTip(this.txtDomicilio, "Domicilio del Proveedor");
             // 
@@ -144,7 +180,11 @@
             this.btnAgregar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.btnAgregar.Location = new System.Drawing.Point(42, 274);
+=======
+            this.btnAgregar.Location = new System.Drawing.Point(42, 290);
+>>>>>>> master
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(102, 36);
             this.btnAgregar.TabIndex = 4;
@@ -158,7 +198,11 @@
             this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.btnLimpiar.Location = new System.Drawing.Point(195, 274);
+=======
+            this.btnLimpiar.Location = new System.Drawing.Point(195, 290);
+>>>>>>> master
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(102, 36);
             this.btnLimpiar.TabIndex = 5;
@@ -172,7 +216,11 @@
             this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.btnSalir.Location = new System.Drawing.Point(350, 274);
+=======
+            this.btnSalir.Location = new System.Drawing.Point(350, 290);
+>>>>>>> master
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(102, 36);
             this.btnSalir.TabIndex = 6;
@@ -186,7 +234,10 @@
             // 
             // grpProveedor
             // 
+<<<<<<< HEAD
             this.grpProveedor.BackColor = System.Drawing.Color.Transparent;
+=======
+>>>>>>> master
             this.grpProveedor.Controls.Add(this.txtDomicilio);
             this.grpProveedor.Controls.Add(this.lblDomicilio);
             this.grpProveedor.Controls.Add(this.txtNombre);
@@ -195,7 +246,10 @@
             this.grpProveedor.Controls.Add(this.lblNombre);
             this.grpProveedor.Controls.Add(this.lblRFC);
             this.grpProveedor.Controls.Add(this.lblClave);
+<<<<<<< HEAD
             this.grpProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+=======
+>>>>>>> master
             this.grpProveedor.Location = new System.Drawing.Point(12, 12);
             this.grpProveedor.Name = "grpProveedor";
             this.grpProveedor.Size = new System.Drawing.Size(266, 256);
@@ -205,9 +259,14 @@
             // 
             // ptbAgregaProveedor
             // 
+<<<<<<< HEAD
             this.ptbAgregaProveedor.BackColor = System.Drawing.Color.Transparent;
             this.ptbAgregaProveedor.Image = ((System.Drawing.Image)(resources.GetObject("ptbAgregaProveedor.Image")));
             this.ptbAgregaProveedor.Location = new System.Drawing.Point(297, 29);
+=======
+            this.ptbAgregaProveedor.Image = ((System.Drawing.Image)(resources.GetObject("ptbAgregaProveedor.Image")));
+            this.ptbAgregaProveedor.Location = new System.Drawing.Point(293, 27);
+>>>>>>> master
             this.ptbAgregaProveedor.Name = "ptbAgregaProveedor";
             this.ptbAgregaProveedor.Size = new System.Drawing.Size(206, 216);
             this.ptbAgregaProveedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -218,9 +277,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(515, 327);
+=======
+            this.ClientSize = new System.Drawing.Size(515, 354);
+>>>>>>> master
             this.ControlBox = false;
             this.Controls.Add(this.ptbAgregaProveedor);
             this.Controls.Add(this.grpProveedor);
