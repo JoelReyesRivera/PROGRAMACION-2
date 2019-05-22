@@ -19,7 +19,7 @@ namespace Facturas
         {
             InitializeComponent();
             this.AdmA = AdmA;
-            cmbArticulos.SelectedIndex = 0;
+            cmbArticulos.SelectedIndex = -1;
             Art = AdmA.ObtenArt();
         }
 
@@ -36,9 +36,9 @@ namespace Facturas
             if (Result == DialogResult.No)
                 return;
 
-            if(cmbArticulos.SelectedIndex == 0)
+            if(cmbArticulos.SelectedIndex == -1)
             {
-                MessageBox.Show("NO HA SELECCIONADO NINGUN ARTICULO", "INFORMACIÓN", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                MessageBox.Show("NO HA SELECCIONADO NINGUN ARTICULO", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             int Cant = Convert.ToInt32(nudCantidad.Value);
@@ -48,9 +48,10 @@ namespace Facturas
                 Limpiar();
                 return;
             }
-            int Clave = Art.ElementAt((cmbArticulos.SelectedIndex-1)).pClave;
-            Articulo Articulo = AdmA.RetornaArticulo(Clave);
-            Articulo.pCantidad += Cant;
+            string Articulo = Convert.ToString(cmbArticulos.SelectedItem);
+            int ClaveArticulo = AdmA.BuscaClaveArt(Articulo);
+            Articulo A = AdmA.RetornaArticulo(ClaveArticulo);
+            A.pCantidad += Cant;
 
             MessageBox.Show("MODIFICACION EXITOSA", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Limpiar();
@@ -71,8 +72,9 @@ namespace Facturas
 
         private void Limpiar()
         {
-            cmbArticulos.SelectedIndex = 0;
+            cmbArticulos.SelectedIndex = -1;
             nudCantidad.Value = 1;
+            txtStock.Text = "";
         }
 
         private void nudCantidad_ValueChanged(object sender, EventArgs e)
@@ -83,6 +85,55 @@ namespace Facturas
                 Error.SetError(nudCantidad, "NUMERO FUERA DEL RANGO PERMITIDO");
             else
                 Error.SetError(nudCantidad, "");
+        }
+        private void cmbArticulos_Validated(object sender, EventArgs e)
+        {
+            bool flag = false;
+            string Articulo = cmbArticulos.Text;
+            string Elemento = "";
+            for (int i = 0; i < cmbArticulos.Items.Count; i++)
+            {
+                Elemento = cmbArticulos.GetItemText(cmbArticulos.Items[i]);
+                if (Elemento.CompareTo(Articulo) == 0)
+                {
+                    flag = true;
+                    cmbArticulos.SelectedIndex = i;
+                }
+            }
+            if (!flag)
+            {
+                errorP.SetError(cmbArticulos, "ARTÍCULO NO ENCONTRADO");
+                txtStock.Text = "";
+                cmbArticulos.SelectedIndex = -1;
+                cmbArticulos.Focus();
+            }
+            else
+            {
+                errorP.SetError(cmbArticulos, "");
+            }
+        }
+
+        private void cmbArticulos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
+            {
+                errorP.SetError(cmbArticulos, "SÓLO SE PERMITEN LETRAS");
+                e.Handled = false;
+            }
+            else
+            {
+                errorP.SetError(cmbArticulos, "");
+            }
+        }
+
+        private void cmbArticulos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbArticulos.SelectedIndex < 0)
+                return;
+            string Articulo = Convert.ToString(cmbArticulos.SelectedItem);
+            int ClaveArticulo = AdmA.BuscaClaveArt(Articulo);
+            Articulo A = AdmA.RetornaArticulo(ClaveArticulo);
+            txtStock.Text = A.pCantidad+"";
         }
     }
 }

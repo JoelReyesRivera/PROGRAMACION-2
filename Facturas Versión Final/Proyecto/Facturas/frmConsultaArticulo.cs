@@ -18,7 +18,7 @@ namespace Facturas
         {
             InitializeComponent();
             this.AdmA = AdmA;
-            cmbArticulos.SelectedIndex = 0;
+            cmbArticulos.SelectedIndex = -1;
             Art = AdmA.ObtenArt();
         }
 
@@ -30,22 +30,15 @@ namespace Facturas
 
         private void cmbArticulos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbArticulos.SelectedIndex != 0)
-            {
-                int p = cmbArticulos.SelectedIndex;
-
-                lblDescripcion.Text= Art.ElementAt(p-1).pDescripcion;
-                lblMarca.Text = Art.ElementAt(p-1).pMarca;
-                lblPrecio.Text = "$"+Convert.ToString(Art.ElementAt(p-1).pPrecio);
-                lblCantidad.Text = Convert.ToString(Art.ElementAt(p-1).pCantidad);
-            }
-            else
-            {
-                lblDescripcion.Text = "";
-                lblMarca.Text = "";
-                lblPrecio.Text = "";
-                lblCantidad.Text = "";
-            }
+            if (cmbArticulos.SelectedIndex < 0)
+                return;
+            string Articulo = Convert.ToString(cmbArticulos.SelectedItem);
+            int ClaveArticulo = AdmA.BuscaClaveArt(Articulo);
+            Articulo A = AdmA.RetornaArticulo(ClaveArticulo);
+            lblDescripcion.Text = A.pDescripcion;
+            lblMarca.Text = A.pMarca;
+            lblPrecio.Text = "$ "+A.pPrecio;
+            lblCantidad.Text = A.pCantidad+"";
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -54,6 +47,68 @@ namespace Facturas
 
             if (Result == DialogResult.Yes)
                 this.Close();
+        }
+
+        private void cmbArticulos_Validated(object sender, EventArgs e)
+        {
+            bool flag = false;
+            string Articulo = cmbArticulos.Text;
+            string Elemento = "";
+            for (int i = 0; i < cmbArticulos.Items.Count; i++)
+            {
+                Elemento = cmbArticulos.GetItemText(cmbArticulos.Items[i]);
+                if (Elemento.CompareTo(Articulo) == 0)
+                {
+                    flag = true;
+                    cmbArticulos.SelectedIndex = i;
+                }
+            }
+            if (!flag)
+            {
+                errorP.SetError(cmbArticulos, "ARTÍCULO NO ENCONTRADO");
+                cmbArticulos.SelectedIndex = -1;
+                lblDescripcion.Text = "";
+                lblMarca.Text = "";
+                lblPrecio.Text = "";
+                lblCantidad.Text = "";
+                cmbArticulos.Focus();
+            }
+            else
+            {
+                errorP.SetError(cmbArticulos, "");
+            }
+        }
+
+        private void cmbArticulos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
+            {
+                errorP.SetError(cmbArticulos, "SÓLO SE PERMITEN LETRAS");
+                e.Handled = false;
+            }
+            else
+            {
+                errorP.SetError(cmbArticulos, "");
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+        private void Limpiar()
+        {
+            cmbArticulos.Text = "";
+            cmbArticulos.SelectedIndex = -1;
+            lblDescripcion.Text = "";
+            lblMarca.Text = "";
+            lblPrecio.Text = "";
+            lblCantidad.Text = "";
+        }
+
+        private void cmbArticulos_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

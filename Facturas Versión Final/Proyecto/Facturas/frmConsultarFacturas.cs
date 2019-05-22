@@ -16,6 +16,7 @@ namespace Facturas
         public ManejaArticulos articulos;
         public ManejaDetalleFactura detalles;
         public ManejaFacturas facturas;
+
         public frmConsultarFacturas(ManejaProveedores proveedores, ManejaArticulos articulos, ManejaDetalleFactura detalles, ManejaFacturas facturas)
         {
             InitializeComponent();
@@ -24,11 +25,14 @@ namespace Facturas
             this.detalles = detalles;
             this.facturas = facturas;
             cargarCmbProveedores();
+            cmbProveedores.SelectedIndex = -1;
         }
 
 
         private void cmbProveedores_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmbProveedores.SelectedIndex < 0)
+                return;
             String textoProveedor = cmbProveedores.SelectedItem.ToString();
             cargarCmbFacturas(proveedores.GetClave(textoProveedor));
             cargarDataGridViewFacturas(proveedores.GetClave(textoProveedor));
@@ -38,7 +42,6 @@ namespace Facturas
         public void cargarCmbFacturas(int proveedor)
         {
             cmbFacturas.Items.Clear();
-            cmbFacturas.Items.Add("-FACTURAS-");
             KeyValuePair<int,Factura> [] lista = facturas.RetornaFacturas();
             for (int i = 0; i < lista.Length; i++)
             {
@@ -47,7 +50,7 @@ namespace Facturas
                     cmbFacturas.Items.Add(lista[i].Key);
                 }
             }
-            cmbFacturas.SelectedIndex = 0;
+            cmbFacturas.SelectedIndex = -1;
         }
 
         public void cargarDataGridViewFacturas(int proveedor)
@@ -66,8 +69,6 @@ namespace Facturas
         public void cargarCmbProveedores()
         {
             cmbFacturas.Items.Clear();
-            cmbProveedores.Items.Add("-PROVEEDORES-");
-            cmbProveedores.SelectedIndex = 0;
             Proveedor [] array =proveedores.GetProveedores();
             for (int i = 0; i < array.Length; i++)
             {
@@ -77,21 +78,21 @@ namespace Facturas
 
         private void cmbFacturas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbFacturas.SelectedIndex!=0)
+            if (cmbFacturas.SelectedIndex < 0)
+                return;
+
+            String facturaTexto = cmbFacturas.SelectedItem.ToString();
+            int factura;
+            try
             {
-                String facturaTexto = cmbFacturas.SelectedItem.ToString();
-                int factura;
-                try
-                {
-                    factura = int.Parse(facturaTexto);
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("FACTURA INVÁLIDA", "FACTURAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                cargarDataGridViewDetalles(factura);
+                factura = int.Parse(facturaTexto);
             }
+            catch (Exception)
+            {
+                MessageBox.Show("FACTURA INVÁLIDA", "FACTURAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            cargarDataGridViewDetalles(factura);
         }
 
         public void cargarDataGridViewDetalles(int factura)
@@ -115,6 +116,100 @@ namespace Facturas
 
             if (Result == DialogResult.Yes)
                 this.Close();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+        private void Limpiar()
+        {
+            cmbProveedores.Text = "";
+            cmbProveedores.SelectedIndex = -1;
+            dtgvFacturas.Rows.Clear();
+            cmbFacturas.Text = "";
+            cmbFacturas.SelectedIndex = -1;
+            dtgvDetalles.Rows.Clear();
+            errorP.Clear();
+
+        }
+
+        private void cmbProveedores_Validated(object sender, EventArgs e)
+        {
+            bool flag = false;
+            string Proveedor = cmbProveedores.Text;
+            string Elemento = "";
+            for (int i = 0; i < cmbProveedores.Items.Count; i++)
+            {
+                Elemento = cmbProveedores.GetItemText(cmbProveedores.Items[i]);
+                if (Elemento.CompareTo(Proveedor) == 0)
+                {
+                    flag = true;
+                    cmbProveedores.SelectedIndex = i;
+                }
+            }
+            if (!flag)
+            {
+                errorP.SetError(cmbProveedores, "PROVEEDOR NO ENCONTRADO");
+                cmbProveedores.SelectedIndex = -1;
+                cmbProveedores.Focus();
+            }
+            else
+            {
+                errorP.SetError(cmbProveedores, "");
+            }
+        }
+
+        private void cmbProveedores_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
+            {
+                errorP.SetError(cmbProveedores, "SÓLO SE PERMITEN LETRAS");
+                e.Handled = false;
+            }
+            else
+            {
+                errorP.SetError(cmbProveedores, "");
+            }
+        }
+
+        private void cmbFacturas_Validated(object sender, EventArgs e)
+        {
+            bool flag = false;
+            string ClaveFactura = cmbFacturas.Text;
+            string Elemento = "";
+            for (int i = 0; i < cmbFacturas.Items.Count; i++)
+            {
+                Elemento = cmbFacturas.GetItemText(cmbFacturas.Items[i]);
+                if (Elemento.CompareTo(ClaveFactura) == 0)
+                {
+                    flag = true;
+                    cmbFacturas.SelectedIndex = i;
+                }
+            }
+            if (!flag)
+            {
+                errorP.SetError(cmbFacturas, "FACTURA NO ENCONTRADA");
+                cmbFacturas.SelectedIndex = -1;
+                cmbFacturas.Focus();
+            }
+            else
+            {
+                errorP.SetError(cmbFacturas, "");
+            }
+        }
+
+        private void cmbFacturas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
+            {
+                errorP.SetError(cmbFacturas, "SÓLO SE PERMITEN NÚMEROS");
+                e.Handled = false;
+            }
+            else
+            {
+                errorP.SetError(cmbFacturas, "");
+            }
         }
     }
 }

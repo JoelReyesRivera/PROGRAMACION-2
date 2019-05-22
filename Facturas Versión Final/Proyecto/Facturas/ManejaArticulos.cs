@@ -32,6 +32,15 @@ namespace Facturas
             }
             return -1;
         }
+        public int BuscaClaveArt(string Desc)
+        {
+            for (int i = 0;i< Count; i++)
+            {
+                if (Array[i].pDescripcion.CompareTo(Desc) == 0)
+                    return Array[i].pClave;
+            }
+            return -1;
+        }
         public bool BuscaRep(string Desc, string Marca)
         {
             for (int i = 0; i < Count; i++)

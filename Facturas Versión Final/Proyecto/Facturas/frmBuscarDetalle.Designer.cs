@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBuscarDetalle));
             this.label1 = new System.Windows.Forms.Label();
-            this.txtClaveFactura = new System.Windows.Forms.TextBox();
             this.dvgBuscaDetalles = new System.Windows.Forms.DataGridView();
             this.ClaveArticulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,7 +39,6 @@
             this.ImporteDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblInformacion = new System.Windows.Forms.Label();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.lblImporte = new System.Windows.Forms.Label();
             this.lblImporteTexto = new System.Windows.Forms.Label();
@@ -49,6 +47,7 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.cmbClaveFactura = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dvgBuscaDetalles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,21 +59,11 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(52, 59);
+            this.label1.Location = new System.Drawing.Point(70, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "CLAVE FACTURA";
-            // 
-            // txtClaveFactura
-            // 
-            this.txtClaveFactura.Location = new System.Drawing.Point(38, 88);
-            this.txtClaveFactura.Name = "txtClaveFactura";
-            this.txtClaveFactura.Size = new System.Drawing.Size(143, 20);
-            this.txtClaveFactura.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.txtClaveFactura, "Introduzca la clave de la factura a buscar");
-            this.txtClaveFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClaveFactura_KeyPress);
-            this.txtClaveFactura.Validated += new System.EventHandler(this.Valida_factura);
             // 
             // dvgBuscaDetalles
             // 
@@ -141,26 +130,13 @@
             // 
             this.errorP.ContainerControl = this;
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(226, 77);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(87, 40);
-            this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.Text = "Buscar";
-            this.toolTip1.SetToolTip(this.btnBuscar, "Buscar detalles de la factura");
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // btnLimpiar
             // 
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(339, 77);
+            this.btnLimpiar.Location = new System.Drawing.Point(570, 369);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(87, 40);
+            this.btnLimpiar.Size = new System.Drawing.Size(97, 33);
             this.btnLimpiar.TabIndex = 3;
             this.btnLimpiar.Text = "Limpiar";
             this.toolTip1.SetToolTip(this.btnLimpiar, "Limpiar campos de texto");
@@ -234,6 +210,19 @@
             this.lblTitulo.TabIndex = 10;
             this.lblTitulo.Text = "BUSCAR DETALLE FACTURA";
             // 
+            // cmbClaveFactura
+            // 
+            this.cmbClaveFactura.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbClaveFactura.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbClaveFactura.FormattingEnabled = true;
+            this.cmbClaveFactura.Location = new System.Drawing.Point(192, 75);
+            this.cmbClaveFactura.Name = "cmbClaveFactura";
+            this.cmbClaveFactura.Size = new System.Drawing.Size(149, 21);
+            this.cmbClaveFactura.TabIndex = 1;
+            this.cmbClaveFactura.SelectedIndexChanged += new System.EventHandler(this.cmbClaveFactura_SelectedIndexChanged);
+            this.cmbClaveFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbClaveFactura_KeyPress);
+            this.cmbClaveFactura.Validated += new System.EventHandler(this.cmbClaveFactura_Validated);
+            // 
             // frmBuscarDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,6 +230,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(814, 416);
             this.ControlBox = false;
+            this.Controls.Add(this.cmbClaveFactura);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.pictureBox2);
@@ -248,10 +238,8 @@
             this.Controls.Add(this.lblImporteTexto);
             this.Controls.Add(this.lblImporte);
             this.Controls.Add(this.btnLimpiar);
-            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.lblInformacion);
             this.Controls.Add(this.dvgBuscaDetalles);
-            this.Controls.Add(this.txtClaveFactura);
             this.Controls.Add(this.label1);
             this.Name = "frmBuscarDetalle";
             this.Text = "Buscar Detalle de Factura";
@@ -268,12 +256,10 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtClaveFactura;
         private System.Windows.Forms.DataGridView dvgBuscaDetalles;
         private System.Windows.Forms.Label lblInformacion;
         private System.Windows.Forms.ErrorProvider errorP;
         private System.Windows.Forms.Button btnLimpiar;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClaveArticulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Articulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioUnitario;
@@ -286,5 +272,6 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.ComboBox cmbClaveFactura;
     }
 }

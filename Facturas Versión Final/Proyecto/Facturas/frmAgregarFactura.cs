@@ -20,6 +20,8 @@ namespace Facturas
         public frmAgregarFactura(ManejaFacturas mF, ManejaDetalleFactura mD, ManejaProveedores proveedores, ManejaArticulos AdmA)
         {
             InitializeComponent();
+            cmbArticulo.SelectedIndex = -1;
+            cmbProveedores.SelectedIndex = -1;
             this.mF = mF;
             this.mD = mD;
             this.proveedores = proveedores;
@@ -31,7 +33,9 @@ namespace Facturas
             DialogResult D = MessageBox.Show("¿DESEA AGREGAR LA FACTURA?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (D == DialogResult.Yes)
             {
-                int ClaveFactura, ClaveProveedor; string ClaveF = txtClaveFactura.Text, ClaveP = txtClaveProveedor.Text;
+                string ClaveF = Convert.ToString(txtClaveFactura.Text); string Proveedor = Convert.ToString(cmbProveedores.SelectedItem);
+                string ClaveA= Convert.ToString(cmbArticulo.SelectedItem);
+                int ClaveFactura; int ClaveProveedor;
 
                 if (ClaveF.Length == 0)
                 {
@@ -45,7 +49,7 @@ namespace Facturas
                 }
                 try
                 {
-                    ClaveFactura = int.Parse(txtClaveFactura.Text);
+                    ClaveFactura = int.Parse(ClaveF);
 
                 }
                 catch (Exception Ex)
@@ -58,31 +62,7 @@ namespace Facturas
                     MessageBox.Show("LA FACTURA YA EXISTE", "CLAVE FACTURA DUPLICADA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (ClaveP.Length == 0)
-                {
-                    MessageBox.Show("CLAVE DE PROVEEDOR VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (!Rutinas.ValidaTextoNum(ClaveP))
-                {
-                    MessageBox.Show("CLAVE DE PROVEEDOR NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                try
-                {
-                    ClaveProveedor = int.Parse(txtClaveProveedor.Text);
-
-                }
-                catch (Exception Ex)
-                {
-                    MessageBox.Show("CLAVE DE PROVEEDOR NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (proveedores.getPosClave(ClaveProveedor) == -1)
-                {
-                    MessageBox.Show("EL PROVEEDOR NO EXISTE", "PROVEEDOR NO ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                ClaveProveedor = proveedores.BuscarPosNombre(Proveedor);
                 int CantArt = lvArticulos.Items.Count;
                 if (CantArt == 0)
                 {
@@ -111,85 +91,6 @@ namespace Facturas
                 Limpiar();
             }
         }
-
-        private void Valida_Factura(object sender, EventArgs e)
-        {
-            string ClaveFactura = txtClaveFactura.Text;
-            if (!Rutinas.ValidaTextoNum(ClaveFactura))
-            {
-                errorP.SetError(txtClaveFactura, "CLAVE DE FACTURA NO VÁLIDA");
-                txtClaveFactura.Focus();
-            }
-            else
-            {
-                errorP.SetError(txtClaveFactura, "");
-            }
-        }
-        private void txtClaveFactura_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
-            {
-                errorP.SetError(txtClaveFactura, "SÓLO SE PERMITEN NÚMEROS");
-                e.Handled = false;
-            }
-            else
-            {
-                errorP.SetError(txtClaveFactura, "");
-            }
-        }
-
-        private void Valida_proveedor(object sender, EventArgs e)
-        {
-            string Proveedor = txtClaveProveedor.Text;
-            if (!Rutinas.ValidaTextoNum(Proveedor))
-            {
-                errorP.SetError(txtClaveProveedor, "CLAVE DE PROVEEDOR NO VÁLIDA");
-                txtClaveProveedor.Focus();
-            }
-            else
-            {
-                errorP.SetError(txtClaveProveedor, "");
-            }
-        }
-
-        private void txtClaveProveedor_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
-            {
-                errorP.SetError(txtClaveProveedor, "SÓLO SE PERMITEN NÚMEROS");
-                e.Handled = false;
-            }
-            else
-            {
-                errorP.SetError(txtClaveProveedor, "");
-            }
-        }
-        private void Valida_claveartAgrega(object sender, EventArgs e)
-        {
-            string ClaveArticulo = txtClaveArticuloAgregar.Text;
-            if (!Rutinas.ValidaTextoNum(ClaveArticulo))
-            {
-                errorP.SetError(txtClaveArticuloAgregar, "CLAVE DE ARTÍCULO NO VÁLIDA");
-                txtClaveArticuloAgregar.Focus();
-            }
-            else
-            {
-                errorP.SetError(txtClaveArticuloAgregar, "");
-            }
-        }
-
-        private void txtClaveArticuloAgregar_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
-            {
-                errorP.SetError(txtClaveArticuloAgregar, "SÓLO SE PERMITEN NÚMEROS");
-                e.Handled = false;
-            }
-            else
-            {
-                errorP.SetError(txtClaveArticuloAgregar, "");
-            }
-        }
         private void numUpCantidad_Validated(object sender, EventArgs e)
         {
             if (numUpCantidad.Value <= 0)
@@ -210,26 +111,40 @@ namespace Facturas
 
         private void Limpiar()
         {
-            errorP.Clear();
             txtClaveFactura.Text = "";
-            txtClaveProveedor.Text = "";
-            txtClaveArticuloAgregar.Text = "";
+            cmbProveedores.Text = "";
+            cmbProveedores.SelectedIndex = -1;
+            txtClave.Text = "";
+            cmbArticulo.Text = "";
+            cmbArticulo.SelectedIndex = -1;
+            txtClave.Text = "";
+            txtClaveArt.Text = "";
+            txtPrecio.Text = "";
+            txtExistencia.Text = "";
             numUpCantidad.Value = 1;
             lvArticulos.Items.Clear();
             lblImporte.Text = "$0";
+            errorP.Clear();
+
         }
 
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
         {
-            string ClaveF = txtClaveFactura.Text, ClaveP = txtClaveProveedor.Text;
+            string ClaveF = Convert.ToString(txtClaveFactura), ClaveP = Convert.ToString(cmbProveedores.SelectedItem); string Articulo = Convert.ToString(cmbArticulo.SelectedItem);
+            int ClaveArticulo;
             if (ClaveF.Length == 0)
             {
                 MessageBox.Show("NO PUEDE AGREGAR ARTICULOS SI NO TIENE UNA FACTURA", "SIN FACTURA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (ClaveP.Length == 0)
+            if (cmbProveedores.SelectedIndex == -1)
             {
-                MessageBox.Show("NO PUEDE AGREGAR ARTICULOS SI NO TIENE UNA PROVEEDOR", "SIN PROVEDOR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("PROVEEDOR NO ENCONTRADO","PROVEEDOR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+            if (cmbArticulo.SelectedIndex == -1)
+            {
+                MessageBox.Show("ARTÍCULO NO ENCONTRADO","ARTÍCULO",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
             int CantArt = lvArticulos.Items.Count;
@@ -238,40 +153,14 @@ namespace Facturas
                 MessageBox.Show("NO SE PUEDE AGRGAR MÁS DE 3 TIPOS DIFERENTES DE ARTICULOS", "ARTICULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            int ClaveArticulo; string ClaveA = txtClaveArticuloAgregar.Text;
-
-            if (ClaveA.Length == 0)
-            {
-                MessageBox.Show("CLAVE DEL ARTICULO VACÍA", "CAMPO VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (!Rutinas.ValidaTextoNum(ClaveA))
-            {
-                MessageBox.Show("CLAVE DEL ARTICULO NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            try
-            {
-                ClaveArticulo = Convert.ToInt32(txtClaveArticuloAgregar.Text);
-
-            }
-            catch (Exception Ex)
-            {
-                MessageBox.Show("CLAVE DEL ARTICULO NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (AdmA.BuscaArt(ClaveArticulo) == -1)
-            {
-                MessageBox.Show("CLAVE DE ARTICULO INEXISTENTE", "ARTICULO INEXISTENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            ClaveArticulo = AdmA.BuscaClaveArt(Articulo); ;
             Articulo Art = AdmA.RetornaArticulo(ClaveArticulo);
 
             int Cant = Convert.ToInt32(numUpCantidad.Value); float PrecioTotal = Cant * Art.pPrecio; 
 
             for (int i = 0; i < lvArticulos.Items.Count; i++) //BUSCA SI EL ARTICULO YA ESTA AGREGADO EN EL LIST VIEW
             {
-                if (lvArticulos.Items[i].Text.Trim() == ClaveA)
+                if (lvArticulos.Items[i].Text.Trim() == ClaveArticulo.ToString())
                 {
                     int rc = Convert.ToInt32(lvArticulos.Items[i].SubItems[4].Text); //CANTIDAD DEL ARTICULO REGISTRADO
                     int SumCant = Art.pCantidad - (rc + Cant);
@@ -305,7 +194,7 @@ namespace Facturas
                 return;
             }
             //AGREGA LOS DATOS DEL ARTICULO EN UNA LISTA
-            ListViewItem Registro = new ListViewItem(ClaveA);
+            ListViewItem Registro = new ListViewItem(ClaveArticulo.ToString());
             Registro.SubItems.Add(Art.pDescripcion);
             Registro.SubItems.Add(Art.pMarca);
             Registro.SubItems.Add(Art.pPrecio.ToString());
@@ -359,6 +248,149 @@ namespace Facturas
             DialogResult D = MessageBox.Show("¿DESEA SALIR?", "CERRAR VENTANA", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (D == DialogResult.Yes)
                 this.Close();
+        }
+
+        private void frmAgregarFactura_Load(object sender, EventArgs e)
+        {
+            Proveedor[] P = proveedores.GetProveedores();
+            for (int i = 0; i < P.Length; i++)
+                cmbProveedores.Items.Add(P[i].pNombre);
+
+            List<Articulo> Articulos = AdmA.ObtenArt();
+            for (int i = 0; i < Articulos.Count; i++)
+                cmbArticulo.Items.Add(Articulos.ElementAt(i).pDescripcion);
+
+        }
+        private void cmbProveedores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbProveedores.SelectedIndex < 0)
+                return;
+            string Proveedor = Convert.ToString(cmbProveedores.SelectedItem);
+            int ClaveProv = proveedores.BuscarPosNombre(Proveedor);
+            KeyValuePair<int, Proveedor> P = proveedores.RetornaProveedor(ClaveProv);
+            txtClave.Text = P.Key + "";
+        }
+
+        private void cmbProveedores_Validated(object sender, EventArgs e)
+        {
+            bool flag = false;
+            string Proveedor = cmbProveedores.Text;
+            string Elemento = "";
+            for (int i = 0; i < cmbProveedores.Items.Count; i++)
+            {
+                Elemento = cmbProveedores.GetItemText(cmbProveedores.Items[i]);
+                if (Elemento.CompareTo(Proveedor) == 0)
+                {
+                    flag = true;
+                    cmbProveedores.SelectedIndex = i;
+                }
+            }
+            if (!flag)
+            {
+                errorP.SetError(cmbProveedores, "PROVEEDOR NO ENCONTRADO");
+                txtClave.Text = "";
+                cmbProveedores.SelectedIndex = -1;
+                cmbProveedores.Focus();
+            }
+            else
+            {
+                errorP.SetError(cmbProveedores, "");
+            }
+        }
+
+        private void cmbProveedores_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
+            {
+                errorP.SetError(cmbProveedores, "SÓLO SE PERMITEN LETRAS");
+                e.Handled = false;
+            }
+            else
+            {
+                errorP.SetError(cmbProveedores, "");
+            }
+
+        }
+
+        private void cmbArticulo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbArticulo.SelectedIndex < 0)
+                return;
+            string Articulo = Convert.ToString(cmbArticulo.SelectedItem);
+            int ClaveArticulo = AdmA.BuscaClaveArt(Articulo);
+            Articulo A = AdmA.RetornaArticulo(ClaveArticulo);
+            txtClaveArt.Text = A.pClave + "";
+            txtExistencia.Text = A.pCantidad + "";
+            txtPrecio.Text = A.pPrecio + "";
+        }
+
+        private void cmbArticulo_Validated(object sender, EventArgs e)
+        {
+            bool flag = false;
+            string Articulo = cmbArticulo.Text;
+            string Elemento = "";
+            for (int i = 0; i < cmbArticulo.Items.Count; i++)
+            {
+                Elemento = cmbArticulo.GetItemText(cmbArticulo.Items[i]);
+                if (Elemento.CompareTo(Articulo) == 0)
+                {
+                    flag = true;
+                    cmbArticulo.SelectedIndex = i;
+                }
+            }
+            if (!flag)
+            {
+                errorP.SetError(cmbArticulo, "ARTÍCULO NO ENCONTRADO");
+                txtClaveArt.Text = "";
+                txtExistencia.Text = "";
+                txtPrecio.Text = "";
+                cmbArticulo.SelectedIndex = -1;
+                cmbArticulo.Focus();
+            }
+            else
+            {
+                errorP.SetError(cmbArticulo, "");
+            }
+        }
+
+        private void cmbArticulo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
+            {
+                errorP.SetError(cmbArticulo, "SÓLO SE PERMITEN LETRAS");
+                e.Handled = false;
+            }
+            else
+            {
+                errorP.SetError(cmbArticulo, "");
+            }
+        }
+
+        private void txtClaveFactura_Validated(object sender, EventArgs e)
+        {
+            string ClaveFactura = txtClaveFactura.Text;
+            if (!Rutinas.ValidaTextoNum(ClaveFactura))
+            {
+                errorP.SetError(txtClaveFactura, "CLAVE DE FACTURA NO VÁLIDA");
+                txtClaveFactura.Focus();
+            }
+            else
+            {
+                errorP.SetError(txtClaveFactura, "");
+            }
+        }
+
+        private void txtClaveFactura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
+            {
+                errorP.SetError(txtClaveFactura, "SÓLO SE PERMITEN NÚMEROS");
+                e.Handled = false;
+            }
+            else
+            {
+                errorP.SetError(txtClaveFactura, "");
+            }
         }
     }
 }

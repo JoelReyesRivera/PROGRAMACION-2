@@ -34,7 +34,6 @@
             this.lblDesc = new System.Windows.Forms.Label();
             this.lblMar = new System.Windows.Forms.Label();
             this.lblPrec = new System.Windows.Forms.Label();
-            this.cmbArticulos = new System.Windows.Forms.ComboBox();
             this.gbInfoArticulo = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblCantidad = new System.Windows.Forms.Label();
@@ -44,11 +43,15 @@
             this.lblCant = new System.Windows.Forms.Label();
             this.toolTipMostrar = new System.Windows.Forms.ToolTip(this.components);
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cmbArticulos = new System.Windows.Forms.ComboBox();
             this.gbInfoArticulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.SuspendLayout();
             // 
             // lblArticulos
@@ -56,7 +59,7 @@
             this.lblArticulos.AutoSize = true;
             this.lblArticulos.BackColor = System.Drawing.Color.Transparent;
             this.lblArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArticulos.Location = new System.Drawing.Point(14, 59);
+            this.lblArticulos.Location = new System.Drawing.Point(50, 50);
             this.lblArticulos.Name = "lblArticulos";
             this.lblArticulos.Size = new System.Drawing.Size(149, 18);
             this.lblArticulos.TabIndex = 0;
@@ -89,20 +92,6 @@
             this.lblPrec.TabIndex = 0;
             this.lblPrec.Text = "Precio";
             // 
-            // cmbArticulos
-            // 
-            this.cmbArticulos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbArticulos.FormattingEnabled = true;
-            this.cmbArticulos.Items.AddRange(new object[] {
-            "-SELECCIONE UN ARTICULO-"});
-            this.cmbArticulos.Location = new System.Drawing.Point(15, 82);
-            this.cmbArticulos.Name = "cmbArticulos";
-            this.cmbArticulos.Size = new System.Drawing.Size(242, 26);
-            this.cmbArticulos.TabIndex = 1;
-            this.toolTipMostrar.SetToolTip(this.cmbArticulos, "Catalogo de Articulos");
-            this.cmbArticulos.SelectedIndexChanged += new System.EventHandler(this.cmbArticulos_SelectedIndexChanged);
-            // 
             // gbInfoArticulo
             // 
             this.gbInfoArticulo.BackColor = System.Drawing.Color.White;
@@ -119,7 +108,7 @@
             this.gbInfoArticulo.Location = new System.Drawing.Point(267, 63);
             this.gbInfoArticulo.Name = "gbInfoArticulo";
             this.gbInfoArticulo.Size = new System.Drawing.Size(421, 199);
-            this.gbInfoArticulo.TabIndex = 0;
+            this.gbInfoArticulo.TabIndex = 2;
             this.gbInfoArticulo.TabStop = false;
             this.gbInfoArticulo.Text = "Información Articulo";
             this.toolTipMostrar.SetToolTip(this.gbInfoArticulo, "Información basica del Articulo");
@@ -182,11 +171,23 @@
             this.btnSalir.Location = new System.Drawing.Point(572, 275);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(103, 32);
-            this.btnSalir.TabIndex = 2;
+            this.btnSalir.TabIndex = 4;
             this.btnSalir.Text = "Salir";
             this.toolTipMostrar.SetToolTip(this.btnSalir, "Salir de la ventana");
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Location = new System.Drawing.Point(448, 275);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(103, 32);
+            this.btnLimpiar.TabIndex = 3;
+            this.btnLimpiar.Text = "Limpiar";
+            this.toolTipMostrar.SetToolTip(this.btnLimpiar, "Salir de la ventana");
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // pictureBox1
             // 
@@ -210,6 +211,24 @@
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "CONSULTA ARTICULO";
             // 
+            // errorP
+            // 
+            this.errorP.ContainerControl = this;
+            // 
+            // cmbArticulos
+            // 
+            this.cmbArticulos.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbArticulos.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbArticulos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbArticulos.FormattingEnabled = true;
+            this.cmbArticulos.Location = new System.Drawing.Point(25, 87);
+            this.cmbArticulos.Name = "cmbArticulos";
+            this.cmbArticulos.Size = new System.Drawing.Size(199, 21);
+            this.cmbArticulos.TabIndex = 1;
+            this.cmbArticulos.SelectedIndexChanged += new System.EventHandler(this.cmbArticulos_SelectedIndexChanged);
+            this.cmbArticulos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbArticulos_KeyPress);
+            this.cmbArticulos.Validated += new System.EventHandler(this.cmbArticulos_Validated);
+            // 
             // frmConsultaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,11 +236,12 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(696, 321);
             this.ControlBox = false;
+            this.Controls.Add(this.cmbArticulos);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.gbInfoArticulo);
-            this.Controls.Add(this.cmbArticulos);
             this.Controls.Add(this.lblArticulos);
             this.Name = "frmConsultaArticulo";
             this.Text = "Consulta Articulo";
@@ -230,6 +250,7 @@
             this.gbInfoArticulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,7 +262,6 @@
         private System.Windows.Forms.Label lblDesc;
         private System.Windows.Forms.Label lblMar;
         private System.Windows.Forms.Label lblPrec;
-        private System.Windows.Forms.ComboBox cmbArticulos;
         private System.Windows.Forms.GroupBox gbInfoArticulo;
         private System.Windows.Forms.Label lblCant;
         private System.Windows.Forms.Label lblCantidad;
@@ -253,5 +273,8 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.ErrorProvider errorP;
+        private System.Windows.Forms.ComboBox cmbArticulos;
     }
 }

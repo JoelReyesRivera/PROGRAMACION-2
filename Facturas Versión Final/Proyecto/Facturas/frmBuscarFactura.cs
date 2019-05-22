@@ -20,6 +20,7 @@ namespace Facturas
         public frmBuscarFactura(ManejaFacturas mF, ManejaDetalleFactura mD, ManejaProveedores proveedores,ManejaArticulos AdmA)
         {
             InitializeComponent();
+            cmbClaveFactura.SelectedIndex = -1;
             this.mF = mF;
             this.mD = mD;
             this.proveedores = proveedores;
@@ -28,68 +29,28 @@ namespace Facturas
 
         private void frmBuscarFactura_Load(object sender, EventArgs e)
         {
-
+            KeyValuePair<int, Factura>[] Facturas = mF.RetornaFacturas();
+            for (int i = 0; i < Facturas.Length; i++)
+                cmbClaveFactura.Items.Add(Facturas[i].Key);
         }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            string ClaveFact = txtClaveFactura.Text;
-            int ClaveFactura;
-
-            if (ClaveFact.Length == 0)
-            {
-                MessageBox.Show("CLAVE DE FACTURA VACÍA", "CAMPO NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (!Rutinas.ValidaTextoNum(ClaveFact))
-            {
-                MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "SÓLO NÚMEROS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClaveFactura.ForeColor = Color.Red;
-                return;
-            }
-            try
-            {
-                ClaveFactura = int.Parse(ClaveFact);
-            }catch(Exception Ex)
-            {
-                MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClaveFactura.ForeColor = Color.Red;
-                return;
-            }
-            if (mF.BuscaFacturaClave(ClaveFactura) == -1)
-            {
-                MessageBox.Show("LA FACTURA NO EXISTE", "FACTURA NO ENCONTRADA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClaveFactura.ForeColor = Color.Red;
-                return;
-            }
-            txtClaveFactura.ForeColor = Color.Green;
-            Factura F = mF.RetornaFactura(ClaveFactura);
-            Proveedor P = proveedores.RetornaProveedorClave(F.pClaveProv);
-            int NumDetalles = mD.DetallesPorFactura(ClaveFactura);
-            txtClaveProveedor.Text = F.pClaveProv+"";
-            txtProveedor.Text = P.pNombre;
-            txtImporte.Text = F.pImporte+"";
-            txtFecha.Text = Rutinas.ConvierteFecha(F.pDia, F.pMes, F.pAño);
-            lblNumDetalles.Text = NumDetalles + "";
-            
-                
-
-        }
+        
         private void lblNumDetalles_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            int ClaveFactura = int.Parse(txtClaveFactura.Text);
+            int ClaveFactura = Convert.ToInt32(cmbClaveFactura.SelectedItem);
             frmVistaBuscaFactura VistaDetalles = new frmVistaBuscaFactura(mD,AdmA,ClaveFactura);
             VistaDetalles.ShowDialog();
         }
         private void Limpiar()
         {
+            cmbClaveFactura.Text = "";
+            cmbClaveFactura.SelectedIndex = -1;
             txtClaveProveedor.Text = "";
-            txtClaveFactura.Text = "";
-            txtFecha.Text = "";
             txtProveedor.Text = "";
-            txtImporte.Text = "";
+            txtFecha.Text = "";
+            txtCantDetalles.Text = "";
             lblNumDetalles.Text = "";
-            txtClaveFactura.ForeColor = Color.Black;
+            txtImporte.Text = "";
+            lblFact.Text = "";
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -107,38 +68,67 @@ namespace Facturas
 
         }
 
-        private void Valida_factura(object sender, EventArgs e)
-        {
-            string ClaveFactura = txtClaveFactura.Text;
-            if (!Rutinas.ValidaTextoNum(ClaveFactura))
-            {
-                errorP.SetError(txtClaveFactura, "CLAVE DE FACTURA NO VÁLIDA");
-                txtClaveFactura.Focus();
-            }
-            else
-            {
-                errorP.SetError(txtClaveFactura, "");
-            }
-        }
-
-        private void txtClaveFactura_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
-            {
-                errorP.SetError(txtClaveFactura, "CLAVE DE FACTURA NO VÁLIDA");
-                e.Handled = false;
-            }
-            else
-            {
-                errorP.SetError(txtClaveFactura, "");
-            }
-        }
-
         private void btnRegresar_Click(object sender, EventArgs e)
         {
             DialogResult D = MessageBox.Show("¿DESEA SALIR?", "CERRAR VENTANA", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (D == DialogResult.Yes)
                 this.Close();
+        }
+
+        private void cmbClaveFactura_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbClaveFactura.SelectedIndex < 0)
+                return;
+            int ClaveFactura = Convert.ToInt32(cmbClaveFactura.SelectedItem);
+            Factura F = mF.RetornaFactura(ClaveFactura);
+            Proveedor P = proveedores.RetornaProveedorClave(F.pClaveProv);
+            int NumDetalles = mD.DetallesPorFactura(ClaveFactura);
+            lblFact.Text = ClaveFactura+"";
+            txtClaveProveedor.Text = F.pClaveProv + "";
+            txtProveedor.Text = P.pNombre;
+            txtImporte.Text = F.pImporte + "";
+            txtFecha.Text = Rutinas.ConvierteFecha(F.pDia, F.pMes, F.pAño);
+            lblNumDetalles.Text = NumDetalles + "";
+        }
+
+        private void cmbClaveFactura_Validated(object sender, EventArgs e)
+        {
+            bool flag = false;
+            string ClaveFactura = cmbClaveFactura.Text;
+            string Elemento = "";
+            for (int i = 0; i < cmbClaveFactura.Items.Count; i++)
+            {
+                Elemento = cmbClaveFactura.GetItemText(cmbClaveFactura.Items[i]);
+                if (Elemento.CompareTo(ClaveFactura) == 0)
+                {
+                    flag = true;
+                    cmbClaveFactura.SelectedIndex = i;
+                }
+            }
+            if (!flag)
+            {
+                errorP.SetError(cmbClaveFactura, "FACTURA NO ENCONTRADA");
+                cmbClaveFactura.SelectedIndex = -1;
+                cmbClaveFactura.Focus();
+                Limpiar();
+            }
+            else
+            {
+                errorP.SetError(cmbClaveFactura, "");
+            }
+        }
+
+        private void cmbClaveFactura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
+            {
+                errorP.SetError(cmbClaveFactura, "SÓLO SE PERMITEN NÚMEROS");
+                e.Handled = false;
+            }
+            else
+            {
+                errorP.SetError(cmbClaveFactura, "");
+            }
         }
     }
 }

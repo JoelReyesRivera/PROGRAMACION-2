@@ -51,7 +51,7 @@ namespace Facturas
                     MessageBox.Show("CLAVE INVÁLIDA", "AGREGAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (!(Rutinas.ValidaTexto(nombre)))
+                if (!(Rutinas.ValidaTexto(Rutinas.CadenaSinEspacios(nombre.Trim()))))
                 {
                     MessageBox.Show("NOMBRE ESCRITO CON FORMATO NO PERMITIDOO", "AGREGAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -153,7 +153,7 @@ namespace Facturas
         private void txtNombre_Validated(object sender, EventArgs e)
         {
             string M = txtNombre.Text;
-            if (!Rutinas.ValidaTexto(M))
+            if (!Rutinas.ValidaTexto(Rutinas.CadenaSinEspacios(M)))
             {
                 errorProviderProveedores.SetError(txtNombre, "NOMBRE ESCRITO EN FORMA INCORRECTA");
                 txtNombre.Focus();

@@ -94,7 +94,27 @@ namespace Facturas
                 return proveedores.Count;
             }
         }
-
+        public KeyValuePair<int, Proveedor> RetornaProveedor(int Clave)
+        {
+            KeyValuePair<int, Proveedor> P = new KeyValuePair<int, Proveedor>();
+            foreach (KeyValuePair<int, Proveedor> pair in proveedores)
+            {
+                if (pair.Key == Clave)
+                {
+                    P = pair;
+                    break;
+                }
+            }
+            return P;
+        }
+        public KeyValuePair<int,Proveedor>[] RetornaProveedores()
+        {
+            KeyValuePair<int, Proveedor>[] P = new KeyValuePair<int, Proveedor>[proveedores.Count];
+            int c = 0;
+            foreach (KeyValuePair<int, Proveedor> pair in proveedores)
+                P[c++] = pair;
+            return P;
+        }
         public Proveedor[] GetProveedores()
         {
             Proveedor[] array = new Proveedor[proveedores.Count];

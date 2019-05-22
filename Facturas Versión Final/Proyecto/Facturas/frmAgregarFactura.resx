@@ -124,7 +124,7 @@
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAFi2SURBVHhe7d15
+        1QAADdUBPdZY8QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAFi2SURBVHhe7d15
         jBzlvTf6E5YkLC9Z5KubN+EmByGkSG+kSLkRipJIl3CTqxwh5Y9DzhuyQEKWA0+A8BizmcXgjUCMsdlX
         G2MwYLAx4BXj3XjfF7yNd8+MZ5/xNrZnxvPc36+nuqem+tcz1d1V1VX1fH96P+cNj7uqq6r7qd93Zrqr
         /s0YAwAxVn20+fzmpcu/2Tp33k9b58z9Hf3/97V8Mn98y6cL3m5etOTTpmWfrW9asbqqYd3GmoaNWxvq
@@ -720,4 +720,7 @@
         2Oa78CJ3yMTqwPMjdULwx4N8JoTgsk87JnBQzOHmFW2glYOkjg20GqF75WBUSo8NDitZPUf/2Q==
 </value>
   </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>102, 17</value>
+  </metadata>
 </root>

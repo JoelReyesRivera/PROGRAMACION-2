@@ -39,14 +39,17 @@
             this.txtSueldo = new System.Windows.Forms.TextBox();
             this.lblSaldo = new System.Windows.Forms.Label();
             this.txtClave = new System.Windows.Forms.TextBox();
-            this.cmbNombre = new System.Windows.Forms.ComboBox();
+            this.cmbProveedores = new System.Windows.Forms.ComboBox();
             this.pbImagen = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnSalir = new System.Windows.Forms.Button();
             this.grpDatos = new System.Windows.Forms.GroupBox();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnLimpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.grpDatos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.SuspendLayout();
             // 
             // lblClave
@@ -67,7 +70,7 @@
             this.txtRFC.Name = "txtRFC";
             this.txtRFC.ReadOnly = true;
             this.txtRFC.Size = new System.Drawing.Size(144, 21);
-            this.txtRFC.TabIndex = 0;
+            this.txtRFC.TabIndex = 2;
             this.toolTip1.SetToolTip(this.txtRFC, "RFC del Proveedor");
             // 
             // lblRFC
@@ -98,7 +101,7 @@
             this.txtDomicilio.Name = "txtDomicilio";
             this.txtDomicilio.ReadOnly = true;
             this.txtDomicilio.Size = new System.Drawing.Size(160, 21);
-            this.txtDomicilio.TabIndex = 0;
+            this.txtDomicilio.TabIndex = 4;
             // 
             // lblDomicilio
             // 
@@ -116,7 +119,7 @@
             this.txtSueldo.Name = "txtSueldo";
             this.txtSueldo.ReadOnly = true;
             this.txtSueldo.Size = new System.Drawing.Size(92, 21);
-            this.txtSueldo.TabIndex = 0;
+            this.txtSueldo.TabIndex = 5;
             this.toolTip1.SetToolTip(this.txtSueldo, "Saldo del proveedor");
             // 
             // lblSaldo
@@ -137,20 +140,24 @@
             this.txtClave.Name = "txtClave";
             this.txtClave.ReadOnly = true;
             this.txtClave.Size = new System.Drawing.Size(92, 21);
-            this.txtClave.TabIndex = 0;
+            this.txtClave.TabIndex = 3;
             this.toolTip1.SetToolTip(this.txtClave, "Clave del Proveedor");
             // 
-            // cmbNombre
+            // cmbProveedores
             // 
-            this.cmbNombre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbNombre.FormattingEnabled = true;
-            this.cmbNombre.Location = new System.Drawing.Point(94, 30);
-            this.cmbNombre.Name = "cmbNombre";
-            this.cmbNombre.Size = new System.Drawing.Size(144, 23);
-            this.cmbNombre.Sorted = true;
-            this.cmbNombre.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.cmbNombre, "Nombre del Proveedor");
-            this.cmbNombre.SelectedIndexChanged += new System.EventHandler(this.cmbNombre_SelectedIndexChanged);
+            this.cmbProveedores.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbProveedores.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbProveedores.FormattingEnabled = true;
+            this.cmbProveedores.Location = new System.Drawing.Point(94, 30);
+            this.cmbProveedores.Name = "cmbProveedores";
+            this.cmbProveedores.Size = new System.Drawing.Size(144, 23);
+            this.cmbProveedores.Sorted = true;
+            this.cmbProveedores.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.cmbProveedores, "Nombre del Proveedor");
+            this.cmbProveedores.SelectedIndexChanged += new System.EventHandler(this.cmbNombre_SelectedIndexChanged);
+            this.cmbProveedores.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbNombre_KeyPress);
+            this.cmbProveedores.Validated += new System.EventHandler(this.cmbNombre_Validated);
             // 
             // pbImagen
             // 
@@ -165,10 +172,10 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(372, 305);
+            this.btnSalir.Location = new System.Drawing.Point(444, 305);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(108, 35);
-            this.btnSalir.TabIndex = 2;
+            this.btnSalir.TabIndex = 7;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -176,7 +183,7 @@
             // grpDatos
             // 
             this.grpDatos.BackColor = System.Drawing.Color.Transparent;
-            this.grpDatos.Controls.Add(this.cmbNombre);
+            this.grpDatos.Controls.Add(this.cmbProveedores);
             this.grpDatos.Controls.Add(this.lblClave);
             this.grpDatos.Controls.Add(this.txtClave);
             this.grpDatos.Controls.Add(this.lblRFC);
@@ -205,6 +212,20 @@
             this.lblTitulo.TabIndex = 16;
             this.lblTitulo.Text = "CONSULTA PROVEEDOR";
             // 
+            // errorP
+            // 
+            this.errorP.ContainerControl = this;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(330, 305);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(108, 35);
+            this.btnLimpiar.TabIndex = 6;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // frmConsultaProvedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,6 +235,7 @@
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(564, 352);
             this.ControlBox = false;
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.grpDatos);
             this.Controls.Add(this.btnSalir);
@@ -223,6 +245,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
             this.grpDatos.ResumeLayout(false);
             this.grpDatos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,11 +262,13 @@
         private System.Windows.Forms.TextBox txtSueldo;
         private System.Windows.Forms.Label lblSaldo;
         private System.Windows.Forms.TextBox txtClave;
-        private System.Windows.Forms.ComboBox cmbNombre;
+        private System.Windows.Forms.ComboBox cmbProveedores;
         private System.Windows.Forms.PictureBox pbImagen;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.GroupBox grpDatos;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.ErrorProvider errorP;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

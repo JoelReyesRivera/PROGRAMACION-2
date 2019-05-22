@@ -30,47 +30,37 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarPagoProveedor));
-            this.txtClave = new System.Windows.Forms.TextBox();
-            this.lblClave = new System.Windows.Forms.Label();
+            this.lblProveedor = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblImporteSaldoActual = new System.Windows.Forms.Label();
-            this.lblSaldoActual = new System.Windows.Forms.Label();
             this.btnRealizarPago = new System.Windows.Forms.Button();
             this.lblImporte = new System.Windows.Forms.Label();
             this.txtImporte = new System.Windows.Forms.TextBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.errorProviderProveedores = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.grpProveedor = new System.Windows.Forms.GroupBox();
+            this.cmbProveedores = new System.Windows.Forms.ComboBox();
+            this.lblClave = new System.Windows.Forms.Label();
+            this.txtClave = new System.Windows.Forms.TextBox();
+            this.lblImporteActual = new System.Windows.Forms.Label();
+            this.txtImporteActual = new System.Windows.Forms.TextBox();
+            this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderProveedores)).BeginInit();
             this.grpProveedor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtClave
+            // lblProveedor
             // 
-            this.txtClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClave.Location = new System.Drawing.Point(14, 56);
-            this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(129, 22);
-            this.txtClave.TabIndex = 0;
-            this.toolTip1.SetToolTip(this.txtClave, "Clave del proveedor");
-            this.txtClave.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClave_KeyPress);
-            this.txtClave.Validated += new System.EventHandler(this.txtClave_Validated);
-            // 
-            // lblClave
-            // 
-            this.lblClave.AutoSize = true;
-            this.lblClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClave.Location = new System.Drawing.Point(11, 31);
-            this.lblClave.Name = "lblClave";
-            this.lblClave.Size = new System.Drawing.Size(110, 16);
-            this.lblClave.TabIndex = 0;
-            this.lblClave.Text = "Clave Proveedor";
+            this.lblProveedor.AutoSize = true;
+            this.lblProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProveedor.Location = new System.Drawing.Point(14, 27);
+            this.lblProveedor.Name = "lblProveedor";
+            this.lblProveedor.Size = new System.Drawing.Size(72, 16);
+            this.lblProveedor.TabIndex = 0;
+            this.lblProveedor.Text = "Proveedor";
             // 
             // pictureBox1
             // 
@@ -83,27 +73,6 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // lblImporteSaldoActual
-            // 
-            this.lblImporteSaldoActual.AutoSize = true;
-            this.lblImporteSaldoActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImporteSaldoActual.Location = new System.Drawing.Point(121, 217);
-            this.lblImporteSaldoActual.Name = "lblImporteSaldoActual";
-            this.lblImporteSaldoActual.Size = new System.Drawing.Size(22, 16);
-            this.lblImporteSaldoActual.TabIndex = 0;
-            this.lblImporteSaldoActual.Text = "$0";
-            this.toolTip1.SetToolTip(this.lblImporteSaldoActual, "Saldo Actual");
-            // 
-            // lblSaldoActual
-            // 
-            this.lblSaldoActual.AutoSize = true;
-            this.lblSaldoActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSaldoActual.Location = new System.Drawing.Point(14, 217);
-            this.lblSaldoActual.Name = "lblSaldoActual";
-            this.lblSaldoActual.Size = new System.Drawing.Size(93, 16);
-            this.lblSaldoActual.TabIndex = 0;
-            this.lblSaldoActual.Text = "Saldo Actual : ";
-            // 
             // btnRealizarPago
             // 
             this.btnRealizarPago.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -112,7 +81,7 @@
             this.btnRealizarPago.Location = new System.Drawing.Point(63, 289);
             this.btnRealizarPago.Name = "btnRealizarPago";
             this.btnRealizarPago.Size = new System.Drawing.Size(122, 35);
-            this.btnRealizarPago.TabIndex = 3;
+            this.btnRealizarPago.TabIndex = 6;
             this.btnRealizarPago.Text = "Realizar Pago";
             this.toolTip1.SetToolTip(this.btnRealizarPago, "Concretar pago");
             this.btnRealizarPago.UseVisualStyleBackColor = true;
@@ -122,7 +91,7 @@
             // 
             this.lblImporte.AutoSize = true;
             this.lblImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImporte.Location = new System.Drawing.Point(11, 148);
+            this.lblImporte.Location = new System.Drawing.Point(168, 126);
             this.lblImporte.Name = "lblImporte";
             this.lblImporte.Size = new System.Drawing.Size(107, 16);
             this.lblImporte.TabIndex = 0;
@@ -131,10 +100,10 @@
             // txtImporte
             // 
             this.txtImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtImporte.Location = new System.Drawing.Point(14, 176);
+            this.txtImporte.Location = new System.Drawing.Point(171, 154);
             this.txtImporte.Name = "txtImporte";
             this.txtImporte.Size = new System.Drawing.Size(104, 22);
-            this.txtImporte.TabIndex = 2;
+            this.txtImporte.TabIndex = 4;
             this.toolTip1.SetToolTip(this.txtImporte, "Importe que se pagará, Formato(0.00)");
             this.txtImporte.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImporte_KeyPress);
             this.txtImporte.Validated += new System.EventHandler(this.txtImporte_Validated);
@@ -147,7 +116,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(229, 289);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(122, 35);
-            this.btnLimpiar.TabIndex = 4;
+            this.btnLimpiar.TabIndex = 7;
             this.btnLimpiar.Text = "Limpiar";
             this.toolTip1.SetToolTip(this.btnLimpiar, "Limpiar Ventana");
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -161,45 +130,11 @@
             this.btnSalir.Location = new System.Drawing.Point(396, 289);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(122, 36);
-            this.btnSalir.TabIndex = 5;
+            this.btnSalir.TabIndex = 8;
             this.btnSalir.Text = "Salir";
             this.toolTip1.SetToolTip(this.btnSalir, "Salir de la ventana");
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // lblNombre
-            // 
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(11, 91);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(57, 16);
-            this.lblNombre.TabIndex = 0;
-            this.lblNombre.Text = "Nombre";
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(14, 110);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.ReadOnly = true;
-            this.txtNombre.Size = new System.Drawing.Size(156, 22);
-            this.txtNombre.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.txtNombre, "Nombre del proveedor");
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(176, 52);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(108, 30);
-            this.btnBuscar.TabIndex = 1;
-            this.btnBuscar.Text = "Ver Proveedor";
-            this.toolTip1.SetToolTip(this.btnBuscar, "Ver Proveedor");
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // errorProviderProveedores
             // 
@@ -208,22 +143,75 @@
             // grpProveedor
             // 
             this.grpProveedor.BackColor = System.Drawing.Color.Transparent;
-            this.grpProveedor.Controls.Add(this.btnBuscar);
+            this.grpProveedor.Controls.Add(this.txtImporteActual);
+            this.grpProveedor.Controls.Add(this.lblImporteActual);
+            this.grpProveedor.Controls.Add(this.txtClave);
+            this.grpProveedor.Controls.Add(this.lblClave);
+            this.grpProveedor.Controls.Add(this.cmbProveedores);
             this.grpProveedor.Controls.Add(this.lblImporte);
             this.grpProveedor.Controls.Add(this.txtImporte);
-            this.grpProveedor.Controls.Add(this.lblSaldoActual);
-            this.grpProveedor.Controls.Add(this.lblImporteSaldoActual);
-            this.grpProveedor.Controls.Add(this.lblNombre);
-            this.grpProveedor.Controls.Add(this.txtNombre);
-            this.grpProveedor.Controls.Add(this.lblClave);
-            this.grpProveedor.Controls.Add(this.txtClave);
+            this.grpProveedor.Controls.Add(this.lblProveedor);
             this.grpProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpProveedor.Location = new System.Drawing.Point(12, 12);
             this.grpProveedor.Name = "grpProveedor";
-            this.grpProveedor.Size = new System.Drawing.Size(309, 248);
-            this.grpProveedor.TabIndex = 0;
+            this.grpProveedor.Size = new System.Drawing.Size(309, 233);
+            this.grpProveedor.TabIndex = 5;
             this.grpProveedor.TabStop = false;
             this.grpProveedor.Text = "Pago proveedor";
+            // 
+            // cmbProveedores
+            // 
+            this.cmbProveedores.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbProveedores.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbProveedores.FormattingEnabled = true;
+            this.cmbProveedores.Location = new System.Drawing.Point(14, 56);
+            this.cmbProveedores.Name = "cmbProveedores";
+            this.cmbProveedores.Size = new System.Drawing.Size(220, 24);
+            this.cmbProveedores.TabIndex = 1;
+            this.cmbProveedores.SelectedIndexChanged += new System.EventHandler(this.cmbProveedores_SelectedIndexChanged);
+            this.cmbProveedores.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbProveedores_KeyPress);
+            this.cmbProveedores.Validated += new System.EventHandler(this.cmbProveedores_Validated);
+            // 
+            // lblClave
+            // 
+            this.lblClave.AutoSize = true;
+            this.lblClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClave.Location = new System.Drawing.Point(14, 95);
+            this.lblClave.Name = "lblClave";
+            this.lblClave.Size = new System.Drawing.Size(43, 16);
+            this.lblClave.TabIndex = 4;
+            this.lblClave.Text = "Clave";
+            // 
+            // txtClave
+            // 
+            this.txtClave.Location = new System.Drawing.Point(17, 123);
+            this.txtClave.Name = "txtClave";
+            this.txtClave.ReadOnly = true;
+            this.txtClave.Size = new System.Drawing.Size(100, 22);
+            this.txtClave.TabIndex = 2;
+            // 
+            // lblImporteActual
+            // 
+            this.lblImporteActual.AutoSize = true;
+            this.lblImporteActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImporteActual.Location = new System.Drawing.Point(14, 160);
+            this.lblImporteActual.Name = "lblImporteActual";
+            this.lblImporteActual.Size = new System.Drawing.Size(92, 16);
+            this.lblImporteActual.TabIndex = 6;
+            this.lblImporteActual.Text = "Importe actual";
+            // 
+            // txtImporteActual
+            // 
+            this.txtImporteActual.Location = new System.Drawing.Point(17, 189);
+            this.txtImporteActual.Name = "txtImporteActual";
+            this.txtImporteActual.ReadOnly = true;
+            this.txtImporteActual.Size = new System.Drawing.Size(100, 22);
+            this.txtImporteActual.TabIndex = 3;
+            // 
+            // errorP
+            // 
+            this.errorP.ContainerControl = this;
             // 
             // frmAgregarPagoProveedor
             // 
@@ -241,31 +229,32 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmAgregarPagoProveedor";
             this.Text = "Pago Proveedor";
+            this.Load += new System.EventHandler(this.frmAgregarPagoProveedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderProveedores)).EndInit();
             this.grpProveedor.ResumeLayout(false);
             this.grpProveedor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtClave;
-        private System.Windows.Forms.Label lblClave;
+        private System.Windows.Forms.Label lblProveedor;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblImporteSaldoActual;
-        private System.Windows.Forms.Label lblSaldoActual;
         private System.Windows.Forms.Button btnRealizarPago;
         private System.Windows.Forms.Label lblImporte;
         private System.Windows.Forms.TextBox txtImporte;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.ErrorProvider errorProviderProveedores;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.GroupBox grpProveedor;
+        private System.Windows.Forms.TextBox txtImporteActual;
+        private System.Windows.Forms.Label lblImporteActual;
+        private System.Windows.Forms.TextBox txtClave;
+        private System.Windows.Forms.Label lblClave;
+        private System.Windows.Forms.ComboBox cmbProveedores;
+        private System.Windows.Forms.ErrorProvider errorP;
     }
 }

@@ -53,24 +53,30 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnLimpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvFacturas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDetalles)).BeginInit();
             this.grpInfomacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbProveedores
             // 
-            this.cmbProveedores.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmbProveedores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProveedores.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbProveedores.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbProveedores.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.cmbProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmbProveedores.FormattingEnabled = true;
             this.cmbProveedores.Location = new System.Drawing.Point(126, 16);
             this.cmbProveedores.Name = "cmbProveedores";
             this.cmbProveedores.Size = new System.Drawing.Size(148, 21);
-            this.cmbProveedores.TabIndex = 0;
+            this.cmbProveedores.TabIndex = 1;
             this.toolTip1.SetToolTip(this.cmbProveedores, "Seleccione un proveedor");
             this.cmbProveedores.SelectedIndexChanged += new System.EventHandler(this.cmbProveedores_SelectedIndexChanged);
+            this.cmbProveedores.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbProveedores_KeyPress);
+            this.cmbProveedores.Validated += new System.EventHandler(this.cmbProveedores_Validated);
             // 
             // lblProveedor
             // 
@@ -98,7 +104,7 @@
             this.dtgvFacturas.Name = "dtgvFacturas";
             this.dtgvFacturas.ReadOnly = true;
             this.dtgvFacturas.Size = new System.Drawing.Size(791, 181);
-            this.dtgvFacturas.TabIndex = 0;
+            this.dtgvFacturas.TabIndex = 2;
             // 
             // Factura
             // 
@@ -151,7 +157,7 @@
             this.dtgvDetalles.Name = "dtgvDetalles";
             this.dtgvDetalles.ReadOnly = true;
             this.dtgvDetalles.Size = new System.Drawing.Size(825, 177);
-            this.dtgvDetalles.TabIndex = 0;
+            this.dtgvDetalles.TabIndex = 4;
             // 
             // ClaveFactura
             // 
@@ -242,16 +248,19 @@
             // 
             // cmbFacturas
             // 
-            this.cmbFacturas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmbFacturas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFacturas.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbFacturas.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbFacturas.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.cmbFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmbFacturas.FormattingEnabled = true;
             this.cmbFacturas.Location = new System.Drawing.Point(107, 274);
             this.cmbFacturas.Name = "cmbFacturas";
             this.cmbFacturas.Size = new System.Drawing.Size(148, 21);
-            this.cmbFacturas.TabIndex = 1;
+            this.cmbFacturas.TabIndex = 3;
             this.toolTip1.SetToolTip(this.cmbFacturas, "Seleccione una Factura");
             this.cmbFacturas.SelectedIndexChanged += new System.EventHandler(this.cmbFacturas_SelectedIndexChanged);
+            this.cmbFacturas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbFacturas_KeyPress);
+            this.cmbFacturas.Validated += new System.EventHandler(this.cmbFacturas_Validated);
             // 
             // pictureBox1
             // 
@@ -272,10 +281,27 @@
             this.btnSalir.Location = new System.Drawing.Point(777, 569);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(92, 34);
-            this.btnSalir.TabIndex = 2;
+            this.btnSalir.TabIndex = 6;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // errorP
+            // 
+            this.errorP.ContainerControl = this;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Location = new System.Drawing.Point(659, 569);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(92, 34);
+            this.btnLimpiar.TabIndex = 5;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // frmConsultarFacturas
             // 
@@ -284,6 +310,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(875, 615);
             this.ControlBox = false;
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.grpInfomacion);
@@ -296,6 +323,7 @@
             this.grpInfomacion.ResumeLayout(false);
             this.grpInfomacion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,5 +354,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.ErrorProvider errorP;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

@@ -38,6 +38,11 @@ namespace Facturas
             }
             return true;
         }
+        public static string CadenaSinEspacios(string Cadena)
+        {
+            string str = Cadena.Replace(" ", "");
+            return str;
+        }
         public static bool IsEmpty(string Cadena)
         {
             if (string.IsNullOrWhiteSpace(Cadena) || string.IsNullOrEmpty(Cadena))
