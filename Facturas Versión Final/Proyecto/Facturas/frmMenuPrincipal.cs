@@ -51,11 +51,7 @@ namespace Facturas
 
         private void consultaIndividualToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (AdmA.pCount == 0)
-            {
-                MessageBox.Show("NO HAY ARTICULOS EN EL SISTEMA", "SIN ARTICULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+
             frmConsultaArticulo ConsultaArt = new frmConsultaArticulo(AdmA);
             ConsultaArt.ShowDialog();
         }
@@ -68,22 +64,12 @@ namespace Facturas
 
         private void consultarTodosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (AdmA.pCount == 0)
-            {
-                MessageBox.Show("NO HAY ARTICULOS EN EL SISTEMA", "SIN ARTICULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             frmConsultaArticulos VerArt = new frmConsultaArticulos(AdmA);
             VerArt.ShowDialog();
         }
 
         private void modificaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (AdmA.pCount == 0)
-            {
-                MessageBox.Show("NO HAY ARTICULOS EN EL SISTEMA", "SIN ARTICULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             frmModificaExistenciaArticulo Modifica = new frmModificaExistenciaArticulo(AdmA);
             Modifica.ShowDialog();
         }
@@ -93,11 +79,6 @@ namespace Facturas
             if (proveedores.pCount == 0)
             {
                 MessageBox.Show("NO HAY PROVEEDORES REGISTRADOS", "SIN PROVEEDORES", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (AdmA.pCount == 0)
-            {
-                MessageBox.Show("NO HAY ARTÍCULOS REGISTRADOS", "SIN ARTÍCULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             frmAgregarFactura AgregaFactura = new frmAgregarFactura(mF, mD, proveedores, AdmA);
@@ -147,11 +128,6 @@ namespace Facturas
             if (proveedores.pCount == 0)
             {
                 MessageBox.Show("NO HAY PROVEEDORES REGISTRADOS", "SIN PROVEEDORES", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (AdmA.pCount == 0)
-            {
-                MessageBox.Show("NO HAY ARTÍCULOS REGISTRADOS", "SIN ARTICULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             frmAgregarDetalle AgregaDetalle = new frmAgregarDetalle(mD, mF, proveedores, AdmA);

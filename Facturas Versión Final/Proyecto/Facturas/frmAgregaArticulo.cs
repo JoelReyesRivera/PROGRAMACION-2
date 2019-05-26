@@ -64,7 +64,7 @@ namespace Facturas
                 MessageBox.Show("LA CANTIDAD DE ARTICULOS A INGRESAR NO PUEDE SER MENOR A 1", "VALOR FUERA DE RANGO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (AdmA.BuscaDesc(Desc))
+            if (AdmA.BuscaClaveArt(Desc) > -1)
             {
                 MessageBox.Show("EL ARTICULO YA FUE REGISTRADO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

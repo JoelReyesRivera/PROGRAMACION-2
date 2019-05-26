@@ -189,17 +189,16 @@
             // 
             // cmbArticulos
             // 
-            this.cmbArticulos.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cmbArticulos.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbArticulos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbArticulos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbArticulos.FormattingEnabled = true;
+            this.cmbArticulos.Items.AddRange(new object[] {
+            "-SELECCIONE UN ARTICULO-"});
             this.cmbArticulos.Location = new System.Drawing.Point(9, 62);
             this.cmbArticulos.Name = "cmbArticulos";
-            this.cmbArticulos.Size = new System.Drawing.Size(219, 24);
+            this.cmbArticulos.Size = new System.Drawing.Size(231, 23);
             this.cmbArticulos.TabIndex = 1;
             this.cmbArticulos.SelectedIndexChanged += new System.EventHandler(this.cmbArticulos_SelectedIndexChanged);
-            this.cmbArticulos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbArticulos_KeyPress);
-            this.cmbArticulos.Validated += new System.EventHandler(this.cmbArticulos_Validated);
             // 
             // pbImagen2
             // 

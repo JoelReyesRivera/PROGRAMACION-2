@@ -217,17 +217,17 @@
             // 
             // cmbArticulos
             // 
-            this.cmbArticulos.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cmbArticulos.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbArticulos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbArticulos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbArticulos.FormattingEnabled = true;
+            this.cmbArticulos.Items.AddRange(new object[] {
+            "-SELECCIONE UN ARTICULO-"});
             this.cmbArticulos.Location = new System.Drawing.Point(25, 87);
             this.cmbArticulos.Name = "cmbArticulos";
-            this.cmbArticulos.Size = new System.Drawing.Size(199, 21);
+            this.cmbArticulos.Size = new System.Drawing.Size(209, 21);
             this.cmbArticulos.TabIndex = 1;
             this.cmbArticulos.SelectedIndexChanged += new System.EventHandler(this.cmbArticulos_SelectedIndexChanged);
-            this.cmbArticulos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbArticulos_KeyPress);
-            this.cmbArticulos.Validated += new System.EventHandler(this.cmbArticulos_Validated);
+
             // 
             // frmConsultaArticulo
             // 

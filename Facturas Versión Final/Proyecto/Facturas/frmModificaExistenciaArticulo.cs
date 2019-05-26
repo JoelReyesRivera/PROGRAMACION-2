@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibreriaBD;
 
 namespace Facturas
 {
@@ -19,14 +20,47 @@ namespace Facturas
         {
             InitializeComponent();
             this.AdmA = AdmA;
-            cmbArticulos.SelectedIndex = -1;
+            cmbArticulos.SelectedIndex = 0;
             Art = AdmA.ObtenArt();
         }
 
         private void frmModificaExistenciaArticulo_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < AdmA.pCount; i++)
-                this.cmbArticulos.Items.Add(Art.ElementAt(i).pDescripcion);
+            string strConexion = Rutinas.GetConnectionString();
+
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+
+            if (Con == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
+            }
+
+            SqlDataReader Lector = null;
+
+            string strComando = "SELECT Descripcion FROM Articulo ORDER BY Descripcion ASC";
+
+            Lector = UsoBD.Consulta(strComando, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                    cmbArticulos.Items.Add(Lector.GetValue(0).ToString());
+            }
+            Con.Close();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -41,18 +75,47 @@ namespace Facturas
                 MessageBox.Show("NO HA SELECCIONADO NINGUN ARTICULO", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            int Cant = Convert.ToInt32(nudCantidad.Value);
+            string Articulo = Convert.ToString(cmbArticulos.SelectedItem); int Cant = Convert.ToInt32(nudCantidad.Value);
             if (Cant < 1)
             {
                 MessageBox.Show("LA CANTIDAD NO PUEDE SER MENOR A 1", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Limpiar();
                 return;
             }
-            string Articulo = Convert.ToString(cmbArticulos.SelectedItem);
-            int ClaveArticulo = AdmA.BuscaClaveArt(Articulo);
-            Articulo A = AdmA.RetornaArticulo(ClaveArticulo);
-            A.pCantidad += Cant;
 
+            string strConexion = Rutinas.GetConnectionString();
+
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+
+            if (Con == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
+            }
+
+            string strComando = "UPDATE Articulo SET Cantidad=Cantidad+@Cant WHERE Descripcion LIKE'"+Articulo+"'";
+
+            SqlCommand Insert = new SqlCommand(strComando, Con);
+
+            Insert.Parameters.AddWithValue("@Cant", Cant);
+
+            try
+            {
+                Insert.ExecuteNonQuery();
+            }
+            catch (SqlException Ex)
+            {
+                foreach (SqlError item in Ex.Errors)
+                    MessageBox.Show(item.Message);
+
+                Con.Close();
+                return ;
+            }
+            Con.Close();
+            
             MessageBox.Show("MODIFICACION EXITOSA", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Limpiar();
         }
@@ -72,7 +135,7 @@ namespace Facturas
 
         private void Limpiar()
         {
-            cmbArticulos.SelectedIndex = -1;
+            cmbArticulos.SelectedIndex =0;
             nudCantidad.Value = 1;
             txtStock.Text = "";
         }
@@ -86,54 +149,47 @@ namespace Facturas
             else
                 Error.SetError(nudCantidad, "");
         }
-        private void cmbArticulos_Validated(object sender, EventArgs e)
-        {
-            bool flag = false;
-            string Articulo = cmbArticulos.Text;
-            string Elemento = "";
-            for (int i = 0; i < cmbArticulos.Items.Count; i++)
-            {
-                Elemento = cmbArticulos.GetItemText(cmbArticulos.Items[i]);
-                if (Elemento.CompareTo(Articulo) == 0)
-                {
-                    flag = true;
-                    cmbArticulos.SelectedIndex = i;
-                }
-            }
-            if (!flag)
-            {
-                errorP.SetError(cmbArticulos, "ARTÍCULO NO ENCONTRADO");
-                txtStock.Text = "";
-                cmbArticulos.SelectedIndex = -1;
-                cmbArticulos.Focus();
-            }
-            else
-            {
-                errorP.SetError(cmbArticulos, "");
-            }
-        }
-
-        private void cmbArticulos_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsNumber(e.KeyChar) && (e.KeyChar != (char)(Keys.Back)))
-            {
-                errorP.SetError(cmbArticulos, "SÓLO SE PERMITEN LETRAS");
-                e.Handled = false;
-            }
-            else
-            {
-                errorP.SetError(cmbArticulos, "");
-            }
-        }
 
         private void cmbArticulos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbArticulos.SelectedIndex < 0)
+            if (cmbArticulos.SelectedIndex == 0)
                 return;
-            string Articulo = Convert.ToString(cmbArticulos.SelectedItem);
-            int ClaveArticulo = AdmA.BuscaClaveArt(Articulo);
-            Articulo A = AdmA.RetornaArticulo(ClaveArticulo);
-            txtStock.Text = A.pCantidad+"";
+
+            string strConexion = Rutinas.GetConnectionString();
+            string Desc = Convert.ToString(cmbArticulos.SelectedItem);
+
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+            if (Con == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
+            }
+            SqlDataReader Lector = null;
+
+            string strComandoC = "SELECT Cantidad FROM Articulo  WHERE Descripcion LIKE'"+Desc+"'";
+
+            Lector = UsoBD.Consulta(strComandoC, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                {
+                    txtStock.Text = Lector.GetValue(0).ToString();
+                }
+            }
+            Con.Close();
         }
     }
 }

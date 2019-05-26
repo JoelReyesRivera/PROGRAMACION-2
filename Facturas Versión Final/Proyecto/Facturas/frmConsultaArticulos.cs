@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibreriaBD;
 
 namespace Facturas
 {
@@ -22,9 +23,38 @@ namespace Facturas
 
         private void frmConsultaArticulos_Load(object sender, EventArgs e)
         {
-            List<Articulo> Art = AdmA.ObtenArt();
-            for (int i = 0; i < AdmA.pCount; i++)
-                dgwArticulos.Rows.Add(Art.ElementAt(i).pClave, Art.ElementAt(i).pDescripcion, Art.ElementAt(i).pMarca, Art.ElementAt(i).pPrecio, Art.ElementAt(i).pCantidad); 
+            string strConexion = Rutinas.GetConnectionString();
+
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+            if (Con == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
+            }
+            SqlDataReader Lector = null;
+
+            string strComando = "SELECT Clave,Descripcion,Marca,Precio,Cantidad FROM Articulo ORDER BY Clave";
+
+            Lector = UsoBD.Consulta(strComando, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                    this.dgwArticulos.Rows.Add(Lector.GetValue(0).ToString(), Lector.GetValue(1).ToString(), Lector.GetValue(2).ToString(), Lector.GetValue(3).ToString(), Lector.GetValue(4).ToString());
+            }
+            Con.Close();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

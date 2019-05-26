@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace Facturas
 {
@@ -59,6 +60,17 @@ namespace Facturas
                 return true;
             }
             return false;
+        }
+
+        public static string GetConnectionString()
+        {
+            string StrCadena = "";
+            int nItems = ConfigurationManager.ConnectionStrings.Count;
+
+            if (nItems > 0)
+                StrCadena = ConfigurationManager.ConnectionStrings[nItems - 1].ConnectionString;
+
+            return StrCadena;
         }
     }
 }
