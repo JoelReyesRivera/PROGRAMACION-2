@@ -1,8 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using LibreriaBD;
+using System.Configuration;
 
 namespace Facturas
 {
@@ -17,42 +23,249 @@ namespace Facturas
 
         public void AgregaProveedor(int Clave, String RFC, String nombre, String domicilio)
         {
-            proveedores.Add(Clave, new Proveedor(RFC, nombre, domicilio));
+            string Conexion = Rutinas.GetConnectionString();
+            SqlConnection Conecta = UsoBD.ConectaBD(Conexion);
+            if (Conecta == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return;
+            }
+            string Query = "insert into Proveedor(Clave,Nombre,RFC,Domicilio)";
+            Query += " values(@Clave,@Nombre,@RFC,@Domicilio)";
+            SqlCommand cmd = new SqlCommand(Query, Conecta);
+            cmd.Parameters.AddWithValue("@Clave", Clave);
+            cmd.Parameters.AddWithValue("@Nombre", nombre);
+            cmd.Parameters.AddWithValue("@RFC", RFC);
+            cmd.Parameters.AddWithValue("@Domicilio", domicilio);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException Ex)
+            {
+                foreach (SqlError item in Ex.Errors)
+                    MessageBox.Show(item.Message);
+                Conecta.Close();
+                return;
+            }
+            Conecta.Close();
         }
-
         public int BuscarPosNombre(String nombre)
         {
-            foreach (KeyValuePair<int, Proveedor> pair in proveedores)
+            int P = -1;
+            string Conexion = Rutinas.GetConnectionString();
+            SqlConnection Conecta = UsoBD.ConectaBD(Conexion);
+            if (Conecta == null)
             {
-                if (pair.Value.pNombre.CompareTo(nombre) == 0)
-                    return pair.Key;
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return P;
             }
-            return -1;
+            string Query = "select Clave from Proveedor where Nombre= " + "'" + nombre + "'";
+            SqlDataReader Lector = null;
+            Lector = UsoBD.Consulta(Query, Conecta);
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL REALIZAR CONSULTA");
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return P;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                {
+                    try
+                    {
+                        P = int.Parse(Lector.GetValue(0).ToString());
+                    }
+                    catch (Exception Ex)
+                    {
+                        MessageBox.Show("ERRORR CONVIRTIENDO LA CLAVE", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return P;
+                    }
+                }
+
+            }
+            return P;
         }
         public bool RFCExistente(String RFC)
         {
-            foreach (KeyValuePair<int, Proveedor> pair in proveedores)
+            string Conexion = Rutinas.GetConnectionString();
+            SqlConnection Conecta = UsoBD.ConectaBD(Conexion);
+            if (Conecta == null)
             {
-                if (pair.Value.pRFC.CompareTo(RFC) == 0)
-                    return true;
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return true;
             }
+            string Query = "select RFC from Proveedor where RFC= " + "'" + RFC + "'";
+            SqlDataReader Lector = null;
+            Lector = UsoBD.Consulta(Query, Conecta);
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL REALIZAR CONSULTA");
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return true;
+            }
+            if (Lector.HasRows)
+                return true;
+
             return false;
         }
         public bool NombreExistente(String nombre)
         {
-            foreach (KeyValuePair<int, Proveedor> pair in proveedores)
+            string Conexion = Rutinas.GetConnectionString();
+            SqlConnection Conecta = UsoBD.ConectaBD(Conexion);
+            if (Conecta == null)
             {
-                if (pair.Value.pNombre.CompareTo(nombre) == 0)
-                    return true;
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return true;
             }
+            string Query = "select Nombre from Proveedor where Nombre= " + "'" + nombre + "'";
+            SqlDataReader Lector = null;
+            Lector = UsoBD.Consulta(Query, Conecta);
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL REALIZAR CONSULTA");
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return true;
+            }
+            if (Lector.HasRows)
+                return true;
+
             return false;
         }
 
         public bool ClaveExistente(int clave)
         {
-            return proveedores.ContainsKey(clave);
+            string Conexion = Rutinas.GetConnectionString();
+            SqlConnection Conecta = UsoBD.ConectaBD(Conexion);
+            if (Conecta == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return true;
+            }
+            string Query = "select Clave from Proveedor where Clave= " + clave;
+            SqlDataReader Lector = null;
+            Lector = UsoBD.Consulta(Query, Conecta);
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL REALIZAR CONSULTA");
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return true;
+            }
+            if (Lector.HasRows)
+                return true;
+
+            return false;
         }
-        public Proveedor RetornaProveedorNom(string Nombre)
+
+        public int GetClave(String nombre)
+        {
+            int Clave = -1;
+            string Conexion = Rutinas.GetConnectionString();
+            SqlConnection Conecta = UsoBD.ConectaBD(Conexion);
+            if (Conecta == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return Clave;
+            }
+            string Query = "select Clave from Proveedor where Nombre= " + "'" + nombre + "'";
+            SqlDataReader Lector = null;
+            Lector = UsoBD.Consulta(Query, Conecta);
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL REALIZAR CONSULTA");
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return Clave;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                {
+                    try
+                    {
+                        Clave = int.Parse(Lector.GetValue(0).ToString());
+                    }
+                    catch (Exception Ex)
+                    {
+                        MessageBox.Show("ERRORR CONVIRTIENDO LA CLAVE", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return Clave;
+                    }
+                }
+            }
+            return Clave;
+        }
+        public int Count()
+        {
+            int Count = 0;
+            string Conexion = Rutinas.GetConnectionString();
+            SqlConnection Conecta = UsoBD.ConectaBD(Conexion);
+            if (Conecta == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return Count;
+            }
+            string Query = "select count(*) from Proveedor";
+            SqlDataReader Lector = null;
+            Lector = UsoBD.Consulta(Query, Conecta);
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL REALIZAR CONSULTA");
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return Count;
+            }
+            if (!Lector.HasRows)
+            {
+                Conecta.Close();
+                return Count;
+            }
+            while (Lector.Read())
+            {
+                try
+                {
+                    Count = Convert.ToInt32(Lector.GetValue(0));
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("ERRORR AL CONVERTIR", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return Count;
+                }
+            }
+            return Count;
+        }
+        public Proveedor RetornaProveedorNom(string Nombre)//N
         {
             foreach (KeyValuePair<int, Proveedor> pair in proveedores)
             {
@@ -61,7 +274,7 @@ namespace Facturas
             }
             return null;
         }
-        public int getPosClave(int clave)
+        public int getPosClave(int clave)//N
         {
             foreach (KeyValuePair<int, Proveedor> pair in proveedores)
             {
@@ -70,31 +283,13 @@ namespace Facturas
             }
             return -1;
         }
-        public Proveedor RetornaProveedorClave(int clave)
+        public Proveedor RetornaProveedorClave(int clave)//N
         {
             if (proveedores.TryGetValue(clave, out Proveedor P))
                 return P;
             return null;
         }
-        public int GetClave(String nombre)
-        {
-            foreach (var item in proveedores)
-            {
-                if (item.Value.pNombre.Equals(nombre))
-                {
-                    return item.Key;
-                }
-            }
-            return -1;
-        }
-        public int pCount
-        {
-            get
-            {
-                return proveedores.Count;
-            }
-        }
-        public KeyValuePair<int, Proveedor> RetornaProveedor(int Clave)
+        public KeyValuePair<int, Proveedor> RetornaProveedor(int Clave)//N
         {
             KeyValuePair<int, Proveedor> P = new KeyValuePair<int, Proveedor>();
             foreach (KeyValuePair<int, Proveedor> pair in proveedores)
@@ -107,7 +302,7 @@ namespace Facturas
             }
             return P;
         }
-        public KeyValuePair<int,Proveedor>[] RetornaProveedores()
+        public KeyValuePair<int, Proveedor>[] RetornaProveedores()//N
         {
             KeyValuePair<int, Proveedor>[] P = new KeyValuePair<int, Proveedor>[proveedores.Count];
             int c = 0;
@@ -115,7 +310,7 @@ namespace Facturas
                 P[c++] = pair;
             return P;
         }
-        public Proveedor[] GetProveedores()
+        public Proveedor[] GetProveedores()//N
         {
             Proveedor[] array = new Proveedor[proveedores.Count];
             int i = 0;
@@ -126,7 +321,7 @@ namespace Facturas
             }
             return array;
         }
-        public int[] GetClaves()
+        public int[] GetClaves()//N
         {
             int[] array = new int[proveedores.Count];
             int i = 0;

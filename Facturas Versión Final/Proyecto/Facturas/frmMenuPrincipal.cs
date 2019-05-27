@@ -76,7 +76,7 @@ namespace Facturas
 
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (proveedores.pCount == 0)
+            if (proveedores.Count() == 0)
             {
                 MessageBox.Show("NO HAY PROVEEDORES REGISTRADOS", "SIN PROVEEDORES", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -125,7 +125,7 @@ namespace Facturas
                 MessageBox.Show("NO HAY FACTURAS REGISTRADAS", "SIN FACTURAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (proveedores.pCount == 0)
+            if (proveedores.Count() == 0)
             {
                 MessageBox.Show("NO HAY PROVEEDORES REGISTRADOS", "SIN PROVEEDORES", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -164,7 +164,7 @@ namespace Facturas
 
         private void individualToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (proveedores.pCount == 0)
+            if (proveedores.Count() == 0)
             {
                 MessageBox.Show("NO HAY PROVEEDORES REGISTRADOS", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -175,7 +175,7 @@ namespace Facturas
 
         private void todosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (proveedores.pCount == 0)
+            if (proveedores.Count() == 0)
             {
                 MessageBox.Show("NO HAY PROVEEDORES REGISTRADOS", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -186,7 +186,7 @@ namespace Facturas
 
         private void pagoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (proveedores.pCount == 0)
+            if (proveedores.Count() == 0)
             {
                 MessageBox.Show("NO HAY PROVEEDORES REGISTRADOS", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

@@ -138,6 +138,7 @@
             this.Controls.Add(this.dtgvProveedores);
             this.Name = "frmConsultaProveedores";
             this.Text = "Consulta Proveedores";
+            this.Load += new System.EventHandler(this.frmConsultaProveedores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvProveedores)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProveedor)).EndInit();
             this.ResumeLayout(false);

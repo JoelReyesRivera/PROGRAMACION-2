@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibreriaBD;
+using System.Configuration;
 
 namespace Facturas
 {
@@ -22,12 +24,22 @@ namespace Facturas
 
         private void btnRealizarPago_Click(object sender, EventArgs e)
         {
+            string Conexion = Rutinas.GetConnectionString();
+            SqlConnection Conecta = UsoBD.ConectaBD(Conexion);
+            if (Conecta == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return;
+            }
             DialogResult result = MessageBox.Show("¿DESEA REALIZAR EL PAGO?", "PAGO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 string Proveedor = Convert.ToString(cmbProveedores.SelectedItem);
                 string importeTexto = txtImporte.Text;
-                float importe;
+                float importe,saldo=0;
                 int claveProveedor;
 
                 if (cmbProveedores.SelectedIndex == -1)
@@ -51,15 +63,54 @@ namespace Facturas
                     return;
                 }
                 claveProveedor = proveedores.GetClave(Proveedor);
-                Proveedor proveedor = proveedores.RetornaProveedorClave(claveProveedor);
-                if (proveedor.pSaldo - importe < 0)
+                string Query = "select Saldo from Proveedor where Clave = " + claveProveedor;
+                SqlDataReader Lector = null;
+                Lector = UsoBD.Consulta(Query, Conecta);
+                if (Lector == null)
                 {
-                    MessageBox.Show("IMPORTE INVALIDO; EL IMPORTE DEBE SER IGUAL O MENOR QUE $" + proveedor.pSaldo, "PAGO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR AL REALIZAR CONSULTA");
+                    foreach (SqlError Error in UsoBD.ESalida.Errors)
+                        MessageBox.Show(Error.Message);
+                    Conecta.Close();
                     return;
                 }
-                proveedor.pSaldo = proveedor.pSaldo - importe;
-                MessageBox.Show("SALDO NUEVO DE PROVEEDOR " + proveedor.pNombre + ": $" + proveedor.pSaldo, "PAGO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                MessageBox.Show("PAGO REALIZADO CORRECTAMENTE", "PAGO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (Lector.HasRows)
+                {
+                    while (Lector.Read())
+                    {
+                        try
+                        {
+                            saldo = float.Parse(Lector.GetValue(0).ToString());
+                        }
+                        catch (Exception Ex)
+                        {
+                            MessageBox.Show("ERROR CONVIRTIENDO ISBN", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                }
+                if ((saldo - importe) < 0)
+                {
+                    MessageBox.Show("EL IMPORTE A PAGAR DEBE SER IGUAL O MENOR QUE EL SALDO ACTUAL","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return;
+                }
+                Lector.Close();
+                Query = "update Proveedor set Saldo-=@Importe where Clave ="+claveProveedor;
+                SqlCommand cmd = new SqlCommand(Query, Conecta);
+                cmd.Parameters.AddWithValue("@Importe", importe);
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException Ex)
+                {
+                    foreach (SqlError item in Ex.Errors)
+                        MessageBox.Show(item.Message);
+                    Conecta.Close();
+                    return;
+                }
+                Conecta.Close();
+                MessageBox.Show("PAGO REALIZADO CORRECTAMENTE","PAGO REALIZADO",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 Limpiar();
             }
         }
@@ -139,18 +190,73 @@ namespace Facturas
         {
             if (cmbProveedores.SelectedIndex < 0)
                 return;
-            string Proveedor = Convert.ToString(cmbProveedores.SelectedItem);
-            int ClaveProv = proveedores.BuscarPosNombre(Proveedor);
-            KeyValuePair<int, Proveedor> P = proveedores.RetornaProveedor(ClaveProv);
-            txtClave.Text = P.Key+"";
-            txtImporteActual.Text = P.Value.pSaldo + "";
+            string Conexion = Rutinas.GetConnectionString();
+            SqlConnection Conecta = UsoBD.ConectaBD(Conexion);
+            if (Conecta == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return;
+            }
+            string Nom = cmbProveedores.SelectedItem.ToString();
+            string Query = "select Clave,Saldo from Proveedor where Nombre = " + "'" + Nom + "'";
+            SqlDataReader Lector = null;
+            Lector = UsoBD.Consulta(Query, Conecta);
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL REALIZAR CONSULTA");
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                {
+                    string Clave = Lector.GetValue(0).ToString();
+                    string Saldo = Lector.GetValue(1).ToString();
+
+                    txtClave.Text = Clave;
+                    txtImporteActual.Text = Saldo;
+                }
+            }
+            Conecta.Close();
         }
 
         private void frmAgregarPagoProveedor_Load(object sender, EventArgs e)
         {
-            Proveedor[] P = proveedores.GetProveedores();
-            for (int i = 0; i < P.Length; i++)
-                cmbProveedores.Items.Add(P[i].pNombre);
+            string Conexion = Rutinas.GetConnectionString();
+            SqlConnection Conecta = UsoBD.ConectaBD(Conexion);
+            if (Conecta == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return;
+            }
+            MessageBox.Show("CONECTADO A LA BASE DE DATOS");
+            string Query = "select Nombre from Proveedor";
+            SqlDataReader Lector = null;
+            Lector = UsoBD.Consulta(Query, Conecta);
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL REALIZAR CONSULTA");
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                cmbProveedores.Items.Clear();
+                while (Lector.Read())
+                    cmbProveedores.Items.Add(Lector.GetValue(0).ToString());
+            }
+            Conecta.Close();
         }
 
         private void cmbProveedores_Validated(object sender, EventArgs e)
@@ -190,6 +296,11 @@ namespace Facturas
             {
                 errorP.SetError(cmbProveedores, "");
             }
+        }
+
+        private void grpProveedor_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

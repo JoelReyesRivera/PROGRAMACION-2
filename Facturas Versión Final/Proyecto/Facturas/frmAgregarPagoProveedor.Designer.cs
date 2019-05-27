@@ -40,11 +40,11 @@
             this.errorProviderProveedores = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.grpProveedor = new System.Windows.Forms.GroupBox();
-            this.cmbProveedores = new System.Windows.Forms.ComboBox();
-            this.lblClave = new System.Windows.Forms.Label();
-            this.txtClave = new System.Windows.Forms.TextBox();
-            this.lblImporteActual = new System.Windows.Forms.Label();
             this.txtImporteActual = new System.Windows.Forms.TextBox();
+            this.lblImporteActual = new System.Windows.Forms.Label();
+            this.txtClave = new System.Windows.Forms.TextBox();
+            this.lblClave = new System.Windows.Forms.Label();
+            this.cmbProveedores = new System.Windows.Forms.ComboBox();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderProveedores)).BeginInit();
@@ -158,6 +158,43 @@
             this.grpProveedor.TabIndex = 5;
             this.grpProveedor.TabStop = false;
             this.grpProveedor.Text = "Pago proveedor";
+            this.grpProveedor.Enter += new System.EventHandler(this.grpProveedor_Enter);
+            // 
+            // txtImporteActual
+            // 
+            this.txtImporteActual.Location = new System.Drawing.Point(17, 189);
+            this.txtImporteActual.Name = "txtImporteActual";
+            this.txtImporteActual.ReadOnly = true;
+            this.txtImporteActual.Size = new System.Drawing.Size(100, 22);
+            this.txtImporteActual.TabIndex = 3;
+            // 
+            // lblImporteActual
+            // 
+            this.lblImporteActual.AutoSize = true;
+            this.lblImporteActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImporteActual.Location = new System.Drawing.Point(14, 160);
+            this.lblImporteActual.Name = "lblImporteActual";
+            this.lblImporteActual.Size = new System.Drawing.Size(92, 16);
+            this.lblImporteActual.TabIndex = 6;
+            this.lblImporteActual.Text = "Importe actual";
+            // 
+            // txtClave
+            // 
+            this.txtClave.Location = new System.Drawing.Point(17, 123);
+            this.txtClave.Name = "txtClave";
+            this.txtClave.ReadOnly = true;
+            this.txtClave.Size = new System.Drawing.Size(100, 22);
+            this.txtClave.TabIndex = 2;
+            // 
+            // lblClave
+            // 
+            this.lblClave.AutoSize = true;
+            this.lblClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClave.Location = new System.Drawing.Point(14, 95);
+            this.lblClave.Name = "lblClave";
+            this.lblClave.Size = new System.Drawing.Size(43, 16);
+            this.lblClave.TabIndex = 4;
+            this.lblClave.Text = "Clave";
             // 
             // cmbProveedores
             // 
@@ -172,42 +209,6 @@
             this.cmbProveedores.SelectedIndexChanged += new System.EventHandler(this.cmbProveedores_SelectedIndexChanged);
             this.cmbProveedores.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbProveedores_KeyPress);
             this.cmbProveedores.Validated += new System.EventHandler(this.cmbProveedores_Validated);
-            // 
-            // lblClave
-            // 
-            this.lblClave.AutoSize = true;
-            this.lblClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClave.Location = new System.Drawing.Point(14, 95);
-            this.lblClave.Name = "lblClave";
-            this.lblClave.Size = new System.Drawing.Size(43, 16);
-            this.lblClave.TabIndex = 4;
-            this.lblClave.Text = "Clave";
-            // 
-            // txtClave
-            // 
-            this.txtClave.Location = new System.Drawing.Point(17, 123);
-            this.txtClave.Name = "txtClave";
-            this.txtClave.ReadOnly = true;
-            this.txtClave.Size = new System.Drawing.Size(100, 22);
-            this.txtClave.TabIndex = 2;
-            // 
-            // lblImporteActual
-            // 
-            this.lblImporteActual.AutoSize = true;
-            this.lblImporteActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImporteActual.Location = new System.Drawing.Point(14, 160);
-            this.lblImporteActual.Name = "lblImporteActual";
-            this.lblImporteActual.Size = new System.Drawing.Size(92, 16);
-            this.lblImporteActual.TabIndex = 6;
-            this.lblImporteActual.Text = "Importe actual";
-            // 
-            // txtImporteActual
-            // 
-            this.txtImporteActual.Location = new System.Drawing.Point(17, 189);
-            this.txtImporteActual.Name = "txtImporteActual";
-            this.txtImporteActual.ReadOnly = true;
-            this.txtImporteActual.Size = new System.Drawing.Size(100, 22);
-            this.txtImporteActual.TabIndex = 3;
             // 
             // errorP
             // 

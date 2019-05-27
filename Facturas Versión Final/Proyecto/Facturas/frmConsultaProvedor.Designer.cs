@@ -242,6 +242,7 @@
             this.Controls.Add(this.pbImagen);
             this.Name = "frmConsultaProvedor";
             this.Text = "Consultar Provedor";
+            this.Load += new System.EventHandler(this.frmConsultaProvedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
             this.grpDatos.ResumeLayout(false);
             this.grpDatos.PerformLayout();
