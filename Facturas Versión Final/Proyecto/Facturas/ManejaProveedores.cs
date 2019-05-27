@@ -34,7 +34,7 @@ namespace Facturas
                 return;
             }
             string Query = "insert into Proveedor(Clave,Nombre,RFC,Domicilio,Saldo)";
-            Query += " values(@Clave,@Nombre,@RFC,@Domicilio)";
+            Query += " values(@Clave,@Nombre,@RFC,@Domicilio,@Saldo)";
             SqlCommand cmd = new SqlCommand(Query, Conecta);
             cmd.Parameters.AddWithValue("@Clave", Clave);
             cmd.Parameters.AddWithValue("@Nombre", nombre);
