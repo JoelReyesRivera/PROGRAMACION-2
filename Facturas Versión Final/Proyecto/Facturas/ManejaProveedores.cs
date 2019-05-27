@@ -33,13 +33,14 @@ namespace Facturas
                 Conecta.Close();
                 return;
             }
-            string Query = "insert into Proveedor(Clave,Nombre,RFC,Domicilio)";
+            string Query = "insert into Proveedor(Clave,Nombre,RFC,Domicilio,Saldo)";
             Query += " values(@Clave,@Nombre,@RFC,@Domicilio)";
             SqlCommand cmd = new SqlCommand(Query, Conecta);
             cmd.Parameters.AddWithValue("@Clave", Clave);
             cmd.Parameters.AddWithValue("@Nombre", nombre);
             cmd.Parameters.AddWithValue("@RFC", RFC);
             cmd.Parameters.AddWithValue("@Domicilio", domicilio);
+            cmd.Parameters.AddWithValue("@Saldo", 0);
             try
             {
                 cmd.ExecuteNonQuery();
