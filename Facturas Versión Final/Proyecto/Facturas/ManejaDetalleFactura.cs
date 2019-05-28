@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using LibreriaBD;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 namespace Facturas
 {
     public class ManejaDetalleFactura
@@ -15,19 +17,46 @@ namespace Facturas
             DetalleFactura = new List<DetalleFactura>();
         }
 
-        public void AgregarDetalle(int ClaveFact, int ClaveArt, int Cant, float Precio)
+        public void AgregarDetalle(int ClaveFact, int ClaveArt, int Cant)
         {
-            DetalleFactura.Add(new DetalleFactura(ClaveFact,ClaveArt,Cant,Precio));
+            
         }
         public int DetallesPorFactura(int ClaveFactura)
         {
-            int NumeroDetalles=0;
-            for (int i = 0; i < DetalleFactura.Count; i++)
+            string strConexion = Rutinas.GetConnectionString();
+            int Cantidad = 0;
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+            if (Con == null)
             {
-                if (DetalleFactura[i].pClaveFact == ClaveFactura)
-                    NumeroDetalles++;
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return Cantidad;
             }
-            return NumeroDetalles;
+            SqlDataReader Lector = null;
+
+            string strComandoC = "SELECT COUNT (Factura) FROM DetalleFactura WHERE Factura=" + ClaveFactura;
+            
+            Lector = UsoBD.Consulta(strComandoC, Con);
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return Cantidad;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                {
+                   Cantidad = Convert.ToInt32(Lector.GetValue(0).ToString());
+                }
+            }
+            Con.Close();
+            return Cantidad;
         }
         public DetalleFactura[] RetornaDetallesFactura(int ClaveFactura)
         {
@@ -47,15 +76,42 @@ namespace Facturas
                 D.Add(DetalleFactura.ElementAt(i));
             return D;
         }
-        public int DetalleRepetido(int ClaveFactura,int ClaveArt)
+        public bool DetalleRepetido(int ClaveFactura,int ClaveArt)
         {
-            for (int i = 0; i < DetalleFactura.Count; i++)
+            string strConexion = Rutinas.GetConnectionString();
+
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+            if (Con == null)
             {
-                if (DetalleFactura[i].pClaveArt == ClaveArt && DetalleFactura[i].pClaveFact==ClaveFactura)
-                    return i;
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return false;
             }
-            return -1;
+            SqlDataReader Lector = null;
+
+            string strComandoC = "select * from DetalleFactura where Factura = " + ClaveFactura + "and Articulo = " + ClaveArt;
+
+            Lector = UsoBD.Consulta(strComandoC, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return false;
+            }
+            if (Lector.HasRows)
+            {
+                return true;
+            }
+            Con.Close();
+            return false;
         }
+
         public int pCount
         {
             get

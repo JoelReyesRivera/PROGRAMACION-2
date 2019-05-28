@@ -12,7 +12,7 @@ namespace Facturas
     public class ManejaArticulos
     {
         private Articulo[] Array;
-        private int Count;
+ 
 
         public ManejaArticulos()
         {
@@ -20,6 +20,43 @@ namespace Facturas
             Count = 0;
         }
 
+        public int CantidadArticulos()
+        {
+            string strConexion = Rutinas.GetConnectionString();
+            int Cantidad = 0;
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+            if (Con == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return Cantidad;
+            }
+            SqlDataReader Lector = null;
+
+            string strComandoC = "SELECT COUNT (Clave) FROM Articulo";
+
+            Lector = UsoBD.Consulta(strComandoC, Con);
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return Cantidad;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                {
+                    Cantidad = Convert.ToInt32(Lector.GetValue(0).ToString());
+                }
+            }
+            Con.Close();
+            return Cantidad;
+        }
         public bool AgregaArt(string Desc, string Marca, float Precio, int Cant)
         {
             string strConexion = Rutinas.GetConnectionString();
@@ -229,28 +266,7 @@ namespace Facturas
             Con.Close();
             return false;
         }*/
-        public Articulo RetornaArticulo(int Clave)//RETORNA POR CLAVE
-         {
-             for (int i = 0; i < Count; i++)
-             {
-                 if (Array[i].pClave == Clave)
-                     return Array[i];
-             }
-             return null;
-         }
-         public List<Articulo> ObtenArt()
-         {
-             List<Articulo> Lista = new List<Articulo>();
-             for (int i = 0; i < Count; i++)
-                 Lista.Add(Array[i]);
 
-             return Lista;
-         }
 
-         public int pCount
-         {
-             get
-             { return Count; }
-         }
     }
 }

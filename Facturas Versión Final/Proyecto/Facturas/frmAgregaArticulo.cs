@@ -69,8 +69,11 @@ namespace Facturas
                 MessageBox.Show("EL ARTICULO YA FUE REGISTRADO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            AdmA.AgregaArt(Desc, Marca, Precio, Cant);
+            if (!AdmA.AgregaArt(Desc, Marca, Precio, Cant))
+            {
+                MessageBox.Show("NO SE PUDO GUARDAR EL ARTICULO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             MessageBox.Show("ARTICULO AGREGADO EXITOSAMENTE", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Limpiar();
         }

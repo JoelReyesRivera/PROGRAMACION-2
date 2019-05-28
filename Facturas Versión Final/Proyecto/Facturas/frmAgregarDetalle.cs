@@ -57,7 +57,7 @@ namespace Facturas
                     MessageBox.Show("CAPTURA MÁXIMA DE ARTÍCULOS SUPERADA PARA ESTA FACTURA", "DETALLES MÁXIMOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (AdmA.pCount - mD.DetallesPorFactura(ClaveFactura) == 0)
+                if (AdmA.CantidadArticulos() - mD.DetallesPorFactura(ClaveFactura) == 0)
                 {
                     MessageBox.Show("NO SE PUEDEN CAPTURAR MAS ARTICULOS A ESTA FACTURA, AGREGUE MAS ARTICULOS AL CATALAGO", "SIN ARTÍCULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -68,7 +68,7 @@ namespace Facturas
                     return;
                 }
                 ClaveArticulo = AdmA.BuscaClaveArt(Articulo);
-                if (mD.DetalleRepetido(ClaveFactura, ClaveArticulo) != -1)
+                if (mD.DetalleRepetido(ClaveFactura, ClaveArticulo))
                 {
                     MessageBox.Show("ARTÍCULO YA CAPTUDARO PARA ESTA FACTURA", "ARTICULO REPETIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -78,25 +78,8 @@ namespace Facturas
                     MessageBox.Show("CANTIDAD NO VÁLIDA", "CANTIDAD", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                
                 int CantArt = (int)numUpCantidad.Value;
-                Articulo A = AdmA.RetornaArticulo(ClaveArticulo);
-                Factura F = mF.RetornaFactura(ClaveFactura);
-                Proveedor P = proveedores.RetornaProveedorClave(F.pClaveProv);
-                if (A.pCantidad - CantArt < 0)
-                {
-                    MessageBox.Show("EXISTENCIA NO SUFICIENTE PARA DICHA CANTIDAD", "SIN EXISTENCIA SUFICIENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                float Precio, TotalImp = 0;
-                Precio = A.pPrecio;
-                TotalImp = Precio * CantArt;
-                mD.AgregarDetalle(ClaveFactura, ClaveArticulo, CantArt, Precio);
-                F.pImporte += TotalImp;
-                P.pSaldo += TotalImp;
-                A.pCantidad -= CantArt;
-                MessageBox.Show("\n----------DATOS DEL DETALLE----------"+"\nCLAVE ARTÍCULO: "+A.pClave+ "\nDESCRIPCIÓN: "+A.pDescripcion+"\nCANTIDAD: "+CantArt+ "\nPRECIO UNITARIO: "+A.pPrecio+
-                "\nEXISTENCIA RESTANTE: " + A.pCantidad+ "\nIMPORTE AÑADIDO A LA FACTURA: "+ TotalImp+ "\nIMPORTE TOTAL: "+F.pImporte + "\nSALDO DEL PROVEEDOR: " +P.pSaldo, "DETALLE AGREGADO",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                int clave = AdmA.BuscaClaveArt(Articulo);
                 Limpiar();
             }
         }
