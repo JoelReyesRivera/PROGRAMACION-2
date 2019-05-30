@@ -146,7 +146,7 @@ namespace Facturas
             }
             SqlDataReader Lector = null;
 
-            string strComandoC = "SELECT Clave FROM Articulo WHERE Descripcion LIKE'" +Desc+"'";
+            string strComandoC = "SELECT Clave FROM Articulo WHERE Descripcion LIKE'" + Desc + "'";
 
             Lector = UsoBD.Consulta(strComandoC, Con);
 
@@ -186,7 +186,7 @@ namespace Facturas
             }
             SqlDataReader Lector = null;
 
-            string strComandoC = "SELECT COUNT(Clave) FROM Articulo WHERE Descripcion LIKE'"+Desc+"' AND Marca LIKE'"+Marca+"'";
+            string strComandoC = "SELECT COUNT(Clave) FROM Articulo WHERE Descripcion LIKE'" + Desc + "' AND Marca LIKE'" + Marca + "'";
 
             Lector = UsoBD.Consulta(strComandoC, Con);
 
@@ -212,6 +212,49 @@ namespace Facturas
             }
             Con.Close();
             return false;
+        }
+        public int Count()
+        {
+            int Count = 0;
+            string Conexion = Rutinas.GetConnectionString();
+            SqlConnection Conecta = UsoBD.ConectaBD(Conexion);
+            if (Conecta == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return Count;
+            }
+            string Query = "select count(*) from Articulo";
+            SqlDataReader Lector = null;
+            Lector = UsoBD.Consulta(Query, Conecta);
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL REALIZAR CONSULTA");
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return Count;
+            }
+            if (!Lector.HasRows)
+            {
+                Conecta.Close();
+                return Count;
+            }
+            while (Lector.Read())
+            {
+                try
+                {
+                    Count = Convert.ToInt32(Lector.GetValue(0));
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("ERRORR AL CONVERTIR", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return Count;
+                }
+            }
+            return Count;
         }
     }
 }

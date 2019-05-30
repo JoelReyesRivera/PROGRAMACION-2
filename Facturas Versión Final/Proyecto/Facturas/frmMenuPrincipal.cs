@@ -87,7 +87,7 @@ namespace Facturas
 
         private void consultarPorProveedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (mF.pCount == 0)
+            if (mF.Count() == 0)
             {
                 MessageBox.Show("NO HAY FACTURAS REGISTRADAS", "SIN FACTURAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -98,7 +98,7 @@ namespace Facturas
 
         private void consultarIndividualToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (mF.pCount == 0)
+            if (mF.Count() == 0)
             {
                 MessageBox.Show("NO HAY FACTURAS REGISTRADAS", "SIN FACTURAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -109,7 +109,7 @@ namespace Facturas
 
         private void consultarTodasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (mF.pCount == 0)
+            if (mF.Count() == 0)
             {
                 MessageBox.Show("NO HAY FACTURAS REGISTRADAS", "SIN FACTURAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -137,7 +137,7 @@ namespace Facturas
 
         private void individualToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (mD.pCount == 0)
+            if (mD.Count() == 0)
             {
                 MessageBox.Show("NO HAY DETALLES REGISTRADOS", "SIN DETALLES", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -148,7 +148,7 @@ namespace Facturas
 
         private void todosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (mD.pCount == 0)
+            if (mD.Count() == 0)
             {
                 MessageBox.Show("NO HAY DETALLES REGISTRADOS", "SIN DETALLES", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

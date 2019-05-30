@@ -75,9 +75,8 @@ namespace Facturas
                     MessageBox.Show("NO SE PUEDE GUARDAR LA FACTURA, NO HAY ARTICULOS SELECCIONADOS", "SIN ARTICULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                DateTime fecha = DateTime.Now; float Monto = CalculaImporte();
-                MessageBox.Show(Monto.ToString());
-                mF.AgregarFactura(ClaveFactura, ClaveProveedor, fecha, Monto);
+                DateTime fecha = DateTime.Now;
+                mF.AgregarFactura(ClaveFactura, ClaveProveedor, fecha, 0);
 
                 //CREA DETALLE FACTURA POR CADA DIFERENTE TIPO DE ARTICULO
                 for (int i = 0; i < lvArticulos.Items.Count; i++)
@@ -96,94 +95,8 @@ namespace Facturas
                             MessageBox.Show(E.Message);
                         return;
                     }
-
-                    string strComando1 = "UPDATE Articulo SET Cantidad = Cantidad - @Cant WHERE Clave=" + ClaveArt;
-
-                    SqlCommand UpdateA = new SqlCommand(strComando1, Con1);
-
-                    UpdateA.Parameters.AddWithValue("@Cant", Cant);
-
-                    try
-                    {
-                        UpdateA.ExecuteNonQuery();
-                    }
-                    catch (SqlException Ex)
-                    {
-                        foreach (SqlError item in Ex.Errors)
-                            MessageBox.Show(item.Message);
-
-                        Con1.Close();
-                        return;
-                    }
-                    Con1.Close();
-
                     mD.AgregarDetalle(ClaveFactura, ClaveArt, Cant);
                 }
-                float Importe = CalculaImporte();
-
-                string strConexion = Rutinas.GetConnectionString();
-                SqlConnection Con = UsoBD.ConectaBD(strConexion);
-
-                if (Con == null)
-                {
-                    MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
-
-                    foreach (SqlError E in UsoBD.ESalida.Errors)
-                        MessageBox.Show(E.Message);
-                    return;
-                }
-
-                string strComando = "UPDATE Factura SET Monto=Monto+@Importe WHERE Clave = " + ClaveFactura;
-
-                SqlCommand UpdateF = new SqlCommand(strComando, Con);
-
-                UpdateF.Parameters.AddWithValue("@Importe", Importe);
-
-                try
-                {
-                    UpdateF.ExecuteNonQuery();
-                }
-                catch (SqlException Ex)
-                {
-                    foreach (SqlError item in Ex.Errors)
-                        MessageBox.Show(item.Message);
-
-                    Con.Close();
-                    return;
-                }
-                Con.Close();
-
-                string strConexion2 = Rutinas.GetConnectionString();
-                SqlConnection Con2 = UsoBD.ConectaBD(strConexion2);
-
-                if (Con == null)
-                {
-                    MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
-
-                    foreach (SqlError E in UsoBD.ESalida.Errors)
-                        MessageBox.Show(E.Message);
-                    return;
-                }
-
-                string strComando2 = "UPDATE Proveedor SET Saldo = Saldo + @Importe WHERE Clave = " + ClaveProveedor;
-
-                SqlCommand UpdateP = new SqlCommand(strComando2, Con2);
-
-                UpdateP.Parameters.AddWithValue("@Importe", Importe);
-
-                try
-                {
-                    UpdateP.ExecuteNonQuery();
-                }
-                catch (SqlException Ex)
-                {
-                    foreach (SqlError item in Ex.Errors)
-                        MessageBox.Show(item.Message);
-
-                    Con2.Close();
-                    return;
-                }
-                Con2.Close();
 
                 MessageBox.Show("FACTURA CREADA CORRECTAMENTE CON SUS " + CantArt + " DETALLES DE FACTURA", "FACTURA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Limpiar();
@@ -299,7 +212,6 @@ namespace Facturas
 
             int Cant = Convert.ToInt32(numUpCantidad.Value);
             float PrecioTotal = Cant * ArtP;
-            MessageBox.Show(PrecioTotal.ToString());
 
             for (int i = 0; i < lvArticulos.Items.Count; i++) //BUSCA SI EL ARTICULO YA ESTA AGREGADO EN EL LIST VIEW
             {
@@ -461,9 +373,37 @@ namespace Facturas
         {
             if (cmbProveedores.SelectedIndex < 0)
                 return;
-            string Proveedor = Convert.ToString(cmbProveedores.SelectedItem);
-            int ClaveProv = proveedores.BuscarPosNombre(Proveedor);
-            txtClave.Text = ClaveProv.ToString();
+            string Conexion = Rutinas.GetConnectionString();
+            SqlConnection Conecta = UsoBD.ConectaBD(Conexion);
+            if (Conecta == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return;
+            }
+            string Nom = cmbProveedores.SelectedItem.ToString();
+            string Query = "select Clave from Proveedor where Nombre = " + "'" + Nom + "'";
+            SqlDataReader Lector = null;
+            Lector = UsoBD.Consulta(Query, Conecta);
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL REALIZAR CONSULTA");
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                {
+                    string Clave = Lector.GetValue(0).ToString();
+                    txtClave.Text = Clave;
+                }
+            }
+            Conecta.Close();
         }
 
         private void cmbProveedores_Validated(object sender, EventArgs e)

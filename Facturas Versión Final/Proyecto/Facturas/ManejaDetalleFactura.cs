@@ -42,7 +42,7 @@ namespace Facturas
 
                 Con.Close();
                 return false;
-            }   
+            }
             Con.Close();
             return false;
         }
@@ -62,7 +62,7 @@ namespace Facturas
             SqlDataReader Lector = null;
 
             string strComandoC = "SELECT COUNT (Factura) FROM DetalleFactura WHERE Factura=" + ClaveFactura;
-            
+
             Lector = UsoBD.Consulta(strComandoC, Con);
             if (Lector == null)
             {
@@ -77,7 +77,7 @@ namespace Facturas
             {
                 while (Lector.Read())
                 {
-                   Cantidad = Convert.ToInt32(Lector.GetValue(0).ToString());
+                    Cantidad = Convert.ToInt32(Lector.GetValue(0).ToString());
                 }
             }
             Con.Close();
@@ -94,14 +94,14 @@ namespace Facturas
             }
             return D;
         }
-       public List<DetalleFactura> RetornaDetalles()
+        public List<DetalleFactura> RetornaDetalles()
         {
             List<DetalleFactura> D = new List<DetalleFactura>();
             for (int i = 0; i < DetalleFactura.Count; i++)
                 D.Add(DetalleFactura.ElementAt(i));
             return D;
         }
-        public bool DetalleRepetido(int ClaveFactura,int ClaveArt)
+        public bool DetalleRepetido(int ClaveFactura, int ClaveArt)
         {
             string strConexion = Rutinas.GetConnectionString();
 
@@ -137,12 +137,48 @@ namespace Facturas
             return false;
         }
 
-        public int pCount
+        public int Count()
         {
-            get
+            int Count = 0;
+            string Conexion = Rutinas.GetConnectionString();
+            SqlConnection Conecta = UsoBD.ConectaBD(Conexion);
+            if (Conecta == null)
             {
-                return DetalleFactura.Count;
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return Count;
             }
+            string Query = "select count(*) from DetalleFactura";
+            SqlDataReader Lector = null;
+            Lector = UsoBD.Consulta(Query, Conecta);
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL REALIZAR CONSULTA");
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return Count;
+            }
+            if (!Lector.HasRows)
+            {
+                Conecta.Close();
+                return Count;
+            }
+            while (Lector.Read())
+            {
+                try
+                {
+                    Count = Convert.ToInt32(Lector.GetValue(0));
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("ERRORR AL CONVERTIR", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return Count;
+                }
+            }
+            return Count;
         }
     }
 }

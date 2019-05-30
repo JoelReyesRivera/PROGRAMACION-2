@@ -19,7 +19,6 @@ namespace Facturas
         }
         public void AgregarFactura(int Clave, int ClaveProv, DateTime Fecha, float Monto)
         {
-            MessageBox.Show(Monto.ToString());
             string strConexion = Rutinas.GetConnectionString();
 
             SqlConnection Con = UsoBD.ConectaBD(strConexion);
@@ -96,20 +95,20 @@ namespace Facturas
             Con.Close();
             return -1;
         }
-        public int BuscaFacturaClaveProv(int ClaveFactura,int ClaveProveedor)
+        public int BuscaFacturaClaveProv(int ClaveFactura, int ClaveProveedor)
         {
             foreach (KeyValuePair<int, Factura> pair in Facturas)
             {
-                if (pair.Key == ClaveFactura && pair.Value.pClaveProv==ClaveProveedor)
+                if (pair.Key == ClaveFactura && pair.Value.pClaveProv == ClaveProveedor)
                     return pair.Key;
             }
             return -1;
         }
-        public KeyValuePair<int,Factura>[] RetornaFacturas()
+        public KeyValuePair<int, Factura>[] RetornaFacturas()
         {
             KeyValuePair<int, Factura>[] F = new KeyValuePair<int, Factura>[Facturas.Count];
             int c = 0;
-            foreach(KeyValuePair<int,Factura> pair in Facturas)
+            foreach (KeyValuePair<int, Factura> pair in Facturas)
                 F[c++] = pair;
             return F;
         }
@@ -121,7 +120,7 @@ namespace Facturas
         }
         public int BuscaKeyFactura(Factura F)
         {
-            foreach(KeyValuePair<int,Factura> pair in Facturas)
+            foreach (KeyValuePair<int, Factura> pair in Facturas)
             {
                 if (pair.Value.Equals(F))
                     return pair.Key;
@@ -140,12 +139,48 @@ namespace Facturas
             }
             return F;
         }
-        public int pCount
+        public int Count()
         {
-            get
+            int Count = 0;
+            string Conexion = Rutinas.GetConnectionString();
+            SqlConnection Conecta = UsoBD.ConectaBD(Conexion);
+            if (Conecta == null)
             {
-                return Facturas.Count;
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return Count;
             }
+            string Query = "select count(*) from Factura";
+            SqlDataReader Lector = null;
+            Lector = UsoBD.Consulta(Query, Conecta);
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL REALIZAR CONSULTA");
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return Count;
+            }
+            if (!Lector.HasRows)
+            {
+                Conecta.Close();
+                return Count;
+            }
+            while (Lector.Read())
+            {
+                try
+                {
+                    Count = Convert.ToInt32(Lector.GetValue(0));
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("ERRORR AL CONVERTIR", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return Count;
+                }
+            }
+            return Count;
         }
     }
 }
