@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LibreriaBD;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Facturas
 {
@@ -14,17 +17,83 @@ namespace Facturas
         {
             Facturas = new Dictionary<int, Factura>();
         }
-        public void AgregarFactura(int Clave, int ClaveProv, int Dia, int Mes, int Año)
+        public void AgregarFactura(int Clave, int ClaveProv, DateTime Fecha, float Monto)
         {
-            Facturas.Add(Clave, new Factura(ClaveProv, Dia, Mes, Año));
+            MessageBox.Show(Monto.ToString());
+            string strConexion = Rutinas.GetConnectionString();
+
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+
+            if (Con == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
+            }
+
+            string strComando = "INSERT INTO Factura(Clave,Provedor,Fecha,Monto)";
+            strComando += "VALUES(@Clave,@ClaveProv,@Fecha,@Monto)";
+
+            SqlCommand Insert = new SqlCommand(strComando, Con);
+
+            Insert.Parameters.AddWithValue("@Clave", Clave);
+            Insert.Parameters.AddWithValue("@ClaveProv", ClaveProv);
+            Insert.Parameters.AddWithValue("@Fecha", Fecha);
+            Insert.Parameters.AddWithValue("@Monto", Monto);
+
+            try
+            {
+                Insert.ExecuteNonQuery();
+            }
+            catch (SqlException Ex)
+            {
+                foreach (SqlError item in Ex.Errors)
+                    MessageBox.Show(item.Message);
+
+                Con.Close();
+                return;
+            }
+            Con.Close();
         }
         public int BuscaFacturaClave(int Clave)
         {
-            foreach (KeyValuePair<int, Factura> pair in Facturas)
+            string strConexion = Rutinas.GetConnectionString();
+
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+            if (Con == null)
             {
-                if (pair.Key == Clave)
-                    return pair.Key;
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return -1;
             }
+            SqlDataReader Lector = null;
+
+            string strComandoC = "SELECT COUNT (Clave) FROM Factura WHERE Clave=" + Clave;
+
+            Lector = UsoBD.Consulta(strComandoC, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return -1;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                {
+                    int Art = Convert.ToInt32(Lector.GetValue(0).ToString());
+                    return Art;
+                }
+            }
+            Con.Close();
             return -1;
         }
         public int BuscaFacturaClaveProv(int ClaveFactura,int ClaveProveedor)

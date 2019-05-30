@@ -25,6 +25,7 @@ namespace Facturas
         {
             string Conexion = Rutinas.GetConnectionString();
             SqlConnection Conecta = UsoBD.ConectaBD(Conexion);
+
             if (Conecta == null)
             {
                 MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);

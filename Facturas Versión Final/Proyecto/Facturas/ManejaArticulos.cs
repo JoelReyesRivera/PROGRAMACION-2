@@ -11,13 +11,6 @@ namespace Facturas
 {
     public class ManejaArticulos
     {
-        private Articulo[] Array;
- 
-
-        public ManejaArticulos()
-        {
-            Array = new Articulo[50];
-        }
 
         public int CantidadArticulos()
         {
@@ -130,11 +123,8 @@ namespace Facturas
                 while (Lector.Read())
                 {
                     int Art = Convert.ToInt32(Lector.GetValue(0).ToString());
-                    if (Art >= 0)
-                    {
-                        Con.Close();
-                        return Art;
-                    }
+                    Con.Close();
+                    return Art;
                 }
             }
             Con.Close();
@@ -223,49 +213,5 @@ namespace Facturas
             Con.Close();
             return false;
         }
-        /*public bool BuscaDesc(string Desc)
-        {
-            string strConexion = Rutinas.GetConnectionString();
-
-            SqlConnection Con = UsoBD.ConectaBD(strConexion);
-            if (Con == null)
-            {
-                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
-
-                foreach (SqlError E in UsoBD.ESalida.Errors)
-                    MessageBox.Show(E.Message);
-                return false;
-            }
-            SqlDataReader Lector = null;
-
-            string strComandoC = "SELECT COUNT(Clave) FROM Articulo WHERE Descripcion LIKE'"+ Desc +"'";
-
-            Lector = UsoBD.Consulta(strComandoC, Con);
-
-            if (Lector == null)
-            {
-                MessageBox.Show("ERROR AL HACER LA CONSULTA");
-                foreach (SqlError E in UsoBD.ESalida.Errors)
-                    MessageBox.Show(E.Message);
-
-                Con.Close();
-                return false;
-            }
-            if (Lector.HasRows)
-            {
-                while (Lector.Read())
-                {
-                    if (Convert.ToInt32(Lector.GetValue(0).ToString()) > 0)
-                    {
-                        Con.Close();
-                        return true;
-                    }
-                }
-            }
-            Con.Close();
-            return false;
-        }*/
-
-
     }
 }

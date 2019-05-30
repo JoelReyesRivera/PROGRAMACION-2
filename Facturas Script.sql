@@ -25,7 +25,7 @@ Saldo MONEY NOT NULL,
 )
 
 CREATE TABLE Factura (
-Clave BIGINT IDENTITY (1,1) PRIMARY KEY,
+Clave BIGINT PRIMARY KEY,
 Provedor INT NOT NULL,
 Fecha date NOT NULL,
 Monto Money NOT NULL,
@@ -45,6 +45,9 @@ FOREIGN KEY (Factura) REFERENCES Factura(Clave)
 
 ALTER TABLE DetalleFactura
 ADD CONSTRAINT Articulo_Detalle_Unico UNIQUE (Factura,Articulo); 
+
+ALTER TABLE Factura
+ADD CONSTRAINT Factura_Clave UNIQUE (Clave); 
 
 ALTER TABLE Articulo
 ADD CONSTRAINT PrecioArticuloInvalido  CHECK (Precio>0)
@@ -127,7 +130,7 @@ INSERT INTO Proveedor
 VALUES (1,'JOEL','JORR110899','HUERTOS',0)
 
 INSERT INTO Factura
-VALUES (1,'04/05/2019',0)
+VALUES (1,1,'04/05/2019',0)
 
 exec InsertarDetalleFactura 1,1,15
 
@@ -143,3 +146,6 @@ SELECT CLAVE FROM FACTURA ORDER BY CLAVE ASC
 SELECT Descripcion FROM ARTICULO ORDER BY Descripcion ASC
 SELECT clave,Provedor,format(Fecha	,'dd/MM/yyyy'),monto FROM FACTURA where clave =1
 select a.Clave,a.Descripcion,d.Precio,d.Cantidad from DetalleFactura d inner join Articulo a on a.Clave=d.Articulo where d.Factura=1
+
+SELECT * FROM DetalleFactura
+SELECT Descripcion FROM Articulo ORDER BY Descripcion ASC

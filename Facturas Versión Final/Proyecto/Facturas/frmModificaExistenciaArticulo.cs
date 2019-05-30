@@ -98,13 +98,13 @@ namespace Facturas
 
             string strComando = "UPDATE Articulo SET Cantidad=Cantidad+@Cant WHERE Descripcion LIKE'"+Articulo+"'";
 
-            SqlCommand Insert = new SqlCommand(strComando, Con);
+            SqlCommand Update= new SqlCommand(strComando, Con);
 
-            Insert.Parameters.AddWithValue("@Cant", Cant);
+            Update.Parameters.AddWithValue("@Cant", Cant);
 
             try
             {
-                Insert.ExecuteNonQuery();
+                Update.ExecuteNonQuery();
             }
             catch (SqlException Ex)
             {

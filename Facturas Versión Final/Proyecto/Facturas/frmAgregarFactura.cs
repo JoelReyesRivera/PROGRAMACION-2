@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibreriaBD;
 
 namespace Facturas
 {
@@ -30,11 +31,11 @@ namespace Facturas
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-           /* DialogResult D = MessageBox.Show("¿DESEA AGREGAR LA FACTURA?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult D = MessageBox.Show("¿DESEA AGREGAR LA FACTURA?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (D == DialogResult.Yes)
             {
                 string ClaveF = Convert.ToString(txtClaveFactura.Text); string Proveedor = Convert.ToString(cmbProveedores.SelectedItem);
-                string ClaveA= Convert.ToString(cmbArticulo.SelectedItem);
+                string ClaveA = Convert.ToString(cmbArticulo.SelectedItem);
                 int ClaveFactura; int ClaveProveedor;
 
                 if (ClaveF.Length == 0)
@@ -57,40 +58,137 @@ namespace Facturas
                     MessageBox.Show("CLAVE DE FACTURA NO VÁLIDA", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (mF.BuscaFacturaClave(ClaveFactura) != -1)
+                if (mF.BuscaFacturaClave(ClaveFactura) > 0 )
                 {
                     MessageBox.Show("LA FACTURA YA EXISTE", "CLAVE FACTURA DUPLICADA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 ClaveProveedor = proveedores.BuscarPosNombre(Proveedor);
                 int CantArt = lvArticulos.Items.Count;
+                if (ClaveProveedor == -1)
+                {
+                    MessageBox.Show("EL PROVEEDOR NO SE ENCUENTRA EN EL SISTEMA", "PROVEEDOR INEXISTENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 if (CantArt == 0)
                 {
                     MessageBox.Show("NO SE PUEDE GUARDAR LA FACTURA, NO HAY ARTICULOS SELECCIONADOS", "SIN ARTICULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                DateTime fecha = DateTime.Now;
-                mF.AgregarFactura(ClaveFactura, ClaveProveedor, fecha.Day, fecha.Month, fecha.Year);
-                Factura F=mF.RetornaFactura(ClaveFactura);
-                Proveedor P = proveedores.RetornaProveedorClave(ClaveProveedor);
+                DateTime fecha = DateTime.Now; float Monto = CalculaImporte();
+                MessageBox.Show(Monto.ToString());
+                mF.AgregarFactura(ClaveFactura, ClaveProveedor, fecha, Monto);
 
                 //CREA DETALLE FACTURA POR CADA DIFERENTE TIPO DE ARTICULO
                 for (int i = 0; i < lvArticulos.Items.Count; i++)
                 {
                     int ClaveArt = Convert.ToInt32(lvArticulos.Items[i].Text);
                     int Cant = Convert.ToInt32(lvArticulos.Items[i].SubItems[4].Text);
-                    Articulo Art = AdmA.RetornaArticulo(ClaveArt);
-                    Art.pCantidad -= Cant;
-                    float Precio = Convert.ToSingle(lvArticulos.Items[i].SubItems[3].Text);
-                    mD.AgregarDetalle(ClaveFactura, ClaveArt, Cant, Precio);
+                    string strConexion1 = Rutinas.GetConnectionString();
+
+                    SqlConnection Con1 = UsoBD.ConectaBD(strConexion1);
+
+                    if (Con1 == null)
+                    {
+                        MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                        foreach (SqlError E in UsoBD.ESalida.Errors)
+                            MessageBox.Show(E.Message);
+                        return;
+                    }
+
+                    string strComando1 = "UPDATE Articulo SET Cantidad = Cantidad - @Cant WHERE Clave=" + ClaveArt;
+
+                    SqlCommand UpdateA = new SqlCommand(strComando1, Con1);
+
+                    UpdateA.Parameters.AddWithValue("@Cant", Cant);
+
+                    try
+                    {
+                        UpdateA.ExecuteNonQuery();
+                    }
+                    catch (SqlException Ex)
+                    {
+                        foreach (SqlError item in Ex.Errors)
+                            MessageBox.Show(item.Message);
+
+                        Con1.Close();
+                        return;
+                    }
+                    Con1.Close();
+
+                    mD.AgregarDetalle(ClaveFactura, ClaveArt, Cant);
                 }
                 float Importe = CalculaImporte();
-                F.pImporte += Importe;
-                P.pSaldo += Importe;
+
+                string strConexion = Rutinas.GetConnectionString();
+                SqlConnection Con = UsoBD.ConectaBD(strConexion);
+
+                if (Con == null)
+                {
+                    MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                    foreach (SqlError E in UsoBD.ESalida.Errors)
+                        MessageBox.Show(E.Message);
+                    return;
+                }
+
+                string strComando = "UPDATE Factura SET Monto=Monto+@Importe WHERE Clave = " + ClaveFactura;
+
+                SqlCommand UpdateF = new SqlCommand(strComando, Con);
+
+                UpdateF.Parameters.AddWithValue("@Importe", Importe);
+
+                try
+                {
+                    UpdateF.ExecuteNonQuery();
+                }
+                catch (SqlException Ex)
+                {
+                    foreach (SqlError item in Ex.Errors)
+                        MessageBox.Show(item.Message);
+
+                    Con.Close();
+                    return;
+                }
+                Con.Close();
+
+                string strConexion2 = Rutinas.GetConnectionString();
+                SqlConnection Con2 = UsoBD.ConectaBD(strConexion2);
+
+                if (Con == null)
+                {
+                    MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                    foreach (SqlError E in UsoBD.ESalida.Errors)
+                        MessageBox.Show(E.Message);
+                    return;
+                }
+
+                string strComando2 = "UPDATE Proveedor SET Saldo = Saldo + @Importe WHERE Clave = " + ClaveProveedor;
+
+                SqlCommand UpdateP = new SqlCommand(strComando2, Con2);
+
+                UpdateP.Parameters.AddWithValue("@Importe", Importe);
+
+                try
+                {
+                    UpdateP.ExecuteNonQuery();
+                }
+                catch (SqlException Ex)
+                {
+                    foreach (SqlError item in Ex.Errors)
+                        MessageBox.Show(item.Message);
+
+                    Con2.Close();
+                    return;
+                }
+                Con2.Close();
+
                 MessageBox.Show("FACTURA CREADA CORRECTAMENTE CON SUS " + CantArt + " DETALLES DE FACTURA", "FACTURA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Limpiar();
             }
-            */
+
         }
         private void numUpCantidad_Validated(object sender, EventArgs e)
         {
@@ -131,7 +229,7 @@ namespace Facturas
 
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
         {
-            /*string ClaveF = Convert.ToString(txtClaveFactura), ClaveP = Convert.ToString(cmbProveedores.SelectedItem); string Articulo = Convert.ToString(cmbArticulo.SelectedItem);
+            string ClaveF = Convert.ToString(txtClaveFactura), ClaveP = Convert.ToString(cmbProveedores.SelectedItem); string Articulo = Convert.ToString(cmbArticulo.SelectedItem);
             int ClaveArticulo;
             if (ClaveF.Length == 0)
             {
@@ -140,12 +238,12 @@ namespace Facturas
             }
             if (cmbProveedores.SelectedIndex == -1)
             {
-                MessageBox.Show("PROVEEDOR NO ENCONTRADO","PROVEEDOR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("SELECCIONE UN PROVEEDOR", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (cmbArticulo.SelectedIndex == -1)
             {
-                MessageBox.Show("ARTÍCULO NO ENCONTRADO","ARTÍCULO",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("SELECCIONE UN ARTÍCULO", "ARTÍCULO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             int CantArt = lvArticulos.Items.Count;
@@ -154,17 +252,61 @@ namespace Facturas
                 MessageBox.Show("NO SE PUEDE AGRGAR MÁS DE 3 TIPOS DIFERENTES DE ARTICULOS", "ARTICULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            ClaveArticulo = AdmA.BuscaClaveArt(Articulo); ;
-            Articulo Art = AdmA.RetornaArticulo(ClaveArticulo);
+            ClaveArticulo = AdmA.BuscaClaveArt(Articulo);
+            if (ClaveArticulo == -1)
+            {
+                MessageBox.Show("EL ARTICULO NO SE ENCONTRO EN EL SISTEMA", "ARTICULO INEXISTENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            float ArtP = 0; int ArtC = 0; string ArtD = "", ArtM = "";
+            string strConexion = Rutinas.GetConnectionString();
 
-            int Cant = Convert.ToInt32(numUpCantidad.Value); float PrecioTotal = Cant * Art.pPrecio; 
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+            if (Con == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
+            }
+            SqlDataReader Lector = null;
+
+            string strComando = "SELECT Precio,Cantidad,Descripcion, Marca FROM Articulo WHERE Clave=" + ClaveArticulo;
+
+            Lector = UsoBD.Consulta(strComando, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                {
+                    ArtP = Convert.ToSingle(Lector.GetValue(0).ToString());
+                    ArtC = Convert.ToInt32(Lector.GetValue(1).ToString());
+                    ArtD = Lector.GetValue(2).ToString();
+                    ArtM = Lector.GetValue(3).ToString();
+                }
+            }
+            Con.Close();
+
+            int Cant = Convert.ToInt32(numUpCantidad.Value);
+            float PrecioTotal = Cant * ArtP;
+            MessageBox.Show(PrecioTotal.ToString());
 
             for (int i = 0; i < lvArticulos.Items.Count; i++) //BUSCA SI EL ARTICULO YA ESTA AGREGADO EN EL LIST VIEW
             {
                 if (lvArticulos.Items[i].Text.Trim() == ClaveArticulo.ToString())
                 {
                     int rc = Convert.ToInt32(lvArticulos.Items[i].SubItems[4].Text); //CANTIDAD DEL ARTICULO REGISTRADO
-                    int SumCant = Art.pCantidad - (rc + Cant);
+                    int SumCant = ArtC - (rc + Cant);
                     if (SumCant < 0)
                     {
                         MessageBox.Show("LA EXISTENCIA DEL ARTICULO NO ES LA SUFICIENTE PARA LA CANTIDAD INGRESADA", "EXISTENCIA INSUFICIENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -172,24 +314,16 @@ namespace Facturas
                     }
                     int cf = rc + Cant; //CANTIDAD FINAL
                     lvArticulos.Items[i].SubItems[4].Text = cf.ToString();
-                    float rp;
-                    try
-                    {
-                        rp = Convert.ToInt32(lvArticulos.Items[i].SubItems[5].Text); //PRECIO DEL ARTICULO REGISTRADO
-                    }
-                    catch (Exception)
-                    {
-                        return;
-                    }
+                    float rp = Convert.ToSingle(lvArticulos.Items[i].SubItems[5].Text);
                     float pf = PrecioTotal + rp; //PRECIO FINAL
                     lvArticulos.Items[i].SubItems[5].Text = pf.ToString();
                     CalculaImporte();
                     return;
-                    }
-                
+                }
+
             }
             //SI EL ARTICULO A AGREGAR NO SE ENCUENTRA EN LA LIST VIEW 
-            int DifCant = Art.pCantidad - Cant;
+            int DifCant = ArtC - Cant;
             if (DifCant < 0)
             {
                 MessageBox.Show("LA EXISTENCIA DEL ARTICULO NO ES LA SUFICIENTE PARA LA CANTIDAD INGRESADA", "EXISTENCIA INSUFICIENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -197,21 +331,20 @@ namespace Facturas
             }
             //AGREGA LOS DATOS DEL ARTICULO EN UNA LISTA
             ListViewItem Registro = new ListViewItem(ClaveArticulo.ToString());
-            Registro.SubItems.Add(Art.pDescripcion);
-            Registro.SubItems.Add(Art.pMarca);
-            Registro.SubItems.Add(Art.pPrecio.ToString());
+            Registro.SubItems.Add(ArtD);
+            Registro.SubItems.Add(ArtM);
+            Registro.SubItems.Add(ArtP.ToString());
             Registro.SubItems.Add(Cant.ToString());
             Registro.SubItems.Add(PrecioTotal.ToString());
             //AGREGA LA LISTA CON TODOS LOS DATOS DEL ARTICULO EN EL LIST VIEW
             lvArticulos.Items.Add(Registro);
             CalculaImporte();
-            */
         }
 
         private float CalculaImporte()
         {
-            int Count = lvArticulos.Items.Count;  float Importe = 0;
-            if (Count==0)
+            int Count = lvArticulos.Items.Count; float Importe = 0;
+            if (Count == 0)
             {
                 lblImporte.Text = "$0";
             }
@@ -238,11 +371,11 @@ namespace Facturas
             DialogResult R = MessageBox.Show("¿DESEA ELIMINAR EL ARTICULO SELECCIONADO?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (R == DialogResult.Yes)
             {
-                 for (int i = 0; i < lvArticulos.Items.Count; i++)
-                 {
-                     if (lvArticulos.SelectedItems.Contains(lvArticulos.Items[i]))
-                         lvArticulos.Items[i].Remove();
-                 }
+                for (int i = 0; i < lvArticulos.Items.Count; i++)
+                {
+                    if (lvArticulos.SelectedItems.Contains(lvArticulos.Items[i]))
+                        lvArticulos.Items[i].Remove();
+                }
                 CalculaImporte();
             }
         }
@@ -255,24 +388,82 @@ namespace Facturas
 
         private void frmAgregarFactura_Load(object sender, EventArgs e)
         {
-            /*Proveedor[] P = proveedores.GetProveedores();
-            for (int i = 0; i < P.Length; i++)
-                cmbProveedores.Items.Add(P[i].pNombre);
+            string strConexion = Rutinas.GetConnectionString();
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
 
-            List<Articulo> Articulos = AdmA.ObtenArt();
-            for (int i = 0; i < Articulos.Count; i++)
-                cmbArticulo.Items.Add(Articulos.ElementAt(i).pDescripcion);
-                */
+            if (Con == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
 
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
+            }
+
+            SqlDataReader Lector = null;
+
+            string strComando = "SELECT Nombre FROM Proveedor ORDER BY Nombre ASC";
+
+            Lector = UsoBD.Consulta(strComando, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                    cmbProveedores.Items.Add(Lector.GetValue(0).ToString());
+            }
+            Con.Close();
+
+            string strConexion2 = Rutinas.GetConnectionString();
+            SqlConnection Con2 = UsoBD.ConectaBD(strConexion2);
+
+            if (Con2 == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
+            }
+
+            SqlDataReader Lector2 = null;
+
+            string strComando2 = "SELECT Descripcion FROM Articulo ORDER BY Descripcion ASC";
+
+            Lector2 = UsoBD.Consulta(strComando2, Con2);
+
+            if (Lector2 == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con2.Close();
+                return;
+            }
+            if (Lector2.HasRows)
+            {
+                while (Lector2.Read())
+                    cmbArticulo.Items.Add(Lector2.GetValue(0).ToString());
+            }
+            Con2.Close();
         }
+            
         private void cmbProveedores_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbProveedores.SelectedIndex < 0)
                 return;
             string Proveedor = Convert.ToString(cmbProveedores.SelectedItem);
             int ClaveProv = proveedores.BuscarPosNombre(Proveedor);
-            KeyValuePair<int, Proveedor> P = proveedores.RetornaProveedor(ClaveProv);
-            txtClave.Text = P.Key + "";
+            txtClave.Text = ClaveProv.ToString();
         }
 
         private void cmbProveedores_Validated(object sender, EventArgs e)
@@ -318,15 +509,47 @@ namespace Facturas
 
         private void cmbArticulo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*if (cmbArticulo.SelectedIndex < 0)
+            if (cmbArticulo.SelectedIndex < 0)
                 return;
+
             string Articulo = Convert.ToString(cmbArticulo.SelectedItem);
-            int ClaveArticulo = AdmA.BuscaClaveArt(Articulo);
-            Articulo A = AdmA.RetornaArticulo(ClaveArticulo);
-            txtClaveArt.Text = A.pClave + "";
-            txtExistencia.Text = A.pCantidad + "";
-            txtPrecio.Text = A.pPrecio + "";
-            */
+
+            string strConexion = Rutinas.GetConnectionString();
+
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+            if (Con == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
+            }
+            SqlDataReader Lector = null;
+
+            string strComando = "SELECT Clave,Cantidad,Precio FROM Articulo WHERE Descripcion LIKE '" +Articulo+"'";
+
+            Lector = UsoBD.Consulta(strComando, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                {
+                    txtClaveArt.Text = Lector.GetValue(0).ToString();
+                    txtExistencia.Text = Lector.GetValue(1).ToString();
+                    txtPrecio.Text = Lector.GetValue(2).ToString();
+                }
+            }
+            Con.Close();
         }
 
         private void cmbArticulo_Validated(object sender, EventArgs e)
