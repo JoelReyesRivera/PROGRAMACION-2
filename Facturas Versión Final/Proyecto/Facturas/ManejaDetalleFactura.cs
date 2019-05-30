@@ -17,9 +17,34 @@ namespace Facturas
             DetalleFactura = new List<DetalleFactura>();
         }
 
-        public void AgregarDetalle(int ClaveFact, int ClaveArt, int Cant)
+        public bool AgregarDetalle(int ClaveFact, int ClaveArt, int Cant)
         {
-            
+            string strConexion = Rutinas.GetConnectionString();
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+            if (Con == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return false;
+            }
+            SqlDataReader Lector = null;
+
+            string strComandoC = "exec InsertarDetalleFactura " + ClaveFact + "," + ClaveArt + "," + Cant;
+
+            Lector = UsoBD.Consulta(strComandoC, Con);
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return false;
+            }   
+            Con.Close();
+            return false;
         }
         public int DetallesPorFactura(int ClaveFactura)
         {

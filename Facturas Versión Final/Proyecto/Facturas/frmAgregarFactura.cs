@@ -30,7 +30,7 @@ namespace Facturas
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            DialogResult D = MessageBox.Show("¿DESEA AGREGAR LA FACTURA?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+           /* DialogResult D = MessageBox.Show("¿DESEA AGREGAR LA FACTURA?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (D == DialogResult.Yes)
             {
                 string ClaveF = Convert.ToString(txtClaveFactura.Text); string Proveedor = Convert.ToString(cmbProveedores.SelectedItem);
@@ -90,6 +90,7 @@ namespace Facturas
                 MessageBox.Show("FACTURA CREADA CORRECTAMENTE CON SUS " + CantArt + " DETALLES DE FACTURA", "FACTURA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Limpiar();
             }
+            */
         }
         private void numUpCantidad_Validated(object sender, EventArgs e)
         {
@@ -130,7 +131,7 @@ namespace Facturas
 
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
         {
-            string ClaveF = Convert.ToString(txtClaveFactura), ClaveP = Convert.ToString(cmbProveedores.SelectedItem); string Articulo = Convert.ToString(cmbArticulo.SelectedItem);
+            /*string ClaveF = Convert.ToString(txtClaveFactura), ClaveP = Convert.ToString(cmbProveedores.SelectedItem); string Articulo = Convert.ToString(cmbArticulo.SelectedItem);
             int ClaveArticulo;
             if (ClaveF.Length == 0)
             {
@@ -184,7 +185,8 @@ namespace Facturas
                     lvArticulos.Items[i].SubItems[5].Text = pf.ToString();
                     CalculaImporte();
                     return;
-                }
+                    }
+                
             }
             //SI EL ARTICULO A AGREGAR NO SE ENCUENTRA EN LA LIST VIEW 
             int DifCant = Art.pCantidad - Cant;
@@ -203,6 +205,7 @@ namespace Facturas
             //AGREGA LA LISTA CON TODOS LOS DATOS DEL ARTICULO EN EL LIST VIEW
             lvArticulos.Items.Add(Registro);
             CalculaImporte();
+            */
         }
 
         private float CalculaImporte()
@@ -252,13 +255,14 @@ namespace Facturas
 
         private void frmAgregarFactura_Load(object sender, EventArgs e)
         {
-            Proveedor[] P = proveedores.GetProveedores();
+            /*Proveedor[] P = proveedores.GetProveedores();
             for (int i = 0; i < P.Length; i++)
                 cmbProveedores.Items.Add(P[i].pNombre);
 
             List<Articulo> Articulos = AdmA.ObtenArt();
             for (int i = 0; i < Articulos.Count; i++)
                 cmbArticulo.Items.Add(Articulos.ElementAt(i).pDescripcion);
+                */
 
         }
         private void cmbProveedores_SelectedIndexChanged(object sender, EventArgs e)
@@ -314,7 +318,7 @@ namespace Facturas
 
         private void cmbArticulo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbArticulo.SelectedIndex < 0)
+            /*if (cmbArticulo.SelectedIndex < 0)
                 return;
             string Articulo = Convert.ToString(cmbArticulo.SelectedItem);
             int ClaveArticulo = AdmA.BuscaClaveArt(Articulo);
@@ -322,6 +326,7 @@ namespace Facturas
             txtClaveArt.Text = A.pClave + "";
             txtExistencia.Text = A.pCantidad + "";
             txtPrecio.Text = A.pPrecio + "";
+            */
         }
 
         private void cmbArticulo_Validated(object sender, EventArgs e)

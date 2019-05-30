@@ -97,7 +97,7 @@ namespace Facturas
 
         public void cargarDataGridViewDetalles(int factura)
         {
-            dtgvDetalles.Rows.Clear();
+           /* dtgvDetalles.Rows.Clear();
             List<DetalleFactura> lista = detalles.RetornaDetalles();
             Articulo articulo;
             for (int i = 0; i < lista.Count; i++)
@@ -108,6 +108,7 @@ namespace Facturas
                     dtgvDetalles.Rows.Add(factura, lista[i].pClaveArt,articulo.pDescripcion,articulo.pMarca, lista[i].pCant,lista[i].pPrecio);
                 }
             }
+            */
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

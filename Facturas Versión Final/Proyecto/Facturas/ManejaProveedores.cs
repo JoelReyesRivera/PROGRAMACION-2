@@ -266,6 +266,40 @@ namespace Facturas
             }
             return Count;
         }
+        public string getNombreProveedor(int clave)
+        {
+            string Conexion = Rutinas.GetConnectionString();
+            SqlConnection Conecta = UsoBD.ConectaBD(Conexion);
+            if (Conecta == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return null;
+            }
+            string Query = "select nombre from Proveedor where clave = " + clave;
+            SqlDataReader Lector = null;
+            Lector = UsoBD.Consulta(Query, Conecta);
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL REALIZAR CONSULTA");
+                foreach (SqlError Error in UsoBD.ESalida.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return null;
+            }
+            if (!Lector.HasRows)
+            {
+                Conecta.Close();
+                return null;
+            }
+            while (Lector.Read())
+            {
+                return Lector.GetValue(0).ToString();
+            }
+            return null;
+        }
         public Proveedor RetornaProveedorNom(string Nombre)//N
         {
             foreach (KeyValuePair<int, Proveedor> pair in proveedores)

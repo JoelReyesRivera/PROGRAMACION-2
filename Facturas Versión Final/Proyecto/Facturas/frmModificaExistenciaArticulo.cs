@@ -21,7 +21,7 @@ namespace Facturas
             InitializeComponent();
             this.AdmA = AdmA;
             cmbArticulos.SelectedIndex = 0;
-            Art = AdmA.ObtenArt();
+            //Art = AdmA.ObtenArt();
         }
 
         private void frmModificaExistenciaArticulo_Load(object sender, EventArgs e)

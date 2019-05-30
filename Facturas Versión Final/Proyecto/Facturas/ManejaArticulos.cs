@@ -17,7 +17,6 @@ namespace Facturas
         public ManejaArticulos()
         {
             Array = new Articulo[50];
-            Count = 0;
         }
 
         public int CantidadArticulos()

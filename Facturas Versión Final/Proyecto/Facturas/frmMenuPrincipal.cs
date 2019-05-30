@@ -120,11 +120,12 @@ namespace Facturas
 
         private void agregarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (mF.pCount == 0)
+            /*if (mF.pCount == 0)
             {
                 MessageBox.Show("NO HAY FACTURAS REGISTRADAS", "SIN FACTURAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            */
             if (proveedores.Count() == 0)
             {
                 MessageBox.Show("NO HAY PROVEEDORES REGISTRADOS", "SIN PROVEEDORES", MessageBoxButtons.OK, MessageBoxIcon.Error);

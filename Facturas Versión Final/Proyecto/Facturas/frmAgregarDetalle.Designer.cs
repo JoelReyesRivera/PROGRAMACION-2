@@ -64,6 +64,7 @@
             this.lblExistencia = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.cmbArticulo = new System.Windows.Forms.ComboBox();
+            this.btnVerDetalles = new System.Windows.Forms.Button();
             this.grpDatosFactura.SuspendLayout();
             this.grpInformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -109,7 +110,7 @@
             this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(395, 479);
+            this.btnAgregar.Location = new System.Drawing.Point(395, 509);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(120, 42);
             this.btnAgregar.TabIndex = 13;
@@ -142,7 +143,7 @@
             this.grpDatosFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpDatosFactura.Location = new System.Drawing.Point(25, 24);
             this.grpDatosFactura.Name = "grpDatosFactura";
-            this.grpDatosFactura.Size = new System.Drawing.Size(321, 362);
+            this.grpDatosFactura.Size = new System.Drawing.Size(321, 392);
             this.grpDatosFactura.TabIndex = 15;
             this.grpDatosFactura.TabStop = false;
             this.grpDatosFactura.Text = "Datos de la factura";
@@ -150,6 +151,7 @@
             // grpInformacion
             // 
             this.grpInformacion.BackColor = System.Drawing.Color.MistyRose;
+            this.grpInformacion.Controls.Add(this.btnVerDetalles);
             this.grpInformacion.Controls.Add(this.lblNumDetalles);
             this.grpInformacion.Controls.Add(this.lblCantDetalles);
             this.grpInformacion.Controls.Add(this.txtCantDetalles);
@@ -165,7 +167,7 @@
             this.grpInformacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpInformacion.Location = new System.Drawing.Point(19, 96);
             this.grpInformacion.Name = "grpInformacion";
-            this.grpInformacion.Size = new System.Drawing.Size(283, 248);
+            this.grpInformacion.Size = new System.Drawing.Size(283, 274);
             this.grpInformacion.TabIndex = 19;
             this.grpInformacion.TabStop = false;
             this.grpInformacion.Text = "Información de la factura";
@@ -292,7 +294,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(452, 338);
+            this.pictureBox2.Location = new System.Drawing.Point(452, 368);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(133, 69);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -327,7 +329,7 @@
             // 
             this.brnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.brnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brnSalir.Location = new System.Drawing.Point(545, 479);
+            this.brnSalir.Location = new System.Drawing.Point(545, 509);
             this.brnSalir.Name = "brnSalir";
             this.brnSalir.Size = new System.Drawing.Size(120, 42);
             this.brnSalir.TabIndex = 14;
@@ -344,7 +346,7 @@
             this.grpDatosArticulo.Controls.Add(this.lblArticulo);
             this.grpDatosArticulo.Controls.Add(this.lblCantidad);
             this.grpDatosArticulo.Controls.Add(this.numUpCantidad);
-            this.grpDatosArticulo.Location = new System.Drawing.Point(25, 392);
+            this.grpDatosArticulo.Location = new System.Drawing.Point(25, 422);
             this.grpDatosArticulo.Name = "grpDatosArticulo";
             this.grpDatosArticulo.Size = new System.Drawing.Size(321, 162);
             this.grpDatosArticulo.TabIndex = 18;
@@ -431,12 +433,22 @@
             this.cmbArticulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbArticulo_KeyPress);
             this.cmbArticulo.Validated += new System.EventHandler(this.cmbArticulo_Validated);
             // 
+            // btnVerDetalles
+            // 
+            this.btnVerDetalles.Location = new System.Drawing.Point(35, 234);
+            this.btnVerDetalles.Name = "btnVerDetalles";
+            this.btnVerDetalles.Size = new System.Drawing.Size(89, 23);
+            this.btnVerDetalles.TabIndex = 14;
+            this.btnVerDetalles.Text = "Ver Detalles";
+            this.btnVerDetalles.UseVisualStyleBackColor = true;
+            this.btnVerDetalles.Click += new System.EventHandler(this.btnVerDetalles_Click);
+            // 
             // frmAgregarDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(690, 562);
+            this.ClientSize = new System.Drawing.Size(690, 595);
             this.ControlBox = false;
             this.Controls.Add(this.grpDatosArticulo);
             this.Controls.Add(this.brnSalir);
@@ -498,5 +510,6 @@
         private System.Windows.Forms.GroupBox grpArticulo;
         private System.Windows.Forms.TextBox txtClaveArt;
         private System.Windows.Forms.Label lblClave;
+        private System.Windows.Forms.Button btnVerDetalles;
     }
 }

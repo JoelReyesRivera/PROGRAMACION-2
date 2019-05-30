@@ -29,7 +29,7 @@ namespace Facturas
 
         private void cmbClaveFactura_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbClaveFactura.SelectedIndex < 0)
+           /* if (cmbClaveFactura.SelectedIndex < 0)
                 return;
             dvgBuscaDetalles.Rows.Clear();
             int ClaveFactura = Convert.ToInt32(cmbClaveFactura.SelectedItem);
@@ -47,6 +47,7 @@ namespace Facturas
                 }
             }
             lblImporte.Text = ImporteTotal + "";
+            */
         }
         private void cmbClaveFactura_Validated(object sender, EventArgs e)
         {

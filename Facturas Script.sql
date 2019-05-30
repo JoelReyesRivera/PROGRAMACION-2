@@ -139,3 +139,7 @@ SELECT * FROM DetalleFactura
 select * from DetalleFactura where Factura = 1 and Articulo = 1
 SELECT COUNT (Factura) FROM DetalleFactura WHERE Factura=2
 SELECT COUNT (Clave) FROM Articulo
+SELECT CLAVE FROM FACTURA ORDER BY CLAVE ASC
+SELECT Descripcion FROM ARTICULO ORDER BY Descripcion ASC
+SELECT clave,Provedor,format(Fecha	,'dd/MM/yyyy'),monto FROM FACTURA where clave =1
+select a.Clave,a.Descripcion,d.Precio,d.Cantidad from DetalleFactura d inner join Articulo a on a.Clave=d.Articulo where d.Factura=1
