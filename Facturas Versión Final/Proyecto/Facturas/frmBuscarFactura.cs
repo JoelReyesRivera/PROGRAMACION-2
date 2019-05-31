@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibreriaBD;
+
 
 namespace Facturas
 {
@@ -29,9 +31,40 @@ namespace Facturas
 
         private void frmBuscarFactura_Load(object sender, EventArgs e)
         {
-            KeyValuePair<int, Factura>[] Facturas = mF.RetornaFacturas();
-            for (int i = 0; i < Facturas.Length; i++)
-                cmbClaveFactura.Items.Add(Facturas[i].Key);
+            string strConexion = Rutinas.GetConnectionString();
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+
+            if (Con == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
+            }
+
+            SqlDataReader Lector = null;
+
+            string strComando = "SELECT CLAVE FROM FACTURA ORDER BY CLAVE ASC";
+
+            Lector = UsoBD.Consulta(strComando, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                    cmbClaveFactura.Items.Add(Lector.GetValue(0).ToString());
+                Con.Close();
+                return;
+            }
         }
         
         private void lblNumDetalles_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -79,16 +112,47 @@ namespace Facturas
         {
             if (cmbClaveFactura.SelectedIndex < 0)
                 return;
-            int ClaveFactura = Convert.ToInt32(cmbClaveFactura.SelectedItem);
-            Factura F = mF.RetornaFactura(ClaveFactura);
-            Proveedor P = proveedores.RetornaProveedorClave(F.pClaveProv);
-            int NumDetalles = mD.DetallesPorFactura(ClaveFactura);
-            lblFact.Text = ClaveFactura+"";
-            txtClaveProveedor.Text = F.pClaveProv + "";
-            txtProveedor.Text = P.pNombre;
-            txtImporte.Text = F.pImporte + "";
-            txtFecha.Text = Rutinas.ConvierteFecha(F.pDia, F.pMes, F.pAño);
-            lblNumDetalles.Text = NumDetalles + "";
+            string claveFactura = cmbClaveFactura.SelectedItem.ToString();
+            string strConexion = Rutinas.GetConnectionString();
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+
+            if (Con == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
+            }
+
+            SqlDataReader Lector = null;
+
+            string strComando = "select p.clave,p.Nombre,f.monto,format(f.fecha,'dd/MM/yyyy') from Factura f inner join Proveedor p on f.provedor=p.Clave where f.clave =" + claveFactura;
+
+            Lector = UsoBD.Consulta(strComando, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                {
+                    txtClaveProveedor.Text = Lector.GetValue(0).ToString();
+                    txtProveedor.Text = Lector.GetValue(1).ToString();
+                    txtImporte.Text = Lector.GetValue(2).ToString();
+                    txtFecha.Text = Lector.GetValue(3).ToString();
+                }
+            }
+            Con.Close();
+            int factura = int.Parse(claveFactura);
+            txtCantDetalles.Text = String.Format(""+mD.DetallesPorFactura(factura));
         }
 
         private void cmbClaveFactura_Validated(object sender, EventArgs e)

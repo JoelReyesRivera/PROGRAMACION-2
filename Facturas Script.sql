@@ -149,3 +149,9 @@ select a.Clave,a.Descripcion,d.Precio,d.Cantidad from DetalleFactura d inner joi
 
 SELECT * FROM DetalleFactura
 SELECT Descripcion FROM Articulo ORDER BY Descripcion ASC
+
+select d.Factura,a.clave,a.descripcion,d.Precio,d.Cantidad,(d.Precio*d.Cantidad) from DetalleFactura d inner join Articulo a on d.Articulo=a.clave 
+
+select f.clave,p.clave,p.Nombre,f.monto,format(f.fecha,'dd/MM/yyyy') from Factura f inner join Proveedor p on f.provedor=p.Clave where p.Nombre ='JOEL'
+SELECT F.CLAVE FROM FACTURA  F INNER JOIN Proveedor P ON P.Clave=f.provedor where P.Nombre='JOEL'
+select d.Factura,d.Articulo,a.descripcion,a.marca,d.Cantidad,d.Precio,(d.Cantidad*d.Precio) from DetalleFactura d inner join Articulo a on a.clave = d.Articulo where d.Factura = 1

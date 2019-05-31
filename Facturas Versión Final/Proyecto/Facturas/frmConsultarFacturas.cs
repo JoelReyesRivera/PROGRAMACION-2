@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibreriaBD;
+
 
 namespace Facturas
 {
@@ -33,47 +35,134 @@ namespace Facturas
         {
             if (cmbProveedores.SelectedIndex < 0)
                 return;
-            String textoProveedor = cmbProveedores.SelectedItem.ToString();
-            cargarCmbFacturas(proveedores.GetClave(textoProveedor));
-            cargarDataGridViewFacturas(proveedores.GetClave(textoProveedor));
+            cmbFacturas.Items.Clear();
             dtgvDetalles.Rows.Clear();
+            dtgvFacturas.Rows.Clear();
+            cmbFacturas.Text = "";
+            cargarDataGridViewFacturas();
+            cargarCmbFacturas();
         }
 
-        public void cargarCmbFacturas(int proveedor)
+        public void cargarCmbFacturas()
         {
             cmbFacturas.Items.Clear();
-            KeyValuePair<int,Factura> [] lista = facturas.RetornaFacturas();
-            for (int i = 0; i < lista.Length; i++)
+            string nombre = cmbProveedores.SelectedItem.ToString();
+            string strConexion = Rutinas.GetConnectionString();
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+
+            if (Con == null)
             {
-                if (lista[i].Value.pClaveProv==proveedor)
-                {
-                    cmbFacturas.Items.Add(lista[i].Key);
-                }
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
+            }
+
+            SqlDataReader Lector = null;
+
+            string strComando = "SELECT F.CLAVE FROM FACTURA  F INNER JOIN Proveedor P ON P.Clave=f.provedor where P.Nombre='"+nombre+"'";
+
+            Lector = UsoBD.Consulta(strComando, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                    cmbFacturas.Items.Add(Lector.GetValue(0).ToString());
+                Con.Close();
+                return;
             }
             cmbFacturas.SelectedIndex = -1;
         }
 
-        public void cargarDataGridViewFacturas(int proveedor)
+        public void cargarDataGridViewFacturas()
         {
             dtgvFacturas.Rows.Clear();
-            KeyValuePair<int, Factura>[] lista = facturas.RetornaFacturas();
-            Proveedor proveedor1 = proveedores.RetornaProveedorClave(proveedor);
-            for (int i = 0; i < lista.Length; i++)
+            string nombre = cmbProveedores.SelectedItem.ToString();
+            string strConexion = Rutinas.GetConnectionString();
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+
+            if (Con == null)
             {
-                if (lista[i].Value.pClaveProv == proveedor)
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
+            }
+
+            SqlDataReader Lector = null;
+
+            string strComando = "select f.clave,p.clave,p.Nombre,f.monto,format(f.fecha,'dd/MM/yyyy') from Factura f inner join Proveedor p on f.provedor=p.Clave where p.Nombre ='" + nombre + "'";
+
+            Lector = UsoBD.Consulta(strComando, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return;
+            }
+            int clave = 0;
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
                 {
-                    dtgvFacturas.Rows.Add(lista[i].Key,lista[i].Value.pClaveProv, proveedor1.pNombre,lista[i].Value.pImporte, lista[i].Value.pDia+"/"+ lista[i].Value.pMes +"/"+ lista[i].Value.pAño);
+                    clave = int.Parse(Lector.GetValue(1).ToString());
+                    dtgvFacturas.Rows.Add(Lector.GetValue(0).ToString(), Lector.GetValue(1).ToString(), Lector.GetValue(2).ToString(), Lector.GetValue(3).ToString(), Lector.GetValue(4).ToString());
                 }
             }
+            Con.Close();
         }
         public void cargarCmbProveedores()
         {
-            cmbFacturas.Items.Clear();
-            Proveedor [] array =proveedores.GetProveedores();
-            for (int i = 0; i < array.Length; i++)
+            string strConexion = Rutinas.GetConnectionString();
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+
+            if (Con == null)
             {
-                cmbProveedores.Items.Add(array[i].pNombre);
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
             }
+
+            SqlDataReader Lector = null;
+
+            string strComando = "SELECT nombre FROM proveedor ORDER BY nombre ASC";
+
+            Lector = UsoBD.Consulta(strComando, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                    cmbProveedores.Items.Add(Lector.GetValue(0).ToString());
+                Con.Close();
+                return;
+            }
+            cmbProveedores.SelectedIndex = -1;
         }
 
         private void cmbFacturas_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,23 +181,48 @@ namespace Facturas
                 MessageBox.Show("FACTURA INVÁLIDA", "FACTURAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            cargarDataGridViewDetalles(factura);
+            cargarDataGridViewDetalles();
         }
 
-        public void cargarDataGridViewDetalles(int factura)
+        public void cargarDataGridViewDetalles()
         {
-           /* dtgvDetalles.Rows.Clear();
-            List<DetalleFactura> lista = detalles.RetornaDetalles();
-            Articulo articulo;
-            for (int i = 0; i < lista.Count; i++)
+            dtgvDetalles.Rows.Clear();
+            string factura = cmbFacturas.SelectedItem.ToString();
+            string strConexion = Rutinas.GetConnectionString();
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+
+            if (Con == null)
             {
-                if (lista[i].pClaveFact == factura)
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
+            }
+
+            SqlDataReader Lector = null;
+
+            string strComando = "select d.Factura,d.Articulo,a.descripcion,a.marca,d.Cantidad,d.Precio,(d.Cantidad*d.Precio)  from DetalleFactura d inner join Articulo a on a.clave = d.Articulo where d.Factura = " + factura;
+
+            Lector = UsoBD.Consulta(strComando, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
                 {
-                    articulo = articulos.RetornaArticulo(lista[i].pClaveArt);
-                    dtgvDetalles.Rows.Add(factura, lista[i].pClaveArt,articulo.pDescripcion,articulo.pMarca, lista[i].pCant,lista[i].pPrecio);
+                    dtgvDetalles.Rows.Add(Lector.GetValue(0).ToString(), Lector.GetValue(1).ToString(), Lector.GetValue(2).ToString(), Lector.GetValue(3).ToString(), Lector.GetValue(4).ToString(), Lector.GetValue(5).ToString(), Lector.GetValue(6).ToString());
                 }
             }
-            */
+            Con.Close();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

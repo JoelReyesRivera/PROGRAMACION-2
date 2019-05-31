@@ -39,12 +39,6 @@
             this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtgvDetalles = new System.Windows.Forms.DataGridView();
-            this.ClaveFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClaveArticulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFacturas = new System.Windows.Forms.Label();
             this.lblDetalles = new System.Windows.Forms.Label();
             this.grpInfomacion = new System.Windows.Forms.GroupBox();
@@ -55,6 +49,13 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.ClaveFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClaveArticulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImporteDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvFacturas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDetalles)).BeginInit();
             this.grpInfomacion.SuspendLayout();
@@ -103,7 +104,7 @@
             this.dtgvFacturas.Location = new System.Drawing.Point(13, 60);
             this.dtgvFacturas.Name = "dtgvFacturas";
             this.dtgvFacturas.ReadOnly = true;
-            this.dtgvFacturas.Size = new System.Drawing.Size(791, 181);
+            this.dtgvFacturas.Size = new System.Drawing.Size(794, 181);
             this.dtgvFacturas.TabIndex = 2;
             // 
             // Factura
@@ -152,53 +153,13 @@
             this.Articulo,
             this.Modelo,
             this.Cantidad,
-            this.PrecioUnitario});
+            this.PrecioUnitario,
+            this.ImporteDetalle});
             this.dtgvDetalles.Location = new System.Drawing.Point(6, 337);
             this.dtgvDetalles.Name = "dtgvDetalles";
             this.dtgvDetalles.ReadOnly = true;
-            this.dtgvDetalles.Size = new System.Drawing.Size(825, 177);
+            this.dtgvDetalles.Size = new System.Drawing.Size(813, 177);
             this.dtgvDetalles.TabIndex = 4;
-            // 
-            // ClaveFactura
-            // 
-            this.ClaveFactura.HeaderText = "Factura";
-            this.ClaveFactura.Name = "ClaveFactura";
-            this.ClaveFactura.ReadOnly = true;
-            this.ClaveFactura.Width = 150;
-            // 
-            // ClaveArticulo
-            // 
-            this.ClaveArticulo.HeaderText = "Clave Articulo";
-            this.ClaveArticulo.Name = "ClaveArticulo";
-            this.ClaveArticulo.ReadOnly = true;
-            this.ClaveArticulo.Width = 150;
-            // 
-            // Articulo
-            // 
-            this.Articulo.HeaderText = "ArticuloDescripción";
-            this.Articulo.Name = "Articulo";
-            this.Articulo.ReadOnly = true;
-            this.Articulo.Width = 150;
-            // 
-            // Modelo
-            // 
-            this.Modelo.HeaderText = "ArticuloModelo";
-            this.Modelo.Name = "Modelo";
-            this.Modelo.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            this.Cantidad.Width = 150;
-            // 
-            // PrecioUnitario
-            // 
-            this.PrecioUnitario.HeaderText = "Precio Unitario";
-            this.PrecioUnitario.Name = "PrecioUnitario";
-            this.PrecioUnitario.ReadOnly = true;
-            this.PrecioUnitario.Width = 150;
             // 
             // lblFacturas
             // 
@@ -231,7 +192,7 @@
             this.grpInfomacion.Controls.Add(this.lblFacturas);
             this.grpInfomacion.Location = new System.Drawing.Point(19, 43);
             this.grpInfomacion.Name = "grpInfomacion";
-            this.grpInfomacion.Size = new System.Drawing.Size(850, 520);
+            this.grpInfomacion.Size = new System.Drawing.Size(838, 520);
             this.grpInfomacion.TabIndex = 0;
             this.grpInfomacion.TabStop = false;
             this.grpInfomacion.Text = "Datos";
@@ -303,12 +264,58 @@
             this.btnLimpiar.UseVisualStyleBackColor = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // ClaveFactura
+            // 
+            this.ClaveFactura.HeaderText = "Factura";
+            this.ClaveFactura.Name = "ClaveFactura";
+            this.ClaveFactura.ReadOnly = true;
+            // 
+            // ClaveArticulo
+            // 
+            this.ClaveArticulo.HeaderText = "Clave Articulo";
+            this.ClaveArticulo.Name = "ClaveArticulo";
+            this.ClaveArticulo.ReadOnly = true;
+            // 
+            // Articulo
+            // 
+            this.Articulo.HeaderText = "ArticuloDescripción";
+            this.Articulo.Name = "Articulo";
+            this.Articulo.ReadOnly = true;
+            this.Articulo.Width = 200;
+            // 
+            // Modelo
+            // 
+            this.Modelo.HeaderText = "ArticuloModelo";
+            this.Modelo.Name = "Modelo";
+            this.Modelo.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            this.Cantidad.Width = 75;
+            // 
+            // PrecioUnitario
+            // 
+            this.PrecioUnitario.HeaderText = "Precio Unitario";
+            this.PrecioUnitario.Name = "PrecioUnitario";
+            this.PrecioUnitario.ReadOnly = true;
+            this.PrecioUnitario.Width = 75;
+            // 
+            // ImporteDetalle
+            // 
+            this.ImporteDetalle.HeaderText = "Importe";
+            this.ImporteDetalle.Name = "ImporteDetalle";
+            this.ImporteDetalle.ReadOnly = true;
+            this.ImporteDetalle.Width = 120;
+            // 
             // frmConsultarFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(875, 615);
+            this.ClientSize = new System.Drawing.Size(883, 615);
             this.ControlBox = false;
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnSalir);
@@ -341,12 +348,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ComboBox cmbFacturas;
         private System.Windows.Forms.Label lblSeleccionarFactura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClaveFactura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClaveArticulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Articulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioUnitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Factura;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClaveProveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Provedor;
@@ -356,5 +357,12 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.ErrorProvider errorP;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClaveFactura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClaveArticulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Articulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioUnitario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImporteDetalle;
     }
 }

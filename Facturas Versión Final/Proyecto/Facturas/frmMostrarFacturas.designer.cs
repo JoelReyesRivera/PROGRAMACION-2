@@ -144,7 +144,6 @@
             this.Controls.Add(this.lblFacturas);
             this.Controls.Add(this.dgvFacturas);
             this.Name = "frmMostrarFacturas";
-            this.Text = "Mostrando Facturas";
             this.Load += new System.EventHandler(this.frmMostrarFacturas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

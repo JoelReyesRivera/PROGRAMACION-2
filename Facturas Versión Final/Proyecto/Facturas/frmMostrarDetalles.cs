@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibreriaBD;
 
 namespace Facturas
 {
@@ -28,16 +29,42 @@ namespace Facturas
 
         private void frmMostrarDetalles_Load(object sender, EventArgs e)
         {
-            /*List<DetalleFactura> D = mD.RetornaDetalles();
-            Articulo A;
-            float Importe = 0;
-            for (int i = 0; i < D.Count; i++)
+            dgvDetalles.Rows.Clear();
+            string strConexion = Rutinas.GetConnectionString();
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+
+            if (Con == null)
             {
-                A = AdmA.RetornaArticulo(D.ElementAt(i).pClaveArt);
-                Importe = D.ElementAt(i).pCant * A.pPrecio;
-                dgvDetalles.Rows.Add(D.ElementAt(i).pClaveFact,D.ElementAt(i).pClaveArt,A.pDescripcion,D.ElementAt(i).pPrecio,D.ElementAt(i).pCant,Importe);
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
             }
-                */
+
+            SqlDataReader Lector = null;
+
+            string strComando = "select d.Factura,a.clave,a.descripcion,d.Precio,d.Cantidad,(d.Precio*d.Cantidad) from DetalleFactura d inner join Articulo a on d.Articulo=a.clave";
+
+            Lector = UsoBD.Consulta(strComando, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                {
+                    dgvDetalles.Rows.Add(Lector.GetValue(0).ToString(), Lector.GetValue(1).ToString(), Lector.GetValue(2).ToString(), Lector.GetValue(3).ToString(), Lector.GetValue(4).ToString(), Lector.GetValue(5).ToString());
+                }
+            }
+            Con.Close();
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)

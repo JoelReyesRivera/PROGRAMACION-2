@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibreriaBD;
 
 namespace Facturas
 {
@@ -29,25 +30,44 @@ namespace Facturas
 
         private void cmbClaveFactura_SelectedIndexChanged(object sender, EventArgs e)
         {
-           /* if (cmbClaveFactura.SelectedIndex < 0)
-                return;
             dvgBuscaDetalles.Rows.Clear();
-            int ClaveFactura = Convert.ToInt32(cmbClaveFactura.SelectedItem);
-            DetalleFactura[] D = mD.RetornaDetallesFactura(ClaveFactura);
-            Articulo A;
-            float ImporteDetalle = 0, ImporteTotal = 0;
-            for (int i = 0; i < D.Length; i++)
+            string claveFactura = cmbClaveFactura.SelectedItem.ToString();
+            string strConexion = Rutinas.GetConnectionString();
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
+
+            if (Con == null)
             {
-                if (D[i] != null)
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
+            }
+
+            SqlDataReader Lector = null;
+
+            string strComando = "select a.clave,a.descripcion,d.Precio,d.Cantidad,(d.Precio*d.Cantidad),f.monto from DetalleFactura d inner join Articulo a on d.Articulo=a.clave inner join Factura f on f.clave = d.Factura where d.Factura = " + claveFactura;
+
+            Lector = UsoBD.Consulta(strComando, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
                 {
-                    A = AdmA.RetornaArticulo(D[i].pClaveArt);
-                    ImporteDetalle = D[i].pCant * A.pPrecio;
-                    ImporteTotal += ImporteDetalle;
-                    dvgBuscaDetalles.Rows.Add(D[i].pClaveArt, A.pDescripcion, D[i].pPrecio, D[i].pCant, ImporteDetalle);
+                    dvgBuscaDetalles.Rows.Add(Lector.GetValue(0).ToString(), Lector.GetValue(1).ToString(), Lector.GetValue(2).ToString(), Lector.GetValue(3).ToString(), Lector.GetValue(4).ToString());
+                    lblImporteTexto.Text = "Importe total para la factura: $"+Lector.GetValue(5).ToString();
                 }
             }
-            lblImporte.Text = ImporteTotal + "";
-            */
+            Con.Close();
         }
         private void cmbClaveFactura_Validated(object sender, EventArgs e)
         {
@@ -91,10 +111,40 @@ namespace Facturas
         }
         private void frmBuscarDetalle_Load(object sender, EventArgs e)
         {
-            KeyValuePair<int, Factura>[] Facturas = mF.RetornaFacturas();
-            for (int i = 0; i < Facturas.Length; i++)
-                cmbClaveFactura.Items.Add(Facturas[i].Key);
+            string strConexion = Rutinas.GetConnectionString();
+            SqlConnection Con = UsoBD.ConectaBD(strConexion);
 
+            if (Con == null)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+                return;
+            }
+
+            SqlDataReader Lector = null;
+
+            string strComando = "SELECT CLAVE FROM FACTURA ORDER BY CLAVE ASC";
+
+            Lector = UsoBD.Consulta(strComando, Con);
+
+            if (Lector == null)
+            {
+                MessageBox.Show("ERROR AL HACER LA CONSULTA");
+                foreach (SqlError E in UsoBD.ESalida.Errors)
+                    MessageBox.Show(E.Message);
+
+                Con.Close();
+                return;
+            }
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                cmbClaveFactura.Items.Add(Lector.GetValue(0).ToString());
+                Con.Close();
+                return;
+            }
         }
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
