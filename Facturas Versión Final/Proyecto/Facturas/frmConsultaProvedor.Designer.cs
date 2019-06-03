@@ -70,7 +70,7 @@
             this.txtRFC.Name = "txtRFC";
             this.txtRFC.ReadOnly = true;
             this.txtRFC.Size = new System.Drawing.Size(144, 21);
-            this.txtRFC.TabIndex = 2;
+            this.txtRFC.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtRFC, "RFC del Proveedor");
             // 
             // lblRFC
@@ -101,7 +101,7 @@
             this.txtDomicilio.Name = "txtDomicilio";
             this.txtDomicilio.ReadOnly = true;
             this.txtDomicilio.Size = new System.Drawing.Size(160, 21);
-            this.txtDomicilio.TabIndex = 4;
+            this.txtDomicilio.TabIndex = 0;
             // 
             // lblDomicilio
             // 
@@ -119,7 +119,7 @@
             this.txtSueldo.Name = "txtSueldo";
             this.txtSueldo.ReadOnly = true;
             this.txtSueldo.Size = new System.Drawing.Size(92, 21);
-            this.txtSueldo.TabIndex = 5;
+            this.txtSueldo.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtSueldo, "Saldo del proveedor");
             // 
             // lblSaldo
@@ -140,7 +140,7 @@
             this.txtClave.Name = "txtClave";
             this.txtClave.ReadOnly = true;
             this.txtClave.Size = new System.Drawing.Size(92, 21);
-            this.txtClave.TabIndex = 3;
+            this.txtClave.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtClave, "Clave del Proveedor");
             // 
             // cmbProveedores
@@ -175,7 +175,7 @@
             this.btnSalir.Location = new System.Drawing.Point(444, 305);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(108, 35);
-            this.btnSalir.TabIndex = 7;
+            this.btnSalir.TabIndex = 3;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -197,7 +197,7 @@
             this.grpDatos.Location = new System.Drawing.Point(12, 51);
             this.grpDatos.Name = "grpDatos";
             this.grpDatos.Size = new System.Drawing.Size(295, 274);
-            this.grpDatos.TabIndex = 15;
+            this.grpDatos.TabIndex = 0;
             this.grpDatos.TabStop = false;
             this.grpDatos.Text = "Datos proveedor";
             // 
@@ -221,7 +221,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(330, 305);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(108, 35);
-            this.btnLimpiar.TabIndex = 6;
+            this.btnLimpiar.TabIndex = 2;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
@@ -241,6 +241,7 @@
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.pbImagen);
             this.Name = "frmConsultaProvedor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Provedor";
             this.Load += new System.EventHandler(this.frmConsultaProvedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();

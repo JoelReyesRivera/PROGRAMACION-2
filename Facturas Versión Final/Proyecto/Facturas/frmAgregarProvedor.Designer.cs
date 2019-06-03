@@ -90,7 +90,7 @@
             this.txtClave.Location = new System.Drawing.Point(10, 49);
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(122, 22);
-            this.txtClave.TabIndex = 0;
+            this.txtClave.TabIndex = 1;
             this.toolTip.SetToolTip(this.txtClave, "Clave del Proveedor");
             this.txtClave.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClave_KeyPress);
             this.txtClave.Validated += new System.EventHandler(this.txtClave_Validated);
@@ -100,9 +100,10 @@
             this.txtRFC.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtRFC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRFC.Location = new System.Drawing.Point(10, 102);
+            this.txtRFC.MaxLength = 50;
             this.txtRFC.Name = "txtRFC";
             this.txtRFC.Size = new System.Drawing.Size(151, 22);
-            this.txtRFC.TabIndex = 1;
+            this.txtRFC.TabIndex = 2;
             this.toolTip.SetToolTip(this.txtRFC, "RFC del proveedor (4 letras 6 números)");
             // 
             // txtNombre
@@ -110,9 +111,10 @@
             this.txtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.Location = new System.Drawing.Point(10, 153);
+            this.txtNombre.MaxLength = 10;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(198, 22);
-            this.txtNombre.TabIndex = 2;
+            this.txtNombre.TabIndex = 3;
             this.toolTip.SetToolTip(this.txtNombre, "Nombre del proveedor");
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             this.txtNombre.Validated += new System.EventHandler(this.txtNombre_Validated);
@@ -133,9 +135,10 @@
             this.txtDomicilio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDomicilio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDomicilio.Location = new System.Drawing.Point(10, 211);
+            this.txtDomicilio.MaxLength = 50;
             this.txtDomicilio.Name = "txtDomicilio";
             this.txtDomicilio.Size = new System.Drawing.Size(213, 22);
-            this.txtDomicilio.TabIndex = 3;
+            this.txtDomicilio.TabIndex = 4;
             this.toolTip.SetToolTip(this.txtDomicilio, "Domicilio del Proveedor");
             // 
             // btnAgregar
@@ -147,7 +150,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(42, 274);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(102, 36);
-            this.btnAgregar.TabIndex = 4;
+            this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "Agregar";
             this.toolTip.SetToolTip(this.btnAgregar, "Agregar Proveedor");
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -161,7 +164,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(195, 274);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(102, 36);
-            this.btnLimpiar.TabIndex = 5;
+            this.btnLimpiar.TabIndex = 6;
             this.btnLimpiar.Text = "Limpiar";
             this.toolTip.SetToolTip(this.btnLimpiar, "Limpiar Ventana");
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -175,7 +178,7 @@
             this.btnSalir.Location = new System.Drawing.Point(350, 274);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(102, 36);
-            this.btnSalir.TabIndex = 6;
+            this.btnSalir.TabIndex = 7;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -228,6 +231,7 @@
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnAgregar);
             this.Name = "frmAgregarProvedor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Provedor";
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderProveedores)).EndInit();
             this.grpProveedor.ResumeLayout(false);

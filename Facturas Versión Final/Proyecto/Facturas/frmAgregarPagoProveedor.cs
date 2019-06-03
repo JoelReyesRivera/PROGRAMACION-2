@@ -41,6 +41,7 @@ namespace Facturas
                 string importeTexto = txtImporte.Text;
                 float importe,saldo=0;
                 int claveProveedor;
+                DateTime Fecha = DateTime.Now;
 
                 if (cmbProveedores.SelectedIndex == -1)
                 {
@@ -84,32 +85,52 @@ namespace Facturas
                         }
                         catch (Exception Ex)
                         {
-                            MessageBox.Show("ERROR CONVIRTIENDO ISBN", "ERROR FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("ERROR DE FORMATO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                     }
                 }
+                Conecta.Close();
                 if ((saldo - importe) < 0)
                 {
                     MessageBox.Show("EL IMPORTE A PAGAR DEBE SER IGUAL O MENOR QUE EL SALDO ACTUAL","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     return;
                 }
-                Lector.Close();
-                Query = "update Proveedor set Saldo-=@Importe where Clave ="+claveProveedor;
-                SqlCommand cmd = new SqlCommand(Query, Conecta);
-                cmd.Parameters.AddWithValue("@Importe", importe);
+
+                string strConexion = Rutinas.GetConnectionString();
+                SqlConnection Con = UsoBD.ConectaBD(strConexion);
+
+                if (Con == null)
+                {
+                    MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+
+                    foreach (SqlError E in UsoBD.ESalida.Errors)
+                        MessageBox.Show(E.Message);
+                    return;
+                }
+
+                string strComando = "INSERT INTO PagoProveedor(Proveedor,Fecha,Importe)";
+                strComando += "VALUES(@ClaveProv,@Fecha,@Monto)";
+
+                SqlCommand Insert = new SqlCommand(strComando, Con);
+
+                Insert.Parameters.AddWithValue("@ClaveProv", claveProveedor);
+                Insert.Parameters.AddWithValue("@Fecha", Fecha);
+                Insert.Parameters.AddWithValue("@Monto", importe);
+
                 try
                 {
-                    cmd.ExecuteNonQuery();
+                    Insert.ExecuteNonQuery();
                 }
                 catch (SqlException Ex)
                 {
                     foreach (SqlError item in Ex.Errors)
                         MessageBox.Show(item.Message);
-                    Conecta.Close();
+
+                    Con.Close();
                     return;
                 }
-                Conecta.Close();
+                Con.Close();
                 MessageBox.Show("PAGO REALIZADO CORRECTAMENTE","PAGO REALIZADO",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 Limpiar();
             }
@@ -128,6 +149,7 @@ namespace Facturas
             txtImporte.Text = "";
             txtImporteActual.Text = "";
             errorP.Clear();
+            errorProviderProveedores.Clear();
         }
         private void btnSalir_Click(object sender, EventArgs e)
         {
@@ -238,7 +260,7 @@ namespace Facturas
                 Conecta.Close();
                 return;
             }
-            MessageBox.Show("CONECTADO A LA BASE DE DATOS");
+
             string Query = "select Nombre from Proveedor";
             SqlDataReader Lector = null;
             Lector = UsoBD.Consulta(Query, Conecta);

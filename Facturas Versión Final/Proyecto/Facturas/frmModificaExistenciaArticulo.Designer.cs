@@ -96,7 +96,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(20, 289);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(109, 37);
-            this.btnGuardar.TabIndex = 4;
+            this.btnGuardar.TabIndex = 3;
             this.btnGuardar.Text = "Guardar";
             this.toolTipMostrar.SetToolTip(this.btnGuardar, "Guardar datos");
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -108,7 +108,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(168, 289);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(109, 37);
-            this.btnLimpiar.TabIndex = 5;
+            this.btnLimpiar.TabIndex = 4;
             this.btnLimpiar.Text = "Limpiar";
             this.toolTipMostrar.SetToolTip(this.btnLimpiar, "Limpiar ventana");
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -120,7 +120,7 @@
             this.btnSalir.Location = new System.Drawing.Point(319, 289);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(109, 37);
-            this.btnSalir.TabIndex = 6;
+            this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "Salir";
             this.toolTipMostrar.SetToolTip(this.btnSalir, "Salir de la ventana");
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -175,7 +175,7 @@
             this.txtStock.Name = "txtStock";
             this.txtStock.ReadOnly = true;
             this.txtStock.Size = new System.Drawing.Size(80, 22);
-            this.txtStock.TabIndex = 3;
+            this.txtStock.TabIndex = 0;
             // 
             // label1
             // 
@@ -184,12 +184,13 @@
             this.label1.Location = new System.Drawing.Point(145, 112);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 15);
-            this.label1.TabIndex = 4;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Stock actual";
             // 
             // cmbArticulos
             // 
             this.cmbArticulos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbArticulos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbArticulos.FormattingEnabled = true;
             this.cmbArticulos.Items.AddRange(new object[] {
@@ -230,6 +231,7 @@
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnGuardar);
             this.Name = "frmModificaExistenciaArticulo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modifica la Existencia de un Articulo";
             this.Load += new System.EventHandler(this.frmModificaExistenciaArticulo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();

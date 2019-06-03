@@ -31,15 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultaArticulos));
             this.dgwArticulos = new System.Windows.Forms.DataGridView();
-            this.toolTipMostrar = new System.Windows.Forms.ToolTip(this.components);
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.pbArtiulos = new System.Windows.Forms.PictureBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolTipMostrar = new System.Windows.Forms.ToolTip(this.components);
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.pbArtiulos = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgwArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbArtiulos)).BeginInit();
             this.SuspendLayout();
@@ -61,6 +61,36 @@
             this.dgwArticulos.Size = new System.Drawing.Size(544, 166);
             this.dgwArticulos.TabIndex = 0;
             this.toolTipMostrar.SetToolTip(this.dgwArticulos, "Catalogo de Articulos");
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Clave del Articulo";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Descripción";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Marca";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Precio";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Cantidad en Exitencia";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // btnSalir
             // 
@@ -96,36 +126,6 @@
             this.pbArtiulos.TabIndex = 1;
             this.pbArtiulos.TabStop = false;
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Clave del Articulo";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Descripción";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Marca";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Precio";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Cantidad en Exitencia";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
             // frmConsultaArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -138,6 +138,7 @@
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.dgwArticulos);
             this.Name = "frmConsultaArticulos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta todos los  Articulos";
             this.Load += new System.EventHandler(this.frmConsultaArticulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwArticulos)).EndInit();

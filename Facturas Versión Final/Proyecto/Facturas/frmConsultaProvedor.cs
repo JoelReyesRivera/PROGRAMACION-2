@@ -33,7 +33,7 @@ namespace Facturas
                 Conecta.Close();
                 return;
             }
-            MessageBox.Show("CONECTADO A LA BASE DE DATOS");
+
             string Query = "select Nombre from Proveedor";
             SqlDataReader Lector = null;
             Lector = UsoBD.Consulta(Query, Conecta);

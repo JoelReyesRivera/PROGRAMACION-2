@@ -37,6 +37,7 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.grpDatosFactura = new System.Windows.Forms.GroupBox();
             this.grpInformacion = new System.Windows.Forms.GroupBox();
+            this.btnVerDetalles = new System.Windows.Forms.Button();
             this.lblNumDetalles = new System.Windows.Forms.LinkLabel();
             this.lblCantDetalles = new System.Windows.Forms.Label();
             this.txtCantDetalles = new System.Windows.Forms.TextBox();
@@ -64,7 +65,6 @@
             this.lblExistencia = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.cmbArticulo = new System.Windows.Forms.ComboBox();
-            this.btnVerDetalles = new System.Windows.Forms.Button();
             this.grpDatosFactura.SuspendLayout();
             this.grpInformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -82,7 +82,7 @@
             this.lblClaveFactura.Location = new System.Drawing.Point(20, 29);
             this.lblClaveFactura.Name = "lblClaveFactura";
             this.lblClaveFactura.Size = new System.Drawing.Size(91, 16);
-            this.lblClaveFactura.TabIndex = 2;
+            this.lblClaveFactura.TabIndex = 0;
             this.lblClaveFactura.Text = "Clave Factura";
             // 
             // lblArticulo
@@ -92,7 +92,7 @@
             this.lblArticulo.Location = new System.Drawing.Point(16, 28);
             this.lblArticulo.Name = "lblArticulo";
             this.lblArticulo.Size = new System.Drawing.Size(52, 16);
-            this.lblArticulo.TabIndex = 4;
+            this.lblArticulo.TabIndex = 0;
             this.lblArticulo.Text = "Artículo";
             // 
             // lblCantidad
@@ -102,7 +102,7 @@
             this.lblCantidad.Location = new System.Drawing.Point(16, 87);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(56, 15);
-            this.lblCantidad.TabIndex = 6;
+            this.lblCantidad.TabIndex = 0;
             this.lblCantidad.Text = "Cantidad";
             // 
             // btnAgregar
@@ -113,7 +113,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(395, 509);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(120, 42);
-            this.btnAgregar.TabIndex = 13;
+            this.btnAgregar.TabIndex = 6;
             this.btnAgregar.Text = "Agregar Detalle";
             this.toolTip1.SetToolTip(this.btnAgregar, "Agregar el detalle a la factura");
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -127,7 +127,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(201, 54);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(83, 26);
-            this.btnLimpiar.TabIndex = 12;
+            this.btnLimpiar.TabIndex = 2;
             this.btnLimpiar.Text = "Limpiar";
             this.toolTip1.SetToolTip(this.btnLimpiar, "Limpiar campos de texto y selección");
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -144,7 +144,7 @@
             this.grpDatosFactura.Location = new System.Drawing.Point(25, 24);
             this.grpDatosFactura.Name = "grpDatosFactura";
             this.grpDatosFactura.Size = new System.Drawing.Size(321, 392);
-            this.grpDatosFactura.TabIndex = 15;
+            this.grpDatosFactura.TabIndex = 0;
             this.grpDatosFactura.TabStop = false;
             this.grpDatosFactura.Text = "Datos de la factura";
             // 
@@ -168,9 +168,20 @@
             this.grpInformacion.Location = new System.Drawing.Point(19, 96);
             this.grpInformacion.Name = "grpInformacion";
             this.grpInformacion.Size = new System.Drawing.Size(283, 274);
-            this.grpInformacion.TabIndex = 19;
+            this.grpInformacion.TabIndex = 0;
             this.grpInformacion.TabStop = false;
             this.grpInformacion.Text = "Información de la factura";
+            // 
+            // btnVerDetalles
+            // 
+            this.btnVerDetalles.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnVerDetalles.Location = new System.Drawing.Point(35, 234);
+            this.btnVerDetalles.Name = "btnVerDetalles";
+            this.btnVerDetalles.Size = new System.Drawing.Size(89, 23);
+            this.btnVerDetalles.TabIndex = 3;
+            this.btnVerDetalles.Text = "Ver Detalles";
+            this.btnVerDetalles.UseVisualStyleBackColor = false;
+            this.btnVerDetalles.Click += new System.EventHandler(this.btnVerDetalles_Click);
             // 
             // lblNumDetalles
             // 
@@ -189,7 +200,7 @@
             this.lblCantDetalles.Location = new System.Drawing.Point(32, 203);
             this.lblCantDetalles.Name = "lblCantDetalles";
             this.lblCantDetalles.Size = new System.Drawing.Size(85, 15);
-            this.lblCantDetalles.TabIndex = 12;
+            this.lblCantDetalles.TabIndex = 0;
             this.lblCantDetalles.Text = "Num. Detalles";
             // 
             // txtCantDetalles
@@ -198,7 +209,7 @@
             this.txtCantDetalles.Name = "txtCantDetalles";
             this.txtCantDetalles.ReadOnly = true;
             this.txtCantDetalles.Size = new System.Drawing.Size(114, 21);
-            this.txtCantDetalles.TabIndex = 6;
+            this.txtCantDetalles.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtCantDetalles, "Cantidad de detalles de la factura (clic para visualizarlos)");
             // 
             // txtClaveProveedor
@@ -207,7 +218,7 @@
             this.txtClaveProveedor.Name = "txtClaveProveedor";
             this.txtClaveProveedor.ReadOnly = true;
             this.txtClaveProveedor.Size = new System.Drawing.Size(114, 21);
-            this.txtClaveProveedor.TabIndex = 2;
+            this.txtClaveProveedor.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtClaveProveedor, "Clave correspondiente al proveedor");
             // 
             // txtFecha
@@ -216,7 +227,7 @@
             this.txtFecha.Name = "txtFecha";
             this.txtFecha.ReadOnly = true;
             this.txtFecha.Size = new System.Drawing.Size(114, 21);
-            this.txtFecha.TabIndex = 5;
+            this.txtFecha.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtFecha, "Fecha de la factura");
             // 
             // lblClaveProveedor
@@ -226,7 +237,7 @@
             this.lblClaveProveedor.Location = new System.Drawing.Point(29, 35);
             this.lblClaveProveedor.Name = "lblClaveProveedor";
             this.lblClaveProveedor.Size = new System.Drawing.Size(95, 15);
-            this.lblClaveProveedor.TabIndex = 3;
+            this.lblClaveProveedor.TabIndex = 0;
             this.lblClaveProveedor.Text = "Clave proveedor";
             // 
             // txtImporte
@@ -235,7 +246,7 @@
             this.txtImporte.Name = "txtImporte";
             this.txtImporte.ReadOnly = true;
             this.txtImporte.Size = new System.Drawing.Size(114, 21);
-            this.txtImporte.TabIndex = 4;
+            this.txtImporte.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtImporte, "Importe de la factura $");
             // 
             // lblProveedor
@@ -245,7 +256,7 @@
             this.lblProveedor.Location = new System.Drawing.Point(29, 79);
             this.lblProveedor.Name = "lblProveedor";
             this.lblProveedor.Size = new System.Drawing.Size(63, 15);
-            this.lblProveedor.TabIndex = 5;
+            this.lblProveedor.TabIndex = 0;
             this.lblProveedor.Text = "Proveedor";
             // 
             // txtProveedor
@@ -254,7 +265,7 @@
             this.txtProveedor.Name = "txtProveedor";
             this.txtProveedor.ReadOnly = true;
             this.txtProveedor.Size = new System.Drawing.Size(114, 21);
-            this.txtProveedor.TabIndex = 3;
+            this.txtProveedor.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtProveedor, "Nombre del proveedor");
             // 
             // lblImporte
@@ -264,7 +275,7 @@
             this.lblImporte.Location = new System.Drawing.Point(32, 119);
             this.lblImporte.Name = "lblImporte";
             this.lblImporte.Size = new System.Drawing.Size(49, 15);
-            this.lblImporte.TabIndex = 6;
+            this.lblImporte.TabIndex = 0;
             this.lblImporte.Text = "Importe";
             // 
             // lblFecha
@@ -274,7 +285,7 @@
             this.lblFecha.Location = new System.Drawing.Point(32, 158);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(41, 15);
-            this.lblFecha.TabIndex = 7;
+            this.lblFecha.TabIndex = 0;
             this.lblFecha.Text = "Fecha";
             // 
             // cmbClaveFactura
@@ -316,8 +327,9 @@
             // 
             this.numUpCantidad.Location = new System.Drawing.Point(19, 105);
             this.numUpCantidad.Name = "numUpCantidad";
+            this.numUpCantidad.ReadOnly = true;
             this.numUpCantidad.Size = new System.Drawing.Size(71, 20);
-            this.numUpCantidad.TabIndex = 8;
+            this.numUpCantidad.TabIndex = 5;
             this.toolTip1.SetToolTip(this.numUpCantidad, "Seleccione una cantidad");
             this.numUpCantidad.Validated += new System.EventHandler(this.numUpCantidad_Validated);
             // 
@@ -332,7 +344,7 @@
             this.brnSalir.Location = new System.Drawing.Point(545, 509);
             this.brnSalir.Name = "brnSalir";
             this.brnSalir.Size = new System.Drawing.Size(120, 42);
-            this.brnSalir.TabIndex = 14;
+            this.brnSalir.TabIndex = 7;
             this.brnSalir.Text = "Salir";
             this.toolTip1.SetToolTip(this.brnSalir, "Cerrar ventana");
             this.brnSalir.UseVisualStyleBackColor = true;
@@ -349,7 +361,7 @@
             this.grpDatosArticulo.Location = new System.Drawing.Point(25, 422);
             this.grpDatosArticulo.Name = "grpDatosArticulo";
             this.grpDatosArticulo.Size = new System.Drawing.Size(321, 162);
-            this.grpDatosArticulo.TabIndex = 18;
+            this.grpDatosArticulo.TabIndex = 0;
             this.grpDatosArticulo.TabStop = false;
             this.grpDatosArticulo.Text = "Datos del detalle";
             // 
@@ -365,7 +377,7 @@
             this.grpArticulo.Location = new System.Drawing.Point(178, 9);
             this.grpArticulo.Name = "grpArticulo";
             this.grpArticulo.Size = new System.Drawing.Size(137, 148);
-            this.grpArticulo.TabIndex = 19;
+            this.grpArticulo.TabIndex = 0;
             this.grpArticulo.TabStop = false;
             this.grpArticulo.Text = "Info artículo";
             // 
@@ -375,7 +387,7 @@
             this.txtClaveArt.Name = "txtClaveArt";
             this.txtClaveArt.ReadOnly = true;
             this.txtClaveArt.Size = new System.Drawing.Size(100, 20);
-            this.txtClaveArt.TabIndex = 9;
+            this.txtClaveArt.TabIndex = 0;
             // 
             // txtExistencia
             // 
@@ -383,7 +395,7 @@
             this.txtExistencia.Name = "txtExistencia";
             this.txtExistencia.ReadOnly = true;
             this.txtExistencia.Size = new System.Drawing.Size(100, 20);
-            this.txtExistencia.TabIndex = 11;
+            this.txtExistencia.TabIndex = 0;
             // 
             // lblClave
             // 
@@ -391,7 +403,7 @@
             this.lblClave.Location = new System.Drawing.Point(19, 22);
             this.lblClave.Name = "lblClave";
             this.lblClave.Size = new System.Drawing.Size(34, 13);
-            this.lblClave.TabIndex = 21;
+            this.lblClave.TabIndex = 0;
             this.lblClave.Text = "Clave";
             // 
             // lblPrecio
@@ -400,7 +412,7 @@
             this.lblPrecio.Location = new System.Drawing.Point(19, 66);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(37, 13);
-            this.lblPrecio.TabIndex = 8;
+            this.lblPrecio.TabIndex = 0;
             this.lblPrecio.Text = "Precio";
             // 
             // lblExistencia
@@ -409,7 +421,7 @@
             this.lblExistencia.Location = new System.Drawing.Point(19, 105);
             this.lblExistencia.Name = "lblExistencia";
             this.lblExistencia.Size = new System.Drawing.Size(55, 13);
-            this.lblExistencia.TabIndex = 9;
+            this.lblExistencia.TabIndex = 0;
             this.lblExistencia.Text = "Existencia";
             // 
             // txtPrecio
@@ -418,7 +430,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.ReadOnly = true;
             this.txtPrecio.Size = new System.Drawing.Size(100, 20);
-            this.txtPrecio.TabIndex = 10;
+            this.txtPrecio.TabIndex = 0;
             // 
             // cmbArticulo
             // 
@@ -428,20 +440,10 @@
             this.cmbArticulo.Location = new System.Drawing.Point(19, 47);
             this.cmbArticulo.Name = "cmbArticulo";
             this.cmbArticulo.Size = new System.Drawing.Size(143, 21);
-            this.cmbArticulo.TabIndex = 7;
+            this.cmbArticulo.TabIndex = 4;
             this.cmbArticulo.SelectedIndexChanged += new System.EventHandler(this.cmbArticulo_SelectedIndexChanged);
             this.cmbArticulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbArticulo_KeyPress);
             this.cmbArticulo.Validated += new System.EventHandler(this.cmbArticulo_Validated);
-            // 
-            // btnVerDetalles
-            // 
-            this.btnVerDetalles.Location = new System.Drawing.Point(35, 234);
-            this.btnVerDetalles.Name = "btnVerDetalles";
-            this.btnVerDetalles.Size = new System.Drawing.Size(89, 23);
-            this.btnVerDetalles.TabIndex = 14;
-            this.btnVerDetalles.Text = "Ver Detalles";
-            this.btnVerDetalles.UseVisualStyleBackColor = true;
-            this.btnVerDetalles.Click += new System.EventHandler(this.btnVerDetalles_Click);
             // 
             // frmAgregarDetalle
             // 
@@ -457,6 +459,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnAgregar);
             this.Name = "frmAgregarDetalle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Detalle";
             this.Load += new System.EventHandler(this.frmAgregarDetalle_Load);
             this.grpDatosFactura.ResumeLayout(false);

@@ -227,7 +227,6 @@
             this.cmbArticulos.Size = new System.Drawing.Size(209, 21);
             this.cmbArticulos.TabIndex = 1;
             this.cmbArticulos.SelectedIndexChanged += new System.EventHandler(this.cmbArticulos_SelectedIndexChanged);
-
             // 
             // frmConsultaArticulo
             // 
@@ -244,6 +243,7 @@
             this.Controls.Add(this.gbInfoArticulo);
             this.Controls.Add(this.lblArticulos);
             this.Name = "frmConsultaArticulo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta Articulo";
             this.Load += new System.EventHandler(this.frmConsultaArticulo_Load);
             this.gbInfoArticulo.ResumeLayout(false);

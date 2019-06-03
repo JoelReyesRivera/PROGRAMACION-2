@@ -78,7 +78,7 @@
             this.dvgBuscaDetalles.Name = "dvgBuscaDetalles";
             this.dvgBuscaDetalles.ReadOnly = true;
             this.dvgBuscaDetalles.Size = new System.Drawing.Size(759, 179);
-            this.dvgBuscaDetalles.TabIndex = 2;
+            this.dvgBuscaDetalles.TabIndex = 0;
             // 
             // ClaveArticulo
             // 
@@ -123,7 +123,7 @@
             this.lblInformacion.Location = new System.Drawing.Point(25, 138);
             this.lblInformacion.Name = "lblInformacion";
             this.lblInformacion.Size = new System.Drawing.Size(156, 16);
-            this.lblInformacion.TabIndex = 3;
+            this.lblInformacion.TabIndex = 0;
             this.lblInformacion.Text = "Detalles de la factura";
             // 
             // errorP
@@ -137,7 +137,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(570, 369);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(97, 33);
-            this.btnLimpiar.TabIndex = 3;
+            this.btnLimpiar.TabIndex = 2;
             this.btnLimpiar.Text = "Limpiar";
             this.toolTip1.SetToolTip(this.btnLimpiar, "Limpiar campos de texto");
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -161,7 +161,7 @@
             this.lblImporteTexto.Location = new System.Drawing.Point(43, 377);
             this.lblImporteTexto.Name = "lblImporteTexto";
             this.lblImporteTexto.Size = new System.Drawing.Size(214, 16);
-            this.lblImporteTexto.TabIndex = 7;
+            this.lblImporteTexto.TabIndex = 0;
             this.lblImporteTexto.Text = "Importe total para la factura: $";
             // 
             // pictureBox1
@@ -193,7 +193,7 @@
             this.btnSalir.Location = new System.Drawing.Point(692, 369);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(95, 33);
-            this.btnSalir.TabIndex = 4;
+            this.btnSalir.TabIndex = 3;
             this.btnSalir.Text = "Salir";
             this.toolTip1.SetToolTip(this.btnSalir, "Cerrar ventana");
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -242,6 +242,7 @@
             this.Controls.Add(this.dvgBuscaDetalles);
             this.Controls.Add(this.label1);
             this.Name = "frmBuscarDetalle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscar Detalle de Factura";
             this.Load += new System.EventHandler(this.frmBuscarDetalle_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dvgBuscaDetalles)).EndInit();

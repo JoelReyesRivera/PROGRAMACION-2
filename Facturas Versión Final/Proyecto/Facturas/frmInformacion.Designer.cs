@@ -101,6 +101,7 @@
             this.Controls.Add(this.pbImagen1);
             this.Controls.Add(this.btnSalir);
             this.Name = "frmInformacion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Acerca de";
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen2)).EndInit();

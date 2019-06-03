@@ -208,5 +208,41 @@ namespace Facturas
             frmInformacion Inf = new frmInformacion();
             Inf.ShowDialog();
         }
+
+        private void artículosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReporteArticulos RA = new frmReporteArticulos();
+            RA.ShowDialog();
+        }
+
+        private void proveedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReporteProveedores RP = new frmReporteProveedores();
+            RP.ShowDialog();
+        }
+
+        private void facturasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReportFactura RF = new frmReportFactura();
+            RF.ShowDialog();
+        }
+
+        private void detallesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReporteDetalleFacturas RDF = new frmReporteDetalleFacturas();
+            RDF.ShowDialog();
+        }
+
+        private void eliminaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEliminaDetalleFactura EDF = new frmEliminaDetalleFactura();
+            EDF.ShowDialog();
+        }
+
+        private void pagosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReportePagoProveedor RPP = new frmReportePagoProveedor();
+            RPP.ShowDialog();
+        }
     }
 }

@@ -74,7 +74,7 @@
             this.lblClaveProveedor.Location = new System.Drawing.Point(32, 46);
             this.lblClaveProveedor.Name = "lblClaveProveedor";
             this.lblClaveProveedor.Size = new System.Drawing.Size(95, 15);
-            this.lblClaveProveedor.TabIndex = 3;
+            this.lblClaveProveedor.TabIndex = 0;
             this.lblClaveProveedor.Text = "Clave proveedor";
             // 
             // txtClaveProveedor
@@ -83,7 +83,7 @@
             this.txtClaveProveedor.Name = "txtClaveProveedor";
             this.txtClaveProveedor.ReadOnly = true;
             this.txtClaveProveedor.Size = new System.Drawing.Size(114, 21);
-            this.txtClaveProveedor.TabIndex = 2;
+            this.txtClaveProveedor.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtClaveProveedor, "Clave correspondiente al proveedor");
             // 
             // lblProveedor
@@ -93,7 +93,7 @@
             this.lblProveedor.Location = new System.Drawing.Point(32, 90);
             this.lblProveedor.Name = "lblProveedor";
             this.lblProveedor.Size = new System.Drawing.Size(63, 15);
-            this.lblProveedor.TabIndex = 5;
+            this.lblProveedor.TabIndex = 0;
             this.lblProveedor.Text = "Proveedor";
             // 
             // lblImporte
@@ -103,7 +103,7 @@
             this.lblImporte.Location = new System.Drawing.Point(35, 130);
             this.lblImporte.Name = "lblImporte";
             this.lblImporte.Size = new System.Drawing.Size(49, 15);
-            this.lblImporte.TabIndex = 6;
+            this.lblImporte.TabIndex = 0;
             this.lblImporte.Text = "Importe";
             // 
             // lblFecha
@@ -113,7 +113,7 @@
             this.lblFecha.Location = new System.Drawing.Point(35, 169);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(41, 15);
-            this.lblFecha.TabIndex = 7;
+            this.lblFecha.TabIndex = 0;
             this.lblFecha.Text = "Fecha";
             // 
             // txtProveedor
@@ -122,7 +122,7 @@
             this.txtProveedor.Name = "txtProveedor";
             this.txtProveedor.ReadOnly = true;
             this.txtProveedor.Size = new System.Drawing.Size(114, 21);
-            this.txtProveedor.TabIndex = 3;
+            this.txtProveedor.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtProveedor, "Nombre del proveedor");
             // 
             // txtImporte
@@ -131,7 +131,7 @@
             this.txtImporte.Name = "txtImporte";
             this.txtImporte.ReadOnly = true;
             this.txtImporte.Size = new System.Drawing.Size(114, 21);
-            this.txtImporte.TabIndex = 4;
+            this.txtImporte.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtImporte, "Importe de la factura $");
             // 
             // txtFecha
@@ -140,7 +140,7 @@
             this.txtFecha.Name = "txtFecha";
             this.txtFecha.ReadOnly = true;
             this.txtFecha.Size = new System.Drawing.Size(114, 21);
-            this.txtFecha.TabIndex = 5;
+            this.txtFecha.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtFecha, "Fecha de la factura");
             // 
             // grpInformacion
@@ -163,7 +163,7 @@
             this.grpInformacion.Location = new System.Drawing.Point(266, 48);
             this.grpInformacion.Name = "grpInformacion";
             this.grpInformacion.Size = new System.Drawing.Size(283, 248);
-            this.grpInformacion.TabIndex = 11;
+            this.grpInformacion.TabIndex = 0;
             this.grpInformacion.TabStop = false;
             this.grpInformacion.Text = "Información de la factura";
             // 
@@ -193,7 +193,7 @@
             this.lblCantDetalles.Location = new System.Drawing.Point(35, 214);
             this.lblCantDetalles.Name = "lblCantDetalles";
             this.lblCantDetalles.Size = new System.Drawing.Size(85, 15);
-            this.lblCantDetalles.TabIndex = 12;
+            this.lblCantDetalles.TabIndex = 0;
             this.lblCantDetalles.Text = "Num. Detalles";
             // 
             // txtCantDetalles
@@ -202,7 +202,7 @@
             this.txtCantDetalles.Name = "txtCantDetalles";
             this.txtCantDetalles.ReadOnly = true;
             this.txtCantDetalles.Size = new System.Drawing.Size(114, 21);
-            this.txtCantDetalles.TabIndex = 6;
+            this.txtCantDetalles.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtCantDetalles, "Cantidad de detalles de la factura (clic para visualizarlos)");
             // 
             // btnLimpiar
@@ -212,7 +212,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(301, 320);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(95, 41);
-            this.btnLimpiar.TabIndex = 7;
+            this.btnLimpiar.TabIndex = 2;
             this.btnLimpiar.Text = "Limpiar";
             this.toolTip1.SetToolTip(this.btnLimpiar, "Limpiar campos de texto");
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -241,7 +241,7 @@
             this.btnSalir.Location = new System.Drawing.Point(435, 320);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(95, 41);
-            this.btnSalir.TabIndex = 8;
+            this.btnSalir.TabIndex = 3;
             this.btnSalir.Text = "Salir";
             this.toolTip1.SetToolTip(this.btnSalir, "Cerrar ventana");
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -287,6 +287,7 @@
             this.Controls.Add(this.grpInformacion);
             this.Controls.Add(this.lblClaveFactura);
             this.Name = "frmBuscarFactura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscar factura";
             this.Load += new System.EventHandler(this.frmBuscarFactura_Load);
             this.grpInformacion.ResumeLayout(false);

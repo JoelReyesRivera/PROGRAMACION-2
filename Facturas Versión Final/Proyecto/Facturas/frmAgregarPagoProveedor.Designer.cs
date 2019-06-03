@@ -81,7 +81,7 @@
             this.btnRealizarPago.Location = new System.Drawing.Point(63, 289);
             this.btnRealizarPago.Name = "btnRealizarPago";
             this.btnRealizarPago.Size = new System.Drawing.Size(122, 35);
-            this.btnRealizarPago.TabIndex = 6;
+            this.btnRealizarPago.TabIndex = 3;
             this.btnRealizarPago.Text = "Realizar Pago";
             this.toolTip1.SetToolTip(this.btnRealizarPago, "Concretar pago");
             this.btnRealizarPago.UseVisualStyleBackColor = true;
@@ -103,7 +103,7 @@
             this.txtImporte.Location = new System.Drawing.Point(171, 154);
             this.txtImporte.Name = "txtImporte";
             this.txtImporte.Size = new System.Drawing.Size(104, 22);
-            this.txtImporte.TabIndex = 4;
+            this.txtImporte.TabIndex = 2;
             this.toolTip1.SetToolTip(this.txtImporte, "Importe que se pagará, Formato(0.00)");
             this.txtImporte.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImporte_KeyPress);
             this.txtImporte.Validated += new System.EventHandler(this.txtImporte_Validated);
@@ -116,7 +116,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(229, 289);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(122, 35);
-            this.btnLimpiar.TabIndex = 7;
+            this.btnLimpiar.TabIndex = 4;
             this.btnLimpiar.Text = "Limpiar";
             this.toolTip1.SetToolTip(this.btnLimpiar, "Limpiar Ventana");
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -130,7 +130,7 @@
             this.btnSalir.Location = new System.Drawing.Point(396, 289);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(122, 36);
-            this.btnSalir.TabIndex = 8;
+            this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "Salir";
             this.toolTip1.SetToolTip(this.btnSalir, "Salir de la ventana");
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -155,7 +155,7 @@
             this.grpProveedor.Location = new System.Drawing.Point(12, 12);
             this.grpProveedor.Name = "grpProveedor";
             this.grpProveedor.Size = new System.Drawing.Size(309, 233);
-            this.grpProveedor.TabIndex = 5;
+            this.grpProveedor.TabIndex = 0;
             this.grpProveedor.TabStop = false;
             this.grpProveedor.Text = "Pago proveedor";
             this.grpProveedor.Enter += new System.EventHandler(this.grpProveedor_Enter);
@@ -166,7 +166,7 @@
             this.txtImporteActual.Name = "txtImporteActual";
             this.txtImporteActual.ReadOnly = true;
             this.txtImporteActual.Size = new System.Drawing.Size(100, 22);
-            this.txtImporteActual.TabIndex = 3;
+            this.txtImporteActual.TabIndex = 0;
             // 
             // lblImporteActual
             // 
@@ -175,7 +175,7 @@
             this.lblImporteActual.Location = new System.Drawing.Point(14, 160);
             this.lblImporteActual.Name = "lblImporteActual";
             this.lblImporteActual.Size = new System.Drawing.Size(92, 16);
-            this.lblImporteActual.TabIndex = 6;
+            this.lblImporteActual.TabIndex = 0;
             this.lblImporteActual.Text = "Importe actual";
             // 
             // txtClave
@@ -184,7 +184,7 @@
             this.txtClave.Name = "txtClave";
             this.txtClave.ReadOnly = true;
             this.txtClave.Size = new System.Drawing.Size(100, 22);
-            this.txtClave.TabIndex = 2;
+            this.txtClave.TabIndex = 0;
             // 
             // lblClave
             // 
@@ -193,7 +193,7 @@
             this.lblClave.Location = new System.Drawing.Point(14, 95);
             this.lblClave.Name = "lblClave";
             this.lblClave.Size = new System.Drawing.Size(43, 16);
-            this.lblClave.TabIndex = 4;
+            this.lblClave.TabIndex = 0;
             this.lblClave.Text = "Clave";
             // 
             // cmbProveedores
@@ -229,6 +229,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmAgregarPagoProveedor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pago Proveedor";
             this.Load += new System.EventHandler(this.frmAgregarPagoProveedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

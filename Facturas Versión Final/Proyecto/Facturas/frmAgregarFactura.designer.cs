@@ -105,7 +105,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(479, 336);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(122, 34);
-            this.btnAgregar.TabIndex = 11;
+            this.btnAgregar.TabIndex = 7;
             this.btnAgregar.Text = "Agregar Factura";
             this.toolTip1.SetToolTip(this.btnAgregar, "Crear la factura con la información correspondiente");
             this.btnAgregar.UseVisualStyleBackColor = false;
@@ -119,7 +119,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(607, 337);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(122, 33);
-            this.btnLimpiar.TabIndex = 12;
+            this.btnLimpiar.TabIndex = 8;
             this.btnLimpiar.Text = "Limpiar Ventana";
             this.toolTip1.SetToolTip(this.btnLimpiar, "Limpiar campos de texto y selección");
             this.btnLimpiar.UseVisualStyleBackColor = false;
@@ -158,7 +158,7 @@
             this.grpProveedor.Location = new System.Drawing.Point(7, 73);
             this.grpProveedor.Name = "grpProveedor";
             this.grpProveedor.Size = new System.Drawing.Size(161, 109);
-            this.grpProveedor.TabIndex = 10;
+            this.grpProveedor.TabIndex = 0;
             this.grpProveedor.TabStop = false;
             this.grpProveedor.Text = "Info proveedor";
             // 
@@ -168,7 +168,7 @@
             this.txtClave.Name = "txtClave";
             this.txtClave.ReadOnly = true;
             this.txtClave.Size = new System.Drawing.Size(65, 21);
-            this.txtClave.TabIndex = 3;
+            this.txtClave.TabIndex = 0;
             // 
             // lblClave
             // 
@@ -216,7 +216,7 @@
             this.grpAgregarArticulo.Location = new System.Drawing.Point(22, 215);
             this.grpAgregarArticulo.Name = "grpAgregarArticulo";
             this.grpAgregarArticulo.Size = new System.Drawing.Size(314, 168);
-            this.grpAgregarArticulo.TabIndex = 1;
+            this.grpAgregarArticulo.TabIndex = 0;
             this.grpAgregarArticulo.TabStop = false;
             this.grpAgregarArticulo.Text = "Agregar Artículo";
             // 
@@ -229,14 +229,14 @@
             this.cmbArticulo.Location = new System.Drawing.Point(22, 50);
             this.cmbArticulo.Name = "cmbArticulo";
             this.cmbArticulo.Size = new System.Drawing.Size(115, 23);
-            this.cmbArticulo.TabIndex = 4;
+            this.cmbArticulo.TabIndex = 3;
             this.cmbArticulo.SelectedIndexChanged += new System.EventHandler(this.cmbArticulo_SelectedIndexChanged);
             this.cmbArticulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbArticulo_KeyPress);
             this.cmbArticulo.Validated += new System.EventHandler(this.cmbArticulo_Validated);
             // 
             // grpArticulo
             // 
-            this.grpArticulo.BackColor = System.Drawing.Color.MistyRose;
+            this.grpArticulo.BackColor = System.Drawing.Color.Transparent;
             this.grpArticulo.Controls.Add(this.txtClaveArt);
             this.grpArticulo.Controls.Add(this.txtExistencia);
             this.grpArticulo.Controls.Add(this.label1);
@@ -246,7 +246,7 @@
             this.grpArticulo.Location = new System.Drawing.Point(171, 12);
             this.grpArticulo.Name = "grpArticulo";
             this.grpArticulo.Size = new System.Drawing.Size(137, 148);
-            this.grpArticulo.TabIndex = 20;
+            this.grpArticulo.TabIndex = 0;
             this.grpArticulo.TabStop = false;
             this.grpArticulo.Text = "Info del artículo";
             // 
@@ -256,7 +256,7 @@
             this.txtClaveArt.Name = "txtClaveArt";
             this.txtClaveArt.ReadOnly = true;
             this.txtClaveArt.Size = new System.Drawing.Size(101, 21);
-            this.txtClaveArt.TabIndex = 6;
+            this.txtClaveArt.TabIndex = 0;
             // 
             // txtExistencia
             // 
@@ -264,7 +264,7 @@
             this.txtExistencia.Name = "txtExistencia";
             this.txtExistencia.ReadOnly = true;
             this.txtExistencia.Size = new System.Drawing.Size(100, 21);
-            this.txtExistencia.TabIndex = 8;
+            this.txtExistencia.TabIndex = 0;
             // 
             // label1
             // 
@@ -299,7 +299,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.ReadOnly = true;
             this.txtPrecio.Size = new System.Drawing.Size(100, 21);
-            this.txtPrecio.TabIndex = 7;
+            this.txtPrecio.TabIndex = 0;
             // 
             // numUpCantidad
             // 
@@ -307,7 +307,7 @@
             this.numUpCantidad.Name = "numUpCantidad";
             this.numUpCantidad.ReadOnly = true;
             this.numUpCantidad.Size = new System.Drawing.Size(91, 21);
-            this.numUpCantidad.TabIndex = 5;
+            this.numUpCantidad.TabIndex = 4;
             this.toolTip1.SetToolTip(this.numUpCantidad, "Seleccione una cantidad");
             this.numUpCantidad.Value = new decimal(new int[] {
             1,
@@ -344,7 +344,7 @@
             this.btnAgregarArticulo.Location = new System.Drawing.Point(342, 277);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(114, 31);
-            this.btnAgregarArticulo.TabIndex = 9;
+            this.btnAgregarArticulo.TabIndex = 5;
             this.btnAgregarArticulo.Text = "Agregar Articulo";
             this.toolTip1.SetToolTip(this.btnAgregarArticulo, "Agregar artículo a la lista de detalle");
             this.btnAgregarArticulo.UseVisualStyleBackColor = false;
@@ -384,7 +384,7 @@
             this.btnEliminarArticulo.Location = new System.Drawing.Point(342, 328);
             this.btnEliminarArticulo.Name = "btnEliminarArticulo";
             this.btnEliminarArticulo.Size = new System.Drawing.Size(114, 31);
-            this.btnEliminarArticulo.TabIndex = 10;
+            this.btnEliminarArticulo.TabIndex = 6;
             this.btnEliminarArticulo.Text = "Eliminar Articulo";
             this.toolTip1.SetToolTip(this.btnEliminarArticulo, "Eliminar artículo de la lista de detalle");
             this.btnEliminarArticulo.UseVisualStyleBackColor = false;
@@ -442,7 +442,7 @@
             this.btnSalir.Location = new System.Drawing.Point(735, 336);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(122, 33);
-            this.btnSalir.TabIndex = 13;
+            this.btnSalir.TabIndex = 9;
             this.btnSalir.Text = "Salir";
             this.toolTip1.SetToolTip(this.btnSalir, "Cerrar ventana");
             this.btnSalir.UseVisualStyleBackColor = false;
@@ -479,6 +479,7 @@
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnAgregar);
             this.Name = "frmAgregarFactura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar nueva factura";
             this.Load += new System.EventHandler(this.frmAgregarFactura_Load);
             this.grpDatos.ResumeLayout(false);

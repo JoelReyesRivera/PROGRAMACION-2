@@ -166,6 +166,7 @@
             this.Controls.Add(this.lblInformacion);
             this.Controls.Add(this.dgvDetalles);
             this.Name = "frmMostrarDetalles";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mostrando Detalles de Facturas";
             this.Load += new System.EventHandler(this.frmMostrarDetalles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).EndInit();

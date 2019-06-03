@@ -137,6 +137,7 @@
             this.Controls.Add(this.lblProvedores);
             this.Controls.Add(this.dtgvProveedores);
             this.Name = "frmConsultaProveedores";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta Proveedores";
             this.Load += new System.EventHandler(this.frmConsultaProveedores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvProveedores)).EndInit();

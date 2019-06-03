@@ -6,6 +6,7 @@
 CREATE DATABASE FACTURAS
 GO
 USE FACTURAS
+GO
 
 --CREACION DE LAS TABLAS
 CREATE TABLE Articulo (
@@ -41,6 +42,13 @@ FOREIGN KEY (Articulo) REFERENCES Articulo(Clave),
 FOREIGN KEY (Factura) REFERENCES Factura(Clave)
 )
 
+CREATE TABLE PagoProveedor(
+Clave INT IDENTITY (1,1) PRIMARY KEY,
+Proveedor INT NOT NULL,
+Fecha date NOT NULL,
+Importe Money NOT NULL,
+FOREIGN KEY (Proveedor) REFERENCES Proveedor(Clave)
+)
 --RESTRICCIONES/CONSTRAINTS
 
 ALTER TABLE DetalleFactura
@@ -121,18 +129,78 @@ CREATE TRIGGER DecrementaSaldo ON Proveedor FOR UPDATE AS
 			Rollback Transaction
 		END
 
+--PROCEDIMIENTO PARA ELIMINAR DETALLE FACTURA
+GO
+CREATE PROC	EliminaDetalleFactura (
+	@FACTURA BIGINT,
+	@ARTICULO INT,
+	@CANTIDAD INT,
+	@PRECIO MONEY
+)
+AS 
+	BEGIN
+	    DECLARE @PROVEEDOR INT, @SALDO INT, @MONTO MONEY
+
+		SET @Proveedor=(SELECT Provedor FROM Factura WHERE Clave=@FACTURA)
+		SET @SALDO=(SELECT Saldo FROM Proveedor WHERE Clave=@PROVEEDOR)
+		SET @MONTO=(@PRECIO*@CANTIDAD)
+
+		UPDATE Articulo SET Cantidad=Cantidad+@CANTIDAD WHERE Clave=@ARTICULO
+		
+		UPDATE Factura SET Monto=Monto-@MONTO WHERE Clave=@FACTURA
+
+		DELETE FROM DetalleFactura WHERE Factura=@FACTURA  AND Articulo=@ARTICULO AND Cantidad=@CANTIDAD AND Precio=@PRECIO
+				
+		IF(@SALDO>=@MONTO)
+			UPDATE Proveedor SET Saldo=Saldo-@MONTO WHERE Clave=@PROVEEDOR
+		ELSE
+			UPDATE Proveedor SET Saldo=0 WHERE Clave=@PROVEEDOR
+	END
+
+--TRIGGER PARA ACTUALIZAR SALDO PROVEEDOR
+GO
+CREATE TRIGGER SaldoProveedor ON PagoProveedor FOR INSERT
+AS
+		DECLARE @PROVEEDOR INT
+		DECLARE @IMPORTE MONEY
+		DECLARE @SALDO MONEY
+
+	SELECT @PROVEEDOR = Proveedor, @IMPORTE = Importe  FROM inserted 
+
+	SET @SALDO = (SELECT Saldo FROM Proveedor WHERE Clave=@PROVEEDOR)
+
+	IF (@SALDO-@IMPORTE) < (0)
+			ROLLBACK
+	ELSE
+			UPDATE Proveedor SET Saldo=Saldo-@IMPORTE	WHERE Clave=@PROVEEDOR
+GO
 --INSERSIONES EJEMPLO
 GO
 INSERT INTO Articulo
-VALUES ('PAN','BIMBO',30.5,15)
+VALUES ('PAN','BIMBO',30.5,17)
+INSERT INTO Articulo
+VALUES ('LECHE','LALA',25.5,10)
 
 INSERT INTO Proveedor
-VALUES (1,'JOEL','JORR110899','HUERTOS',0)
+VALUES (1,'JOEL REYES','JORR110899','HUERTOS',0)
+INSERT INTO Proveedor
+VALUES (2,'CRISTINA BELTRAN','BACR110399','LOS PINOS',0)
+INSERT INTO Proveedor
+VALUES (3,'FERNANDO ABITIA','NAND112698','LA PENI',0)
 
 INSERT INTO Factura
 VALUES (1,1,'04/05/2019',0)
+INSERT INTO Factura
+VALUES (2,2,'02/06/2019',0)
+INSERT INTO Factura
+VALUES (3,3,'01/01/2019',0)
 
-exec InsertarDetalleFactura 1,1,15
+
+exec InsertarDetalleFactura 1,1,10
+exec InsertarDetalleFactura 2,2,6
+exec InsertarDetalleFactura 3,1,5
+exec InsertarDetalleFactura 3,2,1
+
 
 SELECT * FROM Articulo
 SELECT * FROM Proveedor
@@ -155,3 +223,17 @@ select d.Factura,a.clave,a.descripcion,d.Precio,d.Cantidad,(d.Precio*d.Cantidad)
 select f.clave,p.clave,p.Nombre,f.monto,format(f.fecha,'dd/MM/yyyy') from Factura f inner join Proveedor p on f.provedor=p.Clave where p.Nombre ='JOEL'
 SELECT F.CLAVE FROM FACTURA  F INNER JOIN Proveedor P ON P.Clave=f.provedor where P.Nombre='JOEL'
 select d.Factura,d.Articulo,a.descripcion,a.marca,d.Cantidad,d.Precio,(d.Cantidad*d.Precio) from DetalleFactura d inner join Articulo a on a.clave = d.Articulo where d.Factura = 1
+
+SELECT * FROM Factura F INNER JOIN DetalleFactura D ON F.Clave=D.Factura WHERE F.Clave=10
+
+SELECT F.Clave,P.Nombre,FORMAT(F.Fecha,'dd/MM/yyyy') AS Fecha,F.Monto FROM Factura F 
+INNER JOIN Proveedor P ON F.Provedor=P.Clave ORDER BY F.Clave
+
+SELECT A.Clave,A.Descripcion,DF.Cantidad,DF.Precio FROM DetalleFactura DF 
+INNER JOIN Articulo A ON DF.Articulo=A.Clave WHERE DF.Factura=1
+ORDER BY DF.Factura
+
+SELECT P.Nombre,P.Clave FROM Factura F INNER JOIN Proveedor P ON F.Provedor=P.Clave WHERE F.Clave=1
+
+SELECT PA.Clave, P.Clave AS ClaveP, P.Nombre, FORMAT(PA.Fecha,'dd/MM/yyyy')AS Fecha, PA.Importe FROM PagoProveedor PA 
+INNER JOIN Proveedor P ON PA.Proveedor=P.Clave

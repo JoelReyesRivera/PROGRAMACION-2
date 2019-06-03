@@ -134,6 +134,7 @@
             this.Controls.Add(this.dvgDetalles);
             this.Controls.Add(this.lblDetalles);
             this.Name = "frmVistaBuscaFactura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalles de la factura";
             this.Load += new System.EventHandler(this.frmVistaBuscaFactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dvgDetalles)).EndInit();

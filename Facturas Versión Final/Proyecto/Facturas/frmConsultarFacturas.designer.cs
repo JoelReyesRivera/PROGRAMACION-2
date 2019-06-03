@@ -39,6 +39,13 @@
             this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtgvDetalles = new System.Windows.Forms.DataGridView();
+            this.ClaveFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClaveArticulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImporteDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFacturas = new System.Windows.Forms.Label();
             this.lblDetalles = new System.Windows.Forms.Label();
             this.grpInfomacion = new System.Windows.Forms.GroupBox();
@@ -49,13 +56,6 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.ClaveFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClaveArticulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ImporteDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvFacturas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDetalles)).BeginInit();
             this.grpInfomacion.SuspendLayout();
@@ -105,7 +105,7 @@
             this.dtgvFacturas.Name = "dtgvFacturas";
             this.dtgvFacturas.ReadOnly = true;
             this.dtgvFacturas.Size = new System.Drawing.Size(794, 181);
-            this.dtgvFacturas.TabIndex = 2;
+            this.dtgvFacturas.TabIndex = 0;
             // 
             // Factura
             // 
@@ -159,110 +159,7 @@
             this.dtgvDetalles.Name = "dtgvDetalles";
             this.dtgvDetalles.ReadOnly = true;
             this.dtgvDetalles.Size = new System.Drawing.Size(813, 177);
-            this.dtgvDetalles.TabIndex = 4;
-            // 
-            // lblFacturas
-            // 
-            this.lblFacturas.AutoSize = true;
-            this.lblFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFacturas.Location = new System.Drawing.Point(9, 26);
-            this.lblFacturas.Name = "lblFacturas";
-            this.lblFacturas.Size = new System.Drawing.Size(194, 20);
-            this.lblFacturas.TabIndex = 4;
-            this.lblFacturas.Text = "Facturas del proveedor";
-            // 
-            // lblDetalles
-            // 
-            this.lblDetalles.AutoSize = true;
-            this.lblDetalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetalles.Location = new System.Drawing.Point(9, 314);
-            this.lblDetalles.Name = "lblDetalles";
-            this.lblDetalles.Size = new System.Drawing.Size(199, 20);
-            this.lblDetalles.TabIndex = 5;
-            this.lblDetalles.Text = "Detalles de las facturas";
-            // 
-            // grpInfomacion
-            // 
-            this.grpInfomacion.BackColor = System.Drawing.Color.Transparent;
-            this.grpInfomacion.Controls.Add(this.lblSeleccionarFactura);
-            this.grpInfomacion.Controls.Add(this.cmbFacturas);
-            this.grpInfomacion.Controls.Add(this.dtgvDetalles);
-            this.grpInfomacion.Controls.Add(this.lblDetalles);
-            this.grpInfomacion.Controls.Add(this.dtgvFacturas);
-            this.grpInfomacion.Controls.Add(this.lblFacturas);
-            this.grpInfomacion.Location = new System.Drawing.Point(19, 43);
-            this.grpInfomacion.Name = "grpInfomacion";
-            this.grpInfomacion.Size = new System.Drawing.Size(838, 520);
-            this.grpInfomacion.TabIndex = 0;
-            this.grpInfomacion.TabStop = false;
-            this.grpInfomacion.Text = "Datos";
-            // 
-            // lblSeleccionarFactura
-            // 
-            this.lblSeleccionarFactura.AutoSize = true;
-            this.lblSeleccionarFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSeleccionarFactura.Location = new System.Drawing.Point(9, 275);
-            this.lblSeleccionarFactura.Name = "lblSeleccionarFactura";
-            this.lblSeleccionarFactura.Size = new System.Drawing.Size(71, 20);
-            this.lblSeleccionarFactura.TabIndex = 0;
-            this.lblSeleccionarFactura.Text = "Factura";
-            // 
-            // cmbFacturas
-            // 
-            this.cmbFacturas.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cmbFacturas.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbFacturas.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.cmbFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cmbFacturas.FormattingEnabled = true;
-            this.cmbFacturas.Location = new System.Drawing.Point(107, 274);
-            this.cmbFacturas.Name = "cmbFacturas";
-            this.cmbFacturas.Size = new System.Drawing.Size(148, 21);
-            this.cmbFacturas.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.cmbFacturas, "Seleccione una Factura");
-            this.cmbFacturas.SelectedIndexChanged += new System.EventHandler(this.cmbFacturas_SelectedIndexChanged);
-            this.cmbFacturas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbFacturas_KeyPress);
-            this.cmbFacturas.Validated += new System.EventHandler(this.cmbFacturas_Validated);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(705, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(107, 96);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(777, 569);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(92, 34);
-            this.btnSalir.TabIndex = 6;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = false;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // errorP
-            // 
-            this.errorP.ContainerControl = this;
-            // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(659, 569);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(92, 34);
-            this.btnLimpiar.TabIndex = 5;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = false;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            this.dtgvDetalles.TabIndex = 0;
             // 
             // ClaveFactura
             // 
@@ -310,6 +207,109 @@
             this.ImporteDetalle.ReadOnly = true;
             this.ImporteDetalle.Width = 120;
             // 
+            // lblFacturas
+            // 
+            this.lblFacturas.AutoSize = true;
+            this.lblFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFacturas.Location = new System.Drawing.Point(9, 26);
+            this.lblFacturas.Name = "lblFacturas";
+            this.lblFacturas.Size = new System.Drawing.Size(194, 20);
+            this.lblFacturas.TabIndex = 0;
+            this.lblFacturas.Text = "Facturas del proveedor";
+            // 
+            // lblDetalles
+            // 
+            this.lblDetalles.AutoSize = true;
+            this.lblDetalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetalles.Location = new System.Drawing.Point(9, 314);
+            this.lblDetalles.Name = "lblDetalles";
+            this.lblDetalles.Size = new System.Drawing.Size(199, 20);
+            this.lblDetalles.TabIndex = 0;
+            this.lblDetalles.Text = "Detalles de las facturas";
+            // 
+            // grpInfomacion
+            // 
+            this.grpInfomacion.BackColor = System.Drawing.Color.Transparent;
+            this.grpInfomacion.Controls.Add(this.lblSeleccionarFactura);
+            this.grpInfomacion.Controls.Add(this.cmbFacturas);
+            this.grpInfomacion.Controls.Add(this.dtgvDetalles);
+            this.grpInfomacion.Controls.Add(this.lblDetalles);
+            this.grpInfomacion.Controls.Add(this.dtgvFacturas);
+            this.grpInfomacion.Controls.Add(this.lblFacturas);
+            this.grpInfomacion.Location = new System.Drawing.Point(19, 43);
+            this.grpInfomacion.Name = "grpInfomacion";
+            this.grpInfomacion.Size = new System.Drawing.Size(838, 520);
+            this.grpInfomacion.TabIndex = 0;
+            this.grpInfomacion.TabStop = false;
+            this.grpInfomacion.Text = "Datos";
+            // 
+            // lblSeleccionarFactura
+            // 
+            this.lblSeleccionarFactura.AutoSize = true;
+            this.lblSeleccionarFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSeleccionarFactura.Location = new System.Drawing.Point(9, 275);
+            this.lblSeleccionarFactura.Name = "lblSeleccionarFactura";
+            this.lblSeleccionarFactura.Size = new System.Drawing.Size(71, 20);
+            this.lblSeleccionarFactura.TabIndex = 0;
+            this.lblSeleccionarFactura.Text = "Factura";
+            // 
+            // cmbFacturas
+            // 
+            this.cmbFacturas.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbFacturas.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbFacturas.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.cmbFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmbFacturas.FormattingEnabled = true;
+            this.cmbFacturas.Location = new System.Drawing.Point(107, 274);
+            this.cmbFacturas.Name = "cmbFacturas";
+            this.cmbFacturas.Size = new System.Drawing.Size(148, 21);
+            this.cmbFacturas.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.cmbFacturas, "Seleccione una Factura");
+            this.cmbFacturas.SelectedIndexChanged += new System.EventHandler(this.cmbFacturas_SelectedIndexChanged);
+            this.cmbFacturas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbFacturas_KeyPress);
+            this.cmbFacturas.Validated += new System.EventHandler(this.cmbFacturas_Validated);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(705, 1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(107, 96);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Location = new System.Drawing.Point(777, 569);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(92, 34);
+            this.btnSalir.TabIndex = 4;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // errorP
+            // 
+            this.errorP.ContainerControl = this;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Location = new System.Drawing.Point(659, 569);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(92, 34);
+            this.btnLimpiar.TabIndex = 3;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // frmConsultarFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -324,6 +324,7 @@
             this.Controls.Add(this.lblProveedor);
             this.Controls.Add(this.cmbProveedores);
             this.Name = "frmConsultarFacturas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta facturas proveedor";
             ((System.ComponentModel.ISupportInitialize)(this.dtgvFacturas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDetalles)).EndInit();

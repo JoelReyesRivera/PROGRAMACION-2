@@ -36,6 +36,24 @@
     <Reference Include="LibreriaBD">
       <HintPath>.\LibreriaBD.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -125,6 +143,12 @@
     <Compile Include="frmConsultarFacturas.designer.cs">
       <DependentUpon>frmConsultarFacturas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEliminaDetalleFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEliminaDetalleFactura.Designer.cs">
+      <DependentUpon>frmEliminaDetalleFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmInformacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +179,36 @@
     <Compile Include="frmMostrarFacturas.designer.cs">
       <DependentUpon>frmMostrarFacturas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReporteArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteArticulos.Designer.cs">
+      <DependentUpon>frmReporteArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteDetalleFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteDetalleFacturas.Designer.cs">
+      <DependentUpon>frmReporteDetalleFacturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportePagoProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportePagoProveedor.Designer.cs">
+      <DependentUpon>frmReportePagoProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteProveedores.Designer.cs">
+      <DependentUpon>frmReporteProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportFactura.Designer.cs">
+      <DependentUpon>frmReportFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmVistaBuscaFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,7 +222,33 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />
+    <Compile Include="ReporteArticulos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteArticulos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteDetalleFacturas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteDetalleFacturas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReportePagoProveedor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportePagoProveedor.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteProveedores.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteProveedores.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReportFactura.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportFactura.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Rutinas.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="frmAgregaArticulo.resx">
       <DependentUpon>frmAgregaArticulo.cs</DependentUpon>
     </EmbeddedResource>
@@ -205,6 +285,9 @@
     <EmbeddedResource Include="frmConsultarFacturas.resx">
       <DependentUpon>frmConsultarFacturas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEliminaDetalleFactura.resx">
+      <DependentUpon>frmEliminaDetalleFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmInformacion.resx">
       <DependentUpon>frmInformacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,6 +303,21 @@
     <EmbeddedResource Include="frmMostrarFacturas.resx">
       <DependentUpon>frmMostrarFacturas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteArticulos.resx">
+      <DependentUpon>frmReporteArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteDetalleFacturas.resx">
+      <DependentUpon>frmReporteDetalleFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportePagoProveedor.resx">
+      <DependentUpon>frmReportePagoProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteProveedores.resx">
+      <DependentUpon>frmReporteProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportFactura.resx">
+      <DependentUpon>frmReportFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmVistaBuscaFactura.resx">
       <DependentUpon>frmVistaBuscaFactura.cs</DependentUpon>
     </EmbeddedResource>
@@ -231,7 +329,14 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReporteArticulo.rdlc" />
+    <EmbeddedResource Include="ReporteDetalleFacturas.rdlc" />
+    <EmbeddedResource Include="ReportePagoProveedor.rdlc" />
+    <EmbeddedResource Include="ReporteProveedores.rdlc" />
+    <EmbeddedResource Include="ReportFactura.rdlc" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -241,9 +346,80 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="ReporteArticulos.xsc">
+      <DependentUpon>ReporteArticulos.xsd</DependentUpon>
+    </None>
+    <None Include="ReporteArticulos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReporteArticulos.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ReporteArticulos.xss">
+      <DependentUpon>ReporteArticulos.xsd</DependentUpon>
+    </None>
+    <None Include="ReporteDetalleFacturas.xsc">
+      <DependentUpon>ReporteDetalleFacturas.xsd</DependentUpon>
+    </None>
+    <None Include="ReporteDetalleFacturas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReporteDetalleFacturas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ReporteDetalleFacturas.xss">
+      <DependentUpon>ReporteDetalleFacturas.xsd</DependentUpon>
+    </None>
+    <None Include="ReportePagoProveedor.xsc">
+      <DependentUpon>ReportePagoProveedor.xsd</DependentUpon>
+    </None>
+    <None Include="ReportePagoProveedor.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportePagoProveedor.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ReportePagoProveedor.xss">
+      <DependentUpon>ReportePagoProveedor.xsd</DependentUpon>
+    </None>
+    <None Include="ReporteProveedores.xsc">
+      <DependentUpon>ReporteProveedores.xsd</DependentUpon>
+    </None>
+    <None Include="ReporteProveedores.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReporteProveedores.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ReporteProveedores.xss">
+      <DependentUpon>ReporteProveedores.xsd</DependentUpon>
+    </None>
+    <None Include="ReportFactura.xsc">
+      <DependentUpon>ReportFactura.xsd</DependentUpon>
+    </None>
+    <None Include="ReportFactura.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportFactura.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ReportFactura.xss">
+      <DependentUpon>ReportFactura.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2057d54d9b22d00.jpg" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
